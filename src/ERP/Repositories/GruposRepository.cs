@@ -1,0 +1,86 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ERP.Models;
+
+namespace ERP.Repositories
+{
+    class GruposRepository
+    {
+        public static IList<Grupos> ObtenerGrupos()
+        {
+            using (var db = new ERPEntities())
+            {
+                var query = (from g in db.Grupos select g)
+                                .ToList()
+                                .Select(
+                                    g => new Grupos
+                                    {
+                                        Id = g.Id,
+                                        Descripcion = g.Descripcion,
+                                        Estado = g.Estado
+                                    });
+                return query.OrderBy(g => g.Descripcion).ToList();
+            }
+        }
+
+        public static Grupos Insertar(string descripción, byte estado)
+        {
+            using (var db = new ERPEntities())
+            {
+                var id = db.Grupos.Any() ? db.Grupos.Max(c1 => c1.Id) + 1 : 1;
+                var g = new Grupos
+                {
+                    Id = id,
+                    Descripcion = descripción,
+                    Estado = estado
+                };
+                db.Grupos.Add(g);
+                db.SaveChanges();
+                return g;
+            }
+        }
+
+        internal static Grupos ObtenerGrupoPorId(decimal id)
+        {
+            using (var db = new ERPEntities())
+            {
+                return db.Grupos.Find(id);
+            }
+        }        
+
+        public static void Actualizar(decimal id, string descripción, byte estado)
+        {
+            using (var db = new ERPEntities())
+            {
+                if (!db.Grupos.Any(t => t.Id == id))
+                {
+                    throw new Exception(String.Format("No existe el grupo {0} - {1}", id, descripción));
+                }
+                var c = db.Grupos.Find(id);
+                c.Descripcion = descripción;
+                if (c.Estado != estado)
+                {
+                    c.Estado = estado;
+                }
+                db.SaveChanges();
+            }
+        }
+
+        internal static void Eliminar(int id)
+        {
+            using (var db = new ERPEntities())
+            {
+                if (!db.Grupos.Any(t => t.Id == id))
+                {
+                    throw new Exception("No existe el grupo con Id " + id);
+                }
+                var c = db.Grupos.Find(id);
+                db.Grupos.Remove(c);
+                db.SaveChanges();
+            }
+        }
+    }
+}

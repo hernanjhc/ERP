@@ -1,0 +1,16 @@
+D:\SGOSistemas\ERP\src\ERP\obj\Debug\ERP.Forms.Barrios.frmListado.resources
+D:\SGOSistemas\ERP\src\ERP\obj\Debug\SMPorres.Forms.Departamentos.frmListado.resources
+D:\SGOSistemas\ERP\src\ERP\obj\Debug\SMPorres.Forms.frmLogin.resources
+D:\SGOSistemas\ERP\src\ERP\obj\Debug\SMPorres.Forms.GrupoUsuarios.frmEdición.resources
+D:\SGOSistemas\ERP\src\ERP\obj\Debug\SMPorres.Forms.UsuariosGrupos.frmListado.resources
+D:\SGOSistemas\ERP\src\ERP\obj\Debug\SMPorres.Forms.MenuItems.frmAsignarUsuariosyGruposAMenuItems.resources
+D:\SGOSistemas\ERP\src\ERP\obj\Debug\SMPorres.Forms.Localidades.frmListado.resources
+D:\SGOSistemas\ERP\src\ERP\obj\Debug\ERP.Forms.Usuarios.frmAsignarUsuariosAGrupos.resources
+D:\SGOSistemas\ERP\src\ERP\obj\Debug\ERP.Forms.frmCambiarContraseña.resources
+D:\SGOSistemas\ERP\src\ERP\obj\Debug\ERP.Forms.Usuarios.frmEdición.resources
+D:\SGOSistemas\ERP\src\ERP\obj\Debug\ERP.Forms.Usuarios.frmListado.resources
+D:\SGOSistemas\ERP\src\ERP\obj\Debug\ERP.Properties.Resources.resources
+D:\SGOSistemas\ERP\src\ERP\obj\Debug\ERP.csproj.GenerateResource.Cache
+D:\SGOSistemas\ERP\src\ERP\obj\Debug\ERP.csprojResolveAssemblyReference.cache
+D:\SGOSistemas\ERP\src\ERP\obj\Debug\ERP.Forms.Departamentos.frmListado.resources
+D:\SGOSistemas\ERP\src\ERP\obj\Debug\ERP.Forms.Localidades.frmListado.resources
