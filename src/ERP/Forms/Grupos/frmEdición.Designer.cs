@@ -1,4 +1,4 @@
-﻿namespace SMPorres.Forms.GrupoUsuarios
+﻿namespace ERP.Forms.GrupoUsuarios
 {
     partial class frmEdición
     {

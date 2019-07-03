@@ -1,4 +1,6 @@
 ﻿using CustomLibrary.Extensions.Controls;
+using ERP.Forms.GrupoUsuarios;
+using ERP.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,17 +10,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SMPorres.Repositories;
-using SMPorres.Forms.GrupoUsuarios;
 
-namespace SMPorres.Forms.UsuariosGrupos
+namespace ERP.Forms.Grupos
 {
     public partial class frmListado : Lib.AppForms.FormBase
     {
         public frmListado()
         {
             InitializeComponent();
-            ConsultarDatos();
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            using (var f = new frmEdición())
+            {
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        var g = GruposRepository.Insertar(f.Grupo, f.Estado);
+                        ConsultarDatos();
+                        dgvDatos.SetRow(r => Convert.ToDecimal(r.Cells[0].Value) == g.Id);
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowError("Error al intentar grabar los datos: \n" + ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         private void ConsultarDatos()
@@ -52,38 +76,6 @@ namespace SMPorres.Forms.UsuariosGrupos
             dgvDatos.Columns[2].HeaderText = "Estado";
             dgvDatos.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgvDatos.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-        }
-
-        private void frmListado_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape) btnSalir.PerformClick();
-            else if (e.Control && e.KeyCode == Keys.N) btnNuevo.PerformClick();
-            else if (e.Control && e.KeyCode == Keys.F4) btnEditar.PerformClick();
-        }
-
-        private void btnNuevo_Click(object sender, EventArgs e)
-        {
-            using (var f = new frmEdición())
-            {
-                if (f.ShowDialog() == DialogResult.OK)
-                {
-                    try
-                    {
-                        var g = GruposRepository.Insertar(f.Grupo, f.Estado);
-                        ConsultarDatos();
-                        dgvDatos.SetRow(r => Convert.ToDecimal(r.Cells[0].Value) == g.Id);
-                    }
-                    catch (Exception ex)
-                    {
-                        ShowError("Error al intentar grabar los datos: \n" + ex.Message);
-                    }
-                }
-            }
-        }
-
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            Close();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -120,7 +112,7 @@ namespace SMPorres.Forms.UsuariosGrupos
             {
                 return null;
             }
-            
+
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

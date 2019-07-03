@@ -11,7 +11,7 @@ namespace ERP.Lib
         {
             get
             {
-                using (var db = new ERPEntities())
+                using (var db = new VentasConexión())
                 {
                     if (_currentDate == DateTime.MinValue)
                     {

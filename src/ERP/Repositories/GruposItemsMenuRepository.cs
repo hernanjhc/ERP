@@ -11,7 +11,7 @@ namespace ERP.Repositories
     {
         internal static IList<ItemsMenu> ObtenerItemsMenuPorGrupoId(int idGrupo)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 var query = (
                             from it in db.ItemsMenu
@@ -33,7 +33,7 @@ namespace ERP.Repositories
 
         public static List<Grupos> ObtenerGruposPorItemMenu(int idItemMenu, bool asignados)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {                
                 var query = (from gim in db.GruposItemsMenu
                              join g in db.Grupos on gim.IdGrupo equals g.Id
@@ -62,7 +62,7 @@ namespace ERP.Repositories
 
         public static List<Usuarios> ObtenerUsuariosPorItemMenu(int idItemMenu, bool asignados)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 var query = (from uim in db.UsuariosItemsMenu
                              join u in db.Usuarios on uim.IdUsuario equals u.Id
@@ -95,7 +95,7 @@ namespace ERP.Repositories
 
         internal static void Insertar(int idGrupo, int idItemMenu)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 var id = db.GruposItemsMenu.Any() ? db.GruposItemsMenu.Max(g1 => g1.Id) + 1 : 1;
                 var gu = new GruposItemsMenu { Id = id, IdGrupo = idGrupo, IdItemMenu = idItemMenu };
@@ -106,7 +106,7 @@ namespace ERP.Repositories
 
         internal static void Eliminar(int idGrupo, int idItemMenu)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 var gu = db.GruposItemsMenu.FirstOrDefault(t => t.IdGrupo == idGrupo && t.IdItemMenu == idItemMenu);
                 if (gu == null) return;
@@ -117,7 +117,7 @@ namespace ERP.Repositories
 
         public static IList<ItemsMenu> ObtenerItemsMenuPorIdGrupo(int idgrupo)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 var query = (from gi in db.GruposItemsMenu
                              join im in db.ItemsMenu

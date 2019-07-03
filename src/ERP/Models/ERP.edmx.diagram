@@ -4,72 +4,54 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="542fe264f6454ab380fa366d91e9d9b1" Name="Diagram1">
-        <EntityTypeShape EntityType="ERP.Barrios" Width="1.5" PointX="1.5" PointY="20.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.Clientes" Width="1.5" PointX="0.75" PointY="38.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.Compras" Width="1.5" PointX="4" PointY="26.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.ComprasProductos" Width="1.5" PointX="2.75" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.Cuentas" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.Departamentos" Width="1.5" PointX="1.5" PointY="26.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.Domicilios" Width="1.5" PointX="1.5" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.Grupos" Width="1.5" PointX="3.75" PointY="47.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.GruposItemsMenu" Width="1.5" PointX="6" PointY="46" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.GruposUsuarios" Width="1.5" PointX="6" PointY="43.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.ItemsMenu" Width="1.5" PointX="3.75" PointY="39" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.Localidades" Width="1.5" PointX="1.5" PointY="23.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.Marcas" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.MovimientosDinero" Width="1.5" PointX="8" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.MovimientosStock" Width="1.5" PointX="10.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.OrigenMovimiento" Width="1.5" PointX="5.75" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.Productos" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.Proveedores" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.Provincias" Width="1.5" PointX="1.5" PointY="29.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.Remitos" Width="1.5" PointX="3" PointY="42.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.RemitosProductos" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.Rubros" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.SubRubro" Width="1.5" PointX="0.75" PointY="35.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.TiposDocumento" Width="1.5" PointX="1.5" PointY="32.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.Unidad" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.Usuarios" Width="1.5" PointX="0.75" PointY="42.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.UsuariosItemsMenu" Width="1.5" PointX="6" PointY="40.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.Venta" Width="1.5" PointX="0.75" PointY="46.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.VentasProductos" Width="1.5" PointX="8.25" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ERP.TipoOperacion" Width="1.5" PointX="10.75" PointY="5.125" IsExpanded="true" />
-        <AssociationConnector Association="ERP.FK_Barrios_Localidades" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_Domicilios_Barrios" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_Remitos_Clientes" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_Venta_Venta" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_Compras_Proveedores" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_Compras_Usuarios" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_MovimientosDinero_Cuentas" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_Departamentos_Provincias" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_Domicilios_Departamentos" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_Localidades_Departamentos" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_Domicilios_Localidades" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_Domicilios_Provincias" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_Proveedores_Domicilios" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_GruposItemsMenu_Grupos" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_GruposUsuarios_Grupos" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_GruposItemsMenus_ItemsMenu" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_GruposUsuarios_Usuarios" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_UsuariosItemsMenu_ItemsMenu" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_Productos_Marcas" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_MovimientosDinero_OrigenMovimiento" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_Productos_Proveedores" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_Productos_Rubros" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_Productos_SubRubro" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_Productos_Unidad" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_RemitosProductos_Productos" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_VentasProductos_Productos" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_Proveedores_TiposDocumento" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_Remitos_Usuarios" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_Remitos_Venta" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_RemitosProductos_RemitosProductos" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_RemitosProductos_Unidad" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_VentasProductos_Unidad" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_UsuariosItemsMenu_Usuarios" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_Venta_Usuarios" ManuallyRouted="false" />
-        <AssociationConnector Association="ERP.FK_VentasProductos_Venta" ManuallyRouted="false" />
+      <Diagram DiagramId="7eddb73a75c24da48855332e577e49d4" Name="Diagram1">
+        <EntityTypeShape EntityType="VentasModel.Bancos" Width="1.5" PointX="5.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.BancoSucursal" Width="1.5" PointX="5.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.Barrios" Width="1.5" PointX="7.5" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.Clientes" Width="1.5" PointX="12" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.Departamentos" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.Domicilios" Width="1.5" PointX="9.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.EArticulos" Width="1.5" PointX="19.5" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.EMarcas" Width="1.5" PointX="17.25" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.Empresas" Width="1.5" PointX="15" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.ERubros" Width="1.5" PointX="17.25" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.Grupos" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.GruposItemsMenu" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.GruposUsuarios" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.ItemsMenu" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.Localidades" Width="1.5" PointX="5.25" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.Proveedores" Width="1.5" PointX="12" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.Provincias" Width="1.5" PointX="0.75" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.TiposDocumento" Width="1.5" PointX="9.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.Unidades" Width="1.5" PointX="17.25" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.Usuarios" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.UsuariosItemsMenu" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="VentasModel.FK_Barrios_Localidades" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.FK_Domicilios_Barrios" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.FK_Clientes_Domicilios" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.FK_Clientes_TiposDocumento" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.FK_Departamentos_Provincias" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.FK_Domicilios_Departamentos" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.FK_Localidades_Departamentos" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.FK_Domicilios_Localidades" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.FK_Domicilios_Provincias" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.FK_Empresas_Domicilios" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.FK_Proveedores_Domicilios" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.FK_EArticulos_Empresas" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.FK_EArticulos_Marcas" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.FK_EArticulos_Proveedores" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.FK_EArticulos_Rubros" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.FK_EArticulos_Unidades" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.FK_EMarcas_Empresas" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.FK_Empresas_TiposDocumento" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.FK_ERubros_Empresas" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.FK_GruposItemsMenu_Grupos" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.FK_GruposUsuarios_Grupos" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.FK_GruposItemsMenus_ItemsMenu" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.FK_GruposUsuarios_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.FK_UsuariosItemsMenu_ItemsMenu" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.FK_Proveedores_TiposDocumento" ManuallyRouted="false" />
+        <AssociationConnector Association="VentasModel.FK_UsuariosItemsMenu_Usuarios" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

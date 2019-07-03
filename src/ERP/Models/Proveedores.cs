@@ -17,26 +17,25 @@ namespace ERP.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Proveedores()
         {
-            this.Compras = new HashSet<Compras>();
-            this.Productos = new HashSet<Productos>();
+            this.EArticulos = new HashSet<EArticulos>();
         }
     
         public int Id { get; set; }
+        public int IdEmpresa { get; set; }
         public string RazonSocial { get; set; }
         public int IdTipoDocumento { get; set; }
         public decimal NroDocumento { get; set; }
         public Nullable<System.DateTime> FechaNacimiento { get; set; }
         public string EMail { get; set; }
         public string Direccion { get; set; }
+        public string Telefono { get; set; }
         public string Sexo { get; set; }
         public Nullable<int> IdDomicilio { get; set; }
         public byte Estado { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Compras> Compras { get; set; }
         public virtual Domicilios Domicilios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Productos> Productos { get; set; }
+        public virtual ICollection<EArticulos> EArticulos { get; set; }
         public virtual TiposDocumento TiposDocumento { get; set; }
     }
 }

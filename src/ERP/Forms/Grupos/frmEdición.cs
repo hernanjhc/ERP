@@ -1,4 +1,4 @@
-﻿using SMPorres.Lib.Validations;
+﻿using ERP.Lib.Validations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SMPorres.Models;
+using ERP.Models;
 
-namespace SMPorres.Forms.GrupoUsuarios
+namespace ERP.Forms.GrupoUsuarios
 {
     public partial class frmEdición : Form
     {
@@ -30,7 +30,7 @@ namespace SMPorres.Forms.GrupoUsuarios
             _validator = new FormValidations(this, errorProvider1);
         }
 
-        public frmEdición(Grupos grupo) : this()
+        public frmEdición(Models.Grupos grupo) : this()
         {
             this.Text = "Edición de transacción";
             txtGrupo.Text = grupo.Descripcion;

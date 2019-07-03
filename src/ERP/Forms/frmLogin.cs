@@ -1,12 +1,21 @@
-﻿using SMPorres.Lib;
-using SMPorres.Lib.Validations;
-using SMPorres.Repositories;
+﻿using ERP.Lib;
+using ERP.Lib.Validations;
+using ERP.Repositories;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using MaterialSkin;
+using MaterialSkin.Controls;
 
-namespace SMPorres.Forms
+namespace ERP.Forms
 {
-    public partial class frmLogin : Form
+    public partial class frmLogin : MaterialForm
     {
         private FormValidations _validator;
 
@@ -36,5 +45,7 @@ namespace SMPorres.Forms
                 this.Close();
             }
         }
+
+       
     }
 }

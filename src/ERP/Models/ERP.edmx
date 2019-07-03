@@ -4,7 +4,31 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ERP.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="VentasModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bancos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Banco" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BancoSucursal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="IdBanco" Type="int" Nullable="false" />
+          <Property Name="SucursalNro" Type="int" Nullable="false" />
+          <Property Name="Sucursal" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdProvincia" Type="int" />
+          <Property Name="IdDepartamento" Type="int" />
+          <Property Name="IdLocalidad" Type="int" />
+          <Property Name="IdBarrio" Type="int" />
+          <Property Name="Direccion" Type="varchar" MaxLength="50" />
+          <Property Name="Web" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Telefono" Type="varchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="Barrios">
           <Key>
             <PropertyRef Name="Id" />
@@ -18,51 +42,16 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Nombre" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="Apellido" Type="varchar" MaxLength="255" />
+          <Property Name="IdEmpresa" Type="int" Nullable="false" />
+          <Property Name="RazonSocial" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="IdTipoDocumento" Type="int" Nullable="false" />
           <Property Name="NroDocumento" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="FechaNacimiento" Type="datetime" />
           <Property Name="EMail" Type="varchar" MaxLength="255" />
           <Property Name="Direccion" Type="varchar" MaxLength="255" />
+          <Property Name="Telefono" Type="varchar" MaxLength="255" />
           <Property Name="IdDomicilio" Type="int" />
           <Property Name="Estado" Type="tinyint" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Compras">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Fecha" Type="datetime" Nullable="false" />
-          <Property Name="SubTotal" Type="numeric" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Total" Type="numeric" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Lista" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="IdProveedor" Type="int" Nullable="false" />
-          <Property Name="IdUsuario" Type="int" Nullable="false" />
-          <Property Name="Estado" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="ComprasProductos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="IdCompra" Type="int" Nullable="false" />
-          <Property Name="IdProducto" Type="int" Nullable="false" />
-          <Property Name="IdUnidad" Type="int" Nullable="false" />
-          <Property Name="Cantidad" Type="int" Nullable="false" />
-          <Property Name="Precio" Type="numeric" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Importe" Type="numeric" Precision="18" Scale="2" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Cuentas">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="TipoCuenta" Type="int" Nullable="false" />
-          <Property Name="IdTipoCuenta" Type="int" Nullable="false" />
-          <Property Name="Fecha" Type="datetime" Nullable="false" />
-          <Property Name="Detalles" Type="varchar" MaxLength="255" />
-          <Property Name="Estado" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Departamentos">
           <Key>
@@ -81,6 +70,68 @@
           <Property Name="IdLocalidad" Type="int" Nullable="false" />
           <Property Name="IdDepartamento" Type="int" Nullable="false" />
           <Property Name="IdProvincia" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EArticulos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" Nullable="false" />
+          <Property Name="CodBarra" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdMarca" Type="int" />
+          <Property Name="IdRubro" Type="int" />
+          <Property Name="IdProveedor" Type="int" />
+          <Property Name="IdUnidad" Type="int" />
+          <Property Name="CostoInicial" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="CostoAdicional1" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="CostoAdicional2" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="Costo" Type="decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="Stock" Type="int" />
+          <Property Name="StockMinimo" Type="int" Nullable="false" />
+          <Property Name="PrecioL1" Type="decimal" Precision="17" Scale="2" />
+          <Property Name="PrecioL2" Type="decimal" Precision="17" Scale="2" />
+          <Property Name="PrecioL3" Type="decimal" Precision="17" Scale="2" />
+          <Property Name="Observaciones" Type="varchar" MaxLength="100" />
+          <Property Name="Estado" Type="int" />
+        </EntityType>
+        <EntityType Name="EMarcas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" Nullable="false" />
+          <Property Name="Marca" Type="varchar" MaxLength="45" />
+          <Property Name="Observaciones" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Empresas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="RazonSocial" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdTipoDoc" Type="int" Nullable="false" />
+          <Property Name="NroDoc" Type="decimal" Precision="17" Scale="0" Nullable="false" />
+          <Property Name="IdDomicilio" Type="int" />
+          <Property Name="Direccion" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Telefono" Type="varchar" MaxLength="100" />
+          <Property Name="Presupuesto" Type="int" Nullable="false" />
+          <Property Name="Venta" Type="int" Nullable="false" />
+          <Property Name="Remito" Type="int" Nullable="false" />
+          <Property Name="NotaDebito" Type="int" Nullable="false" />
+          <Property Name="NotaCredito" Type="int" Nullable="false" />
+          <Property Name="Compra" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ERubros">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" />
+          <Property Name="Rubro" Type="varchar" MaxLength="50" />
+          <Property Name="Observaciones" Type="varchar" MaxLength="100" />
+          <Property Name="Estado" Type="int" />
         </EntityType>
         <EntityType Name="Grupos">
           <Key>
@@ -123,84 +174,19 @@
           <Property Name="IdDepartamento" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Marcas">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Marca" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Extra" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="MovimientosDinero">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Fecha" Type="datetime" Nullable="false" />
-          <Property Name="IdCuenta" Type="int" Nullable="false" />
-          <Property Name="Detalle" Type="varchar" MaxLength="255" />
-          <Property Name="Credito" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="Débito" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="Saldo" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="Contrasiento" Type="int" />
-          <Property Name="IdOrigenMovimiento" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="MovimientosStock">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="IdProducto" Type="int" Nullable="false" />
-          <Property Name="IdTipoOperacion" Type="int" Nullable="false" />
-          <Property Name="Detalle" Type="varchar" MaxLength="50" />
-          <Property Name="IdProveedor" Type="int" />
-          <Property Name="IdCliente" Type="int" />
-          <Property Name="Fecha" Type="datetime" Nullable="false" />
-          <Property Name="Usuario" Type="int" Nullable="false" />
-          <Property Name="Ingreso" Type="int" Nullable="false" />
-          <Property Name="Egreso" Type="int" Nullable="false" />
-          <Property Name="Stock" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="OrigenMovimiento">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="OrigenMovimiento" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Productos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="CodBarra" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="IdMarca" Type="int" />
-          <Property Name="IdUnidad" Type="int" />
-          <Property Name="IdRubro" Type="int" />
-          <Property Name="IdSubRubro" Type="int" />
-          <Property Name="IdProveedor" Type="int" />
-          <Property Name="CostoInicial" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="CostoAdicional1" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="CostoAdicional2" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="Costo" Type="numeric" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="StockMinimo" Type="int" />
-          <Property Name="Lista1" Type="numeric" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Lista2" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="Lista3" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="Estado" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="Proveedores">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" Nullable="false" />
           <Property Name="RazonSocial" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="IdTipoDocumento" Type="int" Nullable="false" />
           <Property Name="NroDocumento" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="FechaNacimiento" Type="datetime" />
           <Property Name="EMail" Type="varchar" MaxLength="255" />
           <Property Name="Direccion" Type="varchar" MaxLength="255" />
+          <Property Name="Telefono" Type="varchar" MaxLength="255" />
           <Property Name="Sexo" Type="char" MaxLength="1" />
           <Property Name="IdDomicilio" Type="int" />
           <Property Name="Estado" Type="tinyint" Nullable="false" />
@@ -212,54 +198,6 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Remitos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Fecha" Type="datetime" Nullable="false" />
-          <Property Name="IdCliente" Type="int" Nullable="false" />
-          <Property Name="IdUsuario" Type="int" Nullable="false" />
-          <Property Name="Estado" Type="int" Nullable="false" />
-          <Property Name="IdVenta" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="RemitosProductos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="IdRemito" Type="int" Nullable="false" />
-          <Property Name="IdProducto" Type="int" Nullable="false" />
-          <Property Name="IdUnidad" Type="int" Nullable="false" />
-          <Property Name="Cantidad" Type="nchar" MaxLength="10" />
-        </EntityType>
-        <EntityType Name="Rubros">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Rubro" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Extra" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="SubRubro">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="IdRubro" Type="int" Nullable="false" />
-          <Property Name="SubRubro" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Extra" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="TipoOperacion">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="TipoOperacion" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="TipoOperacion" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
         <EntityType Name="TiposDocumento">
           <Key>
             <PropertyRef Name="Id" />
@@ -267,13 +205,14 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="Unidad">
+        <EntityType Name="Unidades">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Unidad" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Extra" Type="varchar" MaxLength="50" />
+          <Property Name="Unidad" Type="varchar" MaxLength="30" />
+          <Property Name="Observaciones" Type="varchar" MaxLength="100" />
+          <Property Name="Estado" Type="int" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -295,32 +234,6 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
           <Property Name="IdUsuario" Type="int" Nullable="false" />
           <Property Name="IdItemMenu" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Venta">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Fecha" Type="datetime" Nullable="false" />
-          <Property Name="SubTotal" Type="numeric" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Descuento" Type="numeric" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Total" Type="numeric" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Lista" Type="int" Nullable="false" />
-          <Property Name="IdCliente" Type="int" Nullable="false" />
-          <Property Name="IdUsuario" Type="int" Nullable="false" />
-          <Property Name="Estado" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="VentasProductos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="IdVenta" Type="int" Nullable="false" />
-          <Property Name="IdProducto" Type="int" Nullable="false" />
-          <Property Name="IdUnidad" Type="int" Nullable="false" />
-          <Property Name="Cantidad" Type="int" Nullable="false" />
-          <Property Name="Precio" Type="numeric" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Importe" Type="numeric" Precision="18" Scale="2" Nullable="false" />
-        </EntityType>
         <Association Name="FK_Barrios_Localidades">
           <End Role="Localidades" Type="Self.Localidades" Multiplicity="1" />
           <End Role="Barrios" Type="Self.Barrios" Multiplicity="*" />
@@ -333,27 +246,27 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Compras_Proveedores">
-          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
-          <End Role="Compras" Type="Self.Compras" Multiplicity="*" />
+        <Association Name="FK_Clientes_Domicilios">
+          <End Role="Domicilios" Type="Self.Domicilios" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Proveedores">
+            <Principal Role="Domicilios">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Compras">
-              <PropertyRef Name="IdProveedor" />
+            <Dependent Role="Clientes">
+              <PropertyRef Name="IdDomicilio" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Compras_Usuarios">
-          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
-          <End Role="Compras" Type="Self.Compras" Multiplicity="*" />
+        <Association Name="FK_Clientes_TiposDocumento">
+          <End Role="TiposDocumento" Type="Self.TiposDocumento" Multiplicity="1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Usuarios">
+            <Principal Role="TiposDocumento">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Compras">
-              <PropertyRef Name="IdUsuario" />
+            <Dependent Role="Clientes">
+              <PropertyRef Name="IdTipoDocumento" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -417,6 +330,114 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EArticulos_Empresas">
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="1" />
+          <End Role="EArticulos" Type="Self.EArticulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EArticulos">
+              <PropertyRef Name="IdEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EArticulos_Marcas">
+          <End Role="EMarcas" Type="Self.EMarcas" Multiplicity="0..1" />
+          <End Role="EArticulos" Type="Self.EArticulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMarcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EArticulos">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EArticulos_Proveedores">
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="0..1" />
+          <End Role="EArticulos" Type="Self.EArticulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EArticulos">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EArticulos_Rubros">
+          <End Role="ERubros" Type="Self.ERubros" Multiplicity="0..1" />
+          <End Role="EArticulos" Type="Self.EArticulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ERubros">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EArticulos">
+              <PropertyRef Name="IdRubro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EArticulos_Unidades">
+          <End Role="Unidades" Type="Self.Unidades" Multiplicity="0..1" />
+          <End Role="EArticulos" Type="Self.EArticulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unidades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EArticulos">
+              <PropertyRef Name="IdUnidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMarcas_Empresas">
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="1" />
+          <End Role="EMarcas" Type="Self.EMarcas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EMarcas">
+              <PropertyRef Name="IdEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empresas_Domicilios">
+          <End Role="Domicilios" Type="Self.Domicilios" Multiplicity="0..1" />
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Domicilios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Empresas">
+              <PropertyRef Name="IdDomicilio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empresas_TiposDocumento">
+          <End Role="TiposDocumento" Type="Self.TiposDocumento" Multiplicity="1" />
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposDocumento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Empresas">
+              <PropertyRef Name="IdTipoDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ERubros_Empresas">
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="0..1" />
+          <End Role="ERubros" Type="Self.ERubros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ERubros">
+              <PropertyRef Name="IdEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_GruposItemsMenu_Grupos">
           <End Role="Grupos" Type="Self.Grupos" Multiplicity="1" />
           <End Role="GruposItemsMenu" Type="Self.GruposItemsMenu" Multiplicity="*" />
@@ -477,90 +498,6 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MovimientosDinero_Cuentas">
-          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
-          <End Role="MovimientosDinero" Type="Self.MovimientosDinero" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cuentas">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="MovimientosDinero">
-              <PropertyRef Name="IdCuenta" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MovimientosDinero_OrigenMovimiento">
-          <End Role="OrigenMovimiento" Type="Self.OrigenMovimiento" Multiplicity="1" />
-          <End Role="MovimientosDinero" Type="Self.MovimientosDinero" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OrigenMovimiento">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="MovimientosDinero">
-              <PropertyRef Name="IdOrigenMovimiento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Productos_Marcas">
-          <End Role="Marcas" Type="Self.Marcas" Multiplicity="0..1" />
-          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Marcas">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Productos">
-              <PropertyRef Name="IdMarca" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Productos_Proveedores">
-          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="0..1" />
-          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Proveedores">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Productos">
-              <PropertyRef Name="IdProveedor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Productos_Rubros">
-          <End Role="Rubros" Type="Self.Rubros" Multiplicity="0..1" />
-          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rubros">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Productos">
-              <PropertyRef Name="IdRubro" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Productos_SubRubro">
-          <End Role="SubRubro" Type="Self.SubRubro" Multiplicity="0..1" />
-          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SubRubro">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Productos">
-              <PropertyRef Name="IdSubRubro" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Productos_Unidad">
-          <End Role="Unidad" Type="Self.Unidad" Multiplicity="0..1" />
-          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Unidad">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Productos">
-              <PropertyRef Name="IdUnidad" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Proveedores_Domicilios">
           <End Role="Domicilios" Type="Self.Domicilios" Multiplicity="0..1" />
           <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="*" />
@@ -582,78 +519,6 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             </Principal>
             <Dependent Role="Proveedores">
               <PropertyRef Name="IdTipoDocumento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Remitos_Clientes">
-          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
-          <End Role="Remitos" Type="Self.Remitos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clientes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Remitos">
-              <PropertyRef Name="IdCliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Remitos_Usuarios">
-          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
-          <End Role="Remitos" Type="Self.Remitos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuarios">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Remitos">
-              <PropertyRef Name="IdUsuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Remitos_Venta">
-          <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
-          <End Role="Remitos" Type="Self.Remitos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Venta">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Remitos">
-              <PropertyRef Name="IdVenta" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RemitosProductos_Productos">
-          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
-          <End Role="RemitosProductos" Type="Self.RemitosProductos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Productos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="RemitosProductos">
-              <PropertyRef Name="IdProducto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RemitosProductos_RemitosProductos">
-          <End Role="Remitos" Type="Self.Remitos" Multiplicity="1" />
-          <End Role="RemitosProductos" Type="Self.RemitosProductos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Remitos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="RemitosProductos">
-              <PropertyRef Name="IdRemito" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RemitosProductos_Unidad">
-          <End Role="Unidad" Type="Self.Unidad" Multiplicity="1" />
-          <End Role="RemitosProductos" Type="Self.RemitosProductos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Unidad">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="RemitosProductos">
-              <PropertyRef Name="IdUnidad" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -681,113 +546,39 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Venta_Usuarios">
-          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
-          <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuarios">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Venta">
-              <PropertyRef Name="IdUsuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Venta_Venta">
-          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
-          <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clientes">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Venta">
-              <PropertyRef Name="IdCliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VentasProductos_Productos">
-          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
-          <End Role="VentasProductos" Type="Self.VentasProductos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Productos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="VentasProductos">
-              <PropertyRef Name="IdProducto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VentasProductos_Unidad">
-          <End Role="Unidad" Type="Self.Unidad" Multiplicity="1" />
-          <End Role="VentasProductos" Type="Self.VentasProductos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Unidad">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="VentasProductos">
-              <PropertyRef Name="IdUnidad" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VentasProductos_Venta">
-          <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
-          <End Role="VentasProductos" Type="Self.VentasProductos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Venta">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="VentasProductos">
-              <PropertyRef Name="IdVenta" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="ERPStoreContainer">
+        <EntityContainer Name="VentasModelStoreContainer">
+          <EntitySet Name="Bancos" EntityType="Self.Bancos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BancoSucursal" EntityType="Self.BancoSucursal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Barrios" EntityType="Self.Barrios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Compras" EntityType="Self.Compras" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ComprasProductos" EntityType="Self.ComprasProductos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Cuentas" EntityType="Self.Cuentas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Domicilios" EntityType="Self.Domicilios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EArticulos" EntityType="Self.EArticulos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EMarcas" EntityType="Self.EMarcas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresas" EntityType="Self.Empresas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ERubros" EntityType="Self.ERubros" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Grupos" EntityType="Self.Grupos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GruposItemsMenu" EntityType="Self.GruposItemsMenu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GruposUsuarios" EntityType="Self.GruposUsuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemsMenu" EntityType="Self.ItemsMenu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Localidades" EntityType="Self.Localidades" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Marcas" EntityType="Self.Marcas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MovimientosDinero" EntityType="Self.MovimientosDinero" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MovimientosStock" EntityType="Self.MovimientosStock" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="OrigenMovimiento" EntityType="Self.OrigenMovimiento" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Provincias" EntityType="Self.Provincias" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Remitos" EntityType="Self.Remitos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RemitosProductos" EntityType="Self.RemitosProductos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Rubros" EntityType="Self.Rubros" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SubRubro" EntityType="Self.SubRubro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TiposDocumento" EntityType="Self.TiposDocumento" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Unidad" EntityType="Self.Unidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Unidades" EntityType="Self.Unidades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsuariosItemsMenu" EntityType="Self.UsuariosItemsMenu" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Venta" EntityType="Self.Venta" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="VentasProductos" EntityType="Self.VentasProductos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TipoOperacion" EntityType="Self.TipoOperacion" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [TipoOperacion].[Id] AS [Id], 
-    [TipoOperacion].[TipoOperacion] AS [TipoOperacion]
-    FROM [dbo].[TipoOperacion] AS [TipoOperacion]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Barrios_Localidades" Association="Self.FK_Barrios_Localidades">
             <End Role="Localidades" EntitySet="Localidades" />
             <End Role="Barrios" EntitySet="Barrios" />
           </AssociationSet>
-          <AssociationSet Name="FK_Compras_Proveedores" Association="Self.FK_Compras_Proveedores">
-            <End Role="Proveedores" EntitySet="Proveedores" />
-            <End Role="Compras" EntitySet="Compras" />
+          <AssociationSet Name="FK_Clientes_Domicilios" Association="Self.FK_Clientes_Domicilios">
+            <End Role="Domicilios" EntitySet="Domicilios" />
+            <End Role="Clientes" EntitySet="Clientes" />
           </AssociationSet>
-          <AssociationSet Name="FK_Compras_Usuarios" Association="Self.FK_Compras_Usuarios">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="Compras" EntitySet="Compras" />
+          <AssociationSet Name="FK_Clientes_TiposDocumento" Association="Self.FK_Clientes_TiposDocumento">
+            <End Role="TiposDocumento" EntitySet="TiposDocumento" />
+            <End Role="Clientes" EntitySet="Clientes" />
           </AssociationSet>
           <AssociationSet Name="FK_Departamentos_Provincias" Association="Self.FK_Departamentos_Provincias">
             <End Role="Provincias" EntitySet="Provincias" />
@@ -809,6 +600,42 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             <End Role="Provincias" EntitySet="Provincias" />
             <End Role="Domicilios" EntitySet="Domicilios" />
           </AssociationSet>
+          <AssociationSet Name="FK_EArticulos_Empresas" Association="Self.FK_EArticulos_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="EArticulos" EntitySet="EArticulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EArticulos_Marcas" Association="Self.FK_EArticulos_Marcas">
+            <End Role="EMarcas" EntitySet="EMarcas" />
+            <End Role="EArticulos" EntitySet="EArticulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EArticulos_Proveedores" Association="Self.FK_EArticulos_Proveedores">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="EArticulos" EntitySet="EArticulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EArticulos_Rubros" Association="Self.FK_EArticulos_Rubros">
+            <End Role="ERubros" EntitySet="ERubros" />
+            <End Role="EArticulos" EntitySet="EArticulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EArticulos_Unidades" Association="Self.FK_EArticulos_Unidades">
+            <End Role="Unidades" EntitySet="Unidades" />
+            <End Role="EArticulos" EntitySet="EArticulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMarcas_Empresas" Association="Self.FK_EMarcas_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="EMarcas" EntitySet="EMarcas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empresas_Domicilios" Association="Self.FK_Empresas_Domicilios">
+            <End Role="Domicilios" EntitySet="Domicilios" />
+            <End Role="Empresas" EntitySet="Empresas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empresas_TiposDocumento" Association="Self.FK_Empresas_TiposDocumento">
+            <End Role="TiposDocumento" EntitySet="TiposDocumento" />
+            <End Role="Empresas" EntitySet="Empresas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ERubros_Empresas" Association="Self.FK_ERubros_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="ERubros" EntitySet="ERubros" />
+          </AssociationSet>
           <AssociationSet Name="FK_GruposItemsMenu_Grupos" Association="Self.FK_GruposItemsMenu_Grupos">
             <End Role="Grupos" EntitySet="Grupos" />
             <End Role="GruposItemsMenu" EntitySet="GruposItemsMenu" />
@@ -829,34 +656,6 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             <End Role="Departamentos" EntitySet="Departamentos" />
             <End Role="Localidades" EntitySet="Localidades" />
           </AssociationSet>
-          <AssociationSet Name="FK_MovimientosDinero_Cuentas" Association="Self.FK_MovimientosDinero_Cuentas">
-            <End Role="Cuentas" EntitySet="Cuentas" />
-            <End Role="MovimientosDinero" EntitySet="MovimientosDinero" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MovimientosDinero_OrigenMovimiento" Association="Self.FK_MovimientosDinero_OrigenMovimiento">
-            <End Role="OrigenMovimiento" EntitySet="OrigenMovimiento" />
-            <End Role="MovimientosDinero" EntitySet="MovimientosDinero" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Productos_Marcas" Association="Self.FK_Productos_Marcas">
-            <End Role="Marcas" EntitySet="Marcas" />
-            <End Role="Productos" EntitySet="Productos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Productos_Proveedores" Association="Self.FK_Productos_Proveedores">
-            <End Role="Proveedores" EntitySet="Proveedores" />
-            <End Role="Productos" EntitySet="Productos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Productos_Rubros" Association="Self.FK_Productos_Rubros">
-            <End Role="Rubros" EntitySet="Rubros" />
-            <End Role="Productos" EntitySet="Productos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Productos_SubRubro" Association="Self.FK_Productos_SubRubro">
-            <End Role="SubRubro" EntitySet="SubRubro" />
-            <End Role="Productos" EntitySet="Productos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Productos_Unidad" Association="Self.FK_Productos_Unidad">
-            <End Role="Unidad" EntitySet="Unidad" />
-            <End Role="Productos" EntitySet="Productos" />
-          </AssociationSet>
           <AssociationSet Name="FK_Proveedores_Domicilios" Association="Self.FK_Proveedores_Domicilios">
             <End Role="Domicilios" EntitySet="Domicilios" />
             <End Role="Proveedores" EntitySet="Proveedores" />
@@ -864,30 +663,6 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
           <AssociationSet Name="FK_Proveedores_TiposDocumento" Association="Self.FK_Proveedores_TiposDocumento">
             <End Role="TiposDocumento" EntitySet="TiposDocumento" />
             <End Role="Proveedores" EntitySet="Proveedores" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Remitos_Clientes" Association="Self.FK_Remitos_Clientes">
-            <End Role="Clientes" EntitySet="Clientes" />
-            <End Role="Remitos" EntitySet="Remitos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Remitos_Usuarios" Association="Self.FK_Remitos_Usuarios">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="Remitos" EntitySet="Remitos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Remitos_Venta" Association="Self.FK_Remitos_Venta">
-            <End Role="Venta" EntitySet="Venta" />
-            <End Role="Remitos" EntitySet="Remitos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RemitosProductos_Productos" Association="Self.FK_RemitosProductos_Productos">
-            <End Role="Productos" EntitySet="Productos" />
-            <End Role="RemitosProductos" EntitySet="RemitosProductos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RemitosProductos_RemitosProductos" Association="Self.FK_RemitosProductos_RemitosProductos">
-            <End Role="Remitos" EntitySet="Remitos" />
-            <End Role="RemitosProductos" EntitySet="RemitosProductos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RemitosProductos_Unidad" Association="Self.FK_RemitosProductos_Unidad">
-            <End Role="Unidad" EntitySet="Unidad" />
-            <End Role="RemitosProductos" EntitySet="RemitosProductos" />
           </AssociationSet>
           <AssociationSet Name="FK_UsuariosItemsMenu_ItemsMenu" Association="Self.FK_UsuariosItemsMenu_ItemsMenu">
             <End Role="ItemsMenu" EntitySet="ItemsMenu" />
@@ -897,32 +672,36 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="UsuariosItemsMenu" EntitySet="UsuariosItemsMenu" />
           </AssociationSet>
-          <AssociationSet Name="FK_Venta_Usuarios" Association="Self.FK_Venta_Usuarios">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="Venta" EntitySet="Venta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Venta_Venta" Association="Self.FK_Venta_Venta">
-            <End Role="Clientes" EntitySet="Clientes" />
-            <End Role="Venta" EntitySet="Venta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VentasProductos_Productos" Association="Self.FK_VentasProductos_Productos">
-            <End Role="Productos" EntitySet="Productos" />
-            <End Role="VentasProductos" EntitySet="VentasProductos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VentasProductos_Unidad" Association="Self.FK_VentasProductos_Unidad">
-            <End Role="Unidad" EntitySet="Unidad" />
-            <End Role="VentasProductos" EntitySet="VentasProductos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VentasProductos_Venta" Association="Self.FK_VentasProductos_Venta">
-            <End Role="Venta" EntitySet="Venta" />
-            <End Role="VentasProductos" EntitySet="VentasProductos" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ERP" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="VentasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bancos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Banco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BancoSucursal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IdBanco" Type="Int32" Nullable="false" />
+          <Property Name="SucursalNro" Type="Int32" Nullable="false" />
+          <Property Name="Sucursal" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdProvincia" Type="Int32" />
+          <Property Name="IdDepartamento" Type="Int32" />
+          <Property Name="IdLocalidad" Type="Int32" />
+          <Property Name="IdBarrio" Type="Int32" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Web" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="Barrios">
           <Key>
             <PropertyRef Name="Id" />
@@ -938,56 +717,18 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Apellido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+          <Property Name="RazonSocial" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IdTipoDocumento" Type="Int32" Nullable="false" />
           <Property Name="NroDocumento" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="FechaNacimiento" Type="DateTime" Precision="3" />
           <Property Name="EMail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="IdDomicilio" Type="Int32" />
           <Property Name="Estado" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="Remitos" Relationship="Self.FK_Remitos_Clientes" FromRole="Clientes" ToRole="Remitos" />
-          <NavigationProperty Name="Venta" Relationship="Self.FK_Venta_Venta" FromRole="Clientes" ToRole="Venta" />
-        </EntityType>
-        <EntityType Name="Compras">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="SubTotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Lista" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="IdProveedor" Type="Int32" Nullable="false" />
-          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
-          <Property Name="Estado" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Proveedores" Relationship="Self.FK_Compras_Proveedores" FromRole="Compras" ToRole="Proveedores" />
-          <NavigationProperty Name="Usuarios" Relationship="Self.FK_Compras_Usuarios" FromRole="Compras" ToRole="Usuarios" />
-        </EntityType>
-        <EntityType Name="ComprasProductos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="IdCompra" Type="Int32" Nullable="false" />
-          <Property Name="IdProducto" Type="Int32" Nullable="false" />
-          <Property Name="IdUnidad" Type="Int32" Nullable="false" />
-          <Property Name="Cantidad" Type="Int32" Nullable="false" />
-          <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Importe" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Cuentas">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="TipoCuenta" Type="Int32" Nullable="false" />
-          <Property Name="IdTipoCuenta" Type="Int32" Nullable="false" />
-          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Detalles" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Estado" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="MovimientosDinero" Relationship="Self.FK_MovimientosDinero_Cuentas" FromRole="Cuentas" ToRole="MovimientosDinero" />
+          <NavigationProperty Name="Domicilios" Relationship="Self.FK_Clientes_Domicilios" FromRole="Clientes" ToRole="Domicilios" />
+          <NavigationProperty Name="TiposDocumento" Relationship="Self.FK_Clientes_TiposDocumento" FromRole="Clientes" ToRole="TiposDocumento" />
         </EntityType>
         <EntityType Name="Departamentos">
           <Key>
@@ -1010,10 +751,88 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
           <Property Name="IdDepartamento" Type="Int32" Nullable="false" />
           <Property Name="IdProvincia" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Barrios" Relationship="Self.FK_Domicilios_Barrios" FromRole="Domicilios" ToRole="Barrios" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK_Clientes_Domicilios" FromRole="Domicilios" ToRole="Clientes" />
           <NavigationProperty Name="Departamentos" Relationship="Self.FK_Domicilios_Departamentos" FromRole="Domicilios" ToRole="Departamentos" />
           <NavigationProperty Name="Localidades" Relationship="Self.FK_Domicilios_Localidades" FromRole="Domicilios" ToRole="Localidades" />
           <NavigationProperty Name="Provincias" Relationship="Self.FK_Domicilios_Provincias" FromRole="Domicilios" ToRole="Provincias" />
+          <NavigationProperty Name="Empresas" Relationship="Self.FK_Empresas_Domicilios" FromRole="Domicilios" ToRole="Empresas" />
           <NavigationProperty Name="Proveedores" Relationship="Self.FK_Proveedores_Domicilios" FromRole="Domicilios" ToRole="Proveedores" />
+        </EntityType>
+        <EntityType Name="EArticulos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+          <Property Name="CodBarra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdMarca" Type="Int32" />
+          <Property Name="IdRubro" Type="Int32" />
+          <Property Name="IdProveedor" Type="Int32" />
+          <Property Name="IdUnidad" Type="Int32" />
+          <Property Name="CostoInicial" Type="Decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="CostoAdicional1" Type="Decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="CostoAdicional2" Type="Decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="Costo" Type="Decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="Stock" Type="Int32" />
+          <Property Name="StockMinimo" Type="Int32" Nullable="false" />
+          <Property Name="PrecioL1" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="PrecioL2" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="PrecioL3" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="Observaciones" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Int32" />
+          <NavigationProperty Name="Empresas" Relationship="Self.FK_EArticulos_Empresas" FromRole="EArticulos" ToRole="Empresas" />
+          <NavigationProperty Name="EMarcas" Relationship="Self.FK_EArticulos_Marcas" FromRole="EArticulos" ToRole="EMarcas" />
+          <NavigationProperty Name="Proveedores" Relationship="Self.FK_EArticulos_Proveedores" FromRole="EArticulos" ToRole="Proveedores" />
+          <NavigationProperty Name="ERubros" Relationship="Self.FK_EArticulos_Rubros" FromRole="EArticulos" ToRole="ERubros" />
+          <NavigationProperty Name="Unidades" Relationship="Self.FK_EArticulos_Unidades" FromRole="EArticulos" ToRole="Unidades" />
+        </EntityType>
+        <EntityType Name="EMarcas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+          <Property Name="Marca" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Observaciones" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EArticulos" Relationship="Self.FK_EArticulos_Marcas" FromRole="EMarcas" ToRole="EArticulos" />
+          <NavigationProperty Name="Empresas" Relationship="Self.FK_EMarcas_Empresas" FromRole="EMarcas" ToRole="Empresas" />
+        </EntityType>
+        <EntityType Name="Empresas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="RazonSocial" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdTipoDoc" Type="Int32" Nullable="false" />
+          <Property Name="NroDoc" Type="Decimal" Precision="17" Scale="0" Nullable="false" />
+          <Property Name="IdDomicilio" Type="Int32" />
+          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Presupuesto" Type="Int32" Nullable="false" />
+          <Property Name="Venta" Type="Int32" Nullable="false" />
+          <Property Name="Remito" Type="Int32" Nullable="false" />
+          <Property Name="NotaDebito" Type="Int32" Nullable="false" />
+          <Property Name="NotaCredito" Type="Int32" Nullable="false" />
+          <Property Name="Compra" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Domicilios" Relationship="Self.FK_Empresas_Domicilios" FromRole="Empresas" ToRole="Domicilios" />
+          <NavigationProperty Name="EArticulos" Relationship="Self.FK_EArticulos_Empresas" FromRole="Empresas" ToRole="EArticulos" />
+          <NavigationProperty Name="EMarcas" Relationship="Self.FK_EMarcas_Empresas" FromRole="Empresas" ToRole="EMarcas" />
+          <NavigationProperty Name="TiposDocumento" Relationship="Self.FK_Empresas_TiposDocumento" FromRole="Empresas" ToRole="TiposDocumento" />
+          <NavigationProperty Name="ERubros" Relationship="Self.FK_ERubros_Empresas" FromRole="Empresas" ToRole="ERubros" />
+        </EntityType>
+        <EntityType Name="ERubros">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IdEmpresa" Type="Int32" />
+          <Property Name="Rubro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Observaciones" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Int32" />
+          <NavigationProperty Name="EArticulos" Relationship="Self.FK_EArticulos_Rubros" FromRole="ERubros" ToRole="EArticulos" />
+          <NavigationProperty Name="Empresas" Relationship="Self.FK_ERubros_Empresas" FromRole="ERubros" ToRole="Empresas" />
         </EntityType>
         <EntityType Name="Grupos">
           <Key>
@@ -1067,101 +886,24 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
           <NavigationProperty Name="Departamentos" Relationship="Self.FK_Localidades_Departamentos" FromRole="Localidades" ToRole="Departamentos" />
           <NavigationProperty Name="Domicilios" Relationship="Self.FK_Domicilios_Localidades" FromRole="Localidades" ToRole="Domicilios" />
         </EntityType>
-        <EntityType Name="Marcas">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Extra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Productos" Relationship="Self.FK_Productos_Marcas" FromRole="Marcas" ToRole="Productos" />
-        </EntityType>
-        <EntityType Name="MovimientosDinero">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="IdCuenta" Type="Int32" Nullable="false" />
-          <Property Name="Detalle" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Credito" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Débito" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Saldo" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Contrasiento" Type="Int32" />
-          <Property Name="IdOrigenMovimiento" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Cuentas" Relationship="Self.FK_MovimientosDinero_Cuentas" FromRole="MovimientosDinero" ToRole="Cuentas" />
-          <NavigationProperty Name="OrigenMovimiento" Relationship="Self.FK_MovimientosDinero_OrigenMovimiento" FromRole="MovimientosDinero" ToRole="OrigenMovimiento" />
-        </EntityType>
-        <EntityType Name="MovimientosStock">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="IdProducto" Type="Int32" Nullable="false" />
-          <Property Name="IdTipoOperacion" Type="Int32" Nullable="false" />
-          <Property Name="Detalle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IdProveedor" Type="Int32" />
-          <Property Name="IdCliente" Type="Int32" />
-          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Usuario" Type="Int32" Nullable="false" />
-          <Property Name="Ingreso" Type="Int32" Nullable="false" />
-          <Property Name="Egreso" Type="Int32" Nullable="false" />
-          <Property Name="Stock" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="OrigenMovimiento">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="OrigenMovimiento1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="MovimientosDinero" Relationship="Self.FK_MovimientosDinero_OrigenMovimiento" FromRole="OrigenMovimiento" ToRole="MovimientosDinero" />
-        </EntityType>
-        <EntityType Name="Productos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="CodBarra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IdMarca" Type="Int32" />
-          <Property Name="IdUnidad" Type="Int32" />
-          <Property Name="IdRubro" Type="Int32" />
-          <Property Name="IdSubRubro" Type="Int32" />
-          <Property Name="IdProveedor" Type="Int32" />
-          <Property Name="CostoInicial" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="CostoAdicional1" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="CostoAdicional2" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Costo" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="StockMinimo" Type="Int32" />
-          <Property Name="Lista1" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Lista2" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Lista3" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Estado" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Marcas" Relationship="Self.FK_Productos_Marcas" FromRole="Productos" ToRole="Marcas" />
-          <NavigationProperty Name="Proveedores" Relationship="Self.FK_Productos_Proveedores" FromRole="Productos" ToRole="Proveedores" />
-          <NavigationProperty Name="Rubros" Relationship="Self.FK_Productos_Rubros" FromRole="Productos" ToRole="Rubros" />
-          <NavigationProperty Name="SubRubro" Relationship="Self.FK_Productos_SubRubro" FromRole="Productos" ToRole="SubRubro" />
-          <NavigationProperty Name="Unidad" Relationship="Self.FK_Productos_Unidad" FromRole="Productos" ToRole="Unidad" />
-          <NavigationProperty Name="RemitosProductos" Relationship="Self.FK_RemitosProductos_Productos" FromRole="Productos" ToRole="RemitosProductos" />
-          <NavigationProperty Name="VentasProductos" Relationship="Self.FK_VentasProductos_Productos" FromRole="Productos" ToRole="VentasProductos" />
-        </EntityType>
         <EntityType Name="Proveedores">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
           <Property Name="RazonSocial" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IdTipoDocumento" Type="Int32" Nullable="false" />
           <Property Name="NroDocumento" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="FechaNacimiento" Type="DateTime" Precision="3" />
           <Property Name="EMail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="IdDomicilio" Type="Int32" />
           <Property Name="Estado" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="Compras" Relationship="Self.FK_Compras_Proveedores" FromRole="Proveedores" ToRole="Compras" />
           <NavigationProperty Name="Domicilios" Relationship="Self.FK_Proveedores_Domicilios" FromRole="Proveedores" ToRole="Domicilios" />
-          <NavigationProperty Name="Productos" Relationship="Self.FK_Productos_Proveedores" FromRole="Proveedores" ToRole="Productos" />
+          <NavigationProperty Name="EArticulos" Relationship="Self.FK_EArticulos_Proveedores" FromRole="Proveedores" ToRole="EArticulos" />
           <NavigationProperty Name="TiposDocumento" Relationship="Self.FK_Proveedores_TiposDocumento" FromRole="Proveedores" ToRole="TiposDocumento" />
         </EntityType>
         <EntityType Name="Provincias">
@@ -1173,71 +915,25 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
           <NavigationProperty Name="Departamentos" Relationship="Self.FK_Departamentos_Provincias" FromRole="Provincias" ToRole="Departamentos" />
           <NavigationProperty Name="Domicilios" Relationship="Self.FK_Domicilios_Provincias" FromRole="Provincias" ToRole="Domicilios" />
         </EntityType>
-        <EntityType Name="Remitos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="IdCliente" Type="Int32" Nullable="false" />
-          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
-          <Property Name="Estado" Type="Int32" Nullable="false" />
-          <Property Name="IdVenta" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Clientes" Relationship="Self.FK_Remitos_Clientes" FromRole="Remitos" ToRole="Clientes" />
-          <NavigationProperty Name="Usuarios" Relationship="Self.FK_Remitos_Usuarios" FromRole="Remitos" ToRole="Usuarios" />
-          <NavigationProperty Name="Venta" Relationship="Self.FK_Remitos_Venta" FromRole="Remitos" ToRole="Venta" />
-          <NavigationProperty Name="RemitosProductos" Relationship="Self.FK_RemitosProductos_RemitosProductos" FromRole="Remitos" ToRole="RemitosProductos" />
-        </EntityType>
-        <EntityType Name="RemitosProductos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="IdRemito" Type="Int32" Nullable="false" />
-          <Property Name="IdProducto" Type="Int32" Nullable="false" />
-          <Property Name="IdUnidad" Type="Int32" Nullable="false" />
-          <Property Name="Cantidad" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Productos" Relationship="Self.FK_RemitosProductos_Productos" FromRole="RemitosProductos" ToRole="Productos" />
-          <NavigationProperty Name="Remitos" Relationship="Self.FK_RemitosProductos_RemitosProductos" FromRole="RemitosProductos" ToRole="Remitos" />
-          <NavigationProperty Name="Unidad" Relationship="Self.FK_RemitosProductos_Unidad" FromRole="RemitosProductos" ToRole="Unidad" />
-        </EntityType>
-        <EntityType Name="Rubros">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Rubro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Extra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Productos" Relationship="Self.FK_Productos_Rubros" FromRole="Rubros" ToRole="Productos" />
-        </EntityType>
-        <EntityType Name="SubRubro">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="IdRubro" Type="Int32" Nullable="false" />
-          <Property Name="SubRubro1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Extra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Productos" Relationship="Self.FK_Productos_SubRubro" FromRole="SubRubro" ToRole="Productos" />
-        </EntityType>
         <EntityType Name="TiposDocumento">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK_Clientes_TiposDocumento" FromRole="TiposDocumento" ToRole="Clientes" />
+          <NavigationProperty Name="Empresas" Relationship="Self.FK_Empresas_TiposDocumento" FromRole="TiposDocumento" ToRole="Empresas" />
           <NavigationProperty Name="Proveedores" Relationship="Self.FK_Proveedores_TiposDocumento" FromRole="TiposDocumento" ToRole="Proveedores" />
         </EntityType>
-        <EntityType Name="Unidad">
+        <EntityType Name="Unidades">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Unidad1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Extra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Productos" Relationship="Self.FK_Productos_Unidad" FromRole="Unidad" ToRole="Productos" />
-          <NavigationProperty Name="RemitosProductos" Relationship="Self.FK_RemitosProductos_Unidad" FromRole="Unidad" ToRole="RemitosProductos" />
-          <NavigationProperty Name="VentasProductos" Relationship="Self.FK_VentasProductos_Unidad" FromRole="Unidad" ToRole="VentasProductos" />
+          <Property Name="Unidad" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Observaciones" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Int32" />
+          <NavigationProperty Name="EArticulos" Relationship="Self.FK_EArticulos_Unidades" FromRole="Unidades" ToRole="EArticulos" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -1250,11 +946,8 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
           <Property Name="Estado" Type="Byte" Nullable="false" />
           <Property Name="FechaBaja" Type="DateTime" Precision="3" />
           <Property Name="NombreCompleto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Compras" Relationship="Self.FK_Compras_Usuarios" FromRole="Usuarios" ToRole="Compras" />
           <NavigationProperty Name="GruposUsuarios" Relationship="Self.FK_GruposUsuarios_Usuarios" FromRole="Usuarios" ToRole="GruposUsuarios" />
-          <NavigationProperty Name="Remitos" Relationship="Self.FK_Remitos_Usuarios" FromRole="Usuarios" ToRole="Remitos" />
           <NavigationProperty Name="UsuariosItemsMenu" Relationship="Self.FK_UsuariosItemsMenu_Usuarios" FromRole="Usuarios" ToRole="UsuariosItemsMenu" />
-          <NavigationProperty Name="Venta" Relationship="Self.FK_Venta_Usuarios" FromRole="Usuarios" ToRole="Venta" />
         </EntityType>
         <EntityType Name="UsuariosItemsMenu">
           <Key>
@@ -1265,47 +958,6 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
           <Property Name="IdItemMenu" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ItemsMenu" Relationship="Self.FK_UsuariosItemsMenu_ItemsMenu" FromRole="UsuariosItemsMenu" ToRole="ItemsMenu" />
           <NavigationProperty Name="Usuarios" Relationship="Self.FK_UsuariosItemsMenu_Usuarios" FromRole="UsuariosItemsMenu" ToRole="Usuarios" />
-        </EntityType>
-        <EntityType Name="Venta">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="SubTotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Descuento" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Total" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Lista" Type="Int32" Nullable="false" />
-          <Property Name="IdCliente" Type="Int32" Nullable="false" />
-          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
-          <Property Name="Estado" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Clientes" Relationship="Self.FK_Venta_Venta" FromRole="Venta" ToRole="Clientes" />
-          <NavigationProperty Name="Remitos" Relationship="Self.FK_Remitos_Venta" FromRole="Venta" ToRole="Remitos" />
-          <NavigationProperty Name="Usuarios" Relationship="Self.FK_Venta_Usuarios" FromRole="Venta" ToRole="Usuarios" />
-          <NavigationProperty Name="VentasProductos" Relationship="Self.FK_VentasProductos_Venta" FromRole="Venta" ToRole="VentasProductos" />
-        </EntityType>
-        <EntityType Name="VentasProductos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="IdVenta" Type="Int32" Nullable="false" />
-          <Property Name="IdProducto" Type="Int32" Nullable="false" />
-          <Property Name="IdUnidad" Type="Int32" Nullable="false" />
-          <Property Name="Cantidad" Type="Int32" Nullable="false" />
-          <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Importe" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <NavigationProperty Name="Productos" Relationship="Self.FK_VentasProductos_Productos" FromRole="VentasProductos" ToRole="Productos" />
-          <NavigationProperty Name="Unidad" Relationship="Self.FK_VentasProductos_Unidad" FromRole="VentasProductos" ToRole="Unidad" />
-          <NavigationProperty Name="Venta" Relationship="Self.FK_VentasProductos_Venta" FromRole="VentasProductos" ToRole="Venta" />
-        </EntityType>
-        <EntityType Name="TipoOperacion">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="TipoOperacion1" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="TipoOperacion1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <Association Name="FK_Barrios_Localidades">
           <End Role="Localidades" Type="Self.Localidades" Multiplicity="1" />
@@ -1331,63 +983,27 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Remitos_Clientes">
-          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
-          <End Role="Remitos" Type="Self.Remitos" Multiplicity="*" />
+        <Association Name="FK_Clientes_Domicilios">
+          <End Role="Domicilios" Type="Self.Domicilios" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Clientes">
+            <Principal Role="Domicilios">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Remitos">
-              <PropertyRef Name="IdCliente" />
+            <Dependent Role="Clientes">
+              <PropertyRef Name="IdDomicilio" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Venta_Venta">
-          <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
-          <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
+        <Association Name="FK_Clientes_TiposDocumento">
+          <End Role="TiposDocumento" Type="Self.TiposDocumento" Multiplicity="1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Clientes">
+            <Principal Role="TiposDocumento">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Venta">
-              <PropertyRef Name="IdCliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Compras_Proveedores">
-          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
-          <End Role="Compras" Type="Self.Compras" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Proveedores">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Compras">
-              <PropertyRef Name="IdProveedor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Compras_Usuarios">
-          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
-          <End Role="Compras" Type="Self.Compras" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuarios">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Compras">
-              <PropertyRef Name="IdUsuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MovimientosDinero_Cuentas">
-          <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
-          <End Role="MovimientosDinero" Type="Self.MovimientosDinero" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cuentas">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="MovimientosDinero">
-              <PropertyRef Name="IdCuenta" />
+            <Dependent Role="Clientes">
+              <PropertyRef Name="IdTipoDocumento" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1451,6 +1067,18 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Empresas_Domicilios">
+          <End Role="Domicilios" Type="Self.Domicilios" Multiplicity="0..1" />
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Domicilios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Empresas">
+              <PropertyRef Name="IdDomicilio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Proveedores_Domicilios">
           <End Role="Domicilios" Type="Self.Domicilios" Multiplicity="0..1" />
           <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="*" />
@@ -1460,6 +1088,102 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             </Principal>
             <Dependent Role="Proveedores">
               <PropertyRef Name="IdDomicilio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EArticulos_Empresas">
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="1" />
+          <End Role="EArticulos" Type="Self.EArticulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EArticulos">
+              <PropertyRef Name="IdEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EArticulos_Marcas">
+          <End Role="EMarcas" Type="Self.EMarcas" Multiplicity="0..1" />
+          <End Role="EArticulos" Type="Self.EArticulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMarcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EArticulos">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EArticulos_Proveedores">
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="0..1" />
+          <End Role="EArticulos" Type="Self.EArticulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EArticulos">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EArticulos_Rubros">
+          <End Role="ERubros" Type="Self.ERubros" Multiplicity="0..1" />
+          <End Role="EArticulos" Type="Self.EArticulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ERubros">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EArticulos">
+              <PropertyRef Name="IdRubro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EArticulos_Unidades">
+          <End Role="Unidades" Type="Self.Unidades" Multiplicity="0..1" />
+          <End Role="EArticulos" Type="Self.EArticulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unidades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EArticulos">
+              <PropertyRef Name="IdUnidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EMarcas_Empresas">
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="1" />
+          <End Role="EMarcas" Type="Self.EMarcas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EMarcas">
+              <PropertyRef Name="IdEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empresas_TiposDocumento">
+          <End Role="TiposDocumento" Type="Self.TiposDocumento" Multiplicity="1" />
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposDocumento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Empresas">
+              <PropertyRef Name="IdTipoDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ERubros_Empresas">
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="0..1" />
+          <End Role="ERubros" Type="Self.ERubros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ERubros">
+              <PropertyRef Name="IdEmpresa" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1523,102 +1247,6 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Productos_Marcas">
-          <End Role="Marcas" Type="Self.Marcas" Multiplicity="0..1" />
-          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Marcas">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Productos">
-              <PropertyRef Name="IdMarca" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MovimientosDinero_OrigenMovimiento">
-          <End Role="OrigenMovimiento" Type="Self.OrigenMovimiento" Multiplicity="1" />
-          <End Role="MovimientosDinero" Type="Self.MovimientosDinero" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OrigenMovimiento">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="MovimientosDinero">
-              <PropertyRef Name="IdOrigenMovimiento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Productos_Proveedores">
-          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="0..1" />
-          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Proveedores">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Productos">
-              <PropertyRef Name="IdProveedor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Productos_Rubros">
-          <End Role="Rubros" Type="Self.Rubros" Multiplicity="0..1" />
-          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rubros">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Productos">
-              <PropertyRef Name="IdRubro" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Productos_SubRubro">
-          <End Role="SubRubro" Type="Self.SubRubro" Multiplicity="0..1" />
-          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SubRubro">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Productos">
-              <PropertyRef Name="IdSubRubro" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Productos_Unidad">
-          <End Role="Unidad" Type="Self.Unidad" Multiplicity="0..1" />
-          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Unidad">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Productos">
-              <PropertyRef Name="IdUnidad" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RemitosProductos_Productos">
-          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
-          <End Role="RemitosProductos" Type="Self.RemitosProductos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Productos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="RemitosProductos">
-              <PropertyRef Name="IdProducto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VentasProductos_Productos">
-          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
-          <End Role="VentasProductos" Type="Self.VentasProductos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Productos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="VentasProductos">
-              <PropertyRef Name="IdProducto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Proveedores_TiposDocumento">
           <End Role="TiposDocumento" Type="Self.TiposDocumento" Multiplicity="1" />
           <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="*" />
@@ -1628,66 +1256,6 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             </Principal>
             <Dependent Role="Proveedores">
               <PropertyRef Name="IdTipoDocumento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Remitos_Usuarios">
-          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
-          <End Role="Remitos" Type="Self.Remitos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuarios">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Remitos">
-              <PropertyRef Name="IdUsuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Remitos_Venta">
-          <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
-          <End Role="Remitos" Type="Self.Remitos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Venta">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Remitos">
-              <PropertyRef Name="IdVenta" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RemitosProductos_RemitosProductos">
-          <End Role="Remitos" Type="Self.Remitos" Multiplicity="1" />
-          <End Role="RemitosProductos" Type="Self.RemitosProductos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Remitos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="RemitosProductos">
-              <PropertyRef Name="IdRemito" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RemitosProductos_Unidad">
-          <End Role="Unidad" Type="Self.Unidad" Multiplicity="1" />
-          <End Role="RemitosProductos" Type="Self.RemitosProductos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Unidad">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="RemitosProductos">
-              <PropertyRef Name="IdUnidad" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VentasProductos_Unidad">
-          <End Role="Unidad" Type="Self.Unidad" Multiplicity="1" />
-          <End Role="VentasProductos" Type="Self.VentasProductos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Unidad">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="VentasProductos">
-              <PropertyRef Name="IdUnidad" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1703,61 +1271,28 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Venta_Usuarios">
-          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
-          <End Role="Venta" Type="Self.Venta" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Usuarios">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Venta">
-              <PropertyRef Name="IdUsuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VentasProductos_Venta">
-          <End Role="Venta" Type="Self.Venta" Multiplicity="1" />
-          <End Role="VentasProductos" Type="Self.VentasProductos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Venta">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="VentasProductos">
-              <PropertyRef Name="IdVenta" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="ERPEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="VentasConexión" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bancos" EntityType="Self.Bancos" />
+          <EntitySet Name="BancoSucursal" EntityType="Self.BancoSucursal" />
           <EntitySet Name="Barrios" EntityType="Self.Barrios" />
           <EntitySet Name="Clientes" EntityType="Self.Clientes" />
-          <EntitySet Name="Compras" EntityType="Self.Compras" />
-          <EntitySet Name="ComprasProductos" EntityType="Self.ComprasProductos" />
-          <EntitySet Name="Cuentas" EntityType="Self.Cuentas" />
           <EntitySet Name="Departamentos" EntityType="Self.Departamentos" />
           <EntitySet Name="Domicilios" EntityType="Self.Domicilios" />
+          <EntitySet Name="EArticulos" EntityType="Self.EArticulos" />
+          <EntitySet Name="EMarcas" EntityType="Self.EMarcas" />
+          <EntitySet Name="Empresas" EntityType="Self.Empresas" />
+          <EntitySet Name="ERubros" EntityType="Self.ERubros" />
           <EntitySet Name="Grupos" EntityType="Self.Grupos" />
           <EntitySet Name="GruposItemsMenu" EntityType="Self.GruposItemsMenu" />
           <EntitySet Name="GruposUsuarios" EntityType="Self.GruposUsuarios" />
           <EntitySet Name="ItemsMenu" EntityType="Self.ItemsMenu" />
           <EntitySet Name="Localidades" EntityType="Self.Localidades" />
-          <EntitySet Name="Marcas" EntityType="Self.Marcas" />
-          <EntitySet Name="MovimientosDinero" EntityType="Self.MovimientosDinero" />
-          <EntitySet Name="MovimientosStock" EntityType="Self.MovimientosStock" />
-          <EntitySet Name="OrigenMovimiento" EntityType="Self.OrigenMovimiento" />
-          <EntitySet Name="Productos" EntityType="Self.Productos" />
           <EntitySet Name="Proveedores" EntityType="Self.Proveedores" />
           <EntitySet Name="Provincias" EntityType="Self.Provincias" />
-          <EntitySet Name="Remitos" EntityType="Self.Remitos" />
-          <EntitySet Name="RemitosProductos" EntityType="Self.RemitosProductos" />
-          <EntitySet Name="Rubros" EntityType="Self.Rubros" />
-          <EntitySet Name="SubRubro" EntityType="Self.SubRubro" />
           <EntitySet Name="TiposDocumento" EntityType="Self.TiposDocumento" />
-          <EntitySet Name="Unidad" EntityType="Self.Unidad" />
+          <EntitySet Name="Unidades" EntityType="Self.Unidades" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
           <EntitySet Name="UsuariosItemsMenu" EntityType="Self.UsuariosItemsMenu" />
-          <EntitySet Name="Venta" EntityType="Self.Venta" />
-          <EntitySet Name="VentasProductos" EntityType="Self.VentasProductos" />
-          <EntitySet Name="TipoOperacion" EntityType="Self.TipoOperacion" />
           <AssociationSet Name="FK_Barrios_Localidades" Association="Self.FK_Barrios_Localidades">
             <End Role="Localidades" EntitySet="Localidades" />
             <End Role="Barrios" EntitySet="Barrios" />
@@ -1766,25 +1301,13 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             <End Role="Barrios" EntitySet="Barrios" />
             <End Role="Domicilios" EntitySet="Domicilios" />
           </AssociationSet>
-          <AssociationSet Name="FK_Remitos_Clientes" Association="Self.FK_Remitos_Clientes">
+          <AssociationSet Name="FK_Clientes_Domicilios" Association="Self.FK_Clientes_Domicilios">
+            <End Role="Domicilios" EntitySet="Domicilios" />
             <End Role="Clientes" EntitySet="Clientes" />
-            <End Role="Remitos" EntitySet="Remitos" />
           </AssociationSet>
-          <AssociationSet Name="FK_Venta_Venta" Association="Self.FK_Venta_Venta">
+          <AssociationSet Name="FK_Clientes_TiposDocumento" Association="Self.FK_Clientes_TiposDocumento">
+            <End Role="TiposDocumento" EntitySet="TiposDocumento" />
             <End Role="Clientes" EntitySet="Clientes" />
-            <End Role="Venta" EntitySet="Venta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Compras_Proveedores" Association="Self.FK_Compras_Proveedores">
-            <End Role="Proveedores" EntitySet="Proveedores" />
-            <End Role="Compras" EntitySet="Compras" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Compras_Usuarios" Association="Self.FK_Compras_Usuarios">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="Compras" EntitySet="Compras" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MovimientosDinero_Cuentas" Association="Self.FK_MovimientosDinero_Cuentas">
-            <End Role="Cuentas" EntitySet="Cuentas" />
-            <End Role="MovimientosDinero" EntitySet="MovimientosDinero" />
           </AssociationSet>
           <AssociationSet Name="FK_Departamentos_Provincias" Association="Self.FK_Departamentos_Provincias">
             <End Role="Provincias" EntitySet="Provincias" />
@@ -1806,9 +1329,45 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             <End Role="Provincias" EntitySet="Provincias" />
             <End Role="Domicilios" EntitySet="Domicilios" />
           </AssociationSet>
+          <AssociationSet Name="FK_Empresas_Domicilios" Association="Self.FK_Empresas_Domicilios">
+            <End Role="Domicilios" EntitySet="Domicilios" />
+            <End Role="Empresas" EntitySet="Empresas" />
+          </AssociationSet>
           <AssociationSet Name="FK_Proveedores_Domicilios" Association="Self.FK_Proveedores_Domicilios">
             <End Role="Domicilios" EntitySet="Domicilios" />
             <End Role="Proveedores" EntitySet="Proveedores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EArticulos_Empresas" Association="Self.FK_EArticulos_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="EArticulos" EntitySet="EArticulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EArticulos_Marcas" Association="Self.FK_EArticulos_Marcas">
+            <End Role="EMarcas" EntitySet="EMarcas" />
+            <End Role="EArticulos" EntitySet="EArticulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EArticulos_Proveedores" Association="Self.FK_EArticulos_Proveedores">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="EArticulos" EntitySet="EArticulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EArticulos_Rubros" Association="Self.FK_EArticulos_Rubros">
+            <End Role="ERubros" EntitySet="ERubros" />
+            <End Role="EArticulos" EntitySet="EArticulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EArticulos_Unidades" Association="Self.FK_EArticulos_Unidades">
+            <End Role="Unidades" EntitySet="Unidades" />
+            <End Role="EArticulos" EntitySet="EArticulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EMarcas_Empresas" Association="Self.FK_EMarcas_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="EMarcas" EntitySet="EMarcas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empresas_TiposDocumento" Association="Self.FK_Empresas_TiposDocumento">
+            <End Role="TiposDocumento" EntitySet="TiposDocumento" />
+            <End Role="Empresas" EntitySet="Empresas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ERubros_Empresas" Association="Self.FK_ERubros_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="ERubros" EntitySet="ERubros" />
           </AssociationSet>
           <AssociationSet Name="FK_GruposItemsMenu_Grupos" Association="Self.FK_GruposItemsMenu_Grupos">
             <End Role="Grupos" EntitySet="Grupos" />
@@ -1830,73 +1389,13 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             <End Role="ItemsMenu" EntitySet="ItemsMenu" />
             <End Role="UsuariosItemsMenu" EntitySet="UsuariosItemsMenu" />
           </AssociationSet>
-          <AssociationSet Name="FK_Productos_Marcas" Association="Self.FK_Productos_Marcas">
-            <End Role="Marcas" EntitySet="Marcas" />
-            <End Role="Productos" EntitySet="Productos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MovimientosDinero_OrigenMovimiento" Association="Self.FK_MovimientosDinero_OrigenMovimiento">
-            <End Role="OrigenMovimiento" EntitySet="OrigenMovimiento" />
-            <End Role="MovimientosDinero" EntitySet="MovimientosDinero" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Productos_Proveedores" Association="Self.FK_Productos_Proveedores">
-            <End Role="Proveedores" EntitySet="Proveedores" />
-            <End Role="Productos" EntitySet="Productos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Productos_Rubros" Association="Self.FK_Productos_Rubros">
-            <End Role="Rubros" EntitySet="Rubros" />
-            <End Role="Productos" EntitySet="Productos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Productos_SubRubro" Association="Self.FK_Productos_SubRubro">
-            <End Role="SubRubro" EntitySet="SubRubro" />
-            <End Role="Productos" EntitySet="Productos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Productos_Unidad" Association="Self.FK_Productos_Unidad">
-            <End Role="Unidad" EntitySet="Unidad" />
-            <End Role="Productos" EntitySet="Productos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RemitosProductos_Productos" Association="Self.FK_RemitosProductos_Productos">
-            <End Role="Productos" EntitySet="Productos" />
-            <End Role="RemitosProductos" EntitySet="RemitosProductos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VentasProductos_Productos" Association="Self.FK_VentasProductos_Productos">
-            <End Role="Productos" EntitySet="Productos" />
-            <End Role="VentasProductos" EntitySet="VentasProductos" />
-          </AssociationSet>
           <AssociationSet Name="FK_Proveedores_TiposDocumento" Association="Self.FK_Proveedores_TiposDocumento">
             <End Role="TiposDocumento" EntitySet="TiposDocumento" />
             <End Role="Proveedores" EntitySet="Proveedores" />
           </AssociationSet>
-          <AssociationSet Name="FK_Remitos_Usuarios" Association="Self.FK_Remitos_Usuarios">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="Remitos" EntitySet="Remitos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Remitos_Venta" Association="Self.FK_Remitos_Venta">
-            <End Role="Venta" EntitySet="Venta" />
-            <End Role="Remitos" EntitySet="Remitos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RemitosProductos_RemitosProductos" Association="Self.FK_RemitosProductos_RemitosProductos">
-            <End Role="Remitos" EntitySet="Remitos" />
-            <End Role="RemitosProductos" EntitySet="RemitosProductos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RemitosProductos_Unidad" Association="Self.FK_RemitosProductos_Unidad">
-            <End Role="Unidad" EntitySet="Unidad" />
-            <End Role="RemitosProductos" EntitySet="RemitosProductos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VentasProductos_Unidad" Association="Self.FK_VentasProductos_Unidad">
-            <End Role="Unidad" EntitySet="Unidad" />
-            <End Role="VentasProductos" EntitySet="VentasProductos" />
-          </AssociationSet>
           <AssociationSet Name="FK_UsuariosItemsMenu_Usuarios" Association="Self.FK_UsuariosItemsMenu_Usuarios">
             <End Role="Usuarios" EntitySet="Usuarios" />
             <End Role="UsuariosItemsMenu" EntitySet="UsuariosItemsMenu" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Venta_Usuarios" Association="Self.FK_Venta_Usuarios">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="Venta" EntitySet="Venta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VentasProductos_Venta" Association="Self.FK_VentasProductos_Venta">
-            <End Role="Venta" EntitySet="Venta" />
-            <End Role="VentasProductos" EntitySet="VentasProductos" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -1904,9 +1403,35 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ERPStoreContainer" CdmEntityContainer="ERPEntities">
+        <EntityContainerMapping StorageEntityContainer="VentasModelStoreContainer" CdmEntityContainer="VentasConexión">
+          <EntitySetMapping Name="Bancos">
+            <EntityTypeMapping TypeName="VentasModel.Bancos">
+              <MappingFragment StoreEntitySet="Bancos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Banco" ColumnName="Banco" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BancoSucursal">
+            <EntityTypeMapping TypeName="VentasModel.BancoSucursal">
+              <MappingFragment StoreEntitySet="BancoSucursal">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdBanco" ColumnName="IdBanco" />
+                <ScalarProperty Name="SucursalNro" ColumnName="SucursalNro" />
+                <ScalarProperty Name="Sucursal" ColumnName="Sucursal" />
+                <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
+                <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
+                <ScalarProperty Name="IdLocalidad" ColumnName="IdLocalidad" />
+                <ScalarProperty Name="IdBarrio" ColumnName="IdBarrio" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Web" ColumnName="Web" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Barrios">
-            <EntityTypeMapping TypeName="ERP.Barrios">
+            <EntityTypeMapping TypeName="VentasModel.Barrios">
               <MappingFragment StoreEntitySet="Barrios">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdLocalidad" ColumnName="IdLocalidad" />
@@ -1915,62 +1440,24 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Clientes">
-            <EntityTypeMapping TypeName="ERP.Clientes">
+            <EntityTypeMapping TypeName="VentasModel.Clientes">
               <MappingFragment StoreEntitySet="Clientes">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
                 <ScalarProperty Name="IdTipoDocumento" ColumnName="IdTipoDocumento" />
                 <ScalarProperty Name="NroDocumento" ColumnName="NroDocumento" />
                 <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
                 <ScalarProperty Name="EMail" ColumnName="EMail" />
                 <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
                 <ScalarProperty Name="IdDomicilio" ColumnName="IdDomicilio" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Compras">
-            <EntityTypeMapping TypeName="ERP.Compras">
-              <MappingFragment StoreEntitySet="Compras">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Lista" ColumnName="Lista" />
-                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
-                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ComprasProductos">
-            <EntityTypeMapping TypeName="ERP.ComprasProductos">
-              <MappingFragment StoreEntitySet="ComprasProductos">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="IdCompra" ColumnName="IdCompra" />
-                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
-                <ScalarProperty Name="IdUnidad" ColumnName="IdUnidad" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
-                <ScalarProperty Name="Importe" ColumnName="Importe" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Cuentas">
-            <EntityTypeMapping TypeName="ERP.Cuentas">
-              <MappingFragment StoreEntitySet="Cuentas">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="TipoCuenta" ColumnName="TipoCuenta" />
-                <ScalarProperty Name="IdTipoCuenta" ColumnName="IdTipoCuenta" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Detalles" ColumnName="Detalles" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Departamentos">
-            <EntityTypeMapping TypeName="ERP.Departamentos">
+            <EntityTypeMapping TypeName="VentasModel.Departamentos">
               <MappingFragment StoreEntitySet="Departamentos">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
@@ -1979,7 +1466,7 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Domicilios">
-            <EntityTypeMapping TypeName="ERP.Domicilios">
+            <EntityTypeMapping TypeName="VentasModel.Domicilios">
               <MappingFragment StoreEntitySet="Domicilios">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdBarrio" ColumnName="IdBarrio" />
@@ -1989,8 +1476,74 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="EArticulos">
+            <EntityTypeMapping TypeName="VentasModel.EArticulos">
+              <MappingFragment StoreEntitySet="EArticulos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="CodBarra" ColumnName="CodBarra" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
+                <ScalarProperty Name="IdRubro" ColumnName="IdRubro" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="IdUnidad" ColumnName="IdUnidad" />
+                <ScalarProperty Name="CostoInicial" ColumnName="CostoInicial" />
+                <ScalarProperty Name="CostoAdicional1" ColumnName="CostoAdicional1" />
+                <ScalarProperty Name="CostoAdicional2" ColumnName="CostoAdicional2" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="StockMinimo" ColumnName="StockMinimo" />
+                <ScalarProperty Name="PrecioL1" ColumnName="PrecioL1" />
+                <ScalarProperty Name="PrecioL2" ColumnName="PrecioL2" />
+                <ScalarProperty Name="PrecioL3" ColumnName="PrecioL3" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EMarcas">
+            <EntityTypeMapping TypeName="VentasModel.EMarcas">
+              <MappingFragment StoreEntitySet="EMarcas">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresas">
+            <EntityTypeMapping TypeName="VentasModel.Empresas">
+              <MappingFragment StoreEntitySet="Empresas">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="IdTipoDoc" ColumnName="IdTipoDoc" />
+                <ScalarProperty Name="NroDoc" ColumnName="NroDoc" />
+                <ScalarProperty Name="IdDomicilio" ColumnName="IdDomicilio" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Presupuesto" ColumnName="Presupuesto" />
+                <ScalarProperty Name="Venta" ColumnName="Venta" />
+                <ScalarProperty Name="Remito" ColumnName="Remito" />
+                <ScalarProperty Name="NotaDebito" ColumnName="NotaDebito" />
+                <ScalarProperty Name="NotaCredito" ColumnName="NotaCredito" />
+                <ScalarProperty Name="Compra" ColumnName="Compra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ERubros">
+            <EntityTypeMapping TypeName="VentasModel.ERubros">
+              <MappingFragment StoreEntitySet="ERubros">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="Rubro" ColumnName="Rubro" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Grupos">
-            <EntityTypeMapping TypeName="ERP.Grupos">
+            <EntityTypeMapping TypeName="VentasModel.Grupos">
               <MappingFragment StoreEntitySet="Grupos">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
@@ -1999,7 +1552,7 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GruposItemsMenu">
-            <EntityTypeMapping TypeName="ERP.GruposItemsMenu">
+            <EntityTypeMapping TypeName="VentasModel.GruposItemsMenu">
               <MappingFragment StoreEntitySet="GruposItemsMenu">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdGrupo" ColumnName="IdGrupo" />
@@ -2008,7 +1561,7 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GruposUsuarios">
-            <EntityTypeMapping TypeName="ERP.GruposUsuarios">
+            <EntityTypeMapping TypeName="VentasModel.GruposUsuarios">
               <MappingFragment StoreEntitySet="GruposUsuarios">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdGrupo" ColumnName="IdGrupo" />
@@ -2017,7 +1570,7 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ItemsMenu">
-            <EntityTypeMapping TypeName="ERP.ItemsMenu">
+            <EntityTypeMapping TypeName="VentasModel.ItemsMenu">
               <MappingFragment StoreEntitySet="ItemsMenu">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdPadre" ColumnName="IdPadre" />
@@ -2027,7 +1580,7 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Localidades">
-            <EntityTypeMapping TypeName="ERP.Localidades">
+            <EntityTypeMapping TypeName="VentasModel.Localidades">
               <MappingFragment StoreEntitySet="Localidades">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
@@ -2035,88 +1588,18 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Marcas">
-            <EntityTypeMapping TypeName="ERP.Marcas">
-              <MappingFragment StoreEntitySet="Marcas">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Marca" ColumnName="Marca" />
-                <ScalarProperty Name="Extra" ColumnName="Extra" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MovimientosDinero">
-            <EntityTypeMapping TypeName="ERP.MovimientosDinero">
-              <MappingFragment StoreEntitySet="MovimientosDinero">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="IdCuenta" ColumnName="IdCuenta" />
-                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
-                <ScalarProperty Name="Credito" ColumnName="Credito" />
-                <ScalarProperty Name="Débito" ColumnName="Débito" />
-                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
-                <ScalarProperty Name="Contrasiento" ColumnName="Contrasiento" />
-                <ScalarProperty Name="IdOrigenMovimiento" ColumnName="IdOrigenMovimiento" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MovimientosStock">
-            <EntityTypeMapping TypeName="ERP.MovimientosStock">
-              <MappingFragment StoreEntitySet="MovimientosStock">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
-                <ScalarProperty Name="IdTipoOperacion" ColumnName="IdTipoOperacion" />
-                <ScalarProperty Name="Detalle" ColumnName="Detalle" />
-                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
-                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-                <ScalarProperty Name="Ingreso" ColumnName="Ingreso" />
-                <ScalarProperty Name="Egreso" ColumnName="Egreso" />
-                <ScalarProperty Name="Stock" ColumnName="Stock" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OrigenMovimiento">
-            <EntityTypeMapping TypeName="ERP.OrigenMovimiento">
-              <MappingFragment StoreEntitySet="OrigenMovimiento">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="OrigenMovimiento1" ColumnName="OrigenMovimiento" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Productos">
-            <EntityTypeMapping TypeName="ERP.Productos">
-              <MappingFragment StoreEntitySet="Productos">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="CodBarra" ColumnName="CodBarra" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
-                <ScalarProperty Name="IdUnidad" ColumnName="IdUnidad" />
-                <ScalarProperty Name="IdRubro" ColumnName="IdRubro" />
-                <ScalarProperty Name="IdSubRubro" ColumnName="IdSubRubro" />
-                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
-                <ScalarProperty Name="CostoInicial" ColumnName="CostoInicial" />
-                <ScalarProperty Name="CostoAdicional1" ColumnName="CostoAdicional1" />
-                <ScalarProperty Name="CostoAdicional2" ColumnName="CostoAdicional2" />
-                <ScalarProperty Name="Costo" ColumnName="Costo" />
-                <ScalarProperty Name="StockMinimo" ColumnName="StockMinimo" />
-                <ScalarProperty Name="Lista1" ColumnName="Lista1" />
-                <ScalarProperty Name="Lista2" ColumnName="Lista2" />
-                <ScalarProperty Name="Lista3" ColumnName="Lista3" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Proveedores">
-            <EntityTypeMapping TypeName="ERP.Proveedores">
+            <EntityTypeMapping TypeName="VentasModel.Proveedores">
               <MappingFragment StoreEntitySet="Proveedores">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
                 <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
                 <ScalarProperty Name="IdTipoDocumento" ColumnName="IdTipoDocumento" />
                 <ScalarProperty Name="NroDocumento" ColumnName="NroDocumento" />
                 <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
                 <ScalarProperty Name="EMail" ColumnName="EMail" />
                 <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
                 <ScalarProperty Name="Sexo" ColumnName="Sexo" />
                 <ScalarProperty Name="IdDomicilio" ColumnName="IdDomicilio" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
@@ -2124,74 +1607,33 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Provincias">
-            <EntityTypeMapping TypeName="ERP.Provincias">
+            <EntityTypeMapping TypeName="VentasModel.Provincias">
               <MappingFragment StoreEntitySet="Provincias">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Remitos">
-            <EntityTypeMapping TypeName="ERP.Remitos">
-              <MappingFragment StoreEntitySet="Remitos">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
-                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RemitosProductos">
-            <EntityTypeMapping TypeName="ERP.RemitosProductos">
-              <MappingFragment StoreEntitySet="RemitosProductos">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="IdRemito" ColumnName="IdRemito" />
-                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
-                <ScalarProperty Name="IdUnidad" ColumnName="IdUnidad" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Rubros">
-            <EntityTypeMapping TypeName="ERP.Rubros">
-              <MappingFragment StoreEntitySet="Rubros">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Rubro" ColumnName="Rubro" />
-                <ScalarProperty Name="Extra" ColumnName="Extra" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SubRubro">
-            <EntityTypeMapping TypeName="ERP.SubRubro">
-              <MappingFragment StoreEntitySet="SubRubro">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="IdRubro" ColumnName="IdRubro" />
-                <ScalarProperty Name="SubRubro1" ColumnName="SubRubro" />
-                <ScalarProperty Name="Extra" ColumnName="Extra" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TiposDocumento">
-            <EntityTypeMapping TypeName="ERP.TiposDocumento">
+            <EntityTypeMapping TypeName="VentasModel.TiposDocumento">
               <MappingFragment StoreEntitySet="TiposDocumento">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Unidad">
-            <EntityTypeMapping TypeName="ERP.Unidad">
-              <MappingFragment StoreEntitySet="Unidad">
+          <EntitySetMapping Name="Unidades">
+            <EntityTypeMapping TypeName="VentasModel.Unidades">
+              <MappingFragment StoreEntitySet="Unidades">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Unidad1" ColumnName="Unidad" />
-                <ScalarProperty Name="Extra" ColumnName="Extra" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usuarios">
-            <EntityTypeMapping TypeName="ERP.Usuarios">
+            <EntityTypeMapping TypeName="VentasModel.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -2204,47 +1646,11 @@ advertencia 6002: La tabla o vista 'ERP_Dev.dbo.TipoOperacion' no tiene definida
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UsuariosItemsMenu">
-            <EntityTypeMapping TypeName="ERP.UsuariosItemsMenu">
+            <EntityTypeMapping TypeName="VentasModel.UsuariosItemsMenu">
               <MappingFragment StoreEntitySet="UsuariosItemsMenu">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
                 <ScalarProperty Name="IdItemMenu" ColumnName="IdItemMenu" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Venta">
-            <EntityTypeMapping TypeName="ERP.Venta">
-              <MappingFragment StoreEntitySet="Venta">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Lista" ColumnName="Lista" />
-                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
-                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VentasProductos">
-            <EntityTypeMapping TypeName="ERP.VentasProductos">
-              <MappingFragment StoreEntitySet="VentasProductos">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
-                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
-                <ScalarProperty Name="IdUnidad" ColumnName="IdUnidad" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
-                <ScalarProperty Name="Importe" ColumnName="Importe" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TipoOperacion">
-            <EntityTypeMapping TypeName="ERP.TipoOperacion">
-              <MappingFragment StoreEntitySet="TipoOperacion">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="TipoOperacion1" ColumnName="TipoOperacion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

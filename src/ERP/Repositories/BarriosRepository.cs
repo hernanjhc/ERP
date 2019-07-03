@@ -11,7 +11,7 @@ namespace ERP.Repositories
     {
         public static IEnumerable<Barrios> ObtenerBarriosPorLocalidad(int idLocalidad)
         {
-            using (var db = new Models.ERPEntities())
+            using (var db = new Models.VentasConexión())
             {
                 var deptos = db.Barrios.Where(b => b.IdLocalidad == idLocalidad).ToList()
                                 .Select(
@@ -26,7 +26,7 @@ namespace ERP.Repositories
 
         public static Barrios Insertar(int idLocalidad, string nombre)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 if (db.Barrios.Any(b => b.Nombre.ToLower() == nombre.ToLower() &&
                         b.IdLocalidad == idLocalidad))
@@ -49,7 +49,7 @@ namespace ERP.Repositories
 
         internal static Barrios ObtenerBarrioPorId(int id)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 return db.Barrios.FirstOrDefault(b => b.Id == id);
             }
@@ -57,7 +57,7 @@ namespace ERP.Repositories
 
         internal static void Actualizar(int id, string nombre)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 if (!db.Barrios.Any(t => t.Id == id))
                 {
@@ -76,7 +76,7 @@ namespace ERP.Repositories
 
         internal static void Eliminar(int id)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 if (!db.Barrios.Any(t => t.Id == id))
                 {

@@ -1,5 +1,8 @@
 ﻿using CustomLibrary.Lib.Extensions;
 using System.Windows.Forms;
+using MaterialSkin;
+using MaterialSkin.Controls;
+using System;
 
 namespace ERP.Lib.Validations
 {
@@ -9,6 +12,12 @@ namespace ERP.Lib.Validations
         private Form _parent;
 
         public FormValidations(Form parent, ErrorProvider errorProvider)
+        {
+            this._errorProvider = errorProvider;
+            this._parent = parent;
+        }
+
+        public FormValidations(MaterialSkin.Controls.MaterialForm parent, ErrorProvider errorProvider)
         {
             this._errorProvider = errorProvider;
             this._parent = parent;
@@ -29,5 +38,6 @@ namespace ERP.Lib.Validations
             }
             return result;
         }
+
     }
 }

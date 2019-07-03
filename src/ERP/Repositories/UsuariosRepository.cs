@@ -22,7 +22,7 @@ namespace ERP.Repositories
 
         internal Usuarios ObtenerUsuario(string nombre)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 return (from u in db.Usuarios where u.Nombre.ToLower() == nombre.ToLower() select u).FirstOrDefault();
             }
@@ -30,7 +30,7 @@ namespace ERP.Repositories
 
         public static IEnumerable<Usuarios> ObtenerUsuarios()
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 return (from u in db.Usuarios orderby u.Nombre select u).ToList();
             }
@@ -38,7 +38,7 @@ namespace ERP.Repositories
 
         internal static Usuarios Insertar(string nombre, string nombreCompleto, byte estado)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 if (db.Usuarios.Any(c => c.Nombre.ToLower().Trim() == nombre.ToLower().Trim()))
                 {
@@ -63,7 +63,7 @@ namespace ERP.Repositories
 
         internal static Usuarios ObtenerUsuarioPorId(decimal id)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 return db.Usuarios.Find(id);
             }
@@ -71,7 +71,7 @@ namespace ERP.Repositories
 
         internal static void Actualizar(int id, string nombre, string nombreCompleto, byte estado)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 if (!db.Usuarios.Any(t => t.Id == id))
                 {
@@ -87,7 +87,7 @@ namespace ERP.Repositories
 
         internal static void ReiniciarContraseña(int id, string contraseña)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 if (!db.Usuarios.Any(t => t.Id == id))
                 {

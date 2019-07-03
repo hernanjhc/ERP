@@ -11,7 +11,7 @@ namespace ERP.Repositories
     {
         public static IEnumerable<Localidades> ObtenerLocalidadesPorDepartamento(int idDepartamento)
         {
-            using (var db = new Models.ERPEntities())
+            using (var db = new Models.VentasConexión())
             {
                 var deptos = db.Localidades.Where(l => l.IdDepartamento == idDepartamento).ToList()
                                 .Select(
@@ -26,7 +26,7 @@ namespace ERP.Repositories
 
         public static Localidades Insertar(int idDepartamento, string nombre)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 if (db.Localidades.Any(l => l.Nombre.ToLower() == nombre.ToLower() &&
                         l.IdDepartamento == idDepartamento))
@@ -49,7 +49,7 @@ namespace ERP.Repositories
 
         internal static Localidades ObtenerLocalidadPorId(int id)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 return db.Localidades.FirstOrDefault(l => l.Id == id);
             }
@@ -57,7 +57,7 @@ namespace ERP.Repositories
 
         internal static void Actualizar(int id, string nombre)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 if (!db.Localidades.Any(t => t.Id == id))
                 {
@@ -76,7 +76,7 @@ namespace ERP.Repositories
 
         internal static void Eliminar(int id)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 if (!db.Localidades.Any(t => t.Id == id))
                 {

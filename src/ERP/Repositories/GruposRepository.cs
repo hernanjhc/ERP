@@ -11,7 +11,7 @@ namespace ERP.Repositories
     {
         public static IList<Grupos> ObtenerGrupos()
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 var query = (from g in db.Grupos select g)
                                 .ToList()
@@ -28,7 +28,7 @@ namespace ERP.Repositories
 
         public static Grupos Insertar(string descripción, byte estado)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 var id = db.Grupos.Any() ? db.Grupos.Max(c1 => c1.Id) + 1 : 1;
                 var g = new Grupos
@@ -45,7 +45,7 @@ namespace ERP.Repositories
 
         internal static Grupos ObtenerGrupoPorId(decimal id)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 return db.Grupos.Find(id);
             }
@@ -53,7 +53,7 @@ namespace ERP.Repositories
 
         public static void Actualizar(decimal id, string descripción, byte estado)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 if (!db.Grupos.Any(t => t.Id == id))
                 {
@@ -71,7 +71,7 @@ namespace ERP.Repositories
 
         internal static void Eliminar(int id)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 if (!db.Grupos.Any(t => t.Id == id))
                 {

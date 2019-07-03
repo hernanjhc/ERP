@@ -16,7 +16,16 @@ namespace ERP
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            //Application.Run(new Forms.frmPrincipal());
+            var f = new Forms.frmPrincipal();
+            if (f.Inicializar())
+            {
+                Application.Run(f);
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
     }
 }

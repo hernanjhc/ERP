@@ -11,21 +11,21 @@ namespace ERP.Repositories
     {
         public static void Actualizar(string nombre, string descripción, string nombrePadre)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 var padre = ObtenerMenuItem(nombrePadre) ?? new ItemsMenu { Id = 0 };
-                if (!db.ItemsMenus.Any(im => im.Nombre == nombre && padre.Nombre == nombrePadre))
+                if (!db.ItemsMenu.Any(im => im.Nombre == nombre && padre.Nombre == nombrePadre))
                 {
                     var im = new ItemsMenu();
-                    im.Id = db.ItemsMenus.Any() ? db.ItemsMenus.Max(c1 => c1.Id) + 1 : 1;
+                    im.Id = db.ItemsMenu.Any() ? db.ItemsMenu.Max(c1 => c1.Id) + 1 : 1;
                     im.Nombre = nombre;
                     im.Descripcion = descripción;
                     im.IdPadre = padre.Id;
-                    db.ItemsMenus.Add(im);
+                    db.ItemsMenu.Add(im);
                 }
                 else
                 {
-                    var im = db.ItemsMenus.First(im1 => im1.Nombre == nombre);
+                    var im = db.ItemsMenu.First(im1 => im1.Nombre == nombre);
                     im.Nombre = nombre;
                     im.Descripcion = descripción;
                     im.IdPadre = padre.Id;
@@ -36,13 +36,13 @@ namespace ERP.Repositories
 
         public static void EliminarItemsInexistentes(IList<string> menuItemsNames)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
-                foreach (var item in db.ItemsMenus)
+                foreach (var item in db.ItemsMenu)
                 {
                     if (!menuItemsNames.Contains(item.Nombre))
                     {
-                        db.ItemsMenus.Remove(item);
+                        db.ItemsMenu.Remove(item);
                     }
                 }
                 db.SaveChanges();
@@ -51,17 +51,17 @@ namespace ERP.Repositories
 
         private static ItemsMenu ObtenerMenuItem(string nombre)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
-                return db.ItemsMenus.FirstOrDefault(im => im.Nombre == nombre);
+                return db.ItemsMenu.FirstOrDefault(im => im.Nombre == nombre);
             }
         }
 
         public static IList<ItemsMenu> ObtenerItemsMenu()
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
-                var query = (from c in db.ItemsMenus select c)
+                var query = (from c in db.ItemsMenu select c)
                                 .ToList()
                                 .Select(
                                     c => new ItemsMenu
@@ -77,10 +77,10 @@ namespace ERP.Repositories
 
         public static IList<ItemsMenu> ObtenerItemsMenu(int idusuario)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
-                var query = (from ui in db.UsuariosItemsMenus
-                             join ime in db.ItemsMenus
+                var query = (from ui in db.UsuariosItemsMenu
+                             join ime in db.ItemsMenu
                              on ui.IdItemMenu equals ime.Id
                              where ui.IdUsuario == idusuario
                              select ime)

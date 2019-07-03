@@ -17,6 +17,8 @@ namespace ERP.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Domicilios()
         {
+            this.Clientes = new HashSet<Clientes>();
+            this.Empresas = new HashSet<Empresas>();
             this.Proveedores = new HashSet<Proveedores>();
         }
     
@@ -27,9 +29,13 @@ namespace ERP.Models
         public int IdProvincia { get; set; }
     
         public virtual Barrios Barrios { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Clientes> Clientes { get; set; }
         public virtual Departamentos Departamentos { get; set; }
         public virtual Localidades Localidades { get; set; }
         public virtual Provincias Provincias { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Empresas> Empresas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Proveedores> Proveedores { get; set; }
     }

@@ -14,27 +14,19 @@ namespace ERP.Models
     
     public partial class Clientes
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Clientes()
-        {
-            this.Remitos = new HashSet<Remitos>();
-            this.Venta = new HashSet<Venta>();
-        }
-    
         public int Id { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
+        public int IdEmpresa { get; set; }
+        public string RazonSocial { get; set; }
         public int IdTipoDocumento { get; set; }
         public decimal NroDocumento { get; set; }
         public Nullable<System.DateTime> FechaNacimiento { get; set; }
         public string EMail { get; set; }
         public string Direccion { get; set; }
+        public string Telefono { get; set; }
         public Nullable<int> IdDomicilio { get; set; }
         public byte Estado { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Remitos> Remitos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Venta> Venta { get; set; }
+        public virtual Domicilios Domicilios { get; set; }
+        public virtual TiposDocumento TiposDocumento { get; set; }
     }
 }

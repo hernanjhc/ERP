@@ -13,7 +13,7 @@ namespace ERP.Repositories
             int idLocalidad, int idBarrio)
         {
             Domicilios dom;
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 dom = (from d in db.Domicilios
                        where d.IdProvincia == idProvincia &
@@ -34,7 +34,7 @@ namespace ERP.Repositories
             return dom;
         }
 
-        internal static int? ObtenerIdDomicilio(ERPEntities db, Domicilios domicilio)
+        internal static int? ObtenerIdDomicilio(VentasConexión db, Domicilios domicilio)
         {
             if (domicilio == null)
             {
@@ -57,7 +57,7 @@ namespace ERP.Repositories
 
         internal static Domicilios ObtenerDomicilioPorId(int idDomicilio)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 return db.Domicilios.Find(idDomicilio);
             }
@@ -65,7 +65,7 @@ namespace ERP.Repositories
 
         internal static string ObtenerProvincia(int idProvincia)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 return (from p in db.Provincias where p.Id == idProvincia select p.Nombre).FirstOrDefault();
             }
@@ -73,7 +73,7 @@ namespace ERP.Repositories
 
         internal static string ObtenerDepartamento(int idDepartamento)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 return (from d in db.Departamentos where d.Id == idDepartamento select d.Nombre).FirstOrDefault();
             }
@@ -81,7 +81,7 @@ namespace ERP.Repositories
 
         internal static string ObtenerLocalidad(int idLocalidad)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 return (from l in db.Localidades where l.Id == idLocalidad select l.Nombre).FirstOrDefault();
             }
@@ -89,7 +89,7 @@ namespace ERP.Repositories
 
         internal static string ObtenerBarrio(int idBarrio)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 return (from b in db.Barrios where b.Id == idBarrio select b.Nombre).FirstOrDefault();
             }
@@ -97,7 +97,7 @@ namespace ERP.Repositories
 
         public static int Insertar(int idProvincia, int idDepartamento, int idLocalidad, int idBarrio)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 var id = db.Domicilios.Any() ? db.Domicilios.Max(d => d.Id) + 1 : 1;
                 var dom = new Domicilios

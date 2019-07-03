@@ -13,10 +13,10 @@ namespace ERP.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ERPEntities : DbContext
+    public partial class VentasConexión : DbContext
     {
-        public ERPEntities()
-            : base("name=ERPEntities")
+        public VentasConexión()
+            : base("name=VentasConexión")
         {
         }
     
@@ -25,35 +25,26 @@ namespace ERP.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Bancos> Bancos { get; set; }
+        public virtual DbSet<BancoSucursal> BancoSucursal { get; set; }
         public virtual DbSet<Barrios> Barrios { get; set; }
         public virtual DbSet<Clientes> Clientes { get; set; }
-        public virtual DbSet<Compras> Compras { get; set; }
-        public virtual DbSet<ComprasProductos> ComprasProductos { get; set; }
-        public virtual DbSet<Cuentas> Cuentas { get; set; }
         public virtual DbSet<Departamentos> Departamentos { get; set; }
         public virtual DbSet<Domicilios> Domicilios { get; set; }
+        public virtual DbSet<EArticulos> EArticulos { get; set; }
+        public virtual DbSet<EMarcas> EMarcas { get; set; }
+        public virtual DbSet<Empresas> Empresas { get; set; }
+        public virtual DbSet<ERubros> ERubros { get; set; }
         public virtual DbSet<Grupos> Grupos { get; set; }
         public virtual DbSet<GruposItemsMenu> GruposItemsMenu { get; set; }
         public virtual DbSet<GruposUsuarios> GruposUsuarios { get; set; }
         public virtual DbSet<ItemsMenu> ItemsMenu { get; set; }
         public virtual DbSet<Localidades> Localidades { get; set; }
-        public virtual DbSet<Marcas> Marcas { get; set; }
-        public virtual DbSet<MovimientosDinero> MovimientosDinero { get; set; }
-        public virtual DbSet<MovimientosStock> MovimientosStock { get; set; }
-        public virtual DbSet<OrigenMovimiento> OrigenMovimiento { get; set; }
-        public virtual DbSet<Productos> Productos { get; set; }
         public virtual DbSet<Proveedores> Proveedores { get; set; }
         public virtual DbSet<Provincias> Provincias { get; set; }
-        public virtual DbSet<Remitos> Remitos { get; set; }
-        public virtual DbSet<RemitosProductos> RemitosProductos { get; set; }
-        public virtual DbSet<Rubros> Rubros { get; set; }
-        public virtual DbSet<SubRubro> SubRubro { get; set; }
         public virtual DbSet<TiposDocumento> TiposDocumento { get; set; }
-        public virtual DbSet<Unidad> Unidad { get; set; }
+        public virtual DbSet<Unidades> Unidades { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<UsuariosItemsMenu> UsuariosItemsMenu { get; set; }
-        public virtual DbSet<Venta> Venta { get; set; }
-        public virtual DbSet<VentasProductos> VentasProductos { get; set; }
-        public virtual DbSet<TipoOperacion> TipoOperacion { get; set; }
     }
 }

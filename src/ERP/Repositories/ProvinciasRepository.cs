@@ -11,7 +11,7 @@ namespace ERP.Repositories
     {
         public static IEnumerable<Provincias> ObtenerProvincias()
         {
-            using (var db = new Models.ERPEntities())
+            using (var db = new Models.VentasConexión())
             {
                 var query = db.Provincias.ToList()
                                 .Select(

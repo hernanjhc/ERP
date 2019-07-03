@@ -45,6 +45,10 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -61,10 +65,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\Barrios\frmListado.cs">
+    <Compile Include="Forms\Clientes\frmEdición.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Barrios\frmListado.Designer.cs">
+    <Compile Include="Forms\Clientes\frmEdición.Designer.cs">
+      <DependentUpon>frmEdición.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Clientes\frmListado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Clientes\frmListado.Designer.cs">
       <DependentUpon>frmListado.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Departamentos\frmListado.cs">
@@ -76,8 +86,14 @@
     <Compile Include="Forms\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmLogin.designer.cs">
+    <Compile Include="Forms\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmLoginM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmLoginM.Designer.cs">
+      <DependentUpon>frmLoginM.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmPrincipal.cs">
       <SubType>Form</SubType>
@@ -96,12 +112,6 @@
     </Compile>
     <Compile Include="Forms\Grupos\frmListado.Designer.cs">
       <DependentUpon>frmListado.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ItemsMenu\frmAsignarUsuariosyGruposAMenuItems.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ItemsMenu\frmAsignarUsuariosyGruposAMenuItems.Designer.cs">
-      <DependentUpon>frmAsignarUsuariosyGruposAMenuItems.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Localidades\frmListado.cs">
       <SubType>Form</SubType>
@@ -145,25 +155,31 @@
     <Compile Include="Lib\Security\StringCipher.cs" />
     <Compile Include="Lib\Session.cs" />
     <Compile Include="Lib\Validations\FormValidations.cs" />
+    <Compile Include="Models\Bancos.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BancoSucursal.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Barrios.cs">
       <DependentUpon>ERP.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Clientes.cs">
       <DependentUpon>ERP.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Compras.cs">
-      <DependentUpon>ERP.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ComprasProductos.cs">
-      <DependentUpon>ERP.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Cuentas.cs">
-      <DependentUpon>ERP.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Departamentos.cs">
       <DependentUpon>ERP.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Domicilios.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EArticulos.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EMarcas.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Empresas.cs">
       <DependentUpon>ERP.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ERP.Context.cs">
@@ -181,6 +197,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ERP.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ERubros.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Grupos.cs">
       <DependentUpon>ERP.tt</DependentUpon>
     </Compile>
@@ -196,46 +215,16 @@
     <Compile Include="Models\Localidades.cs">
       <DependentUpon>ERP.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Marcas.cs">
-      <DependentUpon>ERP.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MovimientosDinero.cs">
-      <DependentUpon>ERP.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MovimientosStock.cs">
-      <DependentUpon>ERP.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OrigenMovimiento.cs">
-      <DependentUpon>ERP.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Productos.cs">
-      <DependentUpon>ERP.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Proveedores.cs">
       <DependentUpon>ERP.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Provincias.cs">
       <DependentUpon>ERP.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Remitos.cs">
-      <DependentUpon>ERP.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\RemitosProductos.cs">
-      <DependentUpon>ERP.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Rubros.cs">
-      <DependentUpon>ERP.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SubRubro.cs">
-      <DependentUpon>ERP.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\TipoOperacion.cs">
-      <DependentUpon>ERP.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\TiposDocumento.cs">
       <DependentUpon>ERP.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Unidad.cs">
+    <Compile Include="Models\Unidades.cs">
       <DependentUpon>ERP.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuarios.cs">
@@ -244,15 +233,10 @@
     <Compile Include="Models\UsuariosItemsMenu.cs">
       <DependentUpon>ERP.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Venta.cs">
-      <DependentUpon>ERP.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\VentasProductos.cs">
-      <DependentUpon>ERP.tt</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BarriosRepository.cs" />
+    <Compile Include="Repositories\ClientesRepository.cs" />
     <Compile Include="Repositories\DepartamentosRepository.cs" />
     <Compile Include="Repositories\DomiciliosRepository.cs" />
     <Compile Include="Repositories\GruposItemsMenuRepository.cs" />
@@ -265,7 +249,10 @@
     <Compile Include="Repositories\TiposDocumentoRepository.cs" />
     <Compile Include="Repositories\UsuariosItemsMenuRepository.cs" />
     <Compile Include="Repositories\UsuariosRepository.cs" />
-    <EmbeddedResource Include="Forms\Barrios\frmListado.resx">
+    <EmbeddedResource Include="Forms\Clientes\frmEdición.resx">
+      <DependentUpon>frmEdición.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Clientes\frmListado.resx">
       <DependentUpon>frmListado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Departamentos\frmListado.resx">
@@ -274,14 +261,17 @@
     <EmbeddedResource Include="Forms\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmLoginM.resx">
+      <DependentUpon>frmLoginM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Grupos\frmEdición.resx">
       <DependentUpon>frmEdición.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Grupos\frmListado.resx">
       <DependentUpon>frmListado.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ItemsMenu\frmAsignarUsuariosyGruposAMenuItems.resx">
-      <DependentUpon>frmAsignarUsuariosyGruposAMenuItems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Localidades\frmListado.resx">
       <DependentUpon>frmListado.cs</DependentUpon>
@@ -330,6 +320,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Forms\Barrios\" />
+    <Folder Include="Forms\ItemsMenu\" />
     <Folder Include="Reports\" />
   </ItemGroup>
   <ItemGroup>

@@ -11,7 +11,7 @@ namespace ERP.Repositories
     {
         internal static IList<Usuarios> ObtenerUsuariosPorGrupoId(int idGrupo)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 var query = (from u in db.Usuarios
                              join gu in db.GruposUsuarios on u.Id equals gu.IdUsuario
@@ -35,7 +35,7 @@ namespace ERP.Repositories
 
         internal static void Insertar(int idGrupo, int idUsuario)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 var id = db.GruposUsuarios.Any() ? db.GruposUsuarios.Max(g1 => g1.Id) + 1 : 1;
                 var gu = new GruposUsuarios { Id = id, IdGrupo = idGrupo, IdUsuario = idUsuario };
@@ -46,7 +46,7 @@ namespace ERP.Repositories
 
         internal static void Eliminar(int idGrupo, int idUsuario)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 var gu = db.GruposUsuarios.FirstOrDefault(t => t.IdGrupo == idGrupo && t.IdUsuario == idUsuario);
                 if (gu == null) return;
@@ -57,7 +57,7 @@ namespace ERP.Repositories
 
         internal static List<Grupos> ObtenerGruposPorIdUsuario(decimal idusuario)
         {
-            using (var db = new ERPEntities())
+            using (var db = new VentasConexión())
             {
                 var query = (from g in db.Grupos
                              join gu in db.GruposUsuarios

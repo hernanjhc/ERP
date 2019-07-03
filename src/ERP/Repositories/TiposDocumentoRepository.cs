@@ -11,7 +11,7 @@ namespace ERP.Repositories
     {
         public static IEnumerable<TiposDocumento> ObtenerTiposDocumento()
         {
-            using (var db = new Models.ERPEntities())
+            using (var db = new Models.VentasConexión())
             {
                 var deptos = db.TiposDocumento.ToList()
                              .Select(
