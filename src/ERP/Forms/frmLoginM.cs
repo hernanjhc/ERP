@@ -27,10 +27,10 @@ namespace ERP.Forms
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             var repo = new UsuariosRepository();
-            if (_validator.Validar(txtUsuario2, repo.VerificarLoginUsuario(txtUsuario2.Text, txtContraseña2.Text),
+            if (_validator.ValidarMaterial(repo.VerificarLoginUsuario(mtxtUsuario.Text, mtxtContraseña.Text),
                 "El usuario o la contraseña son incorrectos"))
             {
-                Session.CurrentUser = repo.ObtenerUsuario(txtUsuario2.Text);
+                Session.CurrentUser = repo.ObtenerUsuario(mtxtUsuario.Text);
                 DialogResult = DialogResult.OK;
             }
             else

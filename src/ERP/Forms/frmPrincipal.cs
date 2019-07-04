@@ -24,6 +24,7 @@ namespace ERP.Forms
         internal bool Inicializar()
         {
             if (new frmLoginM().ShowDialog() == DialogResult.OK)
+            //if (new frmLogin().ShowDialog() == DialogResult.OK)
             {
                 int idUsuario = Lib.Session.CurrentUser.Id;
                 //CargarPermisosUsuarioActual(idUsuario);

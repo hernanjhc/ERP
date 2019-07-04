@@ -17,10 +17,10 @@ namespace ERP.Lib.Validations
             this._parent = parent;
         }
 
-        public FormValidations(MaterialSkin.Controls.MaterialForm parent, ErrorProvider errorProvider)
+        public FormValidations(MaterialForm parentM, ErrorProvider errorProvider)
         {
             this._errorProvider = errorProvider;
-            this._parent = parent;
+            this._parent = parentM;
         }
 
         public bool Validar(TextBox txt, bool condición, string error)
@@ -38,6 +38,19 @@ namespace ERP.Lib.Validations
             }
             return result;
         }
+
+        public bool ValidarMaterial(bool condición, string error)
+        {
+            bool result = true;
+            if (!condición)
+            {
+                MessageBox.Show(error, "SGO - Sistemas",   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                result = false;
+            }
+            return result;
+        }
+        
+        
 
     }
 }
