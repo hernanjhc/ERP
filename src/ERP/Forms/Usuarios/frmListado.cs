@@ -14,6 +14,9 @@ namespace ERP.Forms.Usuarios
         public frmListado()
         {
             InitializeComponent();
+
+
+
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

@@ -2,6 +2,7 @@
 using ERP.Lib.Validations;
 using ERP.Models;
 using ERP.Repositories;
+using MaterialSkin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,22 @@ using System.Windows.Forms;
 namespace ERP.Forms.Clientes
 {
     public partial class frmEdición : FormBase
+    //public partial class frmEdición : MaterialSkin.Controls.MaterialForm
     {
         public frmEdición()
         {
             InitializeComponent();
+
+            ////color form
+            //MaterialSkin.MaterialSkinManager skinManager = MaterialSkin.MaterialSkinManager.Instance;
+            //skinManager.AddFormToManage(this);
+            //skinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
+            ////skinManager.ColorScheme = new MaterialSkin.ColorScheme(MaterialSkin.Primary.LightBlue400, MaterialSkin.Primary.BlueGrey900, MaterialSkin.Primary.Blue500, Accent.Orange700, MaterialSkin.TextShade.WHITE);
+            //skinManager.ColorScheme = new MaterialSkin.ColorScheme(MaterialSkin.Primary.Cyan700, MaterialSkin.Primary.Cyan700, MaterialSkin.Primary.Blue500, Accent.LightBlue400, MaterialSkin.TextShade.WHITE);
+
             this.Text = "Nuevo alumno";
             txtRazonSocial.Select();
-            _validator = new FormValidations(this, errorProvider1);
+            _validator = new FormValidations(this, errorProvider1);       
             CargarProvincias();
             CargarTiposDocumento();
             InicializarDomicilio();

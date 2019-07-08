@@ -4,10 +4,12 @@ using System.Windows.Forms;
 using ERP.Forms.Grupos;
 using ERP.Models;
 using ERP.Repositories;
+using MaterialSkin;
 
 namespace ERP.Forms
 {
-    public partial class frmPrincipal : Form
+   // public partial class frmPrincipal : Form
+    public partial class frmPrincipal : MaterialSkin.Controls.MaterialForm
     {
         IList<string> _menuItems;
         IList<ItemsMenu> _permisos;
@@ -15,6 +17,14 @@ namespace ERP.Forms
         public frmPrincipal()
         {
             InitializeComponent();
+
+            //color form
+            MaterialSkin.MaterialSkinManager skinManager = MaterialSkin.MaterialSkinManager.Instance;
+            skinManager.AddFormToManage(this);
+            skinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
+            //skinManager.ColorScheme = new MaterialSkin.ColorScheme(MaterialSkin.Primary.LightBlue400, MaterialSkin.Primary.BlueGrey900, MaterialSkin.Primary.Blue500, Accent.Orange700, MaterialSkin.TextShade.WHITE);
+            skinManager.ColorScheme = new MaterialSkin.ColorScheme(MaterialSkin.Primary.Cyan700, MaterialSkin.Primary.Cyan700, MaterialSkin.Primary.Blue500, Accent.LightBlue400, MaterialSkin.TextShade.WHITE);
+
             _menuItems = new List<string>();
             RecorrerMenu(this.menuStrip1.Items, null);
             ItemsMenuRepository.EliminarItemsInexistentes(_menuItems);
@@ -72,5 +82,7 @@ namespace ERP.Forms
         {
             using (var f = new Clientes.frmListado()) f.ShowDialog();
         }
+
+        
     }
 }

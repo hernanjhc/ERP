@@ -1,4 +1,5 @@
 ﻿using ERP.Repositories;
+using MaterialSkin;
 using System;
 using System.Data;
 using System.Linq;
@@ -6,11 +7,20 @@ using System.Windows.Forms;
 
 namespace ERP.Forms.Clientes
 {
-    public partial class frmListado : Lib.AppForms.FormBase
+    //public partial class frmListado : Lib.AppForms.FormBase
+    public partial class frmListado : MaterialSkin.Controls.MaterialForm
     {
         public frmListado()
         {
             InitializeComponent();
+
+            //color form
+            MaterialSkin.MaterialSkinManager skinManager = MaterialSkin.MaterialSkinManager.Instance;
+            skinManager.AddFormToManage(this);
+            skinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
+            //skinManager.ColorScheme = new MaterialSkin.ColorScheme(MaterialSkin.Primary.LightBlue400, MaterialSkin.Primary.BlueGrey900, MaterialSkin.Primary.Blue500, Accent.Orange700, MaterialSkin.TextShade.WHITE);
+            skinManager.ColorScheme = new MaterialSkin.ColorScheme(MaterialSkin.Primary.Cyan700, MaterialSkin.Primary.Cyan700, MaterialSkin.Primary.Blue500, Accent.LightBlue400, MaterialSkin.TextShade.WHITE);
+
             ConsultarDatos();
         }
 
@@ -70,6 +80,11 @@ namespace ERP.Forms.Clientes
                     ShowError(ex.Message);
                 }
             }
+        }
+
+        private void ShowError(string message)
+        {
+            throw new NotImplementedException();
         }
 
         private void frmListado_KeyDown(object sender, KeyEventArgs e)
@@ -195,6 +210,21 @@ namespace ERP.Forms.Clientes
                 //txtLocalidad.Text = a.Domicilio.Localidad.Nombre;
                 //txtBarrio.Text = a.Domicilio.Barrio.Nombre;
             }
+        }
+
+        private void txtFechaNacimiento_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void materialLabel2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

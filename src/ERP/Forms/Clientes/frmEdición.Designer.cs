@@ -35,6 +35,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.bevel1 = new CustomLibrary.ComponentModel.Bevel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnBarrio = new System.Windows.Forms.Button();
             this.btnLocalidad = new System.Windows.Forms.Button();
             this.btnDepartamentos = new System.Windows.Forms.Button();
@@ -61,8 +63,6 @@
             this.txtRazonSocial = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txtTelefono = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -164,6 +164,22 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(448, 303);
             this.panel2.TabIndex = 1;
+            // 
+            // txtTelefono
+            // 
+            this.txtTelefono.Location = new System.Drawing.Point(95, 251);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(313, 20);
+            this.txtTelefono.TabIndex = 35;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(32, 254);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.TabIndex = 36;
+            this.label2.Text = "Teléfono: ";
             // 
             // btnBarrio
             // 
@@ -402,22 +418,6 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // txtTelefono
-            // 
-            this.txtTelefono.Location = new System.Drawing.Point(95, 251);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(313, 20);
-            this.txtTelefono.TabIndex = 35;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(32, 254);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
-            this.label2.TabIndex = 36;
-            this.label2.Text = "Teléfono: ";
-            // 
             // frmEdición
             // 
             this.AcceptButton = this.btnAceptar;
@@ -447,7 +447,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox ckEstado;
-        private System.Windows.Forms.TextBox txtRazonSocial;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbTipoDoc;
@@ -473,5 +472,6 @@
         private System.Windows.Forms.Button btnDepartamentos;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtRazonSocial;
     }
 }
