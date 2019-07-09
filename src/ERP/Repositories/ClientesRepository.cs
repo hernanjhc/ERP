@@ -25,7 +25,8 @@ namespace ERP.Repositories
                                         IdEmpresa = c.IdEmpresa,
                                         RazonSocial = c.RazonSocial,
                                         IdTipoDocumento = c.IdTipoDocumento,
-                                        //TipoDocumento = c.TiposDocumento.Descripcion,
+                                        // Preparar un modelo
+                                        TiposDocumento = c.TiposDocumento,
                                         NroDocumento = c.NroDocumento,
                                         FechaNacimiento = c.FechaNacimiento,
                                         EMail = c.EMail,
@@ -102,8 +103,8 @@ namespace ERP.Repositories
             }
         }
 
-        public static void Actualizar(decimal id, string razonSocial, int idTipoDocumento, decimal nroDocumento,
-            DateTime fechaNacimiento, string email, string dirección, Domicilios domicilio, byte estado, char sexo)
+        public static void Actualizar(decimal id, int IdEmpresa, string razonSocial, int idTipoDocumento, decimal nroDocumento,
+            DateTime fechaNacimiento, string email, string dirección, string teléfono, Domicilios domicilio, byte estado)
         {
             using (var db = new VentasConexión())
             {
@@ -115,12 +116,14 @@ namespace ERP.Repositories
                         throw new Exception(String.Format("No existe el Cliente {0} - {1}, {2}", id, razonSocial));
                     }
                     var c = db.Clientes.Find(id);
+                    c.IdEmpresa = IdEmpresa;
                     c.RazonSocial = razonSocial;
                     c.IdTipoDocumento = idTipoDocumento;
                     c.NroDocumento = nroDocumento;
                     c.FechaNacimiento = fechaNacimiento;
                     c.EMail = email;
                     c.Direccion = dirección;
+                    c.Telefono = teléfono;
                     c.IdDomicilio = DomiciliosRepository.ObtenerIdDomicilio(db, domicilio);
                     c.Estado = estado;
                     if (c.Estado != estado)
@@ -164,6 +167,7 @@ namespace ERP.Repositories
                     var c = new Clientes
                     {
                         Id = id,
+                        IdEmpresa = Lib.Configuration.IdEmpresa,
                         RazonSocial = razonSocial,
                         IdTipoDocumento = idTipoDocumento,
                         NroDocumento = nroDocumento,

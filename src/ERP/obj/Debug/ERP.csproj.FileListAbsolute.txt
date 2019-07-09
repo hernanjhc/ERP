@@ -56,3 +56,7 @@ E:\Sistemas\ERP\src\ERP\obj\Debug\ERP.Forms.Usuarios.frmEdición.resources
 E:\Sistemas\ERP\src\ERP\obj\Debug\ERP.Forms.Usuarios.frmListado.resources
 E:\Sistemas\ERP\src\ERP\obj\Debug\ERP.Properties.Resources.resources
 E:\Sistemas\ERP\src\ERP\obj\Debug\ERP.csproj.GenerateResource.Cache
+D:\SGOSistemas\ERP\src\ERP\bin\Debug\MaterialDesignColors.dll
+D:\SGOSistemas\ERP\src\ERP\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\SGOSistemas\ERP\src\ERP\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\SGOSistemas\ERP\src\ERP\bin\Debug\MaterialDesignThemes.Wpf.xml

@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="VentasModel.Bancos" Width="1.5" PointX="5.75" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="VentasModel.BancoSucursal" Width="1.5" PointX="5.75" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="VentasModel.Barrios" Width="1.5" PointX="7.5" PointY="18.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="VentasModel.Clientes" Width="1.5" PointX="12" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.Clientes" Width="1.5" PointX="12.375" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="VentasModel.Departamentos" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
         <EntityTypeShape EntityType="VentasModel.Domicilios" Width="1.5" PointX="9.75" PointY="15.5" IsExpanded="true" />
         <EntityTypeShape EntityType="VentasModel.EArticulos" Width="1.5" PointX="19.5" PointY="15.375" IsExpanded="true" />

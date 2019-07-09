@@ -23,11 +23,11 @@ namespace ERP.Lib
             }
         }
 
-        public static short MaxCuotas
+        public static short IdEmpresa
         {
             get
             {
-                return 10;
+                return 1;
             }
         }
     }

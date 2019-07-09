@@ -11,8 +11,9 @@ using System.Windows.Forms;
 namespace ERP.Forms.Clientes
 {
     public partial class frmEdición : FormBase
-    //public partial class frmEdición : MaterialSkin.Controls.MaterialForm
     {
+        //private FormValidations _validator;
+
         public frmEdición()
         {
             InitializeComponent();
@@ -24,7 +25,7 @@ namespace ERP.Forms.Clientes
             ////skinManager.ColorScheme = new MaterialSkin.ColorScheme(MaterialSkin.Primary.LightBlue400, MaterialSkin.Primary.BlueGrey900, MaterialSkin.Primary.Blue500, Accent.Orange700, MaterialSkin.TextShade.WHITE);
             //skinManager.ColorScheme = new MaterialSkin.ColorScheme(MaterialSkin.Primary.Cyan700, MaterialSkin.Primary.Cyan700, MaterialSkin.Primary.Blue500, Accent.LightBlue400, MaterialSkin.TextShade.WHITE);
 
-            this.Text = "Nuevo alumno";
+            this.Text = "Nuevo Cliente";
             txtRazonSocial.Select();
             _validator = new FormValidations(this, errorProvider1);       
             CargarProvincias();
@@ -53,19 +54,18 @@ namespace ERP.Forms.Clientes
             //cbBarrio.SelectedIndex = -1;
         }
 
-        //public frmEdición(Cliente cliente) : this()
-        //{
-        //    this.Text = "Edición del Cliente";
-        //    txtNombre.Text = cliente.Nombre;
-        //    txtApellido.Text = cliente.Apellido;
-        //    cbTipoDoc.SelectedIndex = cliente.IdTipoDocumento - 1;
-        //    txtNroDocumento.Text = cliente.NroDocumento.ToString();
-        //    dtpFechaNac.Text = cliente.FechaNacimiento.ToString();
-        //    txtEmail.Text = cliente.EMail;
-        //    txtDireccion.Text = cliente.Direccion;
-        //    CargarDomicilio(cliente.IdDomicilio);
-        //    ckEstado.Checked = cliente.Estado == 1;
-        //}
+        public frmEdición(Models.Clientes cliente) : this()
+        {
+            this.Text = "Edición del Cliente";
+            txtRazonSocial.Text = cliente.RazonSocial;
+            cbTipoDoc.SelectedIndex = cliente.IdTipoDocumento - 1;
+            txtNroDocumento.Text = cliente.NroDocumento.ToString();
+            dtpFechaNac.Text = cliente.FechaNacimiento.ToString();
+            txtEmail.Text = cliente.EMail;
+            txtDireccion.Text = cliente.Direccion;
+            CargarDomicilio(cliente.IdDomicilio);
+            ckEstado.Checked = cliente.Estado == 1;
+        }
 
         private void CargarDomicilio(int? idDomicilio)
         {
@@ -93,15 +93,7 @@ namespace ERP.Forms.Clientes
             }
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.None;
-            if (this.ValidarDatos())
-            {
-                DialogResult = DialogResult.OK;
-            }
-        }
-
+     
         private void CargarProvincias()
         {
             var p = ProvinciasRepository.ObtenerProvincias();
@@ -156,8 +148,10 @@ namespace ERP.Forms.Clientes
         private bool ValidarDatos()
         {
             return
-                _validator.Validar(txtRazonSocial, !String.IsNullOrEmpty(RazonSocial), "No puede estar vacío") &&
-                _validator.Validar(txtNroDocumento, NroDocumento > 0, "No puede ser menor o igual que cero");
+                //_validator.Validar(txtRazonSocial, !String.IsNullOrEmpty(RazonSocial), "No puede estar vacío") &&                
+                //_validator.Validar(txtNroDocumento, NroDocumento > 0, "No puede ser menor o igual que cero");
+            _validator.ValidarMaterial(!String.IsNullOrEmpty(RazonSocial), "No puede estar vacío") &&
+            _validator.ValidarMaterial(NroDocumento > 0, "No puede ser menor o igual que cero");
         }
 
         public string RazonSocial
@@ -172,7 +166,8 @@ namespace ERP.Forms.Clientes
         {
             get
             {
-                return txtNroDocumento.DecValue;
+                //return txtNroDocumento.DecValue;
+                return Convert.ToDecimal(txtNroDocumento.Text.Trim());
             }
         }
 
@@ -344,6 +339,20 @@ namespace ERP.Forms.Clientes
                     }
                 }
             }
+        }
+
+        private void materialRaisedButton1_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.None;
+            if (this.ValidarDatos())
+            {
+                DialogResult = DialogResult.OK;
+            }
+        }
+
+        private void materialRaisedButton2_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

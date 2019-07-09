@@ -175,6 +175,7 @@
     <Compile Include="Models\Barrios.cs">
       <DependentUpon>ERP.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cliente.Ext.cs" />
     <Compile Include="Models\Clientes.cs">
       <DependentUpon>ERP.tt</DependentUpon>
     </Compile>
@@ -211,6 +212,7 @@
     <Compile Include="Models\ERubros.cs">
       <DependentUpon>ERP.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EstadoCliente.cs" />
     <Compile Include="Models\Grupos.cs">
       <DependentUpon>ERP.tt</DependentUpon>
     </Compile>

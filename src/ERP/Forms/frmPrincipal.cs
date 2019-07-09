@@ -12,7 +12,7 @@ namespace ERP.Forms
     public partial class frmPrincipal : MaterialSkin.Controls.MaterialForm
     {
         IList<string> _menuItems;
-        IList<ItemsMenu> _permisos;
+        //IList<ItemsMenu> _permisos;
 
         public frmPrincipal()
         {
@@ -83,6 +83,9 @@ namespace ERP.Forms
             using (var f = new Clientes.frmListado()) f.ShowDialog();
         }
 
-        
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

@@ -15,20 +15,11 @@ using System.Windows.Forms;
 namespace ERP.Forms
 {
     
-    public partial class frmLoginM : MaterialSkin.Controls.MaterialForm
+    public partial class frmLoginM : Lib.AppForms.FormBase  // : MaterialSkin.Controls.MaterialForm
     {
-        private FormValidations _validator;
-
         public frmLoginM()
         {
             InitializeComponent();
-
-            //color form
-            MaterialSkin.MaterialSkinManager skinManager = MaterialSkin.MaterialSkinManager.Instance;
-            skinManager.AddFormToManage(this);
-            skinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
-            //skinManager.ColorScheme = new MaterialSkin.ColorScheme(MaterialSkin.Primary.LightBlue400, MaterialSkin.Primary.BlueGrey900, MaterialSkin.Primary.Blue500, Accent.Orange700, MaterialSkin.TextShade.WHITE);
-            skinManager.ColorScheme = new MaterialSkin.ColorScheme(MaterialSkin.Primary.Cyan700, MaterialSkin.Primary.Cyan700, MaterialSkin.Primary.Blue500, Accent.LightBlue400, MaterialSkin.TextShade.WHITE);
 
             _validator = new FormValidations(this, errorProvider1);
         }
@@ -52,11 +43,6 @@ namespace ERP.Forms
             {
                 this.Close();
             }
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
