@@ -18,14 +18,7 @@ namespace ERP.Forms.Clientes
         {
             InitializeComponent();
 
-            ////color form
-            //MaterialSkin.MaterialSkinManager skinManager = MaterialSkin.MaterialSkinManager.Instance;
-            //skinManager.AddFormToManage(this);
-            //skinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
-            ////skinManager.ColorScheme = new MaterialSkin.ColorScheme(MaterialSkin.Primary.LightBlue400, MaterialSkin.Primary.BlueGrey900, MaterialSkin.Primary.Blue500, Accent.Orange700, MaterialSkin.TextShade.WHITE);
-            //skinManager.ColorScheme = new MaterialSkin.ColorScheme(MaterialSkin.Primary.Cyan700, MaterialSkin.Primary.Cyan700, MaterialSkin.Primary.Blue500, Accent.LightBlue400, MaterialSkin.TextShade.WHITE);
-
-            this.Text = "Nuevo Cliente";
+           this.Text = "Nuevo Cliente";
             txtRazonSocial.Select();
             _validator = new FormValidations(this, errorProvider1);       
             CargarProvincias();
@@ -62,6 +55,7 @@ namespace ERP.Forms.Clientes
             txtNroDocumento.Text = cliente.NroDocumento.ToString();
             dtpFechaNac.Text = cliente.FechaNacimiento.ToString();
             txtEmail.Text = cliente.EMail;
+            txtTelefono.Text = cliente.Telefono;
             txtDireccion.Text = cliente.Direccion;
             CargarDomicilio(cliente.IdDomicilio);
             ckEstado.Checked = cliente.Estado == 1;
