@@ -44,5 +44,10 @@ namespace ERP.Forms
                 this.Close();
             }
         }
+
+        private void mtxtContraseña_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) btnAceptar.PerformClick();
+        }
     }
 }

@@ -91,3 +91,5 @@ D:\Desarollo\CSharp\ERP\src\ERP\obj\Debug\ERP.Forms.Usuarios.frmEdición.resourc
 D:\Desarollo\CSharp\ERP\src\ERP\obj\Debug\ERP.Forms.Usuarios.frmListado.resources
 D:\Desarollo\CSharp\ERP\src\ERP\obj\Debug\ERP.Properties.Resources.resources
 D:\Desarollo\CSharp\ERP\src\ERP\obj\Debug\ERP.csproj.GenerateResource.Cache
+D:\Desarollo\CSharp\ERP\src\ERP\obj\Debug\ERP.Forms.Unidades.frmListado.resources
+D:\Desarollo\CSharp\ERP\src\ERP\obj\Debug\ERP.Forms.Unidades.frmEdición.resources

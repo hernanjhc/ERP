@@ -63,6 +63,7 @@
             this.mtxtContraseña.Size = new System.Drawing.Size(249, 23);
             this.mtxtContraseña.TabIndex = 2;
             this.mtxtContraseña.UseSystemPasswordChar = false;
+            this.mtxtContraseña.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mtxtContraseña_KeyDown);
             // 
             // btnAceptar
             // 
@@ -174,10 +175,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.ForeColor = System.Drawing.SystemColors.AppWorkspace;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "frmLoginM";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bienvenido";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);

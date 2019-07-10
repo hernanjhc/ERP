@@ -87,5 +87,10 @@ namespace ERP.Forms
         {
             Close();
         }
+
+        private void unidadesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var f = new Unidades.frmListado()) f.ShowDialog();
+        }
     }
 }
