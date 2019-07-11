@@ -215,6 +215,33 @@ namespace ERP.Forms.Proveedores
             dgvDatos.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
         }
 
+        private void txtFiltrar_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFiltrar.Text != "")
+            {
+                dgvDatos.CurrentCell = null;
+                foreach (DataGridViewRow r in dgvDatos.Rows)
+                {
+                    r.Visible = false;
+                }
+                foreach (DataGridViewRow r in dgvDatos.Rows)
+                {
 
+
+                    foreach (DataGridViewCell c in r.Cells)
+                    {
+                        if ((c.Value.ToString().ToUpper()).IndexOf(txtFiltrar.Text.ToUpper()) == 0)
+                        {
+                            r.Visible = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                ConsultarDatos();
+            }
+        }
     }
 }

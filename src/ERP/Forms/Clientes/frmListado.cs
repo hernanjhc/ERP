@@ -50,10 +50,38 @@ namespace ERP.Forms.Clientes
             }
             
             
+        } 
+        
+        private void txtFiltrar_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFiltrar.Text != "")
+            {
+                dgvDatos.CurrentCell = null;
+                foreach (DataGridViewRow r in dgvDatos.Rows)
+                {
+                    r.Visible = false;
+                }
+                foreach (DataGridViewRow r in dgvDatos.Rows)
+                {
+
+
+                    foreach (DataGridViewCell c in r.Cells)
+                    {
+                        if ((c.Value.ToString().ToUpper()).IndexOf(txtFiltrar.Text.ToUpper()) == 0)
+                        {
+                            r.Visible = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                ConsultarDatos();
+            }
         }
 
-        
-        private void btnNuevo_Click_1(object sender, EventArgs e)
+        private void btnNuevo_Click(object sender, EventArgs e)
         {
             using (var f = new frmEdición())
             {
@@ -93,59 +121,6 @@ namespace ERP.Forms.Clientes
             }
         }
 
-        private void dgvDatos_SelectionChanged(object sender, EventArgs e)
-        {
-            var a = ObtenerClienteseleccionado();
-            if (a == null)
-            {
-                txtRazonSocial.Text = "";
-                txtDocumento.Text = "";
-                txtFechaNacimiento.Text = "";
-                txtEMail.Text = "";
-                txtEstado.Text = "";
-                txtDireccion.Text = "";
-                txtProvincia.Text = "";
-                txtDepartamento.Text = "";
-                txtLocalidad.Text = "";
-                txtBarrio.Text = "";
-                return;
-            }
-            txtRazonSocial.Text = a.RazonSocial;
-            txtDocumento.Text = String.Format("{0} {1:N0}", a.TiposDocumento.Descripcion, a.NroDocumento);
-            txtFechaNacimiento.Text = String.Format("{0:dd/MM/yyyy}", a.FechaNacimiento);
-            txtEMail.Text = a.EMail;
-            txtTelefono.Text = a.Telefono;
-            //txtEstado.Text = a.LeyendaEstado;
-            txtDireccion.Text = a.Direccion;
-            if (a.Domicilios == null)
-            {
-                txtProvincia.Text = "";
-                txtDepartamento.Text = "";
-                txtLocalidad.Text = "";
-                txtBarrio.Text = "";
-            }
-            else
-            {
-                txtProvincia.Text = a.Domicilios.Provincias.Nombre;
-                txtDepartamento.Text = a.Domicilios.Departamentos.Nombre;
-                txtLocalidad.Text = a.Domicilios.Localidades.Nombre;
-                txtBarrio.Text = a.Domicilios.Barrios.Nombre;
-            }
-        }
-
-        private void dgvDatos_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape) btnSalir.PerformClick();
-            else if (e.Control && e.KeyCode == Keys.N) btnNuevo.PerformClick();
-            else if (e.Control && e.KeyCode == Keys.F4) btnEditar.PerformClick();
-            else if (e.Control && e.KeyCode == Keys.Delete) btnEliminar.PerformClick();
-        }
-
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void btnEditar_Click(object sender, EventArgs e)
         {
             Models.Clientes a = ObtenerClienteseleccionado();
@@ -169,7 +144,12 @@ namespace ERP.Forms.Clientes
             }
         }
 
-        private void dgvDatos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void dgvDatos_DataBindingComplete_1(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             foreach (DataGridViewColumn c in dgvDatos.Columns)
             {
@@ -209,6 +189,54 @@ namespace ERP.Forms.Clientes
             dgvDatos.Columns[7].HeaderText = "Estado";
             dgvDatos.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvDatos.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+        }
+
+        private void dgvDatos_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) btnSalir.PerformClick();
+            else if (e.Control && e.KeyCode == Keys.N) btnNuevo.PerformClick();
+            else if (e.Control && e.KeyCode == Keys.F4) btnEditar.PerformClick();
+            else if (e.Control && e.KeyCode == Keys.Delete) btnEliminar.PerformClick();
+        }
+
+        private void dgvDatos_SelectionChanged_1(object sender, EventArgs e)
+        {
+            var a = ObtenerClienteseleccionado();
+            if (a == null)
+            {
+                txtRazonSocial.Text = "";
+                txtDocumento.Text = "";
+                txtFechaNacimiento.Text = "";
+                txtEMail.Text = "";
+                txtEstado.Text = "";
+                txtDireccion.Text = "";
+                txtProvincia.Text = "";
+                txtDepartamento.Text = "";
+                txtLocalidad.Text = "";
+                txtBarrio.Text = "";
+                return;
+            }
+            txtRazonSocial.Text = a.RazonSocial;
+            txtDocumento.Text = String.Format("{0} {1:N0}", a.TiposDocumento.Descripcion, a.NroDocumento);
+            txtFechaNacimiento.Text = String.Format("{0:dd/MM/yyyy}", a.FechaNacimiento);
+            txtEMail.Text = a.EMail;
+            txtTelefono.Text = a.Telefono;
+            //txtEstado.Text = a.LeyendaEstado;
+            txtDireccion.Text = a.Direccion;
+            if (a.Domicilios == null)
+            {
+                txtProvincia.Text = "";
+                txtDepartamento.Text = "";
+                txtLocalidad.Text = "";
+                txtBarrio.Text = "";
+            }
+            else
+            {
+                txtProvincia.Text = a.Domicilios.Provincias.Nombre;
+                txtDepartamento.Text = a.Domicilios.Departamentos.Nombre;
+                txtLocalidad.Text = a.Domicilios.Localidades.Nombre;
+                txtBarrio.Text = a.Domicilios.Barrios.Nombre;
+            }
         }
     }
 }
