@@ -74,6 +74,7 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
@@ -116,9 +117,9 @@
             this.panel2.Controls.Add(this.dtpFechaNac);
             this.panel2.Controls.Add(this.cbTipoDoc);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Location = new System.Drawing.Point(4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(460, 312);
+            this.panel2.Size = new System.Drawing.Size(458, 309);
             this.panel2.TabIndex = 1;
             // 
             // materialLabel11
@@ -455,9 +456,9 @@
             this.panel3.Controls.Add(this.materialRaisedButton2);
             this.panel3.Controls.Add(this.materialRaisedButton1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 321);
+            this.panel3.Location = new System.Drawing.Point(4, 320);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(460, 44);
+            this.panel3.Size = new System.Drawing.Size(458, 44);
             this.panel3.TabIndex = 2;
             // 
             // materialRaisedButton2
