@@ -92,5 +92,10 @@ namespace ERP.Forms
         {
             using (var f = new Unidades.frmListado()) f.ShowDialog();
         }
+
+        private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var f = new Proveedores.frmListado()) f.ShowDialog();
+        }
     }
 }
