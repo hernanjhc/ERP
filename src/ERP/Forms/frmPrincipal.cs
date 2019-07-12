@@ -97,5 +97,15 @@ namespace ERP.Forms
         {
             using (var f = new Proveedores.frmListado()) f.ShowDialog();
         }
+
+        private void marcasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var f = new Marcas.frmListado()) f.ShowDialog();
+        }
+
+        private void rubrosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var f = new Rubros.frmListado()) f.ShowDialog();
+        }
     }
 }

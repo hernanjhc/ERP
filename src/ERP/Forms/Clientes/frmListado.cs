@@ -29,8 +29,7 @@ namespace ERP.Forms.Clientes
                                        a.NroDocumento,
                                        a.FechaNacimiento,
                                        a.Direccion,
-                                       a.Telefono,
-                                       a.Estado
+                                       a.Telefono
                                    });
         }
 
@@ -185,10 +184,6 @@ namespace ERP.Forms.Clientes
             dgvDatos.Columns[6].HeaderText = "Teléfono";
             dgvDatos.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvDatos.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-
-            dgvDatos.Columns[7].HeaderText = "Estado";
-            dgvDatos.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvDatos.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
         }
 
         private void dgvDatos_KeyDown_1(object sender, KeyEventArgs e)

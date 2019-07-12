@@ -130,6 +130,42 @@
     <Compile Include="Forms\Localidades\frmListado.Designer.cs">
       <DependentUpon>frmListado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Marcas\frmEdición.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Marcas\frmEdición.Designer.cs">
+      <DependentUpon>frmEdición.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Marcas\frmListado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Marcas\frmListado.Designer.cs">
+      <DependentUpon>frmListado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Proveedores\frmEdicion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Proveedores\frmEdicion.Designer.cs">
+      <DependentUpon>frmEdicion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Proveedores\frmListado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Proveedores\frmListado.Designer.cs">
+      <DependentUpon>frmListado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Rubros\frmEdición.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Rubros\frmEdición.Designer.cs">
+      <DependentUpon>frmEdición.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Rubros\frmListado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Rubros\frmListado.Designer.cs">
+      <DependentUpon>frmListado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Unidades\frmEdición.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -274,7 +310,10 @@
     <Compile Include="Repositories\GruposUsuariosRepository.cs" />
     <Compile Include="Repositories\ItemsMenuRepository.cs" />
     <Compile Include="Repositories\LocalidadesRepository.cs" />
+    <Compile Include="Repositories\MarcasRepository.cs" />
+    <Compile Include="Repositories\ProveedoresRepository.cs" />
     <Compile Include="Repositories\ProvinciasRepository.cs" />
+    <Compile Include="Repositories\RubrosRepository.cs" />
     <Compile Include="Repositories\StoredProcs.cs" />
     <Compile Include="Repositories\TiposDocumentoRepository.cs" />
     <Compile Include="Repositories\UnidadesRepository.cs" />
@@ -305,6 +344,24 @@
       <DependentUpon>frmListado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Localidades\frmListado.resx">
+      <DependentUpon>frmListado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Marcas\frmEdición.resx">
+      <DependentUpon>frmEdición.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Marcas\frmListado.resx">
+      <DependentUpon>frmListado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Proveedores\frmEdicion.resx">
+      <DependentUpon>frmEdicion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Proveedores\frmListado.resx">
+      <DependentUpon>frmListado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Rubros\frmEdición.resx">
+      <DependentUpon>frmEdición.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Rubros\frmListado.resx">
       <DependentUpon>frmListado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Unidades\frmEdición.resx">

@@ -10,7 +10,7 @@ namespace ERP.Repositories
 {
     public class UnidadesRepository
     {
-        public static IEnumerable<Unidades> ObtenerUsuarios()
+        public static IEnumerable<Unidades> ObtenerUnidades()
         {
             using (var db = new VentasConexión())
             {

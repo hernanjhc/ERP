@@ -23,13 +23,12 @@ namespace ERP.Forms.Unidades
 
         private void ConsultarDatos()
         {
-            dgvDatos.SetDataSource(from u in UnidadesRepository.ObtenerUsuarios()
+            dgvDatos.SetDataSource(from u in UnidadesRepository.ObtenerUnidades()
                                    select new
                                    {
                                        u.Id,
                                        u.Unidad,
-                                       u.Observaciones,
-                                       u.Estado
+                                       u.Observaciones
                                    });
             dgvDatos.Columns[0].Visible = false;
         }
@@ -52,11 +51,6 @@ namespace ERP.Forms.Unidades
             dgvDatos.Columns[2].HeaderText = "Observaciones";
             dgvDatos.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgvDatos.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-            dgvDatos.Columns[3].HeaderText = "Estado";
-            dgvDatos.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvDatos.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dgvDatos.Columns[3].DefaultCellStyle.Format = "N0";
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
