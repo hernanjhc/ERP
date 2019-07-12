@@ -38,7 +38,7 @@
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cbProvincias = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -47,20 +47,20 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.dgvDatos, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.toolStrip1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 64);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 525F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 458F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(772, 593);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(772, 529);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // dgvDatos
@@ -72,13 +72,13 @@
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDatos.EvenRowColor = System.Drawing.Color.Empty;
-            this.dgvDatos.Location = new System.Drawing.Point(3, 71);
+            this.dgvDatos.Location = new System.Drawing.Point(4, 73);
             this.dgvDatos.MultiSelect = false;
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.OddRowColor = System.Drawing.Color.AliceBlue;
             this.dgvDatos.ReadOnly = true;
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(766, 519);
+            this.dgvDatos.Size = new System.Drawing.Size(764, 452);
             this.dgvDatos.TabIndex = 0;
             this.dgvDatos.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvDatos_DataBindingComplete);
             // 
@@ -90,9 +90,9 @@
             this.btnEliminar,
             this.toolStripSeparator1,
             this.btnSalir});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Location = new System.Drawing.Point(1, 1);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(772, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(770, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -147,32 +147,37 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.materialLabel1);
             this.panel1.Controls.Add(this.cbProvincias);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 28);
+            this.panel1.Location = new System.Drawing.Point(4, 30);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(766, 37);
+            this.panel1.Size = new System.Drawing.Size(764, 36);
             this.panel1.TabIndex = 2;
             // 
             // cbProvincias
             // 
             this.cbProvincias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbProvincias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbProvincias.FormattingEnabled = true;
-            this.cbProvincias.Location = new System.Drawing.Point(77, 8);
+            this.cbProvincias.Location = new System.Drawing.Point(102, 8);
             this.cbProvincias.Name = "cbProvincias";
-            this.cbProvincias.Size = new System.Drawing.Size(150, 21);
+            this.cbProvincias.Size = new System.Drawing.Size(199, 21);
             this.cbProvincias.TabIndex = 1;
             this.cbProvincias.SelectedIndexChanged += new System.EventHandler(this.cbProvincias_SelectedIndexChanged);
             // 
-            // label1
+            // materialLabel1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Provincia:";
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(25, 8);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(71, 19);
+            this.materialLabel1.TabIndex = 2;
+            this.materialLabel1.Text = "Provincia";
             // 
             // frmListado
             // 
@@ -207,6 +212,6 @@
         private System.Windows.Forms.ToolStripButton btnSalir;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox cbProvincias;
-        private System.Windows.Forms.Label label1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
     }
 }

@@ -38,9 +38,9 @@
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cbDepartamentos = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.cbProvincias = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -49,20 +49,21 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.dgvDatos, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.toolStrip1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 64);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 525F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 454F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(772, 593);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(772, 529);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // dgvDatos
@@ -74,13 +75,13 @@
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDatos.EvenRowColor = System.Drawing.Color.Empty;
-            this.dgvDatos.Location = new System.Drawing.Point(3, 71);
+            this.dgvDatos.Location = new System.Drawing.Point(4, 77);
             this.dgvDatos.MultiSelect = false;
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.OddRowColor = System.Drawing.Color.AliceBlue;
             this.dgvDatos.ReadOnly = true;
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(766, 519);
+            this.dgvDatos.Size = new System.Drawing.Size(764, 448);
             this.dgvDatos.TabIndex = 0;
             this.dgvDatos.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvDatos_DataBindingComplete);
             // 
@@ -92,9 +93,9 @@
             this.btnEliminar,
             this.toolStripSeparator1,
             this.btnSalir});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Location = new System.Drawing.Point(1, 1);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(772, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(770, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -149,53 +150,63 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.materialLabel2);
+            this.panel1.Controls.Add(this.materialLabel1);
             this.panel1.Controls.Add(this.cbDepartamentos);
-            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.cbProvincias);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 28);
+            this.panel1.Location = new System.Drawing.Point(4, 30);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(766, 37);
+            this.panel1.Size = new System.Drawing.Size(764, 40);
             this.panel1.TabIndex = 2;
             // 
             // cbDepartamentos
             // 
             this.cbDepartamentos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDepartamentos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbDepartamentos.FormattingEnabled = true;
-            this.cbDepartamentos.Location = new System.Drawing.Point(331, 8);
+            this.cbDepartamentos.Location = new System.Drawing.Point(397, 8);
             this.cbDepartamentos.Name = "cbDepartamentos";
-            this.cbDepartamentos.Size = new System.Drawing.Size(150, 21);
+            this.cbDepartamentos.Size = new System.Drawing.Size(178, 21);
             this.cbDepartamentos.TabIndex = 3;
             this.cbDepartamentos.SelectedIndexChanged += new System.EventHandler(this.cbDepartamentos_SelectedIndexChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(248, 11);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Departamento:";
             // 
             // cbProvincias
             // 
             this.cbProvincias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbProvincias.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbProvincias.FormattingEnabled = true;
-            this.cbProvincias.Location = new System.Drawing.Point(77, 8);
+            this.cbProvincias.Location = new System.Drawing.Point(85, 9);
             this.cbProvincias.Name = "cbProvincias";
-            this.cbProvincias.Size = new System.Drawing.Size(150, 21);
+            this.cbProvincias.Size = new System.Drawing.Size(178, 21);
             this.cbProvincias.TabIndex = 1;
             this.cbProvincias.SelectedIndexChanged += new System.EventHandler(this.cbProvincias_SelectedIndexChanged);
             // 
-            // label1
+            // materialLabel1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Provincia:";
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(8, 10);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(71, 19);
+            this.materialLabel1.TabIndex = 4;
+            this.materialLabel1.Text = "Provincia";
+            // 
+            // materialLabel2
+            // 
+            this.materialLabel2.AutoSize = true;
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel2.Location = new System.Drawing.Point(287, 10);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(104, 19);
+            this.materialLabel2.TabIndex = 5;
+            this.materialLabel2.Text = "Departamento";
             // 
             // frmListado
             // 
@@ -230,8 +241,8 @@
         private System.Windows.Forms.ToolStripButton btnSalir;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox cbProvincias;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbDepartamentos;
-        private System.Windows.Forms.Label label2;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
     }
 }
