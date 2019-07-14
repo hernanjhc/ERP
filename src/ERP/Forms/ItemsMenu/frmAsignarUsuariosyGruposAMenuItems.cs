@@ -26,7 +26,8 @@ namespace ERP.Forms.ItemsMenu
             CargarMenu(tn, _itemsMenu.Where(im => im.IdPadre == 0).ToList());
             tvItemsMenu.ExpandAll();
             tvItemsMenu.SelectedNode = tn.FirstNode;
-            rbGrupos.Checked = true;
+            rbUsuarios.Checked = true;
+            ConsultarUsuarios();
             tvItemsMenu.Select();
         }
 

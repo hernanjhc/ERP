@@ -34,8 +34,8 @@ namespace ERP.Models
         public byte Estado { get; set; }
     
         public virtual Domicilios Domicilios { get; set; }
+        public virtual TiposDocumento TiposDocumento { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EArticulos> EArticulos { get; set; }
-        public virtual TiposDocumento TiposDocumento { get; set; }
     }
 }

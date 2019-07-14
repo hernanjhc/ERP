@@ -79,7 +79,6 @@ D:\Desarollo\CSharp\ERP\src\ERP\obj\Debug\ERP.csprojResolveAssemblyReference.cac
 D:\Desarollo\CSharp\ERP\src\ERP\obj\Debug\ERP.Forms.Clientes.frmEdición.resources
 D:\Desarollo\CSharp\ERP\src\ERP\obj\Debug\ERP.Forms.Clientes.frmListado.resources
 D:\Desarollo\CSharp\ERP\src\ERP\obj\Debug\ERP.Forms.Departamentos.frmListado.resources
-D:\Desarollo\CSharp\ERP\src\ERP\obj\Debug\ERP.Forms.frmLogin.resources
 D:\Desarollo\CSharp\ERP\src\ERP\obj\Debug\ERP.Forms.frmLoginM.resources
 D:\Desarollo\CSharp\ERP\src\ERP\obj\Debug\ERP.Forms.frmPrincipal.resources
 D:\Desarollo\CSharp\ERP\src\ERP\obj\Debug\ERP.Forms.GrupoUsuarios.frmEdición.resources

@@ -11,11 +11,10 @@
         <EntityTypeShape EntityType="VentasModel.Clientes" Width="1.5" PointX="12.375" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="VentasModel.Departamentos" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
         <EntityTypeShape EntityType="VentasModel.Domicilios" Width="1.5" PointX="9.75" PointY="15.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="VentasModel.EArticulos" Width="1.5" PointX="19.5" PointY="15.375" IsExpanded="true" />
         <EntityTypeShape EntityType="VentasModel.EMarcas" Width="1.5" PointX="17.25" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="VentasModel.Empresas" Width="1.5" PointX="15" PointY="14.75" IsExpanded="true" />
         <EntityTypeShape EntityType="VentasModel.ERubros" Width="1.5" PointX="17.25" PointY="23.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="VentasModel.Grupos" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.Grupos" Width="1.5" PointX="0.75" PointY="0.625" IsExpanded="true" />
         <EntityTypeShape EntityType="VentasModel.GruposItemsMenu" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="VentasModel.GruposUsuarios" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="VentasModel.ItemsMenu" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
@@ -37,11 +36,6 @@
         <AssociationConnector Association="VentasModel.FK_Domicilios_Provincias" ManuallyRouted="false" />
         <AssociationConnector Association="VentasModel.FK_Empresas_Domicilios" ManuallyRouted="false" />
         <AssociationConnector Association="VentasModel.FK_Proveedores_Domicilios" ManuallyRouted="false" />
-        <AssociationConnector Association="VentasModel.FK_EArticulos_Empresas" ManuallyRouted="false" />
-        <AssociationConnector Association="VentasModel.FK_EArticulos_Marcas" ManuallyRouted="false" />
-        <AssociationConnector Association="VentasModel.FK_EArticulos_Proveedores" ManuallyRouted="false" />
-        <AssociationConnector Association="VentasModel.FK_EArticulos_Rubros" ManuallyRouted="false" />
-        <AssociationConnector Association="VentasModel.FK_EArticulos_Unidades" ManuallyRouted="false" />
         <AssociationConnector Association="VentasModel.FK_EMarcas_Empresas" ManuallyRouted="false" />
         <AssociationConnector Association="VentasModel.FK_Empresas_TiposDocumento" ManuallyRouted="false" />
         <AssociationConnector Association="VentasModel.FK_ERubros_Empresas" ManuallyRouted="false" />
@@ -52,6 +46,12 @@
         <AssociationConnector Association="VentasModel.FK_UsuariosItemsMenu_ItemsMenu" ManuallyRouted="false" />
         <AssociationConnector Association="VentasModel.FK_Proveedores_TiposDocumento" ManuallyRouted="false" />
         <AssociationConnector Association="VentasModel.FK_UsuariosItemsMenu_Usuarios" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="VentasModel.EArticulos" Width="1.5" PointX="19.5" PointY="14.5" />
+        <AssociationConnector Association="VentasModel.FK_EArticulos_Empresas" />
+        <AssociationConnector Association="VentasModel.FK_EArticulos_Marcas" />
+        <AssociationConnector Association="VentasModel.FK_EArticulos_Proveedores" />
+        <AssociationConnector Association="VentasModel.FK_EArticulos_Rubros" />
+        <AssociationConnector Association="VentasModel.FK_EArticulos_Unidades" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

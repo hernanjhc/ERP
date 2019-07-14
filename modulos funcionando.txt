@@ -1,5 +1,4 @@
 l - Login
-		falta detalles de presentación
 		activar tecla [Enter]
 2 - Principal
 		Seguridad

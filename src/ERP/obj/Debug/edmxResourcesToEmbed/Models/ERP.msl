@@ -73,31 +73,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="EArticulos">
-      <EntityTypeMapping TypeName="VentasModel.EArticulos">
-        <MappingFragment StoreEntitySet="EArticulos">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
-          <ScalarProperty Name="CodBarra" ColumnName="CodBarra" />
-          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-          <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
-          <ScalarProperty Name="IdRubro" ColumnName="IdRubro" />
-          <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
-          <ScalarProperty Name="IdUnidad" ColumnName="IdUnidad" />
-          <ScalarProperty Name="CostoInicial" ColumnName="CostoInicial" />
-          <ScalarProperty Name="CostoAdicional1" ColumnName="CostoAdicional1" />
-          <ScalarProperty Name="CostoAdicional2" ColumnName="CostoAdicional2" />
-          <ScalarProperty Name="Costo" ColumnName="Costo" />
-          <ScalarProperty Name="Stock" ColumnName="Stock" />
-          <ScalarProperty Name="StockMinimo" ColumnName="StockMinimo" />
-          <ScalarProperty Name="PrecioL1" ColumnName="PrecioL1" />
-          <ScalarProperty Name="PrecioL2" ColumnName="PrecioL2" />
-          <ScalarProperty Name="PrecioL3" ColumnName="PrecioL3" />
-          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
-          <ScalarProperty Name="Estado" ColumnName="Estado" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="EMarcas">
       <EntityTypeMapping TypeName="VentasModel.EMarcas">
         <MappingFragment StoreEntitySet="EMarcas">
@@ -248,6 +223,39 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
           <ScalarProperty Name="IdItemMenu" ColumnName="IdItemMenu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EArticulos">
+      <EntityTypeMapping TypeName="VentasModel.EArticulos">
+        <MappingFragment StoreEntitySet="EArticulos">
+          <ScalarProperty Name="IVA" ColumnName="IVA" />
+          <ScalarProperty Name="PrecioPorcL3" ColumnName="PrecioPorcL3" />
+          <ScalarProperty Name="PrecioPorcL2" ColumnName="PrecioPorcL2" />
+          <ScalarProperty Name="PrecioPorcL1" ColumnName="PrecioPorcL1" />
+          <ScalarProperty Name="DescuentoPorc3" ColumnName="DescuentoPorc3" />
+          <ScalarProperty Name="DescuentoPorc2" ColumnName="DescuentoPorc2" />
+          <ScalarProperty Name="DescuentoPorc1" ColumnName="DescuentoPorc1" />
+          <ScalarProperty Name="Descuento3" ColumnName="Descuento3" />
+          <ScalarProperty Name="Descuento2" ColumnName="Descuento2" />
+          <ScalarProperty Name="Descuento1" ColumnName="Descuento1" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="PrecioL3" ColumnName="PrecioL3" />
+          <ScalarProperty Name="PrecioL2" ColumnName="PrecioL2" />
+          <ScalarProperty Name="PrecioL1" ColumnName="PrecioL1" />
+          <ScalarProperty Name="StockMinimo" ColumnName="StockMinimo" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+          <ScalarProperty Name="Costo" ColumnName="Costo" />
+          <ScalarProperty Name="CostoInicial" ColumnName="CostoInicial" />
+          <ScalarProperty Name="IdUnidad" ColumnName="IdUnidad" />
+          <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+          <ScalarProperty Name="IdRubro" ColumnName="IdRubro" />
+          <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="CodBarra" ColumnName="CodBarra" />
+          <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

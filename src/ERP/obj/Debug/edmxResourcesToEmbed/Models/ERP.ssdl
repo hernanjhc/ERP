@@ -79,8 +79,6 @@
     <Property Name="IdProveedor" Type="int" />
     <Property Name="IdUnidad" Type="int" />
     <Property Name="CostoInicial" Type="decimal" Precision="17" Scale="2" Nullable="false" />
-    <Property Name="CostoAdicional1" Type="decimal" Precision="17" Scale="2" Nullable="false" />
-    <Property Name="CostoAdicional2" Type="decimal" Precision="17" Scale="2" Nullable="false" />
     <Property Name="Costo" Type="decimal" Precision="17" Scale="2" Nullable="false" />
     <Property Name="Stock" Type="int" />
     <Property Name="StockMinimo" Type="int" Nullable="false" />
@@ -89,6 +87,16 @@
     <Property Name="PrecioL3" Type="decimal" Precision="17" Scale="2" />
     <Property Name="Observaciones" Type="varchar" MaxLength="100" />
     <Property Name="Estado" Type="int" />
+    <Property Name="Descuento1" Type="numeric" Precision="17" Scale="2" />
+    <Property Name="Descuento2" Type="numeric" Precision="17" Scale="2" />
+    <Property Name="Descuento3" Type="numeric" Precision="17" Scale="2" />
+    <Property Name="DescuentoPorc1" Type="numeric" Precision="3" Scale="2" />
+    <Property Name="DescuentoPorc2" Type="numeric" Precision="3" Scale="2" />
+    <Property Name="DescuentoPorc3" Type="numeric" Precision="3" Scale="2" />
+    <Property Name="PrecioPorcL1" Type="numeric" Precision="3" Scale="2" />
+    <Property Name="PrecioPorcL2" Type="numeric" Precision="3" Scale="2" />
+    <Property Name="PrecioPorcL3" Type="numeric" Precision="3" Scale="2" />
+    <Property Name="IVA" Type="numeric" Precision="3" Scale="2" />
   </EntityType>
   <EntityType Name="EMarcas">
     <Key>

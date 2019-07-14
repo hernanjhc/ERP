@@ -17,9 +17,9 @@ namespace ERP.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Empresas()
         {
-            this.EArticulos = new HashSet<EArticulos>();
             this.EMarcas = new HashSet<EMarcas>();
             this.ERubros = new HashSet<ERubros>();
+            this.EArticulos = new HashSet<EArticulos>();
         }
     
         public int Id { get; set; }
@@ -39,11 +39,11 @@ namespace ERP.Models
     
         public virtual Domicilios Domicilios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EArticulos> EArticulos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EMarcas> EMarcas { get; set; }
         public virtual TiposDocumento TiposDocumento { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ERubros> ERubros { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EArticulos> EArticulos { get; set; }
     }
 }

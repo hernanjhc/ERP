@@ -25,8 +25,8 @@ namespace ERP.Models
         public string Marca { get; set; }
         public string Observaciones { get; set; }
     
+        public virtual Empresas Empresas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EArticulos> EArticulos { get; set; }
-        public virtual Empresas Empresas { get; set; }
     }
 }
