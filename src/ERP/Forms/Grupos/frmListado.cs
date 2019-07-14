@@ -18,6 +18,8 @@ namespace ERP.Forms.Grupos
         public frmListado()
         {
             InitializeComponent();
+
+            ConsultarDatos();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)

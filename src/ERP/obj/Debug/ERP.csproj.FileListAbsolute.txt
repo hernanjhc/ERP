@@ -99,3 +99,4 @@ D:\Desarollo\CSharp\ERP\src\ERP\obj\Debug\ERP.Forms.Marcas.frmEdición.resources
 D:\Desarollo\CSharp\ERP\src\ERP\obj\Debug\ERP.Forms.Marcas.frmListado.resources
 D:\Desarollo\CSharp\ERP\src\ERP\obj\Debug\ERP.Forms.Proveedores.frmEdicion.resources
 D:\Desarollo\CSharp\ERP\src\ERP\obj\Debug\ERP.Forms.Proveedores.frmListado.resources
+D:\Desarollo\CSharp\ERP\src\ERP\obj\Debug\ERP.Forms.ItemsMenu.frmAsignarUsuariosyGruposAMenuItems.resources

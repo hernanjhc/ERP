@@ -1,30 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using ERP.Forms.Grupos;
+//using ERP.Forms.Grupos;
 using ERP.Models;
 using ERP.Repositories;
 using MaterialSkin;
+using ERP.Lib.AppForms;
+using System.Linq;
+using ERP.Forms.Grupos;
 
 namespace ERP.Forms
 {
-   // public partial class frmPrincipal : Form
-    public partial class frmPrincipal : MaterialSkin.Controls.MaterialForm
+    public partial class frmPrincipal : FormBase
     {
         IList<string> _menuItems;
-        //IList<ItemsMenu> _permisos;
+        IList<Models.ItemsMenu> _permisos;
 
         public frmPrincipal()
         {
             InitializeComponent();
-
-            //color form
-            MaterialSkin.MaterialSkinManager skinManager = MaterialSkin.MaterialSkinManager.Instance;
-            skinManager.AddFormToManage(this);
-            skinManager.Theme = MaterialSkin.MaterialSkinManager.Themes.LIGHT;
-            //skinManager.ColorScheme = new MaterialSkin.ColorScheme(MaterialSkin.Primary.LightBlue400, MaterialSkin.Primary.BlueGrey900, MaterialSkin.Primary.Blue500, Accent.Orange700, MaterialSkin.TextShade.WHITE);
-            skinManager.ColorScheme = new MaterialSkin.ColorScheme(MaterialSkin.Primary.Cyan700, MaterialSkin.Primary.Cyan700, MaterialSkin.Primary.Blue500, Accent.LightBlue400, MaterialSkin.TextShade.WHITE);
-
+            
             _menuItems = new List<string>();
             RecorrerMenu(this.menuStrip1.Items, null);
             ItemsMenuRepository.EliminarItemsInexistentes(_menuItems);
@@ -34,19 +29,60 @@ namespace ERP.Forms
         internal bool Inicializar()
         {
             if (new frmLoginM().ShowDialog() == DialogResult.OK)
-            //if (new frmLogin().ShowDialog() == DialogResult.OK)
             {
                 int idUsuario = Lib.Session.CurrentUser.Id;
-                //CargarPermisosUsuarioActual(idUsuario);
-                //CargarPermisosGruposDeUsuarioActual(idUsuario);
-                //ArmarMenu(menuStrip1.Items);
-                //archivoToolStripMenuItem.Enabled = true;
-                //archivoToolStripMenuItem.Visible = true;
-                //salirToolStripMenuItem.Enabled = true;
-                //salirToolStripMenuItem.Visible = true;
+                CargarPermisosUsuarioActual(idUsuario);
+                CargarPermisosGruposDeUsuarioActual(idUsuario);
+                ArmarMenu(menuStrip1.Items);
+                archivoToolStripMenuItem.Enabled = true;
+                archivoToolStripMenuItem.Visible = true;
+                salirToolStripMenuItem.Enabled = true;
+                salirToolStripMenuItem.Visible = true;
                 return true;
             }
             return false;
+        }
+
+        private void ArmarMenu(ToolStripItemCollection items)
+        {
+            foreach (var i in items)
+            {
+                if (i is ToolStripMenuItem)
+                {
+                    var m = (ToolStripMenuItem)i;
+                    m.Enabled = _permisos.Any(p => p.Nombre == m.Name);
+                    m.Visible = m.Enabled;
+                    ArmarMenu(m.DropDownItems);
+                }
+            }
+        }
+
+        private void CargarPermisosGruposDeUsuarioActual(int idUsuario)
+        {
+            List<Models.Grupos> grupos = new List<Models.Grupos>();
+            grupos = GruposUsuariosRepository.ObtenerGruposPorIdUsuario(idUsuario);
+
+            if (grupos == null) return;
+
+            foreach (var item in grupos)
+            {
+                List<Models.ItemsMenu> itemsMenu = new List<Models.ItemsMenu>();
+                itemsMenu = (List<Models.ItemsMenu>)GruposItemsMenuRepository.ObtenerItemsMenuPorIdGrupo(item.Id);
+
+                foreach (var i in itemsMenu)
+                {
+                    if (!_permisos.Contains(i))
+                    {
+                        _permisos.Add(i);
+                    }
+                }
+
+            }
+        }
+
+        private void CargarPermisosUsuarioActual(int idUsuario)
+        {
+            _permisos = ItemsMenuRepository.ObtenerItemsMenu(idUsuario);
         }
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -106,6 +142,26 @@ namespace ERP.Forms
         private void rubrosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (var f = new Rubros.frmListado()) f.ShowDialog();
+        }
+
+        private void asignarPermisosAGruposYUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var f = new ItemsMenu.frmAsignarUsuariosyGruposAMenuItems()) f.ShowDialog();
+        }
+
+        private void departamentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var f = new Departamentos.frmListado()) f.ShowDialog();
+        }
+
+        private void localidadesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var f = new Localidades.frmListado()) f.ShowDialog();
+        }
+
+        private void asignarUsuariosAGruposToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var f = new Usuarios.frmAsignarUsuariosAGrupos()) f.ShowDialog();
         }
     }
 }

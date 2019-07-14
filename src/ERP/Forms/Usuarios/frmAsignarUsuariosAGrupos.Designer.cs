@@ -31,7 +31,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cbGrupos = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lbSinAsignar = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -41,9 +40,10 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.btnQuitar = new System.Windows.Forms.Button();
             this.btnAsignar = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -58,56 +58,49 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.splitContainer1, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 64);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.34409F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 83.65591F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(586, 482);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.529F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87.471F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(586, 408);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.materialLabel1);
             this.panel1.Controls.Add(this.cbGrupos);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Location = new System.Drawing.Point(4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(580, 72);
+            this.panel1.Size = new System.Drawing.Size(578, 44);
             this.panel1.TabIndex = 0;
             // 
             // cbGrupos
             // 
             this.cbGrupos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGrupos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbGrupos.FormattingEnabled = true;
-            this.cbGrupos.Location = new System.Drawing.Point(62, 11);
+            this.cbGrupos.Location = new System.Drawing.Point(112, 7);
             this.cbGrupos.Name = "cbGrupos";
             this.cbGrupos.Size = new System.Drawing.Size(300, 21);
             this.cbGrupos.TabIndex = 4;
             this.cbGrupos.SelectedValueChanged += new System.EventHandler(this.cbGrupos_SelectedValueChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Grupo: ";
             // 
             // splitContainer1
             // 
             this.splitContainer1.BackColor = System.Drawing.SystemColors.Control;
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 81);
+            this.splitContainer1.Location = new System.Drawing.Point(4, 55);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -118,8 +111,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panel4);
-            this.splitContainer1.Size = new System.Drawing.Size(580, 398);
-            this.splitContainer1.SplitterDistance = 268;
+            this.splitContainer1.Size = new System.Drawing.Size(578, 349);
+            this.splitContainer1.SplitterDistance = 267;
             this.splitContainer1.TabIndex = 1;
             this.splitContainer1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Paint);
             // 
@@ -129,7 +122,7 @@
             this.lbSinAsignar.FormattingEnabled = true;
             this.lbSinAsignar.Location = new System.Drawing.Point(0, 22);
             this.lbSinAsignar.Name = "lbSinAsignar";
-            this.lbSinAsignar.Size = new System.Drawing.Size(266, 374);
+            this.lbSinAsignar.Size = new System.Drawing.Size(265, 325);
             this.lbSinAsignar.TabIndex = 2;
             // 
             // panel2
@@ -138,7 +131,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(266, 22);
+            this.panel2.Size = new System.Drawing.Size(265, 22);
             this.panel2.TabIndex = 1;
             // 
             // label3
@@ -159,7 +152,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(306, 396);
+            this.panel4.Size = new System.Drawing.Size(305, 347);
             this.panel4.TabIndex = 2;
             // 
             // lbAsignados
@@ -168,7 +161,7 @@
             this.lbAsignados.FormattingEnabled = true;
             this.lbAsignados.Location = new System.Drawing.Point(37, 22);
             this.lbAsignados.Name = "lbAsignados";
-            this.lbAsignados.Size = new System.Drawing.Size(269, 374);
+            this.lbAsignados.Size = new System.Drawing.Size(268, 325);
             this.lbAsignados.TabIndex = 3;
             // 
             // panel3
@@ -177,7 +170,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(37, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(269, 22);
+            this.panel3.Size = new System.Drawing.Size(268, 22);
             this.panel3.TabIndex = 2;
             // 
             // label4
@@ -199,8 +192,19 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(37, 396);
+            this.panel6.Size = new System.Drawing.Size(37, 347);
             this.panel6.TabIndex = 0;
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnSalir.Image = global::ERP.Properties.Resources.door;
+            this.btnSalir.Location = new System.Drawing.Point(4, 309);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(27, 27);
+            this.btnSalir.TabIndex = 3;
+            this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnQuitar
             // 
@@ -222,23 +226,25 @@
             this.btnAsignar.UseVisualStyleBackColor = true;
             this.btnAsignar.Click += new System.EventHandler(this.btnAsignar_Click);
             // 
-            // btnSalir
+            // materialLabel1
             // 
-            this.btnSalir.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnSalir.Image = global::ERP.Properties.Resources.door;
-            this.btnSalir.Location = new System.Drawing.Point(5, 363);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(27, 27);
-            this.btnSalir.TabIndex = 3;
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(53, 7);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(53, 19);
+            this.materialLabel1.TabIndex = 5;
+            this.materialLabel1.Text = "Grupo:";
             // 
             // frmAsignarUsuariosAGrupos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnSalir;
-            this.ClientSize = new System.Drawing.Size(586, 482);
+            this.ClientSize = new System.Drawing.Size(586, 472);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmAsignarUsuariosAGrupos";
             this.Text = "Asignar usuarios a grupos";
@@ -264,7 +270,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox cbGrupos;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ListBox lbSinAsignar;
         private System.Windows.Forms.Panel panel2;
@@ -277,5 +282,6 @@
         private System.Windows.Forms.Button btnQuitar;
         private System.Windows.Forms.Button btnAsignar;
         private System.Windows.Forms.Button btnSalir;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
     }
 }

@@ -4,10 +4,11 @@ using ERP.Repositories;
 using System;
 using System.Windows.Forms;
 using CustomLibrary.Lib.Extensions;
+using ERP.Lib.AppForms;
 
 namespace ERP.Forms
 {
-    public partial class frmCambiarContraseña : Form
+    public partial class frmCambiarContraseña : FormBase
     {
         public frmCambiarContraseña()
         {

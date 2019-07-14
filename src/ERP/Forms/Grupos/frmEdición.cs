@@ -9,16 +9,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ERP.Models;
+using ERP.Lib.AppForms;
 
 namespace ERP.Forms.GrupoUsuarios
 {
-    public partial class frmEdición : Form
+    public partial class frmEdición : FormBase
     {
         private FormValidations _validator;
 
         public frmEdición()
         {
             InitializeComponent();
+
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

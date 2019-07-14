@@ -35,11 +35,11 @@
             this.btnAceptar = new System.Windows.Forms.Button();
             this.bevel1 = new CustomLibrary.ComponentModel.Bevel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.ckEstado = new System.Windows.Forms.CheckBox();
-            this.txtGrupo = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtGrupo = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            this.ckEstado = new MaterialSkin.Controls.MaterialCheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -52,13 +52,13 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 64);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(392, 108);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(392, 104);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // panel1
@@ -67,7 +67,7 @@
             this.panel1.Controls.Add(this.btnAceptar);
             this.panel1.Controls.Add(this.bevel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 73);
+            this.panel1.Location = new System.Drawing.Point(0, 69);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(392, 35);
@@ -110,60 +110,82 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.ckEstado);
+            this.panel2.Controls.Add(this.materialLabel2);
+            this.panel2.Controls.Add(this.materialLabel1);
             this.panel2.Controls.Add(this.txtGrupo);
-            this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(386, 67);
+            this.panel2.Size = new System.Drawing.Size(386, 63);
             this.panel2.TabIndex = 1;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(43, 37);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(46, 13);
-            this.label8.TabIndex = 13;
-            this.label8.Text = "Estado: ";
-            // 
-            // ckEstado
-            // 
-            this.ckEstado.AutoSize = true;
-            this.ckEstado.Location = new System.Drawing.Point(95, 37);
-            this.ckEstado.Name = "ckEstado";
-            this.ckEstado.Size = new System.Drawing.Size(73, 17);
-            this.ckEstado.TabIndex = 5;
-            this.ckEstado.Text = "Habilitada";
-            this.ckEstado.UseVisualStyleBackColor = true;
-            // 
-            // txtGrupo
-            // 
-            this.txtGrupo.Location = new System.Drawing.Point(95, 11);
-            this.txtGrupo.Name = "txtGrupo";
-            this.txtGrupo.Size = new System.Drawing.Size(261, 20);
-            this.txtGrupo.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(46, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Grupo: ";
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // txtGrupo
+            // 
+            this.txtGrupo.Depth = 0;
+            this.txtGrupo.Hint = "";
+            this.txtGrupo.Location = new System.Drawing.Point(95, 5);
+            this.txtGrupo.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtGrupo.Name = "txtGrupo";
+            this.txtGrupo.PasswordChar = '\0';
+            this.txtGrupo.SelectedText = "";
+            this.txtGrupo.SelectionLength = 0;
+            this.txtGrupo.SelectionStart = 0;
+            this.txtGrupo.Size = new System.Drawing.Size(277, 23);
+            this.txtGrupo.TabIndex = 14;
+            this.txtGrupo.UseSystemPasswordChar = false;
+            // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(36, 11);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(49, 19);
+            this.materialLabel1.TabIndex = 15;
+            this.materialLabel1.Text = "Grupo";
+            // 
+            // materialLabel2
+            // 
+            this.materialLabel2.AutoSize = true;
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel2.Location = new System.Drawing.Point(29, 37);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(56, 19);
+            this.materialLabel2.TabIndex = 16;
+            this.materialLabel2.Text = "Estado";
+            // 
+            // ckEstado
+            // 
+            this.ckEstado.AutoSize = true;
+            this.ckEstado.Depth = 0;
+            this.ckEstado.Font = new System.Drawing.Font("Roboto", 10F);
+            this.ckEstado.Location = new System.Drawing.Point(88, 31);
+            this.ckEstado.Margin = new System.Windows.Forms.Padding(0);
+            this.ckEstado.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.ckEstado.MouseState = MaterialSkin.MouseState.HOVER;
+            this.ckEstado.Name = "ckEstado";
+            this.ckEstado.Ripple = true;
+            this.ckEstado.Size = new System.Drawing.Size(93, 30);
+            this.ckEstado.TabIndex = 17;
+            this.ckEstado.Text = "Habilitado";
+            this.ckEstado.UseVisualStyleBackColor = true;
+            // 
             // frmEdición
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(392, 108);
+            this.ClientSize = new System.Drawing.Size(392, 168);
             this.Controls.Add(this.tableLayoutPanel1);
             this.KeyPreview = true;
             this.Name = "frmEdición";
@@ -186,10 +208,10 @@
         private System.Windows.Forms.Button btnAceptar;
         private CustomLibrary.ComponentModel.Bevel bevel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.CheckBox ckEstado;
-        private System.Windows.Forms.TextBox txtGrupo;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private MaterialSkin.Controls.MaterialCheckBox ckEstado;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtGrupo;
     }
 }

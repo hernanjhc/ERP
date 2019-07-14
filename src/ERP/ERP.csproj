@@ -124,6 +124,12 @@
     <Compile Include="Forms\Grupos\frmListado.Designer.cs">
       <DependentUpon>frmListado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ItemsMenu\frmAsignarUsuariosyGruposAMenuItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ItemsMenu\frmAsignarUsuariosyGruposAMenuItems.Designer.cs">
+      <DependentUpon>frmAsignarUsuariosyGruposAMenuItems.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Localidades\frmListado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -343,6 +349,9 @@
     <EmbeddedResource Include="Forms\Grupos\frmListado.resx">
       <DependentUpon>frmListado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ItemsMenu\frmAsignarUsuariosyGruposAMenuItems.resx">
+      <DependentUpon>frmAsignarUsuariosyGruposAMenuItems.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Localidades\frmListado.resx">
       <DependentUpon>frmListado.cs</DependentUpon>
     </EmbeddedResource>
@@ -410,7 +419,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Forms\Barrios\" />
-    <Folder Include="Forms\ItemsMenu\" />
     <Folder Include="Reports\" />
   </ItemGroup>
   <ItemGroup>

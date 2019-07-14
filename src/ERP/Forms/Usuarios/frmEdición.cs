@@ -1,11 +1,12 @@
 ﻿using CustomLibrary.Lib.Extensions;
+using ERP.Lib.AppForms;
 using ERP.Models;
 using System;
 using System.Windows.Forms;
 
 namespace ERP.Forms.Usuarios
 {
-    public partial class frmEdición : Form
+    public partial class frmEdición : FormBase
     {
         public frmEdición()
         {
@@ -36,14 +37,7 @@ namespace ERP.Forms.Usuarios
             }
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.None;
-            if (this.ValidarDatos())
-            {
-                DialogResult = DialogResult.OK;
-            }
-        }
+        
 
         private bool ValidarDatos()
         {
@@ -91,6 +85,15 @@ namespace ERP.Forms.Usuarios
             get
             {
                 return (byte)(ckEstado.Checked ? 1 : 0);
+            }
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.None;
+            if (this.ValidarDatos())
+            {
+                DialogResult = DialogResult.OK;
             }
         }
     }
