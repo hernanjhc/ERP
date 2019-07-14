@@ -41,6 +41,7 @@ namespace ERP.Models
         public Nullable<decimal> PrecioPorcL2 { get; set; }
         public Nullable<decimal> PrecioPorcL3 { get; set; }
         public Nullable<decimal> IVA { get; set; }
+        public string Codigo { get; set; }
     
         public virtual Empresas Empresas { get; set; }
         public virtual EMarcas EMarcas { get; set; }
