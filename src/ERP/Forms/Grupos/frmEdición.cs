@@ -58,7 +58,7 @@ namespace ERP.Forms.GrupoUsuarios
         private bool ValidarDatos()
         {
             return
-                _validator.Validar(txtGrupo, Grupo !="", "Debe contener texto");
+                _validator.ValidarMaterial(Grupo !="", "Debe contener texto");
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

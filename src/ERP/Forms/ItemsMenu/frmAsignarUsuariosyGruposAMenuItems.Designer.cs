@@ -37,9 +37,9 @@
             this.lbSinAsignar = new System.Windows.Forms.ListBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnAsignar = new System.Windows.Forms.Button();
-            this.btnQuitar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.btnQuitar = new System.Windows.Forms.Button();
+            this.btnAsignar = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.lblAsignados = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.lbAsignados = new System.Windows.Forms.ListBox();
@@ -174,26 +174,6 @@
             this.panel2.Size = new System.Drawing.Size(33, 483);
             this.panel2.TabIndex = 0;
             // 
-            // btnAsignar
-            // 
-            this.btnAsignar.Image = global::ERP.Properties.Resources.control_fastforward_blue;
-            this.btnAsignar.Location = new System.Drawing.Point(3, 197);
-            this.btnAsignar.Name = "btnAsignar";
-            this.btnAsignar.Size = new System.Drawing.Size(27, 23);
-            this.btnAsignar.TabIndex = 0;
-            this.btnAsignar.UseVisualStyleBackColor = true;
-            this.btnAsignar.Click += new System.EventHandler(this.btnAsignar_Click);
-            // 
-            // btnQuitar
-            // 
-            this.btnQuitar.Image = global::ERP.Properties.Resources.control_fastforward_blue;
-            this.btnQuitar.Location = new System.Drawing.Point(3, 269);
-            this.btnQuitar.Name = "btnQuitar";
-            this.btnQuitar.Size = new System.Drawing.Size(27, 23);
-            this.btnQuitar.TabIndex = 1;
-            this.btnQuitar.UseVisualStyleBackColor = true;
-            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
-            // 
             // btnSalir
             // 
             this.btnSalir.Image = global::ERP.Properties.Resources.door;
@@ -203,6 +183,26 @@
             this.btnSalir.TabIndex = 2;
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            // 
+            // btnQuitar
+            // 
+            this.btnQuitar.Image = global::ERP.Properties.Resources.control_rewind_blue;
+            this.btnQuitar.Location = new System.Drawing.Point(3, 269);
+            this.btnQuitar.Name = "btnQuitar";
+            this.btnQuitar.Size = new System.Drawing.Size(27, 23);
+            this.btnQuitar.TabIndex = 1;
+            this.btnQuitar.UseVisualStyleBackColor = true;
+            this.btnQuitar.Click += new System.EventHandler(this.btnQuitar_Click);
+            // 
+            // btnAsignar
+            // 
+            this.btnAsignar.Image = global::ERP.Properties.Resources.control_fastforward_blue;
+            this.btnAsignar.Location = new System.Drawing.Point(3, 197);
+            this.btnAsignar.Name = "btnAsignar";
+            this.btnAsignar.Size = new System.Drawing.Size(27, 23);
+            this.btnAsignar.TabIndex = 0;
+            this.btnAsignar.UseVisualStyleBackColor = true;
+            this.btnAsignar.Click += new System.EventHandler(this.btnAsignar_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -239,9 +239,9 @@
             // 
             this.lbAsignados.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbAsignados.FormattingEnabled = true;
-            this.lbAsignados.Location = new System.Drawing.Point(3, 36);
+            this.lbAsignados.Location = new System.Drawing.Point(3, 35);
             this.lbAsignados.Name = "lbAsignados";
-            this.lbAsignados.Size = new System.Drawing.Size(269, 444);
+            this.lbAsignados.Size = new System.Drawing.Size(269, 445);
             this.lbAsignados.TabIndex = 1;
             // 
             // frmAsignarUsuariosyGruposAMenuItems

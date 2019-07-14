@@ -44,9 +44,8 @@ namespace ERP.Forms
 
         private bool ValidarDatos()
         {
-            bool result = ValidarTextBoxVacío(txtAnterior, this, errorProvider1) &&
-                        ValidarTextBoxVacío(txtNueva, this, errorProvider1) &&
-                        ValidarTextBoxVacío(txtRepetir, this, errorProvider1) &&
+            bool result =   
+                        ValidarVaciosyEspacios()    &&
                         ValidarContraseñaRepetida();
             return result;
         }
@@ -56,8 +55,7 @@ namespace ERP.Forms
             bool result = true;
             if (txtNueva.Text != txtRepetir.Text)
             {
-                errorProvider1.SetError(txtRepetir, "Debe reingresar la nueva contraseña.");
-                new ToolTip().ShowError(this, txtRepetir, "Debe reingresa la nueva contraseña.");
+                MessageBox.Show("Debe reingresar la nueva contraseña.", "SGO -Sistemas", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 result = false;
             }
             else
@@ -67,21 +65,36 @@ namespace ERP.Forms
             return result;
         }
 
-        private bool ValidarTextBoxVacío(TextBox txt, IWin32Window window,
-            ErrorProvider error)
+        private bool ValidarVaciosyEspacios()
         {
             bool result = true;
-            if (String.IsNullOrWhiteSpace(txt.Text))
+            if (String.IsNullOrWhiteSpace(txtAnterior.Text) &&
+                String.IsNullOrWhiteSpace(txtNueva.Text) &&
+                String.IsNullOrWhiteSpace(txtRepetir.Text))
             {
-                error.SetError(txt, "No puede estar vacío");
-                new ToolTip().ShowError(window, txt, "No puede estar vacío");
+                MessageBox.Show("No puede estar vacío", "SGO-Sistemas", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 result = false;
             }
-            else
+           return result;
+        }
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.None;
+            if (this.ValidarDatos())
             {
-                error.SetError(txt, "");
+                try
+                {
+                    UsuariosRepository.ReiniciarContraseña(Session.CurrentUser.Id, txtNueva.Text);
+                    MessageBox.Show("Se cambió correctamente su contraseña.", "Cambiar Contraseña",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult = DialogResult.OK;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Cambiar contraseña", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
             }
-            return result;
         }
     }
 }

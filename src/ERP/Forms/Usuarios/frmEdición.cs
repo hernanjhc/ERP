@@ -42,24 +42,18 @@ namespace ERP.Forms.Usuarios
         private bool ValidarDatos()
         {
             bool result = true;
-            result = ValidarTextBoxVacío(txtNombre, this, errorProvider1) &&
-                        ValidarTextBoxVacío(txtNombreCompleto, this, errorProvider1);
+            result = ValidarVaciosyEspacios();
             return result;
         }
 
-        private bool ValidarTextBoxVacío(TextBox txt, IWin32Window window,
-            ErrorProvider error)
+        private bool ValidarVaciosyEspacios()
         {
             bool result = true;
-            if (String.IsNullOrWhiteSpace(txt.Text))
+            if (String.IsNullOrWhiteSpace(txtNombre.Text) &&
+                String.IsNullOrWhiteSpace(txtNombreCompleto.Text))
             {
-                error.SetError(txt, "No puede estar vacío");
-                new ToolTip().ShowError(window, txt, "No puede estar vacío");
+                MessageBox.Show("No puede estar vacío", "SGO-Sistemas", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 result = false;
-            }
-            else
-            {
-                error.SetError(txt, "");
             }
             return result;
         }
