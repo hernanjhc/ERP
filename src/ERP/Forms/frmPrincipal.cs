@@ -163,5 +163,10 @@ namespace ERP.Forms
         {
             using (var f = new Usuarios.frmAsignarUsuariosAGrupos()) f.ShowDialog();
         }
+
+        private void productosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            using (var f = new Articulos.frmListado()) f.ShowDialog();
+        }
     }
 }
