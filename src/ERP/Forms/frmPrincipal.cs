@@ -168,5 +168,10 @@ namespace ERP.Forms
         {
             using (var f = new Articulos.frmListado()) f.ShowDialog();
         }
+
+        private void presupuestosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            using (var f = new Presupuestos.frmListado()) f.ShowDialog();
+        }
     }
 }
