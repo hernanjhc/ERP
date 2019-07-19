@@ -16,6 +16,7 @@ namespace ERP.Models
     {
         public int Id { get; set; }
         public int IdEmpresa { get; set; }
+        public string Codigo { get; set; }
         public string CodBarra { get; set; }
         public string Descripcion { get; set; }
         public Nullable<int> IdMarca { get; set; }
@@ -23,25 +24,24 @@ namespace ERP.Models
         public Nullable<int> IdProveedor { get; set; }
         public Nullable<int> IdUnidad { get; set; }
         public decimal CostoInicial { get; set; }
-        public decimal Costo { get; set; }
-        public Nullable<int> Stock { get; set; }
-        public int StockMinimo { get; set; }
-        public Nullable<decimal> PrecioL1 { get; set; }
-        public Nullable<decimal> PrecioL2 { get; set; }
-        public Nullable<decimal> PrecioL3 { get; set; }
-        public string Observaciones { get; set; }
-        public Nullable<int> Estado { get; set; }
-        public Nullable<decimal> Descuento1 { get; set; }
-        public Nullable<decimal> Descuento2 { get; set; }
-        public Nullable<decimal> Descuento3 { get; set; }
+        public decimal Descuento1 { get; set; }
         public Nullable<decimal> DescuentoPorc1 { get; set; }
+        public decimal Descuento2 { get; set; }
         public Nullable<decimal> DescuentoPorc2 { get; set; }
+        public decimal Descuento3 { get; set; }
         public Nullable<decimal> DescuentoPorc3 { get; set; }
+        public decimal Costo { get; set; }
+        public Nullable<decimal> Stock { get; set; }
+        public decimal StockMinimo { get; set; }
+        public Nullable<decimal> PrecioL1 { get; set; }
         public Nullable<decimal> PrecioPorcL1 { get; set; }
+        public Nullable<decimal> PrecioL2 { get; set; }
         public Nullable<decimal> PrecioPorcL2 { get; set; }
+        public Nullable<decimal> PrecioL3 { get; set; }
         public Nullable<decimal> PrecioPorcL3 { get; set; }
         public Nullable<decimal> IVA { get; set; }
-        public string Codigo { get; set; }
+        public string Observaciones { get; set; }
+        public Nullable<int> Estado { get; set; }
     
         public virtual Empresas Empresas { get; set; }
         public virtual EMarcas EMarcas { get; set; }
