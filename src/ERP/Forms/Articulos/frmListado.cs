@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ERP.Repositories;
 using CustomLibrary.Extensions.Controls;
+using ERP.Models;
 
 namespace ERP.Forms.Articulos
 {
@@ -95,5 +96,65 @@ namespace ERP.Forms.Articulos
             else if (e.Control && e.KeyCode == Keys.F4) btnEditar.PerformClick();
             else if (e.Control && e.KeyCode == Keys.Delete) btnEliminar.PerformClick();
         }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            using (var f = new frmEdicion())
+            {
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        var a = ArticulosRepository.Insertar(f.Codigo, f.CodigoBarra, f.Descripcion, f.IdMarca, f.IdRubro,
+                                                            f.IdProveedor, f.IdUnidad, f.CostoInicial, f.Descuento1, f.DescuentoPorc1,
+                                                            f.Descuento2, f.DescuentoPorc2, f.Descuento3, f.DescuentoPorc3, f.Costo,
+                                                            f.Stock, f.StockMinimo, f.Lista1, f.ListaPorc1, f.Lista2,
+                                                            f.ListaPorc2, f.Lista3, f.ListaPorc3, f.IVA, f.Observaciones, f.Estado);
+                        ConsultarDatos();
+                        dgvDatos.SetRow(r => Convert.ToDecimal(r.Cells[0].Value) == a.Id);
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowError("Error al intentar grabar los datos: \n" + ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            var a = ObtenerArticuloSeleccionado();
+            if (MessageBox.Show("¿Está seguro de que desea eliminar el articulo seleccionado?",
+                "Eliminar Artículos", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                try
+                {
+                    ArticulosRepository.Eliminar(a.Id);
+                    ConsultarDatos();
+                    dgvDatos.SetRow(r => Convert.ToDecimal(r.Cells[0].Value) == a.Id);
+                }
+                catch (Exception ex)
+                {
+                    ShowError(ex.Message);
+                }
+            }
+        }
+
+        private EArticulos ObtenerArticuloSeleccionado()
+        {
+            try
+            {
+                int rowindex = dgvDatos.CurrentCell.RowIndex;
+                var id = (Int32)dgvDatos.Rows[rowindex].Cells[0].Value;
+                var a = ArticulosRepository.ObtenerArticulosPorId(id);
+                return a;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
     }
 }
