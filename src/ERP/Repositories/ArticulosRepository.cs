@@ -42,6 +42,8 @@ namespace ERP.Repositories
                                           PrecioPorcL2 = a.PrecioPorcL2,
                                           PrecioL3 = a.PrecioL3,
                                           PrecioPorcL3 = a.PrecioPorcL3,
+                                          Stock = a.Stock,
+                                          StockMinimo = a.StockMinimo,
                                           IVA = a.IVA,
                                           Estado = a.Estado
                                       });
@@ -128,5 +130,101 @@ namespace ERP.Repositories
             }
         }
 
+        public static void Actualizar(decimal id, int IdEmpresa, string codigo, string codbarra, string descripcion, int? idmarca, int? idrubro,
+                                           int? idproveedor, int? idunidad, decimal costoinicial, decimal desc1, decimal? descporc1,
+                                           decimal desc2, decimal? descporc2, decimal desc3, decimal? descporc3, decimal costo,
+                                           decimal? stock, decimal stockminimo, decimal? lista1, decimal? listaporc1, decimal? lista2,
+                                           decimal? listaporc2, decimal? lista3, decimal? listaporc3, decimal? iva, string observaciones,
+                                           int? estado)
+        {
+            using (var db = new VentasConexión())
+            {
+                var trx = db.Database.BeginTransaction();
+                try
+                {
+                    if (!db.EArticulos.Any(t => t.Id == id))
+                    {
+                        throw new Exception(String.Format("No existe el Artículo {0} - {1}, {2}", id, descripcion));
+                    }
+                    var a = db.EArticulos.Find(id);
+                    a.IdEmpresa = IdEmpresa;
+                    a.Codigo = codigo;
+                    a.CodBarra = codbarra;
+                    a.Descripcion = descripcion;
+                    a.IdMarca = idmarca;
+                    a.IdRubro = idrubro;
+                    a.IdProveedor = idproveedor;
+                    a.IdUnidad = idunidad;
+                    a.CostoInicial = costoinicial;
+                    a.Descuento1 = desc1;
+                    a.DescuentoPorc1 = descporc1;
+                    a.Descuento2 = desc2;
+                    a.DescuentoPorc2 = descporc2;
+                    a.Descuento3 = desc3;
+                    a.DescuentoPorc3 = descporc3;
+                    a.Costo = costo;
+                    a.Stock = stock;
+                    a.StockMinimo = stockminimo;
+                    a.PrecioL1 = lista1;
+                    a.PrecioPorcL1 = listaporc1;
+                    a.PrecioL2 = lista2;
+                    a.PrecioPorcL2 = listaporc2;
+                    a.PrecioL3 = lista3;
+                    a.PrecioPorcL3 = listaporc3;
+                    a.IVA = iva;
+                    a.Observaciones = observaciones;
+                    a.Estado = estado;
+                    if (a.Estado != estado)
+                    {
+                        a.Estado = estado;
+                    }
+                    db.SaveChanges();
+                    trx.Commit();
+                }
+                catch (Exception)
+                {
+                    trx.Rollback();
+                    throw;
+                }
+            }
+        }
+
+        public static void Actualizadr(decimal id, int IdEmpresa, string razonSocial, int idTipoDocumento, decimal nroDocumento,
+            DateTime fechaNacimiento, string email, string dirección, string teléfono, Domicilios domicilio, byte estado)
+        {
+            using (var db = new VentasConexión())
+            {
+                var trx = db.Database.BeginTransaction();
+                try
+                {
+                    if (!db.Clientes.Any(t => t.Id == id))
+                    {
+                        throw new Exception(String.Format("No existe el Cliente {0} - {1}, {2}", id, razonSocial));
+                    }
+                    var c = db.Clientes.Find(id);
+                    c.IdEmpresa = IdEmpresa;
+                    c.RazonSocial = razonSocial;
+                    c.IdTipoDocumento = idTipoDocumento;
+                    c.NroDocumento = nroDocumento;
+                    c.FechaNacimiento = fechaNacimiento;
+                    c.EMail = email;
+                    c.Direccion = dirección;
+                    c.Telefono = teléfono;
+                    c.IdDomicilio = DomiciliosRepository.ObtenerIdDomicilio(db, domicilio);
+                    c.Estado = estado;
+                    if (c.Estado != estado)
+                    {
+                        c.Estado = estado;
+                    }
+                    db.SaveChanges();
+                    trx.Commit();
+                }
+                catch (Exception)
+                {
+                    trx.Rollback();
+                    throw;
+                }
+            }
+        }
     }
 }

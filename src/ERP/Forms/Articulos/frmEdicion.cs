@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ERP.Models;
 
 namespace ERP.Forms.Articulos
 {
@@ -24,6 +25,37 @@ namespace ERP.Forms.Articulos
             _validator = new FormValidations(this, errorProvider1);
             CargaInicial();
             ckEstado.Checked = true;
+        }
+
+        public frmEdicion(EArticulos articulo) : this()
+        {
+            this.Text = "Edición del Artículo";
+            txtCodigo.Text = articulo.Codigo;
+            txtCodBarra.Text = articulo.CodBarra;
+            txtDescripcion.Text = articulo.Descripcion;
+            cbMarca.SelectedIndex = Convert.ToInt16(articulo.IdMarca - 1);
+            cbRubro.SelectedIndex = Convert.ToInt16(articulo.IdRubro - 1);
+            cbProveedores.SelectedIndex = Convert.ToInt16(articulo.IdProveedor - 1);
+            cbUnidad.SelectedIndex = Convert.ToInt16(articulo.IdUnidad - 1);
+            txtCostoInicial.Text = Convert.ToString(articulo.CostoInicial);
+            txtDescPorc1.Text = Convert.ToString(articulo.DescuentoPorc1);
+            txtDesc1.Text = Convert.ToString(articulo.Descuento1);
+            txtDescPorc2.Text = Convert.ToString(articulo.DescuentoPorc2);
+            txtDesc2.Text = Convert.ToString(articulo.Descuento2);
+            txtDescPorc3.Text = Convert.ToString(articulo.DescuentoPorc3);
+            txtDesc3.Text = Convert.ToString(articulo.Descuento3);
+            txtCosto.Text = Convert.ToString(articulo.Costo);
+            txtListaPorc1.Text = Convert.ToString(articulo.PrecioPorcL1);
+            txtLista1.Text = Convert.ToString(articulo.PrecioL1);
+            txtListaPorc2.Text = Convert.ToString(articulo.PrecioPorcL2);
+            txtLista2.Text = Convert.ToString(articulo.PrecioL2);
+            txtListaPorc3.Text = Convert.ToString(articulo.PrecioPorcL3);
+            txtLista3.Text = Convert.ToString(articulo.PrecioL3);
+            txtIVA.Text = Convert.ToString(articulo.IVA);
+            txtStock.Text = Convert.ToString(articulo.Stock);
+            txtStockMinimo.Text = Convert.ToString(articulo.StockMinimo);
+            txtObservaciones.Text = Convert.ToString(articulo.Observaciones);
+            ckEstado.Checked = articulo.Estado == 1;
         }
 
         private void CargaInicial()

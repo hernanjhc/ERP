@@ -54,39 +54,43 @@ namespace ERP.Forms.Articulos
                 c.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
 
-            dgvDatos.Columns[0].HeaderText = "Código";
-            dgvDatos.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvDatos.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            //dgvDatos.Columns[0].HeaderText = "Código";
+            //dgvDatos.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //dgvDatos.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
 
-            dgvDatos.Columns[1].HeaderText = "Descripción";
-            dgvDatos.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dgvDatos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvDatos.Columns[1].HeaderText = "Código";
+            dgvDatos.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvDatos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
 
-            dgvDatos.Columns[2].HeaderText = "Stock";
-            dgvDatos.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvDatos.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dgvDatos.Columns[2].HeaderText = "Descripción";
+            dgvDatos.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvDatos.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-            dgvDatos.Columns[3].HeaderText = "Stock Min.";
+            dgvDatos.Columns[3].HeaderText = "Stock";
             dgvDatos.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvDatos.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dgvDatos.Columns[3].DefaultCellStyle.Format = "N0";
 
-            dgvDatos.Columns[4].HeaderText = "Costo";
-            dgvDatos.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvDatos.Columns[4].HeaderText = "Stock Min.";
+            dgvDatos.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvDatos.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dgvDatos.Columns[4].DefaultCellStyle.Format = "dd/MM/yyyy";
+            //dgvDatos.Columns[4].DefaultCellStyle.Format = "N0";
 
-            dgvDatos.Columns[5].HeaderText = "Lista 1";
+            dgvDatos.Columns[5].HeaderText = "Costo";
             dgvDatos.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvDatos.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            //dgvDatos.Columns[5].DefaultCellStyle.Format = "dd/MM/yyyy";
 
-            dgvDatos.Columns[6].HeaderText = "Lista 2";
+            dgvDatos.Columns[6].HeaderText = "Lista 1";
             dgvDatos.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvDatos.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
 
-            dgvDatos.Columns[7].HeaderText = "Lista 3";
+            dgvDatos.Columns[7].HeaderText = "Lista 2";
             dgvDatos.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvDatos.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+
+            dgvDatos.Columns[8].HeaderText = "Lista 3";
+            dgvDatos.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvDatos.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
         }
 
         private void dgvDatos_KeyDown(object sender, KeyEventArgs e)
@@ -155,6 +159,101 @@ namespace ERP.Forms.Articulos
             }
         }
 
+        private void dgvDatos_SelectionChanged(object sender, EventArgs e)
+        {
+            var a = ObtenerArticuloSeleccionado();
+            if (a == null)
+            {
+                txtCodigo.Text = "";
+                txtDescripcion.Text = "";
+                txtCodBarra.Text = "";
+                txtMarca.Text = "";
+                txtRubro.Text = "";
+                txtProveedor.Text = "";
+                txtStock.Text = "";
+                txtStockMin.Text = "";
+                txtCostoInicial.Text = "";
+                txtDesc1.Text = "";
+                txtDesc2.Text = "";
+                txtDesc3.Text = "";
+                txtCosto.Text = "";
+                txtLista1.Text = "";
+                txtLista2.Text = "";
+                txtLista3.Text = "";
+                txtIVA.Text = "";
+                return;
+            }
+            txtCodigo.Text = a.Codigo;
+            txtDescripcion.Text = a.Descripcion;
+            txtCodBarra.Text = a.CodBarra;
+            txtMarca.Text = MarcasRepository.ObtenerMarcaPorId(Convert.ToInt16(a.IdMarca)).Marca;
+            txtRubro.Text = RubrosRepository.ObtenerRubroPorId(Convert.ToInt16(a.IdRubro)).Rubro;
+            txtProveedor.Text = ProveedoresRepository.ObtenerProveedorPorId(Convert.ToInt16(a.IdProveedor)).RazonSocial;
+            txtStock.Text = Convert.ToString(a.Stock);
+            txtStockMin.Text = Convert.ToString(a.StockMinimo);
+            txtCostoInicial.Text = "$ " + Convert.ToString(a.CostoInicial);
+            txtDesc1.Text = "$ " + Convert.ToString(a.Descuento1) +" ("+ Convert.ToString(a.DescuentoPorc1) + "%)";
+            txtDesc2.Text = "$ " + Convert.ToString(a.Descuento2) + " (" + Convert.ToString(a.DescuentoPorc2) + "%)"; ;
+            txtDesc3.Text = "$ " + Convert.ToString(a.Descuento3) + " (" + Convert.ToString(a.DescuentoPorc3) + "%)"; ;
+            txtCosto.Text = "$ " + Convert.ToString(a.Costo);
+            txtLista1.Text = "$ " + Convert.ToString(a.PrecioL1) + " (" + Convert.ToString(a.PrecioPorcL1) + "%)";
+            txtLista2.Text = "$ " + Convert.ToString(a.PrecioL2) + " (" + Convert.ToString(a.PrecioPorcL2) + "%)";
+            txtLista3.Text = "$ " + Convert.ToString(a.PrecioL3) + " (" + Convert.ToString(a.PrecioPorcL3) + "%)";
+            txtIVA.Text = Convert.ToString(a.IVA);
+        }
 
+        private void txtFiltrar_TextChanged(object sender, EventArgs e)
+        {
+            if (txtFiltrar.Text != "")
+            {
+                dgvDatos.CurrentCell = null;
+                foreach (DataGridViewRow r in dgvDatos.Rows)
+                {
+                    r.Visible = false;
+                }
+                foreach (DataGridViewRow r in dgvDatos.Rows)
+                {
+                    foreach (DataGridViewCell c in r.Cells)
+                    {
+                        if ((c.Value.ToString().ToUpper()).IndexOf(txtFiltrar.Text.ToUpper()) == 0)
+                        {
+                            r.Visible = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                ConsultarDatos();
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            EArticulos a = ObtenerArticuloSeleccionado();
+            using (var f = new frmEdicion(a))
+            {
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        int IdEmpresa = Lib.Configuration.IdEmpresa;
+                        ArticulosRepository.Actualizar(a.Id, IdEmpresa, a.Codigo, a.CodBarra, a.Descripcion,
+                            a.IdMarca, a.IdRubro, a.IdProveedor, a.IdUnidad, a.CostoInicial,
+                            a.Descuento1, a.DescuentoPorc1, a.Descuento2, a.DescuentoPorc2, a.Descuento3,
+                            a.DescuentoPorc3, a.Costo, a.Stock, a.StockMinimo, a.PrecioL1,
+                            a.PrecioPorcL1, a.PrecioL2, a.PrecioPorcL2, a.PrecioL3, a.PrecioPorcL3,
+                            a.IVA, a.Observaciones, a.Estado);
+                        ConsultarDatos();
+                        dgvDatos.SetRow(r => Convert.ToDecimal(r.Cells[0].Value) == a.Id);
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowError("Error al intentar grabar los datos: \n" + ex.Message);
+                    }
+                }
+            }
+        }
     }
 }
