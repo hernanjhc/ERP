@@ -173,5 +173,10 @@ namespace ERP.Forms
         {
             using (var f = new Presupuestos.frmListado()) f.ShowDialog();
         }
+
+        private void remitosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var f = new Remitos.frmListado()) f.ShowDialog();
+        }
     }
 }

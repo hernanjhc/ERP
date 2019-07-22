@@ -48,6 +48,7 @@
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.configuraciónGeneralToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.presupuestosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cambiarContraseñaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,7 +58,7 @@
             this.asignarPermisosAGruposYUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.presupuestosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.presupuestosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.remitosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -231,6 +232,12 @@
             this.configuraciónGeneralToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.configuraciónGeneralToolStripMenuItem.Text = "Configuración general";
             // 
+            // presupuestosToolStripMenuItem
+            // 
+            this.presupuestosToolStripMenuItem.Name = "presupuestosToolStripMenuItem";
+            this.presupuestosToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.presupuestosToolStripMenuItem.Text = "Presupuestos";
+            // 
             // seguridadToolStripMenuItem
             // 
             this.seguridadToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -293,7 +300,8 @@
             // ventasToolStripMenuItem
             // 
             this.ventasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.presupuestosToolStripMenuItem1});
+            this.presupuestosToolStripMenuItem1,
+            this.remitosToolStripMenuItem});
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
             this.ventasToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ventasToolStripMenuItem.Text = "Ventas";
@@ -305,11 +313,12 @@
             this.presupuestosToolStripMenuItem1.Text = "Presupuestos";
             this.presupuestosToolStripMenuItem1.Click += new System.EventHandler(this.presupuestosToolStripMenuItem1_Click);
             // 
-            // presupuestosToolStripMenuItem
+            // remitosToolStripMenuItem
             // 
-            this.presupuestosToolStripMenuItem.Name = "presupuestosToolStripMenuItem";
-            this.presupuestosToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.presupuestosToolStripMenuItem.Text = "Presupuestos";
+            this.remitosToolStripMenuItem.Name = "remitosToolStripMenuItem";
+            this.remitosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.remitosToolStripMenuItem.Text = "Remitos";
+            this.remitosToolStripMenuItem.Click += new System.EventHandler(this.remitosToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -361,5 +370,6 @@
         private System.Windows.Forms.ToolStripMenuItem ventasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem presupuestosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem presupuestosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem remitosToolStripMenuItem;
     }
 }
