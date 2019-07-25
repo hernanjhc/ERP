@@ -244,11 +244,11 @@
     <Compile Include="Forms\Ventas\frmCobrar.Designer.cs">
       <DependentUpon>frmCobrar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Ventas\frmEdicion1.cs">
+    <Compile Include="Forms\Ventas\frmEdicion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Ventas\frmEdicion1.Designer.cs">
-      <DependentUpon>frmEdicion1.cs</DependentUpon>
+    <Compile Include="Forms\Ventas\frmEdicion.Designer.cs">
+      <DependentUpon>frmEdicion.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Ventas\frmListado.cs">
       <SubType>Form</SubType>
@@ -458,8 +458,8 @@
     <EmbeddedResource Include="Forms\Ventas\frmCobrar.resx">
       <DependentUpon>frmCobrar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Ventas\frmEdicion1.resx">
-      <DependentUpon>frmEdicion1.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Ventas\frmEdicion.resx">
+      <DependentUpon>frmEdicion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Ventas\frmListado.resx">
       <DependentUpon>frmListado.cs</DependentUpon>

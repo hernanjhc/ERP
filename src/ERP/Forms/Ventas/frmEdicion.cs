@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace ERP.Forms.Ventas
 {
-    public partial class frmEdicion1 : FormBase
+    public partial class frmEdicion : FormBase
     {
-        public frmEdicion1()
+        public frmEdicion()
         {
             InitializeComponent();
         }

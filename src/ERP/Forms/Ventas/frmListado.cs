@@ -20,7 +20,7 @@ namespace ERP.Forms.Ventas
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            using (var f = new Ventas.frmEdicion1()) f.ShowDialog();
+            using (var f = new Ventas.frmEdicion()) f.ShowDialog();
         }
     }
 }
