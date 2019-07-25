@@ -84,23 +84,23 @@
           <Property Name="IdRubro" Type="int" />
           <Property Name="IdProveedor" Type="int" />
           <Property Name="IdUnidad" Type="int" />
-          <Property Name="CostoInicial" Type="numeric" Precision="17" Scale="2" Nullable="false" />
-          <Property Name="Descuento1" Type="numeric" Precision="17" Scale="2" Nullable="false" />
-          <Property Name="DescuentoPorc1" Type="numeric" Precision="5" Scale="2" />
-          <Property Name="Descuento2" Type="numeric" Precision="17" Scale="2" Nullable="false" />
-          <Property Name="DescuentoPorc2" Type="numeric" Precision="5" Scale="2" />
-          <Property Name="Descuento3" Type="numeric" Precision="17" Scale="2" Nullable="false" />
-          <Property Name="DescuentoPorc3" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="CostoInicial" Type="numeric" Precision="17" Scale="2" />
+          <Property Name="Descuento1" Type="numeric" Precision="17" Scale="2" />
+          <Property Name="DescuentoPorc1" Type="numeric" Precision="3" Scale="2" />
+          <Property Name="Descuento2" Type="numeric" Precision="17" Scale="2" />
+          <Property Name="DescuentoPorc2" Type="numeric" Precision="3" Scale="2" />
+          <Property Name="Descuento3" Type="numeric" Precision="17" Scale="2" />
+          <Property Name="DescuentoPorc3" Type="numeric" Precision="3" Scale="2" />
           <Property Name="Costo" Type="numeric" Precision="17" Scale="2" Nullable="false" />
           <Property Name="Stock" Type="numeric" Precision="17" Scale="2" />
           <Property Name="StockMinimo" Type="numeric" Precision="17" Scale="2" Nullable="false" />
           <Property Name="PrecioL1" Type="numeric" Precision="17" Scale="2" />
-          <Property Name="PrecioPorcL1" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="PrecioPorcL1" Type="numeric" Precision="3" Scale="2" />
           <Property Name="PrecioL2" Type="numeric" Precision="17" Scale="2" />
-          <Property Name="PrecioPorcL2" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="PrecioPorcL2" Type="numeric" Precision="3" Scale="2" />
           <Property Name="PrecioL3" Type="numeric" Precision="17" Scale="2" />
-          <Property Name="PrecioPorcL3" Type="numeric" Precision="5" Scale="2" />
-          <Property Name="IVA" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="PrecioPorcL3" Type="numeric" Precision="3" Scale="2" />
+          <Property Name="IVA" Type="numeric" Precision="3" Scale="2" />
           <Property Name="Observaciones" Type="varchar" MaxLength="100" />
           <Property Name="Estado" Type="int" />
         </EntityType>
@@ -1330,23 +1330,23 @@
           <Property Name="IdRubro" Type="Int32" />
           <Property Name="IdProveedor" Type="Int32" />
           <Property Name="IdUnidad" Type="Int32" />
-          <Property Name="CostoInicial" Type="Decimal" Nullable="false" Precision="17" Scale="2" />
-          <Property Name="Descuento1" Type="Decimal" Nullable="false" Precision="17" Scale="2" />
-          <Property Name="DescuentoPorc1" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="Descuento2" Type="Decimal" Nullable="false" Precision="17" Scale="2" />
-          <Property Name="DescuentoPorc2" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="Descuento3" Type="Decimal" Nullable="false" Precision="17" Scale="2" />
-          <Property Name="DescuentoPorc3" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="CostoInicial" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="Descuento1" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="DescuentoPorc1" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="Descuento2" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="DescuentoPorc2" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="Descuento3" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="DescuentoPorc3" Type="Decimal" Precision="3" Scale="2" />
           <Property Name="Costo" Type="Decimal" Nullable="false" Precision="17" Scale="2" />
           <Property Name="Stock" Type="Decimal" Precision="17" Scale="2" />
           <Property Name="StockMinimo" Type="Decimal" Nullable="false" Precision="17" Scale="2" />
           <Property Name="PrecioL1" Type="Decimal" Precision="17" Scale="2" />
-          <Property Name="PrecioPorcL1" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="PrecioPorcL1" Type="Decimal" Precision="3" Scale="2" />
           <Property Name="PrecioL2" Type="Decimal" Precision="17" Scale="2" />
-          <Property Name="PrecioPorcL2" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="PrecioPorcL2" Type="Decimal" Precision="3" Scale="2" />
           <Property Name="PrecioL3" Type="Decimal" Precision="17" Scale="2" />
-          <Property Name="PrecioPorcL3" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="IVA" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="PrecioPorcL3" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="IVA" Type="Decimal" Precision="3" Scale="2" />
           <Property Name="Observaciones" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Estado" Type="Int32" />
           <NavigationProperty Name="Empresas" Relationship="VentasModel.FK_EArticulos_Empresas" FromRole="EArticulos" ToRole="Empresas" />
