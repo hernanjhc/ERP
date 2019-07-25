@@ -16,6 +16,14 @@ namespace ERP.Forms.Articulos
 {
     public partial class frmEdicion : FormBase
     {
+        decimal _costoInicial;
+        decimal _descuento1;
+        decimal _descuento2;
+        decimal _descuento3;
+        decimal _costo;
+
+        protected FormValidations _validator;
+
         public frmEdicion()
         {
             InitializeComponent();
@@ -33,13 +41,9 @@ namespace ERP.Forms.Articulos
             txtCodigo.Text = articulo.Codigo;
             txtCodBarra.Text = articulo.CodBarra;
             txtDescripcion.Text = articulo.Descripcion;
-            //cbMarca.SelectedIndex = Convert.ToInt16(articulo.IdMarca - 1);
             cbMarca.SelectedIndex = cbMarca.FindString(MarcasRepository.ObtenerMarcaStringPorId(articulo.IdMarca));
-            //cbRubro.SelectedIndex = Convert.ToInt16(articulo.IdRubro - 1);
             cbRubro.SelectedIndex = cbRubro.FindString(RubrosRepository.ObtenerRubroStringPorId(articulo.IdRubro));
-            //cbProveedores.SelectedIndex = Convert.ToInt16(articulo.IdProveedor - 1);
             cbProveedores.SelectedIndex = cbProveedores.FindString(ProveedoresRepository.ObtenerProveedorStringPorID(articulo.IdProveedor));
-            //cbUnidad.SelectedIndex = Convert.ToInt16(articulo.IdUnidad - 1);
             cbUnidad.SelectedIndex = cbUnidad.FindString(UnidadesRepository.ObtenerUnidadStringPorId(articulo.IdUnidad));
             txtCostoInicial.Text = Convert.ToString(articulo.CostoInicial);
             txtDescPorc1.Text = Convert.ToString(articulo.DescuentoPorc1);
@@ -364,42 +368,74 @@ namespace ERP.Forms.Articulos
         {
             if (String.IsNullOrEmpty(txtCostoInicial.Text)) return;
 
-            if (String.IsNullOrEmpty(txtDescPorc1.Text)) return;
-            txtDesc1.Text =
+            if (_validator.ControlVaciosPorCalculos(txtCostoInicial, txtDescPorc1))
+            {
+                txtDesc1.Text =
                 (
                     Math.Round(
                         (Convert.ToDecimal(txtDescPorc1.Text) / 100) *
                         (Convert.ToDecimal(txtCostoInicial.Text))
                     , 2)
                 ).ToString();
+            }
 
-            if (String.IsNullOrEmpty(txtDescPorc2.Text)) return;
-            if (String.IsNullOrEmpty(txtDesc1.Text)) return;
-            txtDesc2.Text =
+            if (_validator.ControlVaciosPorCalculos(txtDescPorc2, txtDesc1))
+            {
+                txtDesc2.Text =
                 (
                     Math.Round(
                         (Convert.ToDecimal(txtDescPorc2.Text) / 100) *
                         (Convert.ToDecimal(txtDesc1.Text))
                     , 2)
                 ).ToString();
+            }
 
-            if (String.IsNullOrEmpty(txtDescPorc3.Text)) return;
-            if (String.IsNullOrEmpty(txtDesc2.Text)) return;
-            txtDesc3.Text =
+            if (_validator.ControlVaciosPorCalculos(txtDescPorc3, txtDesc2))
+            {
+                txtDesc3.Text =
                 (
                     Math.Round(
                         (Convert.ToDecimal(txtDescPorc3.Text) / 100) *
                         (Convert.ToDecimal(txtDesc2.Text))
                     , 2)
                 ).ToString();
+            }
+
+            CalcularCosto();
+        }
+
+        private void CalcularCosto()
+        {
+            _costoInicial = 0;
+            _descuento1 = 0;
+            _descuento2 = 0;
+            _descuento3 = 0;
+            _costo = 0;
+
+            if (_validator.ControlVacio(txtCostoInicial))
+            {
+                _costoInicial = Convert.ToDecimal(txtCostoInicial.Text);
+            }
+
+            if (_validator.ControlVacio(txtDesc1))
+            {
+                _descuento1 = Convert.ToDecimal(txtDesc1.Text);
+            }
+
+            if (_validator.ControlVacio(txtDesc2))
+            {
+                _descuento2 = Convert.ToDecimal(txtDesc2.Text);
+            }
+
+            if (_validator.ControlVacio(txtDesc3))
+            {
+                _descuento3 = Convert.ToDecimal(txtDesc3.Text);
+            }
 
             txtCosto.Text =
                 (
                     Math.Round(
-                        Convert.ToDecimal(txtCostoInicial.Text) -
-                        Convert.ToDecimal(txtDesc1.Text) -
-                        Convert.ToDecimal(txtDesc2.Text) -
-                        Convert.ToDecimal(txtDesc3.Text)
+                        _costo = _costoInicial - _descuento1 - _descuento2 - _descuento3
                     , 2)
                 ).ToString();
         }
@@ -423,44 +459,40 @@ namespace ERP.Forms.Articulos
         {
             if (String.IsNullOrEmpty(txtCostoInicial.Text)) return;
 
-            if (String.IsNullOrEmpty(txtDescPorc1.Text)) return;
-            txtDescPorc1.Text =
+            if (_validator.ControlVaciosPorCalculos(txtCostoInicial, txtDesc1))
+            {
+                txtDescPorc1.Text =
                 (
                     Math.Round(
                         (Convert.ToDecimal(txtDesc1.Text) * 100) /
                         (Convert.ToDecimal(txtCostoInicial.Text))
                         , 2)
                 ).ToString();
+            }
 
-            if (String.IsNullOrEmpty(txtDesc2.Text)) return;
-            if (String.IsNullOrEmpty(txtDesc1.Text)) return;
-            txtDescPorc2.Text =
+            if (_validator.ControlVaciosPorCalculos(txtDesc2, txtDesc1))
+            {
+                txtDescPorc2.Text =
                 (
                     Math.Round(
                         (Convert.ToDecimal(txtDesc2.Text) * 100) /
                         (Convert.ToDecimal(txtDesc1.Text))
                         , 2)
                 ).ToString();
+            }
 
-            if (String.IsNullOrEmpty(txtDesc3.Text)) return;
-            if (String.IsNullOrEmpty(txtDesc2.Text)) return;
-            txtDescPorc3.Text =
+            if (_validator.ControlVaciosPorCalculos(txtDesc3, txtDesc2))
+            {
+                txtDescPorc3.Text =
                 (
                     Math.Round(
                         (Convert.ToDecimal(txtDesc3.Text) * 100) /
                         (Convert.ToDecimal(txtDesc2.Text))
                         , 2)
                 ).ToString();
+            }
 
-            txtCosto.Text =
-                (
-                    Math.Round(
-                        Convert.ToDecimal(txtCostoInicial.Text) -
-                        Convert.ToDecimal(txtDesc1.Text) -
-                        Convert.ToDecimal(txtDesc2.Text) -
-                        Convert.ToDecimal(txtDesc3.Text)
-                    , 2)
-                ).ToString();
+            CalcularCosto();
         }
 
         private void txtDesc1_TextChanged(object sender, EventArgs e)
@@ -476,6 +508,91 @@ namespace ERP.Forms.Articulos
         private void txtDesc3_TextChanged(object sender, EventArgs e)
         {
             CalcularCostoArticulo();
+        }
+
+        private void txtCostoInicial_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            _validator.IngresaDecimal(sender, e);
+        }
+
+        private void txtDescPorc1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            _validator.IngresaDecimal(sender, e);
+        }
+
+        private void txtDesc1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            _validator.IngresaDecimal(sender, e);
+        }
+
+        private void txtDescPorc2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            _validator.IngresaDecimal(sender, e);
+        }
+
+        private void txtDesc2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            _validator.IngresaDecimal(sender, e);
+        }
+
+        private void txtDescPorc3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            _validator.IngresaDecimal(sender, e);
+        }
+
+        private void txtDesc3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            _validator.IngresaDecimal(sender, e);
+        }
+
+        private void txtCosto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            _validator.IngresaDecimal(sender, e);
+        }
+
+        private void txtListaPorc1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            _validator.IngresaDecimal(sender, e);
+        }
+
+        private void txtLista1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            _validator.IngresaDecimal(sender, e);
+        }
+
+        private void txtListaPorc2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            _validator.IngresaDecimal(sender, e);
+        }
+
+        private void txtLista2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            _validator.IngresaDecimal(sender, e);
+        }
+
+        private void txtListaPorc3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            _validator.IngresaDecimal(sender, e);
+        }
+
+        private void txtLista3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            _validator.IngresaDecimal(sender, e);
+        }
+
+        private void txtIVA_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            _validator.IngresaDecimal(sender, e);
+        }
+
+        private void txtStock_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            _validator.IngresaDecimal(sender, e);
+        }
+
+        private void txtStockMinimo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            _validator.IngresaDecimal(sender, e);
         }
     }
 }

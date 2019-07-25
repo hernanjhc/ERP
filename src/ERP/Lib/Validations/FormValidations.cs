@@ -49,8 +49,59 @@ namespace ERP.Lib.Validations
             }
             return result;
         }
-        
-        
+
+        public bool ControlVaciosPorCalculos(MaterialSingleLineTextField txt1, MaterialSkin.Controls.MaterialSingleLineTextField txt2)
+        {
+            if (
+                    String.IsNullOrEmpty(txt1.Text) |
+                    String.IsNullOrEmpty(txt2.Text) |
+                    txt1.Text.Trim() == "," |        //.Contains(",")
+                    txt2.Text.Trim() == ","
+                )
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool ControlVacio(MaterialSingleLineTextField txt1)
+        {
+            if (
+                    String.IsNullOrEmpty(txt1.Text) |
+                    txt1.Text.Trim() == ","
+                )
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public void IngresaDecimal(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == ',')
+            {
+                if (((TextBox)sender).Text.Contains(","))
+                    e.Handled = true;
+                else
+                    e.Handled = false;
+            }
+        }
 
     }
 }

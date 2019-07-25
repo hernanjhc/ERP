@@ -307,6 +307,7 @@
             this.txtStockMinimo.Size = new System.Drawing.Size(91, 23);
             this.txtStockMinimo.TabIndex = 101;
             this.txtStockMinimo.UseSystemPasswordChar = false;
+            this.txtStockMinimo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStockMinimo_KeyPress);
             // 
             // materialLabel23
             // 
@@ -335,6 +336,7 @@
             this.txtStock.Size = new System.Drawing.Size(91, 23);
             this.txtStock.TabIndex = 99;
             this.txtStock.UseSystemPasswordChar = false;
+            this.txtStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStock_KeyPress);
             // 
             // materialLabel21
             // 
@@ -363,6 +365,7 @@
             this.txtIVA.Size = new System.Drawing.Size(49, 23);
             this.txtIVA.TabIndex = 97;
             this.txtIVA.UseSystemPasswordChar = false;
+            this.txtIVA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIVA_KeyPress);
             // 
             // materialLabel22
             // 
@@ -404,6 +407,7 @@
             this.txtLista3.Size = new System.Drawing.Size(57, 23);
             this.txtLista3.TabIndex = 93;
             this.txtLista3.UseSystemPasswordChar = false;
+            this.txtLista3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLista3_KeyPress);
             // 
             // materialLabel25
             // 
@@ -432,6 +436,7 @@
             this.txtListaPorc3.Size = new System.Drawing.Size(30, 23);
             this.txtListaPorc3.TabIndex = 91;
             this.txtListaPorc3.UseSystemPasswordChar = false;
+            this.txtListaPorc3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtListaPorc3_KeyPress);
             // 
             // materialLabel26
             // 
@@ -473,6 +478,7 @@
             this.txtLista2.Size = new System.Drawing.Size(57, 23);
             this.txtLista2.TabIndex = 88;
             this.txtLista2.UseSystemPasswordChar = false;
+            this.txtLista2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLista2_KeyPress);
             // 
             // materialLabel28
             // 
@@ -501,6 +507,7 @@
             this.txtListaPorc2.Size = new System.Drawing.Size(30, 23);
             this.txtListaPorc2.TabIndex = 86;
             this.txtListaPorc2.UseSystemPasswordChar = false;
+            this.txtListaPorc2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtListaPorc2_KeyPress);
             // 
             // materialLabel29
             // 
@@ -542,6 +549,7 @@
             this.txtLista1.Size = new System.Drawing.Size(57, 23);
             this.txtLista1.TabIndex = 83;
             this.txtLista1.UseSystemPasswordChar = false;
+            this.txtLista1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLista1_KeyPress);
             // 
             // materialLabel31
             // 
@@ -570,6 +578,7 @@
             this.txtListaPorc1.Size = new System.Drawing.Size(30, 23);
             this.txtListaPorc1.TabIndex = 81;
             this.txtListaPorc1.UseSystemPasswordChar = false;
+            this.txtListaPorc1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtListaPorc1_KeyPress);
             // 
             // materialLabel32
             // 
@@ -611,6 +620,7 @@
             this.txtCosto.Size = new System.Drawing.Size(59, 23);
             this.txtCosto.TabIndex = 75;
             this.txtCosto.UseSystemPasswordChar = false;
+            this.txtCosto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCosto_KeyPress);
             // 
             // materialLabel20
             // 
@@ -665,6 +675,7 @@
             this.txtDesc3.Size = new System.Drawing.Size(57, 23);
             this.txtDesc3.TabIndex = 71;
             this.txtDesc3.UseSystemPasswordChar = false;
+            this.txtDesc3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDesc3_KeyPress);
             this.txtDesc3.TextChanged += new System.EventHandler(this.txtDesc3_TextChanged);
             // 
             // materialLabel15
@@ -694,6 +705,7 @@
             this.txtDescPorc3.Size = new System.Drawing.Size(30, 23);
             this.txtDescPorc3.TabIndex = 69;
             this.txtDescPorc3.UseSystemPasswordChar = false;
+            this.txtDescPorc3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescPorc3_KeyPress);
             this.txtDescPorc3.TextChanged += new System.EventHandler(this.txtDescPorc3_TextChanged);
             // 
             // materialLabel16
@@ -736,6 +748,7 @@
             this.txtDesc2.Size = new System.Drawing.Size(57, 23);
             this.txtDesc2.TabIndex = 66;
             this.txtDesc2.UseSystemPasswordChar = false;
+            this.txtDesc2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDesc2_KeyPress);
             this.txtDesc2.TextChanged += new System.EventHandler(this.txtDesc2_TextChanged);
             // 
             // materialLabel12
@@ -765,6 +778,7 @@
             this.txtDescPorc2.Size = new System.Drawing.Size(30, 23);
             this.txtDescPorc2.TabIndex = 64;
             this.txtDescPorc2.UseSystemPasswordChar = false;
+            this.txtDescPorc2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescPorc2_KeyPress);
             this.txtDescPorc2.TextChanged += new System.EventHandler(this.txtDescPorc2_TextChanged);
             // 
             // materialLabel13
@@ -807,6 +821,7 @@
             this.txtDesc1.Size = new System.Drawing.Size(57, 23);
             this.txtDesc1.TabIndex = 61;
             this.txtDesc1.UseSystemPasswordChar = false;
+            this.txtDesc1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDesc1_KeyPress);
             this.txtDesc1.TextChanged += new System.EventHandler(this.txtDesc1_TextChanged);
             // 
             // materialLabel9
@@ -836,6 +851,7 @@
             this.txtDescPorc1.Size = new System.Drawing.Size(30, 23);
             this.txtDescPorc1.TabIndex = 59;
             this.txtDescPorc1.UseSystemPasswordChar = false;
+            this.txtDescPorc1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescPorc1_KeyPress);
             this.txtDescPorc1.TextChanged += new System.EventHandler(this.txtDescPorc1_TextChanged);
             // 
             // materialLabel8
@@ -865,6 +881,7 @@
             this.txtCostoInicial.Size = new System.Drawing.Size(59, 23);
             this.txtCostoInicial.TabIndex = 57;
             this.txtCostoInicial.UseSystemPasswordChar = false;
+            this.txtCostoInicial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCostoInicial_KeyPress);
             // 
             // materialLabel7
             // 
