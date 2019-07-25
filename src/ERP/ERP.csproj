@@ -76,6 +76,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Articulos\frmEdicion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Articulos\frmEdicion.Designer.cs">
+      <DependentUpon>frmEdicion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Articulos\frmListado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Articulos\frmListado.Designer.cs">
+      <DependentUpon>frmListado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Clientes\frmEdición.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +154,18 @@
     <Compile Include="Forms\Marcas\frmListado.Designer.cs">
       <DependentUpon>frmListado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Presupuestos\frmEdicion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Presupuestos\frmEdicion.Designer.cs">
+      <DependentUpon>frmEdicion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Presupuestos\frmListado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Presupuestos\frmListado.Designer.cs">
+      <DependentUpon>frmListado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Proveedores\frmEdicion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +176,18 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Proveedores\frmListado.Designer.cs">
+      <DependentUpon>frmListado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Remitos\frmEdicion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Remitos\frmEdicion.Designer.cs">
+      <DependentUpon>frmEdicion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Remitos\frmListado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Remitos\frmListado.Designer.cs">
       <DependentUpon>frmListado.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Rubros\frmEdición.cs">
@@ -200,6 +236,24 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Usuarios\frmListado.Designer.cs">
+      <DependentUpon>frmListado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Ventas\frmCobrar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Ventas\frmCobrar.Designer.cs">
+      <DependentUpon>frmCobrar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Ventas\frmEdicion1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Ventas\frmEdicion1.Designer.cs">
+      <DependentUpon>frmEdicion1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Ventas\frmListado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Ventas\frmListado.Designer.cs">
       <DependentUpon>frmListado.cs</DependentUpon>
     </Compile>
     <Compile Include="Lib\AppForms\FormBase.cs">
@@ -301,6 +355,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Repositories\ArticulosRepository.cs" />
     <Compile Include="Repositories\BarriosRepository.cs" />
     <Compile Include="Repositories\ClientesRepository.cs" />
     <Compile Include="Repositories\DepartamentosRepository.cs" />
@@ -319,6 +374,12 @@
     <Compile Include="Repositories\UnidadesRepository.cs" />
     <Compile Include="Repositories\UsuariosItemsMenuRepository.cs" />
     <Compile Include="Repositories\UsuariosRepository.cs" />
+    <EmbeddedResource Include="Forms\Articulos\frmEdicion.resx">
+      <DependentUpon>frmEdicion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Articulos\frmListado.resx">
+      <DependentUpon>frmListado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Clientes\frmEdición.resx">
       <DependentUpon>frmEdición.cs</DependentUpon>
     </EmbeddedResource>
@@ -352,10 +413,22 @@
     <EmbeddedResource Include="Forms\Marcas\frmListado.resx">
       <DependentUpon>frmListado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Presupuestos\frmEdicion.resx">
+      <DependentUpon>frmEdicion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Presupuestos\frmListado.resx">
+      <DependentUpon>frmListado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Proveedores\frmEdicion.resx">
       <DependentUpon>frmEdicion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Proveedores\frmListado.resx">
+      <DependentUpon>frmListado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Remitos\frmEdicion.resx">
+      <DependentUpon>frmEdicion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Remitos\frmListado.resx">
       <DependentUpon>frmListado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Rubros\frmEdición.resx">
@@ -380,6 +453,15 @@
       <DependentUpon>frmEdición.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Usuarios\frmListado.resx">
+      <DependentUpon>frmListado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Ventas\frmCobrar.resx">
+      <DependentUpon>frmCobrar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Ventas\frmEdicion1.resx">
+      <DependentUpon>frmEdicion1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Ventas\frmListado.resx">
       <DependentUpon>frmListado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
