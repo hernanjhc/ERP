@@ -56,6 +56,14 @@ namespace ERP.Repositories
             }
         }
 
+        internal static string ObtenerUnidadStringPorId(int? idUnidad)
+        {
+            using (var db = new VentasConexión())
+            {
+                return db.Unidades.Find(idUnidad).Unidad;
+            }
+        }
+
         internal static Unidades ObtenerUnidadPorId(int id)
         {
             using (var db = new VentasConexión())

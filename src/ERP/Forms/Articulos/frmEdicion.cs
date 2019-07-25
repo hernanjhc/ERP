@@ -33,10 +33,14 @@ namespace ERP.Forms.Articulos
             txtCodigo.Text = articulo.Codigo;
             txtCodBarra.Text = articulo.CodBarra;
             txtDescripcion.Text = articulo.Descripcion;
-            cbMarca.SelectedIndex = Convert.ToInt16(articulo.IdMarca - 1);
-            cbRubro.SelectedIndex = Convert.ToInt16(articulo.IdRubro - 1);
-            cbProveedores.SelectedIndex = Convert.ToInt16(articulo.IdProveedor - 1);
-            cbUnidad.SelectedIndex = Convert.ToInt16(articulo.IdUnidad - 1);
+            //cbMarca.SelectedIndex = Convert.ToInt16(articulo.IdMarca - 1);
+            cbMarca.SelectedIndex = cbMarca.FindString(MarcasRepository.ObtenerMarcaStringPorId(articulo.IdMarca));
+            //cbRubro.SelectedIndex = Convert.ToInt16(articulo.IdRubro - 1);
+            cbRubro.SelectedIndex = cbRubro.FindString(RubrosRepository.ObtenerRubroStringPorId(articulo.IdRubro));
+            //cbProveedores.SelectedIndex = Convert.ToInt16(articulo.IdProveedor - 1);
+            cbProveedores.SelectedIndex = cbProveedores.FindString(ProveedoresRepository.ObtenerProveedorStringPorID(articulo.IdProveedor));
+            //cbUnidad.SelectedIndex = Convert.ToInt16(articulo.IdUnidad - 1);
+            cbUnidad.SelectedIndex = cbUnidad.FindString(UnidadesRepository.ObtenerUnidadStringPorId(articulo.IdUnidad));
             txtCostoInicial.Text = Convert.ToString(articulo.CostoInicial);
             txtDescPorc1.Text = Convert.ToString(articulo.DescuentoPorc1);
             txtDesc1.Text = Convert.ToString(articulo.Descuento1);
@@ -64,6 +68,25 @@ namespace ERP.Forms.Articulos
             CargaRubros();
             CargaProveedores();
             CargaUnidades();
+            //txtCostoInicial.Text = "0";
+            //txtDesc1.Text = "0";
+            //txtDescPorc1.Text = "0";
+            //txtDesc2.Text = "0";
+            //txtDescPorc2.Text = "0";
+            //txtDesc3.Text = "0";
+            //txtDescPorc3.Text = "0";
+            //txtCosto.Text = "0";
+            //
+            //txtLista1.Text = "0";
+            //txtListaPorc1.Text = "0";
+            //txtLista2.Text = "0";
+            //txtListaPorc2.Text = "0";
+            //txtLista3.Text = "0";
+            //txtListaPorc3.Text = "0";
+
+            txtIVA.Text = "0";
+            txtStock.Text = "0";
+            txtStockMinimo.Text = "0";
         }
 
         private void CargaUnidades()
@@ -335,6 +358,124 @@ namespace ERP.Forms.Articulos
             {
                 DialogResult = DialogResult.OK;
             }
+        }
+
+        private void CalcularCostoArticuloPorcentaje()
+        {
+            if (String.IsNullOrEmpty(txtCostoInicial.Text)) return;
+
+            if (String.IsNullOrEmpty(txtDescPorc1.Text)) return;
+            txtDesc1.Text =
+                (
+                    Math.Round(
+                        (Convert.ToDecimal(txtDescPorc1.Text) / 100) *
+                        (Convert.ToDecimal(txtCostoInicial.Text))
+                    , 2)
+                ).ToString();
+
+            if (String.IsNullOrEmpty(txtDescPorc2.Text)) return;
+            if (String.IsNullOrEmpty(txtDesc1.Text)) return;
+            txtDesc2.Text =
+                (
+                    Math.Round(
+                        (Convert.ToDecimal(txtDescPorc2.Text) / 100) *
+                        (Convert.ToDecimal(txtDesc1.Text))
+                    , 2)
+                ).ToString();
+
+            if (String.IsNullOrEmpty(txtDescPorc3.Text)) return;
+            if (String.IsNullOrEmpty(txtDesc2.Text)) return;
+            txtDesc3.Text =
+                (
+                    Math.Round(
+                        (Convert.ToDecimal(txtDescPorc3.Text) / 100) *
+                        (Convert.ToDecimal(txtDesc2.Text))
+                    , 2)
+                ).ToString();
+
+            txtCosto.Text =
+                (
+                    Math.Round(
+                        Convert.ToDecimal(txtCostoInicial.Text) -
+                        Convert.ToDecimal(txtDesc1.Text) -
+                        Convert.ToDecimal(txtDesc2.Text) -
+                        Convert.ToDecimal(txtDesc3.Text)
+                    , 2)
+                ).ToString();
+        }
+
+        private void txtDescPorc1_TextChanged(object sender, EventArgs e)
+        {
+            CalcularCostoArticuloPorcentaje();
+        }
+
+        private void txtDescPorc2_TextChanged(object sender, EventArgs e)
+        {
+            CalcularCostoArticuloPorcentaje();
+        }
+
+        private void txtDescPorc3_TextChanged(object sender, EventArgs e)
+        {
+            CalcularCostoArticuloPorcentaje();
+        }
+
+        private void CalcularCostoArticulo()
+        {
+            if (String.IsNullOrEmpty(txtCostoInicial.Text)) return;
+
+            if (String.IsNullOrEmpty(txtDescPorc1.Text)) return;
+            txtDescPorc1.Text =
+                (
+                    Math.Round(
+                        (Convert.ToDecimal(txtDesc1.Text) * 100) /
+                        (Convert.ToDecimal(txtCostoInicial.Text))
+                        , 2)
+                ).ToString();
+
+            if (String.IsNullOrEmpty(txtDesc2.Text)) return;
+            if (String.IsNullOrEmpty(txtDesc1.Text)) return;
+            txtDescPorc2.Text =
+                (
+                    Math.Round(
+                        (Convert.ToDecimal(txtDesc2.Text) * 100) /
+                        (Convert.ToDecimal(txtDesc1.Text))
+                        , 2)
+                ).ToString();
+
+            if (String.IsNullOrEmpty(txtDesc3.Text)) return;
+            if (String.IsNullOrEmpty(txtDesc2.Text)) return;
+            txtDescPorc3.Text =
+                (
+                    Math.Round(
+                        (Convert.ToDecimal(txtDesc3.Text) * 100) /
+                        (Convert.ToDecimal(txtDesc2.Text))
+                        , 2)
+                ).ToString();
+
+            txtCosto.Text =
+                (
+                    Math.Round(
+                        Convert.ToDecimal(txtCostoInicial.Text) -
+                        Convert.ToDecimal(txtDesc1.Text) -
+                        Convert.ToDecimal(txtDesc2.Text) -
+                        Convert.ToDecimal(txtDesc3.Text)
+                    , 2)
+                ).ToString();
+        }
+
+        private void txtDesc1_TextChanged(object sender, EventArgs e)
+        {
+            CalcularCostoArticulo();
+        }
+
+        private void txtDesc2_TextChanged(object sender, EventArgs e)
+        {
+            CalcularCostoArticulo();
+        }
+
+        private void txtDesc3_TextChanged(object sender, EventArgs e)
+        {
+            CalcularCostoArticulo();
         }
     }
 }

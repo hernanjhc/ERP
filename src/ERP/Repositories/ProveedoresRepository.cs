@@ -73,6 +73,14 @@ namespace ERP.Repositories
             }
         }
 
+        internal static string ObtenerProveedorStringPorID(int? idProveedor)
+        {
+            using (var db = new VentasConexión())
+            {
+                return db.Proveedores.Find(idProveedor).RazonSocial;
+            }
+        }
+
         internal static Proveedores ObtenerProveedorPorId(decimal id)
         {
             using (var db = new VentasConexión())

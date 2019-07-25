@@ -665,6 +665,7 @@
             this.txtDesc3.Size = new System.Drawing.Size(57, 23);
             this.txtDesc3.TabIndex = 71;
             this.txtDesc3.UseSystemPasswordChar = false;
+            this.txtDesc3.TextChanged += new System.EventHandler(this.txtDesc3_TextChanged);
             // 
             // materialLabel15
             // 
@@ -693,6 +694,7 @@
             this.txtDescPorc3.Size = new System.Drawing.Size(30, 23);
             this.txtDescPorc3.TabIndex = 69;
             this.txtDescPorc3.UseSystemPasswordChar = false;
+            this.txtDescPorc3.TextChanged += new System.EventHandler(this.txtDescPorc3_TextChanged);
             // 
             // materialLabel16
             // 
@@ -734,6 +736,7 @@
             this.txtDesc2.Size = new System.Drawing.Size(57, 23);
             this.txtDesc2.TabIndex = 66;
             this.txtDesc2.UseSystemPasswordChar = false;
+            this.txtDesc2.TextChanged += new System.EventHandler(this.txtDesc2_TextChanged);
             // 
             // materialLabel12
             // 
@@ -762,6 +765,7 @@
             this.txtDescPorc2.Size = new System.Drawing.Size(30, 23);
             this.txtDescPorc2.TabIndex = 64;
             this.txtDescPorc2.UseSystemPasswordChar = false;
+            this.txtDescPorc2.TextChanged += new System.EventHandler(this.txtDescPorc2_TextChanged);
             // 
             // materialLabel13
             // 
@@ -803,6 +807,7 @@
             this.txtDesc1.Size = new System.Drawing.Size(57, 23);
             this.txtDesc1.TabIndex = 61;
             this.txtDesc1.UseSystemPasswordChar = false;
+            this.txtDesc1.TextChanged += new System.EventHandler(this.txtDesc1_TextChanged);
             // 
             // materialLabel9
             // 
@@ -831,6 +836,7 @@
             this.txtDescPorc1.Size = new System.Drawing.Size(30, 23);
             this.txtDescPorc1.TabIndex = 59;
             this.txtDescPorc1.UseSystemPasswordChar = false;
+            this.txtDescPorc1.TextChanged += new System.EventHandler(this.txtDescPorc1_TextChanged);
             // 
             // materialLabel8
             // 

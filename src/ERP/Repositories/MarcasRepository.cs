@@ -54,6 +54,14 @@ namespace ERP.Repositories
             }
         }
 
+        internal static string ObtenerMarcaStringPorId(int? idMarca)
+        {
+            using (var db = new VentasConexión())
+            {
+                return db.EMarcas.Find(idMarca).Marca;
+            }
+        }
+
         internal static EMarcas ObtenerMarcaPorId(int id)
         {
             using (var db = new VentasConexión())

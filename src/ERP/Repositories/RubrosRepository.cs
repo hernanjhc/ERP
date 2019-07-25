@@ -56,6 +56,14 @@ namespace ERP.Repositories
             }
         }
 
+        internal static string ObtenerRubroStringPorId(int? idRubro)
+        {
+            using (var db = new VentasConexión())
+            {
+                return db.ERubros.Find(idRubro).Rubro;
+            }
+        }
+
         internal static ERubros ObtenerRubroPorId(int id)
         {
             using (var db = new VentasConexión())

@@ -239,12 +239,12 @@ namespace ERP.Forms.Articulos
                     try
                     {
                         int IdEmpresa = Lib.Configuration.IdEmpresa;
-                        ArticulosRepository.Actualizar(a.Id, IdEmpresa, a.Codigo, a.CodBarra, a.Descripcion,
-                            a.IdMarca, a.IdRubro, a.IdProveedor, a.IdUnidad, a.CostoInicial,
-                            a.Descuento1, a.DescuentoPorc1, a.Descuento2, a.DescuentoPorc2, a.Descuento3,
-                            a.DescuentoPorc3, a.Costo, a.Stock, a.StockMinimo, a.PrecioL1,
-                            a.PrecioPorcL1, a.PrecioL2, a.PrecioPorcL2, a.PrecioL3, a.PrecioPorcL3,
-                            a.IVA, a.Observaciones, a.Estado);
+                        ArticulosRepository.Actualizar(a.Id, IdEmpresa, f.Codigo, f.CodigoBarra, f.Descripcion,
+                            f.IdMarca, f.IdRubro, f.IdProveedor, f.IdUnidad, f.CostoInicial,
+                            f.Descuento1, f.DescuentoPorc1, f.Descuento2, f.DescuentoPorc2, f.Descuento3,
+                            f.DescuentoPorc3, f.Costo, f.Stock, f.StockMinimo, f.Lista1,
+                            f.ListaPorc1, f.Lista2, f.ListaPorc2, f.Lista3, f.ListaPorc3,
+                            f.IVA, f.Observaciones, f.Estado);
                         ConsultarDatos();
                         dgvDatos.SetRow(r => Convert.ToDecimal(r.Cells[0].Value) == a.Id);
                     }
