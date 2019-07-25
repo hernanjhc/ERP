@@ -59,6 +59,7 @@
             this.ventasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.presupuestosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.remitosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ventasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -301,7 +302,8 @@
             // 
             this.ventasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.presupuestosToolStripMenuItem1,
-            this.remitosToolStripMenuItem});
+            this.remitosToolStripMenuItem,
+            this.ventasToolStripMenuItem1});
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
             this.ventasToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ventasToolStripMenuItem.Text = "Ventas";
@@ -319,6 +321,13 @@
             this.remitosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.remitosToolStripMenuItem.Text = "Remitos";
             this.remitosToolStripMenuItem.Click += new System.EventHandler(this.remitosToolStripMenuItem_Click);
+            // 
+            // ventasToolStripMenuItem1
+            // 
+            this.ventasToolStripMenuItem1.Name = "ventasToolStripMenuItem1";
+            this.ventasToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.ventasToolStripMenuItem1.Text = "Ventas";
+            this.ventasToolStripMenuItem1.Click += new System.EventHandler(this.ventasToolStripMenuItem1_Click);
             // 
             // frmPrincipal
             // 
@@ -371,5 +380,6 @@
         private System.Windows.Forms.ToolStripMenuItem presupuestosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem presupuestosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem remitosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ventasToolStripMenuItem1;
     }
 }

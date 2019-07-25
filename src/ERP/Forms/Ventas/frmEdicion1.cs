@@ -9,19 +9,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ERP.Forms.Remitos
+namespace ERP.Forms.Ventas
 {
-    public partial class frmListado : FormBase
-
+    public partial class frmEdicion1 : FormBase
     {
-        public frmListado()
+        public frmEdicion1()
         {
             InitializeComponent();
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
-
+            using (var f = new Ventas.frmCobrar()) f.ShowDialog();
         }
     }
 }
