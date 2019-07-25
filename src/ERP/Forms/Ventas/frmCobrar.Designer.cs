@@ -34,54 +34,54 @@
             this.Efectivo = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialSingleLineTextField1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtVuelto = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialSingleLineTextField2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtAbonaCon = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.Tarjeta = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialSingleLineTextField3 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtTotalTarjeta = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialSingleLineTextField4 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtRecargoPorc = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbTarjeta = new System.Windows.Forms.ComboBox();
             this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialSingleLineTextField9 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtNroTarjeta = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialSingleLineTextField10 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtMontoTarjeta = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.Cheque = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaVencCheque = new System.Windows.Forms.DateTimePicker();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cbBanco = new System.Windows.Forms.ComboBox();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialSingleLineTextField5 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtNroCheque = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialSingleLineTextField6 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtMontoCheque = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.CtaCorriente = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialSingleLineTextField7 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtSaldoAnterior = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialSingleLineTextField8 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtPagoContado = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialSingleLineTextField11 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtMontoCta = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.materialRaisedButton2 = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnCancelar = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnConfirmar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialLabel19 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialSingleLineTextField16 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtTotal = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel18 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialSingleLineTextField15 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtCtaCorriente = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel15 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialSingleLineTextField12 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtCheque = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialSingleLineTextField13 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtTarjeta = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel17 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialSingleLineTextField14 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtEfectivo = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -154,9 +154,9 @@
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.materialLabel1);
-            this.groupBox1.Controls.Add(this.materialSingleLineTextField1);
+            this.groupBox1.Controls.Add(this.txtVuelto);
             this.groupBox1.Controls.Add(this.materialLabel2);
-            this.groupBox1.Controls.Add(this.materialSingleLineTextField2);
+            this.groupBox1.Controls.Add(this.txtAbonaCon);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Teal;
@@ -180,20 +180,20 @@
             this.materialLabel1.TabIndex = 7;
             this.materialLabel1.Text = "vuelto $";
             // 
-            // materialSingleLineTextField1
+            // txtVuelto
             // 
-            this.materialSingleLineTextField1.Depth = 0;
-            this.materialSingleLineTextField1.Hint = "";
-            this.materialSingleLineTextField1.Location = new System.Drawing.Point(108, 141);
-            this.materialSingleLineTextField1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField1.Name = "materialSingleLineTextField1";
-            this.materialSingleLineTextField1.PasswordChar = '\0';
-            this.materialSingleLineTextField1.SelectedText = "";
-            this.materialSingleLineTextField1.SelectionLength = 0;
-            this.materialSingleLineTextField1.SelectionStart = 0;
-            this.materialSingleLineTextField1.Size = new System.Drawing.Size(97, 23);
-            this.materialSingleLineTextField1.TabIndex = 6;
-            this.materialSingleLineTextField1.UseSystemPasswordChar = false;
+            this.txtVuelto.Depth = 0;
+            this.txtVuelto.Hint = "";
+            this.txtVuelto.Location = new System.Drawing.Point(108, 141);
+            this.txtVuelto.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtVuelto.Name = "txtVuelto";
+            this.txtVuelto.PasswordChar = '\0';
+            this.txtVuelto.SelectedText = "";
+            this.txtVuelto.SelectionLength = 0;
+            this.txtVuelto.SelectionStart = 0;
+            this.txtVuelto.Size = new System.Drawing.Size(97, 23);
+            this.txtVuelto.TabIndex = 6;
+            this.txtVuelto.UseSystemPasswordChar = false;
             // 
             // materialLabel2
             // 
@@ -208,20 +208,20 @@
             this.materialLabel2.TabIndex = 5;
             this.materialLabel2.Text = "Abona con $";
             // 
-            // materialSingleLineTextField2
+            // txtAbonaCon
             // 
-            this.materialSingleLineTextField2.Depth = 0;
-            this.materialSingleLineTextField2.Hint = "";
-            this.materialSingleLineTextField2.Location = new System.Drawing.Point(108, 96);
-            this.materialSingleLineTextField2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField2.Name = "materialSingleLineTextField2";
-            this.materialSingleLineTextField2.PasswordChar = '\0';
-            this.materialSingleLineTextField2.SelectedText = "";
-            this.materialSingleLineTextField2.SelectionLength = 0;
-            this.materialSingleLineTextField2.SelectionStart = 0;
-            this.materialSingleLineTextField2.Size = new System.Drawing.Size(97, 23);
-            this.materialSingleLineTextField2.TabIndex = 4;
-            this.materialSingleLineTextField2.UseSystemPasswordChar = false;
+            this.txtAbonaCon.Depth = 0;
+            this.txtAbonaCon.Hint = "";
+            this.txtAbonaCon.Location = new System.Drawing.Point(108, 96);
+            this.txtAbonaCon.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtAbonaCon.Name = "txtAbonaCon";
+            this.txtAbonaCon.PasswordChar = '\0';
+            this.txtAbonaCon.SelectedText = "";
+            this.txtAbonaCon.SelectionLength = 0;
+            this.txtAbonaCon.SelectionStart = 0;
+            this.txtAbonaCon.Size = new System.Drawing.Size(97, 23);
+            this.txtAbonaCon.TabIndex = 4;
+            this.txtAbonaCon.UseSystemPasswordChar = false;
             // 
             // Tarjeta
             // 
@@ -239,16 +239,16 @@
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
             this.groupBox2.Controls.Add(this.materialLabel3);
-            this.groupBox2.Controls.Add(this.materialSingleLineTextField3);
+            this.groupBox2.Controls.Add(this.txtTotalTarjeta);
             this.groupBox2.Controls.Add(this.materialLabel4);
-            this.groupBox2.Controls.Add(this.materialSingleLineTextField4);
+            this.groupBox2.Controls.Add(this.txtRecargoPorc);
             this.groupBox2.Controls.Add(this.materialDivider1);
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.cbTarjeta);
             this.groupBox2.Controls.Add(this.materialLabel9);
             this.groupBox2.Controls.Add(this.materialLabel10);
-            this.groupBox2.Controls.Add(this.materialSingleLineTextField9);
+            this.groupBox2.Controls.Add(this.txtNroTarjeta);
             this.groupBox2.Controls.Add(this.materialLabel11);
-            this.groupBox2.Controls.Add(this.materialSingleLineTextField10);
+            this.groupBox2.Controls.Add(this.txtMontoTarjeta);
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.Teal;
@@ -272,20 +272,20 @@
             this.materialLabel3.TabIndex = 25;
             this.materialLabel3.Text = "Total $";
             // 
-            // materialSingleLineTextField3
+            // txtTotalTarjeta
             // 
-            this.materialSingleLineTextField3.Depth = 0;
-            this.materialSingleLineTextField3.Hint = "";
-            this.materialSingleLineTextField3.Location = new System.Drawing.Point(111, 233);
-            this.materialSingleLineTextField3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField3.Name = "materialSingleLineTextField3";
-            this.materialSingleLineTextField3.PasswordChar = '\0';
-            this.materialSingleLineTextField3.SelectedText = "";
-            this.materialSingleLineTextField3.SelectionLength = 0;
-            this.materialSingleLineTextField3.SelectionStart = 0;
-            this.materialSingleLineTextField3.Size = new System.Drawing.Size(97, 23);
-            this.materialSingleLineTextField3.TabIndex = 24;
-            this.materialSingleLineTextField3.UseSystemPasswordChar = false;
+            this.txtTotalTarjeta.Depth = 0;
+            this.txtTotalTarjeta.Hint = "";
+            this.txtTotalTarjeta.Location = new System.Drawing.Point(111, 233);
+            this.txtTotalTarjeta.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtTotalTarjeta.Name = "txtTotalTarjeta";
+            this.txtTotalTarjeta.PasswordChar = '\0';
+            this.txtTotalTarjeta.SelectedText = "";
+            this.txtTotalTarjeta.SelectionLength = 0;
+            this.txtTotalTarjeta.SelectionStart = 0;
+            this.txtTotalTarjeta.Size = new System.Drawing.Size(97, 23);
+            this.txtTotalTarjeta.TabIndex = 24;
+            this.txtTotalTarjeta.UseSystemPasswordChar = false;
             // 
             // materialLabel4
             // 
@@ -300,24 +300,24 @@
             this.materialLabel4.TabIndex = 23;
             this.materialLabel4.Text = "Recargo %";
             // 
-            // materialSingleLineTextField4
+            // txtRecargoPorc
             // 
-            this.materialSingleLineTextField4.Depth = 0;
-            this.materialSingleLineTextField4.Hint = "";
-            this.materialSingleLineTextField4.Location = new System.Drawing.Point(111, 194);
-            this.materialSingleLineTextField4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField4.Name = "materialSingleLineTextField4";
-            this.materialSingleLineTextField4.PasswordChar = '\0';
-            this.materialSingleLineTextField4.SelectedText = "";
-            this.materialSingleLineTextField4.SelectionLength = 0;
-            this.materialSingleLineTextField4.SelectionStart = 0;
-            this.materialSingleLineTextField4.Size = new System.Drawing.Size(42, 23);
-            this.materialSingleLineTextField4.TabIndex = 22;
-            this.materialSingleLineTextField4.UseSystemPasswordChar = false;
+            this.txtRecargoPorc.Depth = 0;
+            this.txtRecargoPorc.Hint = "";
+            this.txtRecargoPorc.Location = new System.Drawing.Point(111, 194);
+            this.txtRecargoPorc.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtRecargoPorc.Name = "txtRecargoPorc";
+            this.txtRecargoPorc.PasswordChar = '\0';
+            this.txtRecargoPorc.SelectedText = "";
+            this.txtRecargoPorc.SelectionLength = 0;
+            this.txtRecargoPorc.SelectionStart = 0;
+            this.txtRecargoPorc.Size = new System.Drawing.Size(42, 23);
+            this.txtRecargoPorc.TabIndex = 22;
+            this.txtRecargoPorc.UseSystemPasswordChar = false;
             // 
             // materialDivider1
             // 
-            this.materialDivider1.BackColor = System.Drawing.Color.Teal;
+            this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialDivider1.Depth = 0;
             this.materialDivider1.Location = new System.Drawing.Point(22, 165);
             this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -326,13 +326,13 @@
             this.materialDivider1.TabIndex = 21;
             this.materialDivider1.Text = "materialDivider1";
             // 
-            // comboBox1
+            // cbTarjeta
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(87, 105);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 20;
+            this.cbTarjeta.FormattingEnabled = true;
+            this.cbTarjeta.Location = new System.Drawing.Point(87, 105);
+            this.cbTarjeta.Name = "cbTarjeta";
+            this.cbTarjeta.Size = new System.Drawing.Size(121, 24);
+            this.cbTarjeta.TabIndex = 20;
             // 
             // materialLabel9
             // 
@@ -360,20 +360,20 @@
             this.materialLabel10.TabIndex = 18;
             this.materialLabel10.Text = "Nro";
             // 
-            // materialSingleLineTextField9
+            // txtNroTarjeta
             // 
-            this.materialSingleLineTextField9.Depth = 0;
-            this.materialSingleLineTextField9.Hint = "";
-            this.materialSingleLineTextField9.Location = new System.Drawing.Point(87, 71);
-            this.materialSingleLineTextField9.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField9.Name = "materialSingleLineTextField9";
-            this.materialSingleLineTextField9.PasswordChar = '\0';
-            this.materialSingleLineTextField9.SelectedText = "";
-            this.materialSingleLineTextField9.SelectionLength = 0;
-            this.materialSingleLineTextField9.SelectionStart = 0;
-            this.materialSingleLineTextField9.Size = new System.Drawing.Size(121, 23);
-            this.materialSingleLineTextField9.TabIndex = 17;
-            this.materialSingleLineTextField9.UseSystemPasswordChar = false;
+            this.txtNroTarjeta.Depth = 0;
+            this.txtNroTarjeta.Hint = "";
+            this.txtNroTarjeta.Location = new System.Drawing.Point(87, 71);
+            this.txtNroTarjeta.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtNroTarjeta.Name = "txtNroTarjeta";
+            this.txtNroTarjeta.PasswordChar = '\0';
+            this.txtNroTarjeta.SelectedText = "";
+            this.txtNroTarjeta.SelectionLength = 0;
+            this.txtNroTarjeta.SelectionStart = 0;
+            this.txtNroTarjeta.Size = new System.Drawing.Size(121, 23);
+            this.txtNroTarjeta.TabIndex = 17;
+            this.txtNroTarjeta.UseSystemPasswordChar = false;
             // 
             // materialLabel11
             // 
@@ -388,20 +388,20 @@
             this.materialLabel11.TabIndex = 16;
             this.materialLabel11.Text = "Monto $";
             // 
-            // materialSingleLineTextField10
+            // txtMontoTarjeta
             // 
-            this.materialSingleLineTextField10.Depth = 0;
-            this.materialSingleLineTextField10.Hint = "";
-            this.materialSingleLineTextField10.Location = new System.Drawing.Point(87, 41);
-            this.materialSingleLineTextField10.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField10.Name = "materialSingleLineTextField10";
-            this.materialSingleLineTextField10.PasswordChar = '\0';
-            this.materialSingleLineTextField10.SelectedText = "";
-            this.materialSingleLineTextField10.SelectionLength = 0;
-            this.materialSingleLineTextField10.SelectionStart = 0;
-            this.materialSingleLineTextField10.Size = new System.Drawing.Size(121, 23);
-            this.materialSingleLineTextField10.TabIndex = 15;
-            this.materialSingleLineTextField10.UseSystemPasswordChar = false;
+            this.txtMontoTarjeta.Depth = 0;
+            this.txtMontoTarjeta.Hint = "";
+            this.txtMontoTarjeta.Location = new System.Drawing.Point(87, 41);
+            this.txtMontoTarjeta.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtMontoTarjeta.Name = "txtMontoTarjeta";
+            this.txtMontoTarjeta.PasswordChar = '\0';
+            this.txtMontoTarjeta.SelectedText = "";
+            this.txtMontoTarjeta.SelectionLength = 0;
+            this.txtMontoTarjeta.SelectionStart = 0;
+            this.txtMontoTarjeta.Size = new System.Drawing.Size(121, 23);
+            this.txtMontoTarjeta.TabIndex = 15;
+            this.txtMontoTarjeta.UseSystemPasswordChar = false;
             // 
             // Cheque
             // 
@@ -417,14 +417,14 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.White;
-            this.groupBox3.Controls.Add(this.dateTimePicker1);
+            this.groupBox3.Controls.Add(this.dtpFechaVencCheque);
             this.groupBox3.Controls.Add(this.materialLabel5);
-            this.groupBox3.Controls.Add(this.comboBox2);
+            this.groupBox3.Controls.Add(this.cbBanco);
             this.groupBox3.Controls.Add(this.materialLabel6);
             this.groupBox3.Controls.Add(this.materialLabel12);
-            this.groupBox3.Controls.Add(this.materialSingleLineTextField5);
+            this.groupBox3.Controls.Add(this.txtNroCheque);
             this.groupBox3.Controls.Add(this.materialLabel13);
-            this.groupBox3.Controls.Add(this.materialSingleLineTextField6);
+            this.groupBox3.Controls.Add(this.txtMontoCheque);
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.Teal;
@@ -435,13 +435,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "CHEQUE";
             // 
-            // dateTimePicker1
+            // dtpFechaVencCheque
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(98, 182);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(121, 23);
-            this.dateTimePicker1.TabIndex = 25;
+            this.dtpFechaVencCheque.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaVencCheque.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaVencCheque.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaVencCheque.Location = new System.Drawing.Point(98, 182);
+            this.dtpFechaVencCheque.Name = "dtpFechaVencCheque";
+            this.dtpFechaVencCheque.Size = new System.Drawing.Size(121, 23);
+            this.dtpFechaVencCheque.TabIndex = 25;
             // 
             // materialLabel5
             // 
@@ -456,13 +458,13 @@
             this.materialLabel5.TabIndex = 24;
             this.materialLabel5.Text = "Fecha Venc.";
             // 
-            // comboBox2
+            // cbBanco
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(98, 142);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 24);
-            this.comboBox2.TabIndex = 23;
+            this.cbBanco.FormattingEnabled = true;
+            this.cbBanco.Location = new System.Drawing.Point(98, 142);
+            this.cbBanco.Name = "cbBanco";
+            this.cbBanco.Size = new System.Drawing.Size(121, 24);
+            this.cbBanco.TabIndex = 23;
             // 
             // materialLabel6
             // 
@@ -490,20 +492,20 @@
             this.materialLabel12.TabIndex = 21;
             this.materialLabel12.Text = "Nro";
             // 
-            // materialSingleLineTextField5
+            // txtNroCheque
             // 
-            this.materialSingleLineTextField5.Depth = 0;
-            this.materialSingleLineTextField5.Hint = "";
-            this.materialSingleLineTextField5.Location = new System.Drawing.Point(98, 99);
-            this.materialSingleLineTextField5.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField5.Name = "materialSingleLineTextField5";
-            this.materialSingleLineTextField5.PasswordChar = '\0';
-            this.materialSingleLineTextField5.SelectedText = "";
-            this.materialSingleLineTextField5.SelectionLength = 0;
-            this.materialSingleLineTextField5.SelectionStart = 0;
-            this.materialSingleLineTextField5.Size = new System.Drawing.Size(121, 23);
-            this.materialSingleLineTextField5.TabIndex = 20;
-            this.materialSingleLineTextField5.UseSystemPasswordChar = false;
+            this.txtNroCheque.Depth = 0;
+            this.txtNroCheque.Hint = "";
+            this.txtNroCheque.Location = new System.Drawing.Point(98, 99);
+            this.txtNroCheque.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtNroCheque.Name = "txtNroCheque";
+            this.txtNroCheque.PasswordChar = '\0';
+            this.txtNroCheque.SelectedText = "";
+            this.txtNroCheque.SelectionLength = 0;
+            this.txtNroCheque.SelectionStart = 0;
+            this.txtNroCheque.Size = new System.Drawing.Size(121, 23);
+            this.txtNroCheque.TabIndex = 20;
+            this.txtNroCheque.UseSystemPasswordChar = false;
             // 
             // materialLabel13
             // 
@@ -518,20 +520,20 @@
             this.materialLabel13.TabIndex = 19;
             this.materialLabel13.Text = "Monto $";
             // 
-            // materialSingleLineTextField6
+            // txtMontoCheque
             // 
-            this.materialSingleLineTextField6.Depth = 0;
-            this.materialSingleLineTextField6.Hint = "";
-            this.materialSingleLineTextField6.Location = new System.Drawing.Point(98, 62);
-            this.materialSingleLineTextField6.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField6.Name = "materialSingleLineTextField6";
-            this.materialSingleLineTextField6.PasswordChar = '\0';
-            this.materialSingleLineTextField6.SelectedText = "";
-            this.materialSingleLineTextField6.SelectionLength = 0;
-            this.materialSingleLineTextField6.SelectionStart = 0;
-            this.materialSingleLineTextField6.Size = new System.Drawing.Size(121, 23);
-            this.materialSingleLineTextField6.TabIndex = 18;
-            this.materialSingleLineTextField6.UseSystemPasswordChar = false;
+            this.txtMontoCheque.Depth = 0;
+            this.txtMontoCheque.Hint = "";
+            this.txtMontoCheque.Location = new System.Drawing.Point(98, 62);
+            this.txtMontoCheque.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtMontoCheque.Name = "txtMontoCheque";
+            this.txtMontoCheque.PasswordChar = '\0';
+            this.txtMontoCheque.SelectedText = "";
+            this.txtMontoCheque.SelectionLength = 0;
+            this.txtMontoCheque.SelectionStart = 0;
+            this.txtMontoCheque.Size = new System.Drawing.Size(121, 23);
+            this.txtMontoCheque.TabIndex = 18;
+            this.txtMontoCheque.UseSystemPasswordChar = false;
             // 
             // CtaCorriente
             // 
@@ -548,11 +550,11 @@
             // 
             this.groupBox4.BackColor = System.Drawing.Color.White;
             this.groupBox4.Controls.Add(this.materialLabel7);
-            this.groupBox4.Controls.Add(this.materialSingleLineTextField7);
+            this.groupBox4.Controls.Add(this.txtSaldoAnterior);
             this.groupBox4.Controls.Add(this.materialLabel8);
-            this.groupBox4.Controls.Add(this.materialSingleLineTextField8);
+            this.groupBox4.Controls.Add(this.txtPagoContado);
             this.groupBox4.Controls.Add(this.materialLabel14);
-            this.groupBox4.Controls.Add(this.materialSingleLineTextField11);
+            this.groupBox4.Controls.Add(this.txtMontoCta);
             this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.Teal;
@@ -576,20 +578,20 @@
             this.materialLabel7.TabIndex = 15;
             this.materialLabel7.Text = "Saldo Anterior $";
             // 
-            // materialSingleLineTextField7
+            // txtSaldoAnterior
             // 
-            this.materialSingleLineTextField7.Depth = 0;
-            this.materialSingleLineTextField7.Hint = "";
-            this.materialSingleLineTextField7.Location = new System.Drawing.Point(128, 166);
-            this.materialSingleLineTextField7.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField7.Name = "materialSingleLineTextField7";
-            this.materialSingleLineTextField7.PasswordChar = '\0';
-            this.materialSingleLineTextField7.SelectedText = "";
-            this.materialSingleLineTextField7.SelectionLength = 0;
-            this.materialSingleLineTextField7.SelectionStart = 0;
-            this.materialSingleLineTextField7.Size = new System.Drawing.Size(97, 23);
-            this.materialSingleLineTextField7.TabIndex = 14;
-            this.materialSingleLineTextField7.UseSystemPasswordChar = false;
+            this.txtSaldoAnterior.Depth = 0;
+            this.txtSaldoAnterior.Hint = "";
+            this.txtSaldoAnterior.Location = new System.Drawing.Point(128, 166);
+            this.txtSaldoAnterior.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtSaldoAnterior.Name = "txtSaldoAnterior";
+            this.txtSaldoAnterior.PasswordChar = '\0';
+            this.txtSaldoAnterior.SelectedText = "";
+            this.txtSaldoAnterior.SelectionLength = 0;
+            this.txtSaldoAnterior.SelectionStart = 0;
+            this.txtSaldoAnterior.Size = new System.Drawing.Size(97, 23);
+            this.txtSaldoAnterior.TabIndex = 14;
+            this.txtSaldoAnterior.UseSystemPasswordChar = false;
             // 
             // materialLabel8
             // 
@@ -604,20 +606,20 @@
             this.materialLabel8.TabIndex = 13;
             this.materialLabel8.Text = "Pago Contado $";
             // 
-            // materialSingleLineTextField8
+            // txtPagoContado
             // 
-            this.materialSingleLineTextField8.Depth = 0;
-            this.materialSingleLineTextField8.Hint = "";
-            this.materialSingleLineTextField8.Location = new System.Drawing.Point(128, 119);
-            this.materialSingleLineTextField8.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField8.Name = "materialSingleLineTextField8";
-            this.materialSingleLineTextField8.PasswordChar = '\0';
-            this.materialSingleLineTextField8.SelectedText = "";
-            this.materialSingleLineTextField8.SelectionLength = 0;
-            this.materialSingleLineTextField8.SelectionStart = 0;
-            this.materialSingleLineTextField8.Size = new System.Drawing.Size(97, 23);
-            this.materialSingleLineTextField8.TabIndex = 12;
-            this.materialSingleLineTextField8.UseSystemPasswordChar = false;
+            this.txtPagoContado.Depth = 0;
+            this.txtPagoContado.Hint = "";
+            this.txtPagoContado.Location = new System.Drawing.Point(128, 119);
+            this.txtPagoContado.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtPagoContado.Name = "txtPagoContado";
+            this.txtPagoContado.PasswordChar = '\0';
+            this.txtPagoContado.SelectedText = "";
+            this.txtPagoContado.SelectionLength = 0;
+            this.txtPagoContado.SelectionStart = 0;
+            this.txtPagoContado.Size = new System.Drawing.Size(97, 23);
+            this.txtPagoContado.TabIndex = 12;
+            this.txtPagoContado.UseSystemPasswordChar = false;
             // 
             // materialLabel14
             // 
@@ -632,20 +634,20 @@
             this.materialLabel14.TabIndex = 11;
             this.materialLabel14.Text = "A cta corriente $";
             // 
-            // materialSingleLineTextField11
+            // txtMontoCta
             // 
-            this.materialSingleLineTextField11.Depth = 0;
-            this.materialSingleLineTextField11.Hint = "";
-            this.materialSingleLineTextField11.Location = new System.Drawing.Point(128, 74);
-            this.materialSingleLineTextField11.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField11.Name = "materialSingleLineTextField11";
-            this.materialSingleLineTextField11.PasswordChar = '\0';
-            this.materialSingleLineTextField11.SelectedText = "";
-            this.materialSingleLineTextField11.SelectionLength = 0;
-            this.materialSingleLineTextField11.SelectionStart = 0;
-            this.materialSingleLineTextField11.Size = new System.Drawing.Size(97, 23);
-            this.materialSingleLineTextField11.TabIndex = 10;
-            this.materialSingleLineTextField11.UseSystemPasswordChar = false;
+            this.txtMontoCta.Depth = 0;
+            this.txtMontoCta.Hint = "";
+            this.txtMontoCta.Location = new System.Drawing.Point(128, 74);
+            this.txtMontoCta.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtMontoCta.Name = "txtMontoCta";
+            this.txtMontoCta.PasswordChar = '\0';
+            this.txtMontoCta.SelectedText = "";
+            this.txtMontoCta.SelectionLength = 0;
+            this.txtMontoCta.SelectionStart = 0;
+            this.txtMontoCta.Size = new System.Drawing.Size(97, 23);
+            this.txtMontoCta.TabIndex = 10;
+            this.txtMontoCta.UseSystemPasswordChar = false;
             // 
             // panel2
             // 
@@ -658,47 +660,47 @@
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.materialRaisedButton2);
-            this.panel7.Controls.Add(this.materialRaisedButton1);
+            this.panel7.Controls.Add(this.btnCancelar);
+            this.panel7.Controls.Add(this.btnConfirmar);
             this.panel7.Controls.Add(this.materialLabel19);
-            this.panel7.Controls.Add(this.materialSingleLineTextField16);
+            this.panel7.Controls.Add(this.txtTotal);
             this.panel7.Controls.Add(this.materialLabel18);
-            this.panel7.Controls.Add(this.materialSingleLineTextField15);
+            this.panel7.Controls.Add(this.txtCtaCorriente);
             this.panel7.Controls.Add(this.materialLabel15);
-            this.panel7.Controls.Add(this.materialSingleLineTextField12);
+            this.panel7.Controls.Add(this.txtCheque);
             this.panel7.Controls.Add(this.materialLabel16);
-            this.panel7.Controls.Add(this.materialSingleLineTextField13);
+            this.panel7.Controls.Add(this.txtTarjeta);
             this.panel7.Controls.Add(this.materialLabel17);
-            this.panel7.Controls.Add(this.materialSingleLineTextField14);
+            this.panel7.Controls.Add(this.txtEfectivo);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(0, 0);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(253, 341);
             this.panel7.TabIndex = 0;
             // 
-            // materialRaisedButton2
+            // btnCancelar
             // 
-            this.materialRaisedButton2.Depth = 0;
-            this.materialRaisedButton2.Location = new System.Drawing.Point(138, 290);
-            this.materialRaisedButton2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRaisedButton2.Name = "materialRaisedButton2";
-            this.materialRaisedButton2.Primary = true;
-            this.materialRaisedButton2.Size = new System.Drawing.Size(94, 36);
-            this.materialRaisedButton2.TabIndex = 21;
-            this.materialRaisedButton2.Text = "Cancelar";
-            this.materialRaisedButton2.UseVisualStyleBackColor = true;
+            this.btnCancelar.Depth = 0;
+            this.btnCancelar.Location = new System.Drawing.Point(138, 290);
+            this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Primary = true;
+            this.btnCancelar.Size = new System.Drawing.Size(94, 36);
+            this.btnCancelar.TabIndex = 21;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
-            // materialRaisedButton1
+            // btnConfirmar
             // 
-            this.materialRaisedButton1.Depth = 0;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(28, 290);
-            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRaisedButton1.Name = "materialRaisedButton1";
-            this.materialRaisedButton1.Primary = true;
-            this.materialRaisedButton1.Size = new System.Drawing.Size(94, 36);
-            this.materialRaisedButton1.TabIndex = 20;
-            this.materialRaisedButton1.Text = "Confirmar";
-            this.materialRaisedButton1.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Depth = 0;
+            this.btnConfirmar.Location = new System.Drawing.Point(28, 290);
+            this.btnConfirmar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnConfirmar.Name = "btnConfirmar";
+            this.btnConfirmar.Primary = true;
+            this.btnConfirmar.Size = new System.Drawing.Size(94, 36);
+            this.btnConfirmar.TabIndex = 20;
+            this.btnConfirmar.Text = "Confirmar";
+            this.btnConfirmar.UseVisualStyleBackColor = true;
             // 
             // materialLabel19
             // 
@@ -713,22 +715,22 @@
             this.materialLabel19.TabIndex = 19;
             this.materialLabel19.Text = "TOTAL $";
             // 
-            // materialSingleLineTextField16
+            // txtTotal
             // 
-            this.materialSingleLineTextField16.Depth = 0;
-            this.materialSingleLineTextField16.Enabled = false;
-            this.materialSingleLineTextField16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.materialSingleLineTextField16.Hint = "";
-            this.materialSingleLineTextField16.Location = new System.Drawing.Point(141, 218);
-            this.materialSingleLineTextField16.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField16.Name = "materialSingleLineTextField16";
-            this.materialSingleLineTextField16.PasswordChar = '\0';
-            this.materialSingleLineTextField16.SelectedText = "";
-            this.materialSingleLineTextField16.SelectionLength = 0;
-            this.materialSingleLineTextField16.SelectionStart = 0;
-            this.materialSingleLineTextField16.Size = new System.Drawing.Size(97, 23);
-            this.materialSingleLineTextField16.TabIndex = 18;
-            this.materialSingleLineTextField16.UseSystemPasswordChar = false;
+            this.txtTotal.Depth = 0;
+            this.txtTotal.Enabled = false;
+            this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.Hint = "";
+            this.txtTotal.Location = new System.Drawing.Point(141, 218);
+            this.txtTotal.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.PasswordChar = '\0';
+            this.txtTotal.SelectedText = "";
+            this.txtTotal.SelectionLength = 0;
+            this.txtTotal.SelectionStart = 0;
+            this.txtTotal.Size = new System.Drawing.Size(97, 23);
+            this.txtTotal.TabIndex = 18;
+            this.txtTotal.UseSystemPasswordChar = false;
             // 
             // materialLabel18
             // 
@@ -743,21 +745,21 @@
             this.materialLabel18.TabIndex = 17;
             this.materialLabel18.Text = "A cta Corriente $";
             // 
-            // materialSingleLineTextField15
+            // txtCtaCorriente
             // 
-            this.materialSingleLineTextField15.Depth = 0;
-            this.materialSingleLineTextField15.Enabled = false;
-            this.materialSingleLineTextField15.Hint = "";
-            this.materialSingleLineTextField15.Location = new System.Drawing.Point(141, 142);
-            this.materialSingleLineTextField15.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField15.Name = "materialSingleLineTextField15";
-            this.materialSingleLineTextField15.PasswordChar = '\0';
-            this.materialSingleLineTextField15.SelectedText = "";
-            this.materialSingleLineTextField15.SelectionLength = 0;
-            this.materialSingleLineTextField15.SelectionStart = 0;
-            this.materialSingleLineTextField15.Size = new System.Drawing.Size(97, 23);
-            this.materialSingleLineTextField15.TabIndex = 16;
-            this.materialSingleLineTextField15.UseSystemPasswordChar = false;
+            this.txtCtaCorriente.Depth = 0;
+            this.txtCtaCorriente.Enabled = false;
+            this.txtCtaCorriente.Hint = "";
+            this.txtCtaCorriente.Location = new System.Drawing.Point(141, 142);
+            this.txtCtaCorriente.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtCtaCorriente.Name = "txtCtaCorriente";
+            this.txtCtaCorriente.PasswordChar = '\0';
+            this.txtCtaCorriente.SelectedText = "";
+            this.txtCtaCorriente.SelectionLength = 0;
+            this.txtCtaCorriente.SelectionStart = 0;
+            this.txtCtaCorriente.Size = new System.Drawing.Size(97, 23);
+            this.txtCtaCorriente.TabIndex = 16;
+            this.txtCtaCorriente.UseSystemPasswordChar = false;
             // 
             // materialLabel15
             // 
@@ -772,21 +774,21 @@
             this.materialLabel15.TabIndex = 15;
             this.materialLabel15.Text = "Cheque $";
             // 
-            // materialSingleLineTextField12
+            // txtCheque
             // 
-            this.materialSingleLineTextField12.Depth = 0;
-            this.materialSingleLineTextField12.Enabled = false;
-            this.materialSingleLineTextField12.Hint = "";
-            this.materialSingleLineTextField12.Location = new System.Drawing.Point(141, 101);
-            this.materialSingleLineTextField12.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField12.Name = "materialSingleLineTextField12";
-            this.materialSingleLineTextField12.PasswordChar = '\0';
-            this.materialSingleLineTextField12.SelectedText = "";
-            this.materialSingleLineTextField12.SelectionLength = 0;
-            this.materialSingleLineTextField12.SelectionStart = 0;
-            this.materialSingleLineTextField12.Size = new System.Drawing.Size(97, 23);
-            this.materialSingleLineTextField12.TabIndex = 14;
-            this.materialSingleLineTextField12.UseSystemPasswordChar = false;
+            this.txtCheque.Depth = 0;
+            this.txtCheque.Enabled = false;
+            this.txtCheque.Hint = "";
+            this.txtCheque.Location = new System.Drawing.Point(141, 101);
+            this.txtCheque.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtCheque.Name = "txtCheque";
+            this.txtCheque.PasswordChar = '\0';
+            this.txtCheque.SelectedText = "";
+            this.txtCheque.SelectionLength = 0;
+            this.txtCheque.SelectionStart = 0;
+            this.txtCheque.Size = new System.Drawing.Size(97, 23);
+            this.txtCheque.TabIndex = 14;
+            this.txtCheque.UseSystemPasswordChar = false;
             // 
             // materialLabel16
             // 
@@ -801,21 +803,21 @@
             this.materialLabel16.TabIndex = 13;
             this.materialLabel16.Text = "Tarjeta $";
             // 
-            // materialSingleLineTextField13
+            // txtTarjeta
             // 
-            this.materialSingleLineTextField13.Depth = 0;
-            this.materialSingleLineTextField13.Enabled = false;
-            this.materialSingleLineTextField13.Hint = "";
-            this.materialSingleLineTextField13.Location = new System.Drawing.Point(141, 60);
-            this.materialSingleLineTextField13.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField13.Name = "materialSingleLineTextField13";
-            this.materialSingleLineTextField13.PasswordChar = '\0';
-            this.materialSingleLineTextField13.SelectedText = "";
-            this.materialSingleLineTextField13.SelectionLength = 0;
-            this.materialSingleLineTextField13.SelectionStart = 0;
-            this.materialSingleLineTextField13.Size = new System.Drawing.Size(97, 23);
-            this.materialSingleLineTextField13.TabIndex = 12;
-            this.materialSingleLineTextField13.UseSystemPasswordChar = false;
+            this.txtTarjeta.Depth = 0;
+            this.txtTarjeta.Enabled = false;
+            this.txtTarjeta.Hint = "";
+            this.txtTarjeta.Location = new System.Drawing.Point(141, 60);
+            this.txtTarjeta.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtTarjeta.Name = "txtTarjeta";
+            this.txtTarjeta.PasswordChar = '\0';
+            this.txtTarjeta.SelectedText = "";
+            this.txtTarjeta.SelectionLength = 0;
+            this.txtTarjeta.SelectionStart = 0;
+            this.txtTarjeta.Size = new System.Drawing.Size(97, 23);
+            this.txtTarjeta.TabIndex = 12;
+            this.txtTarjeta.UseSystemPasswordChar = false;
             // 
             // materialLabel17
             // 
@@ -830,21 +832,21 @@
             this.materialLabel17.TabIndex = 11;
             this.materialLabel17.Text = "Efectivo $";
             // 
-            // materialSingleLineTextField14
+            // txtEfectivo
             // 
-            this.materialSingleLineTextField14.Depth = 0;
-            this.materialSingleLineTextField14.Enabled = false;
-            this.materialSingleLineTextField14.Hint = "";
-            this.materialSingleLineTextField14.Location = new System.Drawing.Point(141, 25);
-            this.materialSingleLineTextField14.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField14.Name = "materialSingleLineTextField14";
-            this.materialSingleLineTextField14.PasswordChar = '\0';
-            this.materialSingleLineTextField14.SelectedText = "";
-            this.materialSingleLineTextField14.SelectionLength = 0;
-            this.materialSingleLineTextField14.SelectionStart = 0;
-            this.materialSingleLineTextField14.Size = new System.Drawing.Size(97, 23);
-            this.materialSingleLineTextField14.TabIndex = 10;
-            this.materialSingleLineTextField14.UseSystemPasswordChar = false;
+            this.txtEfectivo.Depth = 0;
+            this.txtEfectivo.Enabled = false;
+            this.txtEfectivo.Hint = "";
+            this.txtEfectivo.Location = new System.Drawing.Point(141, 25);
+            this.txtEfectivo.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtEfectivo.Name = "txtEfectivo";
+            this.txtEfectivo.PasswordChar = '\0';
+            this.txtEfectivo.SelectedText = "";
+            this.txtEfectivo.SelectionLength = 0;
+            this.txtEfectivo.SelectionStart = 0;
+            this.txtEfectivo.Size = new System.Drawing.Size(97, 23);
+            this.txtEfectivo.TabIndex = 10;
+            this.txtEfectivo.UseSystemPasswordChar = false;
             // 
             // frmCobrar
             // 
@@ -881,55 +883,55 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel7;
-        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton2;
-        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
+        private MaterialSkin.Controls.MaterialRaisedButton btnCancelar;
+        private MaterialSkin.Controls.MaterialRaisedButton btnConfirmar;
         private MaterialSkin.Controls.MaterialLabel materialLabel19;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField16;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtTotal;
         private MaterialSkin.Controls.MaterialLabel materialLabel18;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField15;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtCtaCorriente;
         private MaterialSkin.Controls.MaterialLabel materialLabel15;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField12;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtCheque;
         private MaterialSkin.Controls.MaterialLabel materialLabel16;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField13;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtTarjeta;
         private MaterialSkin.Controls.MaterialLabel materialLabel17;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField14;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtEfectivo;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage Efectivo;
         private System.Windows.Forms.TabPage Tarjeta;
         private System.Windows.Forms.GroupBox groupBox1;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField1;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtVuelto;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField2;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtAbonaCon;
         private System.Windows.Forms.GroupBox groupBox2;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField3;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtTotalTarjeta;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField4;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtRecargoPorc;
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbTarjeta;
         private MaterialSkin.Controls.MaterialLabel materialLabel9;
         private MaterialSkin.Controls.MaterialLabel materialLabel10;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField9;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtNroTarjeta;
         private MaterialSkin.Controls.MaterialLabel materialLabel11;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField10;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtMontoTarjeta;
         private System.Windows.Forms.TabPage Cheque;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpFechaVencCheque;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbBanco;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
         private MaterialSkin.Controls.MaterialLabel materialLabel12;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField5;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtNroCheque;
         private MaterialSkin.Controls.MaterialLabel materialLabel13;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField6;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtMontoCheque;
         private System.Windows.Forms.TabPage CtaCorriente;
         private System.Windows.Forms.GroupBox groupBox4;
         private MaterialSkin.Controls.MaterialLabel materialLabel7;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField7;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtSaldoAnterior;
         private MaterialSkin.Controls.MaterialLabel materialLabel8;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField8;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtPagoContado;
         private MaterialSkin.Controls.MaterialLabel materialLabel14;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField11;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtMontoCta;
     }
 }

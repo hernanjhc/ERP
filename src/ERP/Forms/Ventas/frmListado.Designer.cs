@@ -62,12 +62,8 @@
             this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.materialSingleLineTextField9 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
             this.materialSingleLineTextField10 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.materialLabel17 = new MaterialSkin.Controls.MaterialLabel();
             this.materialSingleLineTextField8 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
             this.materialSingleLineTextField7 = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -437,7 +433,7 @@
             this.materialSingleLineTextField5.Depth = 0;
             this.materialSingleLineTextField5.Enabled = false;
             this.materialSingleLineTextField5.Hint = "";
-            this.materialSingleLineTextField5.Location = new System.Drawing.Point(73, 3);
+            this.materialSingleLineTextField5.Location = new System.Drawing.Point(79, 3);
             this.materialSingleLineTextField5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialSingleLineTextField5.Name = "materialSingleLineTextField5";
             this.materialSingleLineTextField5.PasswordChar = '\0';
@@ -457,9 +453,9 @@
             this.materialLabel14.Location = new System.Drawing.Point(6, 8);
             this.materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel14.Name = "materialLabel14";
-            this.materialLabel14.Size = new System.Drawing.Size(61, 19);
+            this.materialLabel14.Size = new System.Drawing.Size(74, 19);
             this.materialLabel14.TabIndex = 15;
-            this.materialLabel14.Text = "Remito:";
+            this.materialLabel14.Text = "Venta Nº:";
             // 
             // materialSingleLineTextField1
             // 
@@ -544,12 +540,8 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.materialSingleLineTextField9);
-            this.panel4.Controls.Add(this.materialLabel16);
             this.panel4.Controls.Add(this.materialSingleLineTextField10);
             this.panel4.Controls.Add(this.materialLabel8);
-            this.panel4.Controls.Add(this.comboBox3);
-            this.panel4.Controls.Add(this.materialLabel17);
             this.panel4.Controls.Add(this.materialSingleLineTextField8);
             this.panel4.Controls.Add(this.materialLabel7);
             this.panel4.Controls.Add(this.materialSingleLineTextField7);
@@ -562,34 +554,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(971, 198);
             this.panel4.TabIndex = 1;
-            // 
-            // materialSingleLineTextField9
-            // 
-            this.materialSingleLineTextField9.Depth = 0;
-            this.materialSingleLineTextField9.Hint = "";
-            this.materialSingleLineTextField9.Location = new System.Drawing.Point(873, 135);
-            this.materialSingleLineTextField9.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField9.Name = "materialSingleLineTextField9";
-            this.materialSingleLineTextField9.PasswordChar = '\0';
-            this.materialSingleLineTextField9.SelectedText = "";
-            this.materialSingleLineTextField9.SelectionLength = 0;
-            this.materialSingleLineTextField9.SelectionStart = 0;
-            this.materialSingleLineTextField9.Size = new System.Drawing.Size(84, 23);
-            this.materialSingleLineTextField9.TabIndex = 29;
-            this.materialSingleLineTextField9.UseSystemPasswordChar = false;
-            // 
-            // materialLabel16
-            // 
-            this.materialLabel16.AutoSize = true;
-            this.materialLabel16.Depth = 0;
-            this.materialLabel16.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel16.Location = new System.Drawing.Point(821, 139);
-            this.materialLabel16.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel16.Name = "materialLabel16";
-            this.materialLabel16.Size = new System.Drawing.Size(45, 19);
-            this.materialLabel16.TabIndex = 28;
-            this.materialLabel16.Text = "IVA $";
             // 
             // materialSingleLineTextField10
             // 
@@ -619,31 +583,6 @@
             this.materialLabel8.TabIndex = 26;
             this.materialLabel8.Text = "Descuento $";
             // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "10,5",
-            "21"});
-            this.comboBox3.Location = new System.Drawing.Point(883, 37);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(51, 21);
-            this.comboBox3.TabIndex = 25;
-            this.comboBox3.Text = "21";
-            // 
-            // materialLabel17
-            // 
-            this.materialLabel17.AutoSize = true;
-            this.materialLabel17.Depth = 0;
-            this.materialLabel17.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel17.Location = new System.Drawing.Point(829, 37);
-            this.materialLabel17.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel17.Name = "materialLabel17";
-            this.materialLabel17.Size = new System.Drawing.Size(48, 19);
-            this.materialLabel17.TabIndex = 24;
-            this.materialLabel17.Text = "IVA %";
-            // 
             // materialSingleLineTextField8
             // 
             this.materialSingleLineTextField8.Depth = 0;
@@ -664,12 +603,12 @@
             // 
             this.materialLabel7.AutoSize = true;
             this.materialLabel7.Depth = 0;
-            this.materialLabel7.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel7.Location = new System.Drawing.Point(810, 171);
             this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel7.Name = "materialLabel7";
-            this.materialLabel7.Size = new System.Drawing.Size(56, 19);
+            this.materialLabel7.Size = new System.Drawing.Size(60, 18);
             this.materialLabel7.TabIndex = 11;
             this.materialLabel7.Text = "Total $";
             // 
@@ -705,7 +644,7 @@
             // 
             this.materialSingleLineTextField6.Depth = 0;
             this.materialSingleLineTextField6.Hint = "";
-            this.materialSingleLineTextField6.Location = new System.Drawing.Point(879, 6);
+            this.materialSingleLineTextField6.Location = new System.Drawing.Point(879, 17);
             this.materialSingleLineTextField6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialSingleLineTextField6.Name = "materialSingleLineTextField6";
             this.materialSingleLineTextField6.PasswordChar = '\0';
@@ -722,7 +661,7 @@
             this.materialLabel5.Depth = 0;
             this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel5.Location = new System.Drawing.Point(781, 11);
+            this.materialLabel5.Location = new System.Drawing.Point(774, 21);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
             this.materialLabel5.Size = new System.Drawing.Size(96, 19);
@@ -816,10 +755,6 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField6;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private CustomLibrary.ComponentModel.CustomDataGridView customDataGridView2;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private MaterialSkin.Controls.MaterialLabel materialLabel17;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField9;
-        private MaterialSkin.Controls.MaterialLabel materialLabel16;
         private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField10;
         private MaterialSkin.Controls.MaterialLabel materialLabel8;
     }
