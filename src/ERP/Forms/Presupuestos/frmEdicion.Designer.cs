@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEdicion));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
+            this.txtValidez = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.txtVendedor = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtCuit = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -91,6 +94,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.materialLabel13);
+            this.groupBox1.Controls.Add(this.txtValidez);
+            this.groupBox1.Controls.Add(this.materialLabel12);
             this.groupBox1.Controls.Add(this.materialDivider1);
             this.groupBox1.Controls.Add(this.txtVendedor);
             this.groupBox1.Controls.Add(this.txtCuit);
@@ -117,6 +123,47 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "General";
+            // 
+            // materialLabel13
+            // 
+            this.materialLabel13.AutoSize = true;
+            this.materialLabel13.Depth = 0;
+            this.materialLabel13.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel13.Location = new System.Drawing.Point(415, 108);
+            this.materialLabel13.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel13.Name = "materialLabel13";
+            this.materialLabel13.Size = new System.Drawing.Size(37, 19);
+            this.materialLabel13.TabIndex = 18;
+            this.materialLabel13.Text = "dias";
+            // 
+            // txtValidez
+            // 
+            this.txtValidez.Depth = 0;
+            this.txtValidez.Hint = "";
+            this.txtValidez.Location = new System.Drawing.Point(344, 104);
+            this.txtValidez.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtValidez.Name = "txtValidez";
+            this.txtValidez.PasswordChar = '\0';
+            this.txtValidez.SelectedText = "";
+            this.txtValidez.SelectionLength = 0;
+            this.txtValidez.SelectionStart = 0;
+            this.txtValidez.Size = new System.Drawing.Size(65, 23);
+            this.txtValidez.TabIndex = 4;
+            this.txtValidez.UseSystemPasswordChar = false;
+            // 
+            // materialLabel12
+            // 
+            this.materialLabel12.AutoSize = true;
+            this.materialLabel12.Depth = 0;
+            this.materialLabel12.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel12.Location = new System.Drawing.Point(281, 109);
+            this.materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel12.Name = "materialLabel12";
+            this.materialLabel12.Size = new System.Drawing.Size(62, 19);
+            this.materialLabel12.TabIndex = 16;
+            this.materialLabel12.Text = "Validez:";
             // 
             // materialDivider1
             // 
@@ -148,6 +195,7 @@
             // txtCuit
             // 
             this.txtCuit.Depth = 0;
+            this.txtCuit.Enabled = false;
             this.txtCuit.Hint = "";
             this.txtCuit.Location = new System.Drawing.Point(590, 106);
             this.txtCuit.MouseState = MaterialSkin.MouseState.HOVER;
@@ -189,6 +237,7 @@
             // txtLocalidad
             // 
             this.txtLocalidad.Depth = 0;
+            this.txtLocalidad.Enabled = false;
             this.txtLocalidad.Hint = "";
             this.txtLocalidad.Location = new System.Drawing.Point(590, 77);
             this.txtLocalidad.MouseState = MaterialSkin.MouseState.HOVER;
@@ -226,7 +275,7 @@
             this.txtPresupuestoNro.SelectionLength = 0;
             this.txtPresupuestoNro.SelectionStart = 0;
             this.txtPresupuestoNro.Size = new System.Drawing.Size(145, 23);
-            this.txtPresupuestoNro.TabIndex = 10;
+            this.txtPresupuestoNro.TabIndex = 1;
             this.txtPresupuestoNro.UseSystemPasswordChar = false;
             // 
             // materialLabel5
@@ -245,6 +294,7 @@
             // txtDireccion
             // 
             this.txtDireccion.Depth = 0;
+            this.txtDireccion.Enabled = false;
             this.txtDireccion.Hint = "";
             this.txtDireccion.Location = new System.Drawing.Point(590, 48);
             this.txtDireccion.MouseState = MaterialSkin.MouseState.HOVER;
@@ -325,10 +375,10 @@
             // 
             this.dtpFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(338, 67);
+            this.dtpFecha.Location = new System.Drawing.Point(344, 67);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(107, 20);
-            this.dtpFecha.TabIndex = 1;
+            this.dtpFecha.TabIndex = 2;
             // 
             // materialLabel1
             // 
@@ -377,7 +427,7 @@
             this.txtDescuento.SelectionLength = 0;
             this.txtDescuento.SelectionStart = 0;
             this.txtDescuento.Size = new System.Drawing.Size(71, 23);
-            this.txtDescuento.TabIndex = 17;
+            this.txtDescuento.TabIndex = 8;
             this.txtDescuento.UseSystemPasswordChar = false;
             // 
             // materialLabel8
@@ -396,6 +446,8 @@
             // txtTotal
             // 
             this.txtTotal.Depth = 0;
+            this.txtTotal.Enabled = false;
+            this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotal.Hint = "";
             this.txtTotal.Location = new System.Drawing.Point(705, 410);
             this.txtTotal.MouseState = MaterialSkin.MouseState.HOVER;
@@ -424,6 +476,7 @@
             // txtsubtotal
             // 
             this.txtsubtotal.Depth = 0;
+            this.txtsubtotal.Enabled = false;
             this.txtsubtotal.Hint = "";
             this.txtsubtotal.Location = new System.Drawing.Point(705, 381);
             this.txtsubtotal.MouseState = MaterialSkin.MouseState.HOVER;
@@ -433,7 +486,7 @@
             this.txtsubtotal.SelectionLength = 0;
             this.txtsubtotal.SelectionStart = 0;
             this.txtsubtotal.Size = new System.Drawing.Size(129, 23);
-            this.txtsubtotal.TabIndex = 13;
+            this.txtsubtotal.TabIndex = 8;
             this.txtsubtotal.UseSystemPasswordChar = false;
             // 
             // materialLabel6
@@ -507,7 +560,7 @@
             this.btnArticuloNuevo.Location = new System.Drawing.Point(380, 31);
             this.btnArticuloNuevo.Name = "btnArticuloNuevo";
             this.btnArticuloNuevo.Size = new System.Drawing.Size(31, 25);
-            this.btnArticuloNuevo.TabIndex = 8;
+            this.btnArticuloNuevo.TabIndex = 7;
             this.btnArticuloNuevo.UseVisualStyleBackColor = true;
             // 
             // cbArticulos
@@ -516,7 +569,7 @@
             this.cbArticulos.Location = new System.Drawing.Point(130, 33);
             this.cbArticulos.Name = "cbArticulos";
             this.cbArticulos.Size = new System.Drawing.Size(244, 21);
-            this.cbArticulos.TabIndex = 7;
+            this.cbArticulos.TabIndex = 6;
             // 
             // panel1
             // 
@@ -536,7 +589,7 @@
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Primary = true;
             this.btnCancelar.Size = new System.Drawing.Size(124, 31);
-            this.btnCancelar.TabIndex = 1;
+            this.btnCancelar.TabIndex = 10;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
@@ -548,7 +601,7 @@
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Primary = true;
             this.btnGuardar.Size = new System.Drawing.Size(124, 31);
-            this.btnGuardar.TabIndex = 0;
+            this.btnGuardar.TabIndex = 9;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             // 
@@ -608,5 +661,8 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel11;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtLocalidad;
         private MaterialSkin.Controls.MaterialLabel materialLabel10;
+        private MaterialSkin.Controls.MaterialLabel materialLabel13;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtValidez;
+        private MaterialSkin.Controls.MaterialLabel materialLabel12;
     }
 }

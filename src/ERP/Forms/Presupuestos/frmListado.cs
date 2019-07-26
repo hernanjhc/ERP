@@ -17,14 +17,18 @@ namespace ERP.Forms.Presupuestos
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnNuevo_Click(object sender, EventArgs e)
+             
+        private void btnNuevo_Click_1(object sender, EventArgs e)
         {
             using (var f = new Presupuestos.frmEdicion()) f.ShowDialog();
         }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Close();
+
+        }
+
+      
     }
 }

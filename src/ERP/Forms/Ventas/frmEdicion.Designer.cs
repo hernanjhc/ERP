@@ -134,7 +134,7 @@
             this.txtVentaNro.SelectionLength = 0;
             this.txtVentaNro.SelectionStart = 0;
             this.txtVentaNro.Size = new System.Drawing.Size(95, 23);
-            this.txtVentaNro.TabIndex = 24;
+            this.txtVentaNro.TabIndex = 21;
             this.txtVentaNro.UseSystemPasswordChar = false;
             // 
             // materialLabel5
@@ -174,12 +174,13 @@
             this.txtVendedor.SelectionLength = 0;
             this.txtVendedor.SelectionStart = 0;
             this.txtVendedor.Size = new System.Drawing.Size(174, 23);
-            this.txtVendedor.TabIndex = 12;
+            this.txtVendedor.TabIndex = 20;
             this.txtVendedor.UseSystemPasswordChar = false;
             // 
             // txtCuit
             // 
             this.txtCuit.Depth = 0;
+            this.txtCuit.Enabled = false;
             this.txtCuit.Hint = "";
             this.txtCuit.Location = new System.Drawing.Point(528, 111);
             this.txtCuit.MouseState = MaterialSkin.MouseState.HOVER;
@@ -189,7 +190,7 @@
             this.txtCuit.SelectionLength = 0;
             this.txtCuit.SelectionStart = 0;
             this.txtCuit.Size = new System.Drawing.Size(247, 23);
-            this.txtCuit.TabIndex = 14;
+            this.txtCuit.TabIndex = 24;
             this.txtCuit.UseSystemPasswordChar = false;
             // 
             // materialLabel9
@@ -221,6 +222,7 @@
             // txtLocalidad
             // 
             this.txtLocalidad.Depth = 0;
+            this.txtLocalidad.Enabled = false;
             this.txtLocalidad.Hint = "";
             this.txtLocalidad.Location = new System.Drawing.Point(528, 82);
             this.txtLocalidad.MouseState = MaterialSkin.MouseState.HOVER;
@@ -230,7 +232,7 @@
             this.txtLocalidad.SelectionLength = 0;
             this.txtLocalidad.SelectionStart = 0;
             this.txtLocalidad.Size = new System.Drawing.Size(247, 23);
-            this.txtLocalidad.TabIndex = 12;
+            this.txtLocalidad.TabIndex = 23;
             this.txtLocalidad.UseSystemPasswordChar = false;
             // 
             // materialLabel10
@@ -249,6 +251,7 @@
             // txtDireccion
             // 
             this.txtDireccion.Depth = 0;
+            this.txtDireccion.Enabled = false;
             this.txtDireccion.Hint = "";
             this.txtDireccion.Location = new System.Drawing.Point(528, 53);
             this.txtDireccion.MouseState = MaterialSkin.MouseState.HOVER;
@@ -258,7 +261,7 @@
             this.txtDireccion.SelectionLength = 0;
             this.txtDireccion.SelectionStart = 0;
             this.txtDireccion.Size = new System.Drawing.Size(247, 23);
-            this.txtDireccion.TabIndex = 8;
+            this.txtDireccion.TabIndex = 22;
             this.txtDireccion.UseSystemPasswordChar = false;
             // 
             // materialLabel4
@@ -289,7 +292,7 @@
             this.cbCliente.Location = new System.Drawing.Point(528, 28);
             this.cbCliente.Name = "cbCliente";
             this.cbCliente.Size = new System.Drawing.Size(214, 21);
-            this.cbCliente.TabIndex = 5;
+            this.cbCliente.TabIndex = 2;
             // 
             // materialLabel3
             // 
@@ -310,7 +313,7 @@
             this.cbLista.Location = new System.Drawing.Point(87, 118);
             this.cbLista.Name = "cbLista";
             this.cbLista.Size = new System.Drawing.Size(107, 21);
-            this.cbLista.TabIndex = 3;
+            this.cbLista.TabIndex = 1;
             // 
             // materialLabel2
             // 
@@ -332,7 +335,7 @@
             this.dtpFecha.Location = new System.Drawing.Point(257, 77);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(107, 20);
-            this.dtpFecha.TabIndex = 1;
+            this.dtpFecha.TabIndex = 0;
             // 
             // materialLabel1
             // 
@@ -374,6 +377,7 @@
             // txtDescuentoPesos
             // 
             this.txtDescuentoPesos.Depth = 0;
+            this.txtDescuentoPesos.Enabled = false;
             this.txtDescuentoPesos.Hint = "";
             this.txtDescuentoPesos.Location = new System.Drawing.Point(648, 374);
             this.txtDescuentoPesos.MouseState = MaterialSkin.MouseState.HOVER;
@@ -411,7 +415,7 @@
             this.txtDescuentoPorc.SelectionLength = 0;
             this.txtDescuentoPorc.SelectionStart = 0;
             this.txtDescuentoPorc.Size = new System.Drawing.Size(51, 23);
-            this.txtDescuentoPorc.TabIndex = 17;
+            this.txtDescuentoPorc.TabIndex = 5;
             this.txtDescuentoPorc.UseSystemPasswordChar = false;
             // 
             // materialLabel8
@@ -430,6 +434,7 @@
             // txtTotal
             // 
             this.txtTotal.Depth = 0;
+            this.txtTotal.Enabled = false;
             this.txtTotal.Hint = "";
             this.txtTotal.Location = new System.Drawing.Point(649, 403);
             this.txtTotal.MouseState = MaterialSkin.MouseState.HOVER;
@@ -446,18 +451,19 @@
             // 
             this.materialLabel7.AutoSize = true;
             this.materialLabel7.Depth = 0;
-            this.materialLabel7.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel7.Location = new System.Drawing.Point(583, 408);
             this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel7.Name = "materialLabel7";
-            this.materialLabel7.Size = new System.Drawing.Size(56, 19);
+            this.materialLabel7.Size = new System.Drawing.Size(60, 18);
             this.materialLabel7.TabIndex = 14;
             this.materialLabel7.Text = "Total $";
             // 
             // txtsubtotal
             // 
             this.txtsubtotal.Depth = 0;
+            this.txtsubtotal.Enabled = false;
             this.txtsubtotal.Hint = "";
             this.txtsubtotal.Location = new System.Drawing.Point(649, 345);
             this.txtsubtotal.MouseState = MaterialSkin.MouseState.HOVER;
@@ -512,7 +518,7 @@
             this.rbDescripcion.Name = "rbDescripcion";
             this.rbDescripcion.Ripple = true;
             this.rbDescripcion.Size = new System.Drawing.Size(102, 30);
-            this.rbDescripcion.TabIndex = 10;
+            this.rbDescripcion.TabIndex = 26;
             this.rbDescripcion.TabStop = true;
             this.rbDescripcion.Text = "Descripción";
             this.rbDescripcion.UseVisualStyleBackColor = true;
@@ -530,7 +536,7 @@
             this.rbCodigo.Name = "rbCodigo";
             this.rbCodigo.Ripple = true;
             this.rbCodigo.Size = new System.Drawing.Size(73, 30);
-            this.rbCodigo.TabIndex = 9;
+            this.rbCodigo.TabIndex = 25;
             this.rbCodigo.TabStop = true;
             this.rbCodigo.Text = "Codigo";
             this.rbCodigo.UseVisualStyleBackColor = true;
@@ -541,7 +547,7 @@
             this.btnArticuloNuevo.Location = new System.Drawing.Point(377, 31);
             this.btnArticuloNuevo.Name = "btnArticuloNuevo";
             this.btnArticuloNuevo.Size = new System.Drawing.Size(31, 25);
-            this.btnArticuloNuevo.TabIndex = 8;
+            this.btnArticuloNuevo.TabIndex = 4;
             this.btnArticuloNuevo.UseVisualStyleBackColor = true;
             // 
             // cbArticulos
@@ -550,7 +556,7 @@
             this.cbArticulos.Location = new System.Drawing.Point(127, 33);
             this.cbArticulos.Name = "cbArticulos";
             this.cbArticulos.Size = new System.Drawing.Size(244, 21);
-            this.cbArticulos.TabIndex = 7;
+            this.cbArticulos.TabIndex = 3;
             // 
             // panel1
             // 
@@ -571,7 +577,7 @@
             this.btnBuscarPresupuesto.Name = "btnBuscarPresupuesto";
             this.btnBuscarPresupuesto.Primary = true;
             this.btnBuscarPresupuesto.Size = new System.Drawing.Size(127, 47);
-            this.btnBuscarPresupuesto.TabIndex = 2;
+            this.btnBuscarPresupuesto.TabIndex = 8;
             this.btnBuscarPresupuesto.Text = "Buscar Presupuesto";
             this.btnBuscarPresupuesto.UseVisualStyleBackColor = true;
             // 
@@ -583,7 +589,7 @@
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Primary = true;
             this.btnCancelar.Size = new System.Drawing.Size(124, 31);
-            this.btnCancelar.TabIndex = 1;
+            this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
@@ -595,7 +601,7 @@
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Primary = true;
             this.btnAceptar.Size = new System.Drawing.Size(124, 31);
-            this.btnAceptar.TabIndex = 0;
+            this.btnAceptar.TabIndex = 6;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnGuardar_Click);

@@ -49,6 +49,11 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.materialSingleLineTextField9 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
+            this.txtValidez = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
             this.materialSingleLineTextField3 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
             this.materialSingleLineTextField2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -282,6 +287,7 @@
             this.btnSalir.Text = "SALIR";
             this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnAnular
             // 
@@ -330,6 +336,7 @@
             this.btnNuevo.Text = "NUEVO";
             this.btnNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click_1);
             // 
             // tableLayoutPanel3
             // 
@@ -349,6 +356,11 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.materialSingleLineTextField9);
+            this.panel2.Controls.Add(this.materialLabel16);
+            this.panel2.Controls.Add(this.materialLabel13);
+            this.panel2.Controls.Add(this.txtValidez);
+            this.panel2.Controls.Add(this.materialLabel12);
             this.panel2.Controls.Add(this.materialSingleLineTextField3);
             this.panel2.Controls.Add(this.materialLabel9);
             this.panel2.Controls.Add(this.materialSingleLineTextField2);
@@ -366,6 +378,75 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(971, 76);
             this.panel2.TabIndex = 0;
+            // 
+            // materialSingleLineTextField9
+            // 
+            this.materialSingleLineTextField9.Depth = 0;
+            this.materialSingleLineTextField9.Hint = "";
+            this.materialSingleLineTextField9.Location = new System.Drawing.Point(721, 3);
+            this.materialSingleLineTextField9.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSingleLineTextField9.Name = "materialSingleLineTextField9";
+            this.materialSingleLineTextField9.PasswordChar = '\0';
+            this.materialSingleLineTextField9.SelectedText = "";
+            this.materialSingleLineTextField9.SelectionLength = 0;
+            this.materialSingleLineTextField9.SelectionStart = 0;
+            this.materialSingleLineTextField9.Size = new System.Drawing.Size(156, 23);
+            this.materialSingleLineTextField9.TabIndex = 31;
+            this.materialSingleLineTextField9.UseSystemPasswordChar = false;
+            // 
+            // materialLabel16
+            // 
+            this.materialLabel16.AutoSize = true;
+            this.materialLabel16.Depth = 0;
+            this.materialLabel16.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel16.Location = new System.Drawing.Point(658, 8);
+            this.materialLabel16.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel16.Name = "materialLabel16";
+            this.materialLabel16.Size = new System.Drawing.Size(60, 19);
+            this.materialLabel16.TabIndex = 32;
+            this.materialLabel16.Text = "Estado:";
+            // 
+            // materialLabel13
+            // 
+            this.materialLabel13.AutoSize = true;
+            this.materialLabel13.Depth = 0;
+            this.materialLabel13.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel13.Location = new System.Drawing.Point(588, 6);
+            this.materialLabel13.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel13.Name = "materialLabel13";
+            this.materialLabel13.Size = new System.Drawing.Size(37, 19);
+            this.materialLabel13.TabIndex = 30;
+            this.materialLabel13.Text = "dias";
+            // 
+            // txtValidez
+            // 
+            this.txtValidez.Depth = 0;
+            this.txtValidez.Hint = "";
+            this.txtValidez.Location = new System.Drawing.Point(517, 2);
+            this.txtValidez.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtValidez.Name = "txtValidez";
+            this.txtValidez.PasswordChar = '\0';
+            this.txtValidez.SelectedText = "";
+            this.txtValidez.SelectionLength = 0;
+            this.txtValidez.SelectionStart = 0;
+            this.txtValidez.Size = new System.Drawing.Size(65, 23);
+            this.txtValidez.TabIndex = 28;
+            this.txtValidez.UseSystemPasswordChar = false;
+            // 
+            // materialLabel12
+            // 
+            this.materialLabel12.AutoSize = true;
+            this.materialLabel12.Depth = 0;
+            this.materialLabel12.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel12.Location = new System.Drawing.Point(454, 7);
+            this.materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel12.Name = "materialLabel12";
+            this.materialLabel12.Size = new System.Drawing.Size(62, 19);
+            this.materialLabel12.TabIndex = 29;
+            this.materialLabel12.Text = "Validez:";
             // 
             // materialSingleLineTextField3
             // 
@@ -430,14 +511,14 @@
             this.materialSingleLineTextField5.Depth = 0;
             this.materialSingleLineTextField5.Enabled = false;
             this.materialSingleLineTextField5.Hint = "";
-            this.materialSingleLineTextField5.Location = new System.Drawing.Point(73, 3);
+            this.materialSingleLineTextField5.Location = new System.Drawing.Point(100, 3);
             this.materialSingleLineTextField5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialSingleLineTextField5.Name = "materialSingleLineTextField5";
             this.materialSingleLineTextField5.PasswordChar = '\0';
             this.materialSingleLineTextField5.SelectedText = "";
             this.materialSingleLineTextField5.SelectionLength = 0;
             this.materialSingleLineTextField5.SelectionStart = 0;
-            this.materialSingleLineTextField5.Size = new System.Drawing.Size(127, 23);
+            this.materialSingleLineTextField5.Size = new System.Drawing.Size(100, 23);
             this.materialSingleLineTextField5.TabIndex = 16;
             this.materialSingleLineTextField5.UseSystemPasswordChar = false;
             // 
@@ -450,9 +531,9 @@
             this.materialLabel14.Location = new System.Drawing.Point(6, 8);
             this.materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel14.Name = "materialLabel14";
-            this.materialLabel14.Size = new System.Drawing.Size(61, 19);
+            this.materialLabel14.Size = new System.Drawing.Size(97, 19);
             this.materialLabel14.TabIndex = 15;
-            this.materialLabel14.Text = "Remito:";
+            this.materialLabel14.Text = "Presupuesto:";
             // 
             // materialSingleLineTextField1
             // 
@@ -485,7 +566,7 @@
             this.materialSingleLineTextField4.Depth = 0;
             this.materialSingleLineTextField4.Enabled = false;
             this.materialSingleLineTextField4.Hint = "";
-            this.materialSingleLineTextField4.Location = new System.Drawing.Point(549, 32);
+            this.materialSingleLineTextField4.Location = new System.Drawing.Point(543, 32);
             this.materialSingleLineTextField4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialSingleLineTextField4.Name = "materialSingleLineTextField4";
             this.materialSingleLineTextField4.PasswordChar = '\0';
@@ -553,6 +634,7 @@
             // materialSingleLineTextField8
             // 
             this.materialSingleLineTextField8.Depth = 0;
+            this.materialSingleLineTextField8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.materialSingleLineTextField8.Hint = "";
             this.materialSingleLineTextField8.Location = new System.Drawing.Point(872, 143);
             this.materialSingleLineTextField8.MouseState = MaterialSkin.MouseState.HOVER;
@@ -569,12 +651,12 @@
             // 
             this.materialLabel7.AutoSize = true;
             this.materialLabel7.Depth = 0;
-            this.materialLabel7.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel7.Location = new System.Drawing.Point(779, 148);
             this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel7.Name = "materialLabel7";
-            this.materialLabel7.Size = new System.Drawing.Size(56, 19);
+            this.materialLabel7.Size = new System.Drawing.Size(60, 18);
             this.materialLabel7.TabIndex = 11;
             this.materialLabel7.Text = "Total $";
             // 
@@ -721,5 +803,10 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField6;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private CustomLibrary.ComponentModel.CustomDataGridView customDataGridView2;
+        private MaterialSkin.Controls.MaterialLabel materialLabel13;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtValidez;
+        private MaterialSkin.Controls.MaterialLabel materialLabel12;
+        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField9;
+        private MaterialSkin.Controls.MaterialLabel materialLabel16;
     }
 }

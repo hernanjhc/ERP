@@ -82,6 +82,7 @@
             this.txtTarjeta = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel17 = new MaterialSkin.Controls.MaterialLabel();
             this.txtEfectivo = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -417,6 +418,7 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.White;
+            this.groupBox3.Controls.Add(this.materialRaisedButton1);
             this.groupBox3.Controls.Add(this.dtpFechaVencCheque);
             this.groupBox3.Controls.Add(this.materialLabel5);
             this.groupBox3.Controls.Add(this.cbBanco);
@@ -706,12 +708,12 @@
             // 
             this.materialLabel19.AutoSize = true;
             this.materialLabel19.Depth = 0;
-            this.materialLabel19.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel19.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
             this.materialLabel19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel19.Location = new System.Drawing.Point(61, 218);
             this.materialLabel19.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel19.Name = "materialLabel19";
-            this.materialLabel19.Size = new System.Drawing.Size(67, 19);
+            this.materialLabel19.Size = new System.Drawing.Size(74, 18);
             this.materialLabel19.TabIndex = 19;
             this.materialLabel19.Text = "TOTAL $";
             // 
@@ -848,6 +850,18 @@
             this.txtEfectivo.TabIndex = 10;
             this.txtEfectivo.UseSystemPasswordChar = false;
             // 
+            // materialRaisedButton1
+            // 
+            this.materialRaisedButton1.Depth = 0;
+            this.materialRaisedButton1.Location = new System.Drawing.Point(62, 216);
+            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRaisedButton1.Name = "materialRaisedButton1";
+            this.materialRaisedButton1.Primary = true;
+            this.materialRaisedButton1.Size = new System.Drawing.Size(128, 36);
+            this.materialRaisedButton1.TabIndex = 26;
+            this.materialRaisedButton1.Text = "Cargar Cheque";
+            this.materialRaisedButton1.UseVisualStyleBackColor = true;
+            // 
             // frmCobrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -933,5 +947,6 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField txtPagoContado;
         private MaterialSkin.Controls.MaterialLabel materialLabel14;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtMontoCta;
+        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
     }
 }
