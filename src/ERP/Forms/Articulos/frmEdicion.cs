@@ -138,7 +138,15 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                return txtObservaciones.Text.Trim();
+                if (!string.IsNullOrEmpty(txtObservaciones.Text.Trim()))
+                {
+                    return txtObservaciones.Text.Trim();
+                }
+                else
+                {
+                    return "";
+                }
+                
             }
         }
 
@@ -146,7 +154,14 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                return Convert.ToDecimal(txtStock.Text.Trim());
+                if (!string.IsNullOrEmpty(txtStock.Text.Trim()))
+                {
+                    return Convert.ToDecimal(txtStock.Text.Trim());
+                }
+                else
+                {
+                    return 0;
+                }
             }
         }
 
@@ -154,7 +169,14 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                return Convert.ToDecimal(txtStockMinimo.Text.Trim());
+                if (!string.IsNullOrEmpty(txtStockMinimo.Text.Trim()))
+                {
+                    return Convert.ToDecimal(txtStockMinimo.Text.Trim());
+                }
+                else
+                {
+                    return 0;
+                }
             }
         }
 
@@ -162,7 +184,14 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                return Convert.ToDecimal(txtIVA.Text.Trim());
+                if (!string.IsNullOrEmpty(txtIVA.Text.Trim()))
+                {
+                    return Convert.ToDecimal(txtIVA.Text.Trim());
+                }
+                else
+                {
+                    return 0;
+                }
             }
         }
 
@@ -170,7 +199,14 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                return Convert.ToDecimal(txtLista3.Text.Trim());
+                if (!string.IsNullOrEmpty(txtLista3.Text.Trim()))
+                {
+                    return Convert.ToDecimal(txtLista3.Text.Trim());
+                }
+                else
+                {
+                    return 0;
+                }
             }
         }
 
@@ -178,7 +214,14 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                return Convert.ToDecimal(txtListaPorc3.Text.Trim());
+                if (!string.IsNullOrEmpty(txtListaPorc3.Text.Trim()))
+                {
+                    return Convert.ToDecimal(txtListaPorc3.Text.Trim());
+                }
+                else
+                {
+                    return 0;
+                }
             }
         }
 
@@ -186,7 +229,14 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                return Convert.ToDecimal(txtLista2.Text.Trim());
+                if (!string.IsNullOrEmpty(txtLista2.Text.Trim()))
+                {
+                    return Convert.ToDecimal(txtLista2.Text.Trim());
+                }
+                else
+                {
+                    return 0;
+                }
             }
         }
 
@@ -194,7 +244,14 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                return Convert.ToDecimal(txtListaPorc2.Text.Trim());
+                if (!string.IsNullOrEmpty(txtListaPorc2.Text.Trim()))
+                {
+                    return Convert.ToDecimal(txtListaPorc2.Text.Trim());
+                }
+                else
+                {
+                    return 0;
+                }
             }
         }
 
@@ -202,7 +259,14 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                return Convert.ToDecimal(txtLista1.Text.Trim());
+                if (!string.IsNullOrEmpty(txtLista1.Text.Trim()))
+                {
+                    return Convert.ToDecimal(txtLista1.Text.Trim());
+                }
+                else
+                {
+                    return 0;
+                }
             }
         }
 
@@ -210,7 +274,14 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                return Convert.ToDecimal(txtListaPorc1.Text.Trim());
+                if (!string.IsNullOrEmpty(txtListaPorc1.Text.Trim()))
+                {
+                    return Convert.ToDecimal(txtListaPorc1.Text.Trim());
+                }
+                else
+                {
+                    return 0;
+                }
             }
         }
 
@@ -218,7 +289,14 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                return Convert.ToDecimal(txtCosto.Text.Trim());
+                if (!string.IsNullOrEmpty(txtCosto.Text.Trim()))
+                {
+                    return Convert.ToDecimal(txtCosto.Text.Trim());
+                }
+                else
+                {
+                    return 0;
+                }
             }
         }
 
@@ -226,7 +304,14 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                return Convert.ToDecimal(txtDesc3.Text.Trim());
+                if (!string.IsNullOrEmpty(txtDesc3.Text.Trim()))
+                {
+                    return Convert.ToDecimal(txtDesc3.Text.Trim());
+                }
+                else
+                {
+                    return 0;
+                }
             }
         }
 
@@ -234,7 +319,14 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                return Convert.ToDecimal(txtDescPorc3.Text.Trim());
+                if (!string.IsNullOrEmpty(txtDescPorc3.Text.Trim()))
+                {
+                    return Convert.ToDecimal(txtDescPorc3.Text.Trim());
+                }
+                else
+                {
+                    return 0;
+                }
             }
         }
 
@@ -242,7 +334,14 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                return Convert.ToDecimal(txtDesc2.Text.Trim());
+                if (!string.IsNullOrEmpty(txtDesc2.Text.Trim()))
+                {
+                    return Convert.ToDecimal(txtDesc2.Text.Trim());
+                }
+                else
+                {
+                    return 0;
+                }
             }
         }
 
@@ -250,7 +349,14 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                return Convert.ToDecimal(txtDescPorc2.Text.Trim());
+                if (!string.IsNullOrEmpty(txtDescPorc2.Text.Trim()))
+                {
+                    return Convert.ToDecimal(txtDescPorc2.Text.Trim());
+                }
+                else
+                {
+                    return 0;
+                }
             }
         }
 
@@ -258,7 +364,14 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                return Convert.ToDecimal(txtDesc1.Text.Trim());
+                if (!string.IsNullOrEmpty(txtDesc1.Text.Trim()))
+                {
+                    return Convert.ToDecimal(txtDesc1.Text.Trim());
+                }
+                else
+                {
+                    return 0;
+                }
             }
         }
 
@@ -266,7 +379,14 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                return Convert.ToDecimal(txtDescPorc1.Text.Trim());
+                if (!string.IsNullOrEmpty(txtDescPorc1.Text.Trim()))
+                {
+                    return Convert.ToDecimal(txtDescPorc1.Text.Trim());
+                }
+                else
+                {
+                    return 0;
+                }
             }
         }
 
@@ -274,7 +394,14 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                return Convert.ToDecimal(txtCostoInicial.Text.Trim());
+                if (!string.IsNullOrEmpty(txtCostoInicial.Text.Trim()))
+                {
+                    return Convert.ToDecimal(txtCostoInicial.Text.Trim());
+                }
+                else
+                {
+                    return 0;
+                }
             }
         }
         public int IdUnidad
@@ -593,6 +720,132 @@ namespace ERP.Forms.Articulos
         private void txtStockMinimo_KeyPress(object sender, KeyPressEventArgs e)
         {
             _validator.IngresaDecimal(sender, e);
+        }
+
+        private void calcularPreciosPorcentaje()
+        {
+            decimal costo = 0;
+            if (!String.IsNullOrEmpty(txtCosto.Text))
+            {
+                costo = Convert.ToDecimal(txtCosto.Text.Trim());
+            }
+            else
+            {
+                return;
+            }
+
+            if (_validator.ControlVaciosPorCalculos(txtCosto, txtListaPorc1))
+            {
+                txtLista1.Text =
+                (
+                Math.Round(
+                        Convert.ToDecimal(txtCosto.Text)    +
+                        (Convert.ToDecimal(txtListaPorc1.Text)  * Convert.ToDecimal(txtCosto.Text)
+                        ) / 100
+
+                    //((Convert.ToDecimal(txtCosto.Text) / 100) *
+                    //(Convert.ToDecimal(txtListaPorc1.Text)))
+                    , 2)
+                ).ToString();
+            }
+
+            if (_validator.ControlVaciosPorCalculos(txtCosto, txtListaPorc2))
+            {
+                txtLista2.Text =
+                (
+                    Math.Round(
+                        Convert.ToDecimal(txtCosto.Text) +
+                        ((Convert.ToDecimal(txtCosto.Text) / 100) *
+                        (Convert.ToDecimal(txtListaPorc2.Text)))
+                    , 2)
+                ).ToString();
+            }
+
+            if (_validator.ControlVaciosPorCalculos(txtCosto, txtListaPorc3))
+            {
+                txtLista3.Text =
+                (
+                    Math.Round(
+                        Convert.ToDecimal(txtCosto.Text) +
+                        ((Convert.ToDecimal(txtCosto.Text) / 100) *
+                        (Convert.ToDecimal(txtListaPorc3.Text)))
+                    , 2)
+                ).ToString();
+            }
+        }
+
+        private void calcularPrecios()
+        {
+            if (String.IsNullOrEmpty(txtCosto.Text)) return;
+            //if (!String.IsNullOrEmpty(txtListaPorc1.Text)) return;
+
+            if (_validator.ControlVaciosPorCalculos(txtCosto, txtLista1))
+            {
+                txtListaPorc1.Text =
+                (
+                    Math.Round(
+                        //Convert.ToDecimal(txtCosto.Text) +
+                        //((Convert.ToDecimal(txtLista1.Text) * 100) /
+                        //(Convert.ToDecimal(txtCosto.Text)))
+                        ((Convert.ToDecimal(txtLista1.Text) - Convert.ToDecimal(txtCosto.Text)) * 100) /
+                        Convert.ToDecimal(txtCosto.Text)
+                    , 2)
+                ).ToString();
+            }
+
+            if (_validator.ControlVaciosPorCalculos(txtCosto, txtLista2))
+            {
+                txtListaPorc2.Text =
+                (
+                    Math.Round(
+                        ((Convert.ToDecimal(txtLista2.Text) - Convert.ToDecimal(txtCosto.Text)) * 100) /
+                        Convert.ToDecimal(txtCosto.Text)
+                    , 2)
+                ).ToString();
+            }
+
+            if (_validator.ControlVaciosPorCalculos(txtCosto, txtLista3))
+            {
+                txtListaPorc3.Text =
+                (
+                    Math.Round(
+                        ((Convert.ToDecimal(txtLista3.Text) - Convert.ToDecimal(txtCosto.Text)) * 100) /
+                        Convert.ToDecimal(txtCosto.Text)
+                    , 2)
+                ).ToString();
+            }
+
+            return;
+        }
+
+        private void txtListaPorc2_TextChanged(object sender, EventArgs e)
+        {
+            calcularPreciosPorcentaje();
+        }
+
+        private void txtListaPorc3_TextChanged(object sender, EventArgs e)
+        {
+            calcularPreciosPorcentaje();
+        }
+
+        private void txtLista1_TextChanged(object sender, EventArgs e)
+        {
+            calcularPrecios();
+        }
+
+        private void txtLista2_TextChanged(object sender, EventArgs e)
+        {
+            calcularPrecios();
+        }
+
+        private void txtLista3_TextChanged(object sender, EventArgs e)
+        {
+            calcularPrecios();
+        }
+
+        private void txtListaPorc1_TextChanged(object sender, EventArgs e)
+        {
+            calcularPreciosPorcentaje();
         }
     }
 }

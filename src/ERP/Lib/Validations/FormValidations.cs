@@ -53,8 +53,8 @@ namespace ERP.Lib.Validations
         public bool ControlVaciosPorCalculos(MaterialSingleLineTextField txt1, MaterialSkin.Controls.MaterialSingleLineTextField txt2)
         {
             if (
-                    String.IsNullOrEmpty(txt1.Text) |
-                    String.IsNullOrEmpty(txt2.Text) |
+                    String.IsNullOrEmpty(txt1.Text.Trim()) |
+                    String.IsNullOrEmpty(txt2.Text.Trim()) |
                     txt1.Text.Trim() == "," |        //.Contains(",")
                     txt2.Text.Trim() == ","
                 )
