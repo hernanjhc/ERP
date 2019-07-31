@@ -46,5 +46,7 @@ namespace ERP.Models
         public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<UsuariosItemsMenu> UsuariosItemsMenu { get; set; }
         public virtual DbSet<EArticulos> EArticulos { get; set; }
+        public virtual DbSet<EPresupuestos> EPresupuestos { get; set; }
+        public virtual DbSet<EPresupuestosDetalles> EPresupuestosDetalles { get; set; }
     }
 }

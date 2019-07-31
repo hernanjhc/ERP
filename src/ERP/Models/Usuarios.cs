@@ -19,6 +19,7 @@ namespace ERP.Models
         {
             this.GruposUsuarios = new HashSet<GruposUsuarios>();
             this.UsuariosItemsMenu = new HashSet<UsuariosItemsMenu>();
+            this.EPresupuestos = new HashSet<EPresupuestos>();
         }
     
         public int Id { get; set; }
@@ -33,5 +34,7 @@ namespace ERP.Models
         public virtual ICollection<GruposUsuarios> GruposUsuarios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsuariosItemsMenu> UsuariosItemsMenu { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EPresupuestos> EPresupuestos { get; set; }
     }
 }

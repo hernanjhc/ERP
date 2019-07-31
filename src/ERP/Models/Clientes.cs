@@ -14,6 +14,12 @@ namespace ERP.Models
     
     public partial class Clientes
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Clientes()
+        {
+            this.EPresupuestos = new HashSet<EPresupuestos>();
+        }
+    
         public int Id { get; set; }
         public int IdEmpresa { get; set; }
         public string RazonSocial { get; set; }
@@ -28,5 +34,7 @@ namespace ERP.Models
     
         public virtual Domicilios Domicilios { get; set; }
         public virtual TiposDocumento TiposDocumento { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EPresupuestos> EPresupuestos { get; set; }
     }
 }

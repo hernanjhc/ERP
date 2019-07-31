@@ -156,7 +156,7 @@
             // º
             // 
             this.º.Depth = 0;
-            this.º.Hint = "Ingrese el presupuesto que desea buscar";
+            this.º.Hint = "Ingrese datos de la Venta";
             this.º.Location = new System.Drawing.Point(73, 12);
             this.º.MouseState = MaterialSkin.MouseState.HOVER;
             this.º.Name = "º";
@@ -603,12 +603,12 @@
             // 
             this.materialLabel7.AutoSize = true;
             this.materialLabel7.Depth = 0;
-            this.materialLabel7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.materialLabel7.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel7.Location = new System.Drawing.Point(810, 171);
             this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel7.Name = "materialLabel7";
-            this.materialLabel7.Size = new System.Drawing.Size(60, 18);
+            this.materialLabel7.Size = new System.Drawing.Size(56, 19);
             this.materialLabel7.TabIndex = 11;
             this.materialLabel7.Text = "Total $";
             // 

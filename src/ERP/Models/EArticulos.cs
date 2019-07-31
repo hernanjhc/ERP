@@ -14,6 +14,12 @@ namespace ERP.Models
     
     public partial class EArticulos
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public EArticulos()
+        {
+            this.EPresupuestosDetalles = new HashSet<EPresupuestosDetalles>();
+        }
+    
         public int Id { get; set; }
         public int IdEmpresa { get; set; }
         public string Codigo { get; set; }
@@ -48,5 +54,7 @@ namespace ERP.Models
         public virtual Proveedores Proveedores { get; set; }
         public virtual ERubros ERubros { get; set; }
         public virtual Unidades Unidades { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EPresupuestosDetalles> EPresupuestosDetalles { get; set; }
     }
 }
