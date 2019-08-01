@@ -25,8 +25,6 @@ namespace ERP.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Bancos> Bancos { get; set; }
-        public virtual DbSet<BancoSucursal> BancoSucursal { get; set; }
         public virtual DbSet<Barrios> Barrios { get; set; }
         public virtual DbSet<Clientes> Clientes { get; set; }
         public virtual DbSet<Departamentos> Departamentos { get; set; }
@@ -46,6 +44,8 @@ namespace ERP.Models
         public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<UsuariosItemsMenu> UsuariosItemsMenu { get; set; }
         public virtual DbSet<EArticulos> EArticulos { get; set; }
+        public virtual DbSet<Bancos> Bancos { get; set; }
+        public virtual DbSet<Sucursales> Sucursales { get; set; }
         public virtual DbSet<EPresupuestos> EPresupuestos { get; set; }
         public virtual DbSet<EPresupuestosDetalles> EPresupuestosDetalles { get; set; }
     }

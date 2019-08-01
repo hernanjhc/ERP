@@ -5,8 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="7eddb73a75c24da48855332e577e49d4" Name="Diagram1">
-        <EntityTypeShape EntityType="VentasModel.Bancos" Width="1.5" PointX="5.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="VentasModel.BancoSucursal" Width="1.5" PointX="5.75" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="VentasModel.Barrios" Width="1.5" PointX="7.5" PointY="18.125" IsExpanded="true" />
         <EntityTypeShape EntityType="VentasModel.Clientes" Width="1.5" PointX="12.375" PointY="14.5" IsExpanded="true" />
         <EntityTypeShape EntityType="VentasModel.Departamentos" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
@@ -52,6 +50,9 @@
         <AssociationConnector Association="VentasModel.FK_EArticulos_Proveedores" />
         <AssociationConnector Association="VentasModel.FK_EArticulos_Rubros" />
         <AssociationConnector Association="VentasModel.FK_EArticulos_Unidades" />
+        <EntityTypeShape EntityType="VentasModel.Bancos" Width="1.5" PointX="5.375" PointY="1.875" />
+        <EntityTypeShape EntityType="VentasModel.Sucursales" Width="1.5" PointX="7.625" PointY="1" />
+        <AssociationConnector Association="VentasModel.FK_Sucursales_Bancos" />
         <EntityTypeShape EntityType="VentasModel.EPresupuestos" Width="1.5" PointX="17.25" PointY="9.5" />
         <EntityTypeShape EntityType="VentasModel.EPresupuestosDetalles" Width="1.5" PointX="21.75" PointY="14.25" />
         <AssociationConnector Association="VentasModel.FK_EPresupuestos_Clientes" />

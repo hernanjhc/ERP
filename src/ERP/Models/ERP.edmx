@@ -10,24 +10,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Banco" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="BancoSucursal">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="IdBanco" Type="int" Nullable="false" />
-          <Property Name="SucursalNro" Type="int" Nullable="false" />
-          <Property Name="Sucursal" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="IdProvincia" Type="int" />
-          <Property Name="IdDepartamento" Type="int" />
-          <Property Name="IdLocalidad" Type="int" />
-          <Property Name="IdBarrio" Type="int" />
-          <Property Name="Direccion" Type="varchar" MaxLength="50" />
-          <Property Name="Web" Type="varchar" MaxLength="100" />
-          <Property Name="Email" Type="varchar" MaxLength="100" />
-          <Property Name="Telefono" Type="varchar" MaxLength="100" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Barrios">
           <Key>
@@ -84,23 +67,23 @@
           <Property Name="IdRubro" Type="int" />
           <Property Name="IdProveedor" Type="int" />
           <Property Name="IdUnidad" Type="int" />
-          <Property Name="CostoInicial" Type="numeric" Precision="17" Scale="2" />
-          <Property Name="Descuento1" Type="numeric" Precision="17" Scale="2" />
-          <Property Name="DescuentoPorc1" Type="numeric" Precision="5" Scale="2" />
-          <Property Name="Descuento2" Type="numeric" Precision="17" Scale="2" />
-          <Property Name="DescuentoPorc2" Type="numeric" Precision="5" Scale="2" />
-          <Property Name="Descuento3" Type="numeric" Precision="17" Scale="2" />
-          <Property Name="DescuentoPorc3" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="CostoInicial" Type="numeric" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="Descuento1" Type="numeric" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="DescuentoPorc1" Type="numeric" Precision="3" Scale="2" />
+          <Property Name="Descuento2" Type="numeric" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="DescuentoPorc2" Type="numeric" Precision="3" Scale="2" />
+          <Property Name="Descuento3" Type="numeric" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="DescuentoPorc3" Type="numeric" Precision="3" Scale="2" />
           <Property Name="Costo" Type="numeric" Precision="17" Scale="2" Nullable="false" />
           <Property Name="Stock" Type="numeric" Precision="17" Scale="2" />
           <Property Name="StockMinimo" Type="numeric" Precision="17" Scale="2" Nullable="false" />
           <Property Name="PrecioL1" Type="numeric" Precision="17" Scale="2" />
-          <Property Name="PrecioPorcL1" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="PrecioPorcL1" Type="numeric" Precision="3" Scale="2" />
           <Property Name="PrecioL2" Type="numeric" Precision="17" Scale="2" />
-          <Property Name="PrecioPorcL2" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="PrecioPorcL2" Type="numeric" Precision="3" Scale="2" />
           <Property Name="PrecioL3" Type="numeric" Precision="17" Scale="2" />
-          <Property Name="PrecioPorcL3" Type="numeric" Precision="5" Scale="2" />
-          <Property Name="IVA" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="PrecioPorcL3" Type="numeric" Precision="3" Scale="2" />
+          <Property Name="IVA" Type="numeric" Precision="3" Scale="2" />
           <Property Name="Observaciones" Type="varchar" MaxLength="100" />
           <Property Name="Estado" Type="int" />
         </EntityType>
@@ -235,6 +218,22 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sucursales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" Nullable="false" />
+          <Property Name="IdBanco" Type="int" Nullable="false" />
+          <Property Name="Sucursal" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Numero" Type="int" />
+          <Property Name="IdDomicilio" Type="int" />
+          <Property Name="Direccion" Type="varchar" MaxLength="255" />
+          <Property Name="EMail" Type="varchar" MaxLength="255" />
+          <Property Name="Telefono" Type="varchar" MaxLength="255" />
+          <Property Name="Web" Type="varchar" MaxLength="255" />
+          <Property Name="Estado" Type="tinyint" Nullable="false" />
         </EntityType>
         <EntityType Name="TiposDocumento">
           <Key>
@@ -632,6 +631,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Sucursales_Bancos">
+          <End Role="Bancos" Type="Self.Bancos" Multiplicity="1" />
+          <End Role="Sucursales" Type="Self.Sucursales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bancos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sucursales">
+              <PropertyRef Name="IdBanco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UsuariosItemsMenu_ItemsMenu">
           <End Role="ItemsMenu" Type="Self.ItemsMenu" Multiplicity="1" />
           <End Role="UsuariosItemsMenu" Type="Self.UsuariosItemsMenu" Multiplicity="*" />
@@ -658,7 +669,6 @@
         </Association>
         <EntityContainer Name="VentasModelStoreContainer">
           <EntitySet Name="Bancos" EntityType="Self.Bancos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="BancoSucursal" EntityType="Self.BancoSucursal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Barrios" EntityType="Self.Barrios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
@@ -676,6 +686,7 @@
           <EntitySet Name="Localidades" EntityType="Self.Localidades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Provincias" EntityType="Self.Provincias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sucursales" EntityType="Self.Sucursales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TiposDocumento" EntityType="Self.TiposDocumento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Unidades" EntityType="Self.Unidades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
@@ -800,6 +811,10 @@
             <End Role="TiposDocumento" EntitySet="TiposDocumento" />
             <End Role="Proveedores" EntitySet="Proveedores" />
           </AssociationSet>
+          <AssociationSet Name="FK_Sucursales_Bancos" Association="Self.FK_Sucursales_Bancos">
+            <End Role="Bancos" EntitySet="Bancos" />
+            <End Role="Sucursales" EntitySet="Sucursales" />
+          </AssociationSet>
           <AssociationSet Name="FK_UsuariosItemsMenu_ItemsMenu" Association="Self.FK_UsuariosItemsMenu_ItemsMenu">
             <End Role="ItemsMenu" EntitySet="ItemsMenu" />
             <End Role="UsuariosItemsMenu" EntitySet="UsuariosItemsMenu" />
@@ -813,30 +828,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="VentasModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Bancos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Banco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="BancoSucursal">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="IdBanco" Type="Int32" Nullable="false" />
-          <Property Name="SucursalNro" Type="Int32" Nullable="false" />
-          <Property Name="Sucursal" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IdProvincia" Type="Int32" />
-          <Property Name="IdDepartamento" Type="Int32" />
-          <Property Name="IdLocalidad" Type="Int32" />
-          <Property Name="IdBarrio" Type="Int32" />
-          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Web" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Telefono" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="Barrios">
           <Key>
             <PropertyRef Name="Id" />
@@ -1322,8 +1313,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="VentasConexión" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Bancos" EntityType="Self.Bancos" />
-          <EntitySet Name="BancoSucursal" EntityType="Self.BancoSucursal" />
           <EntitySet Name="Barrios" EntityType="Self.Barrios" />
           <EntitySet Name="Clientes" EntityType="Self.Clientes" />
           <EntitySet Name="Departamentos" EntityType="Self.Departamentos" />
@@ -1447,6 +1436,12 @@
             <End Role="Unidades" EntitySet="Unidades" />
             <End Role="EArticulos" EntitySet="EArticulos" />
           </AssociationSet>
+          <EntitySet Name="Bancos" EntityType="VentasModel.Bancos" />
+          <EntitySet Name="Sucursales" EntityType="VentasModel.Sucursales" />
+          <AssociationSet Name="FK_Sucursales_Bancos" Association="VentasModel.FK_Sucursales_Bancos">
+            <End Role="Bancos" EntitySet="Bancos" />
+            <End Role="Sucursales" EntitySet="Sucursales" />
+          </AssociationSet>
           <EntitySet Name="EPresupuestos" EntityType="VentasModel.EPresupuestos" />
           <EntitySet Name="EPresupuestosDetalles" EntityType="VentasModel.EPresupuestosDetalles" />
           <AssociationSet Name="FK_EPresupuestos_Clientes" Association="VentasModel.FK_EPresupuestos_Clientes">
@@ -1487,23 +1482,23 @@
           <Property Name="IdRubro" Type="Int32" />
           <Property Name="IdProveedor" Type="Int32" />
           <Property Name="IdUnidad" Type="Int32" />
-          <Property Name="CostoInicial" Type="Decimal" Precision="17" Scale="2" />
-          <Property Name="Descuento1" Type="Decimal" Precision="17" Scale="2" />
-          <Property Name="DescuentoPorc1" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="Descuento2" Type="Decimal" Precision="17" Scale="2" />
-          <Property Name="DescuentoPorc2" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="Descuento3" Type="Decimal" Precision="17" Scale="2" />
-          <Property Name="DescuentoPorc3" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="CostoInicial" Type="Decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="Descuento1" Type="Decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="DescuentoPorc1" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="Descuento2" Type="Decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="DescuentoPorc2" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="Descuento3" Type="Decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="DescuentoPorc3" Type="Decimal" Precision="3" Scale="2" />
           <Property Name="Costo" Type="Decimal" Nullable="false" Precision="17" Scale="2" />
           <Property Name="Stock" Type="Decimal" Precision="17" Scale="2" />
           <Property Name="StockMinimo" Type="Decimal" Nullable="false" Precision="17" Scale="2" />
           <Property Name="PrecioL1" Type="Decimal" Precision="17" Scale="2" />
-          <Property Name="PrecioPorcL1" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="PrecioPorcL1" Type="Decimal" Precision="3" Scale="2" />
           <Property Name="PrecioL2" Type="Decimal" Precision="17" Scale="2" />
-          <Property Name="PrecioPorcL2" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="PrecioPorcL2" Type="Decimal" Precision="3" Scale="2" />
           <Property Name="PrecioL3" Type="Decimal" Precision="17" Scale="2" />
-          <Property Name="PrecioPorcL3" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="IVA" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="PrecioPorcL3" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="IVA" Type="Decimal" Precision="3" Scale="2" />
           <Property Name="Observaciones" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Estado" Type="Int32" />
           <NavigationProperty Name="Empresas" Relationship="VentasModel.FK_EArticulos_Empresas" FromRole="EArticulos" ToRole="Empresas" />
@@ -1570,6 +1565,43 @@
             </Principal>
             <Dependent Role="EArticulos">
               <PropertyRef Name="IdUnidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Bancos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Sucursales" Relationship="VentasModel.FK_Sucursales_Bancos" FromRole="Bancos" ToRole="Sucursales" />
+        </EntityType>
+        <EntityType Name="Sucursales">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+          <Property Name="IdBanco" Type="Int32" Nullable="false" />
+          <Property Name="Sucursal" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Numero" Type="Int32" />
+          <Property Name="IdDomicilio" Type="Int32" />
+          <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EMail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Web" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Bancos" Relationship="VentasModel.FK_Sucursales_Bancos" FromRole="Sucursales" ToRole="Bancos" />
+        </EntityType>
+        <Association Name="FK_Sucursales_Bancos">
+          <End Type="VentasModel.Bancos" Role="Bancos" Multiplicity="1" />
+          <End Type="VentasModel.Sucursales" Role="Sucursales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bancos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sucursales">
+              <PropertyRef Name="IdBanco" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1687,32 +1719,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="VentasModelStoreContainer" CdmEntityContainer="VentasConexión">
-          <EntitySetMapping Name="Bancos">
-            <EntityTypeMapping TypeName="VentasModel.Bancos">
-              <MappingFragment StoreEntitySet="Bancos">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Banco" ColumnName="Banco" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BancoSucursal">
-            <EntityTypeMapping TypeName="VentasModel.BancoSucursal">
-              <MappingFragment StoreEntitySet="BancoSucursal">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="IdBanco" ColumnName="IdBanco" />
-                <ScalarProperty Name="SucursalNro" ColumnName="SucursalNro" />
-                <ScalarProperty Name="Sucursal" ColumnName="Sucursal" />
-                <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
-                <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
-                <ScalarProperty Name="IdLocalidad" ColumnName="IdLocalidad" />
-                <ScalarProperty Name="IdBarrio" ColumnName="IdBarrio" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Web" ColumnName="Web" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Barrios">
             <EntityTypeMapping TypeName="VentasModel.Barrios">
               <MappingFragment StoreEntitySet="Barrios">
@@ -1946,6 +1952,31 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Bancos">
+            <EntityTypeMapping TypeName="VentasModel.Bancos">
+              <MappingFragment StoreEntitySet="Bancos">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sucursales">
+            <EntityTypeMapping TypeName="VentasModel.Sucursales">
+              <MappingFragment StoreEntitySet="Sucursales">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Web" ColumnName="Web" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="IdDomicilio" ColumnName="IdDomicilio" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Sucursal" ColumnName="Sucursal" />
+                <ScalarProperty Name="IdBanco" ColumnName="IdBanco" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="EPresupuestos">
             <EntityTypeMapping TypeName="VentasModel.EPresupuestos">
               <MappingFragment StoreEntitySet="EPresupuestos">
@@ -1977,7 +2008,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

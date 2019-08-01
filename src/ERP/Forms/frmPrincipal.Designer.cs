@@ -48,7 +48,6 @@
             this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.configuraciónGeneralToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.presupuestosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cambiarContraseñaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,6 +60,9 @@
             this.remitosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.chequesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bancosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bancosToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.sucursalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -115,13 +117,13 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(93, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(149, 6);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("salirToolStripMenuItem.Image")));
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.salirToolStripMenuItem.Text = "&Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -134,7 +136,7 @@
             this.proveedoresToolStripMenuItem,
             this.toolStripMenuItem3,
             this.configuraciónGeneralToolStripMenuItem,
-            this.presupuestosToolStripMenuItem});
+            this.bancosToolStripMenuItem1});
             this.ediciónToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("ediciónToolStripMenuItem.Image")));
             this.ediciónToolStripMenuItem.Name = "ediciónToolStripMenuItem";
             this.ediciónToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
@@ -156,7 +158,7 @@
             // 
             this.productosToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("productosToolStripMenuItem1.Image")));
             this.productosToolStripMenuItem1.Name = "productosToolStripMenuItem1";
-            this.productosToolStripMenuItem1.Size = new System.Drawing.Size(123, 22);
+            this.productosToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.productosToolStripMenuItem1.Text = "Artículos";
             this.productosToolStripMenuItem1.Click += new System.EventHandler(this.productosToolStripMenuItem1_Click);
             // 
@@ -164,7 +166,7 @@
             // 
             this.unidadesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("unidadesToolStripMenuItem.Image")));
             this.unidadesToolStripMenuItem.Name = "unidadesToolStripMenuItem";
-            this.unidadesToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.unidadesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.unidadesToolStripMenuItem.Text = "Unidades";
             this.unidadesToolStripMenuItem.Click += new System.EventHandler(this.unidadesToolStripMenuItem_Click);
             // 
@@ -172,7 +174,7 @@
             // 
             this.marcasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("marcasToolStripMenuItem.Image")));
             this.marcasToolStripMenuItem.Name = "marcasToolStripMenuItem";
-            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.marcasToolStripMenuItem.Text = "Marcas";
             this.marcasToolStripMenuItem.Click += new System.EventHandler(this.marcasToolStripMenuItem_Click);
             // 
@@ -180,7 +182,7 @@
             // 
             this.rubrosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("rubrosToolStripMenuItem.Image")));
             this.rubrosToolStripMenuItem.Name = "rubrosToolStripMenuItem";
-            this.rubrosToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.rubrosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.rubrosToolStripMenuItem.Text = "Rubros";
             this.rubrosToolStripMenuItem.Click += new System.EventHandler(this.rubrosToolStripMenuItem_Click);
             // 
@@ -234,12 +236,6 @@
             this.configuraciónGeneralToolStripMenuItem.Name = "configuraciónGeneralToolStripMenuItem";
             this.configuraciónGeneralToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
             this.configuraciónGeneralToolStripMenuItem.Text = "Configuración general";
-            // 
-            // presupuestosToolStripMenuItem
-            // 
-            this.presupuestosToolStripMenuItem.Name = "presupuestosToolStripMenuItem";
-            this.presupuestosToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.presupuestosToolStripMenuItem.Text = "Presupuestos";
             // 
             // seguridadToolStripMenuItem
             // 
@@ -338,6 +334,28 @@
             this.chequesToolStripMenuItem.Text = "Cheques";
             this.chequesToolStripMenuItem.Click += new System.EventHandler(this.chequesToolStripMenuItem_Click);
             // 
+            // bancosToolStripMenuItem1
+            // 
+            this.bancosToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bancosToolStripMenuItem2,
+            this.sucursalesToolStripMenuItem});
+            this.bancosToolStripMenuItem1.Name = "bancosToolStripMenuItem1";
+            this.bancosToolStripMenuItem1.Size = new System.Drawing.Size(192, 22);
+            this.bancosToolStripMenuItem1.Text = "Bancos";
+            // 
+            // bancosToolStripMenuItem2
+            // 
+            this.bancosToolStripMenuItem2.Name = "bancosToolStripMenuItem2";
+            this.bancosToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
+            this.bancosToolStripMenuItem2.Text = "Bancos";
+            // 
+            // sucursalesToolStripMenuItem
+            // 
+            this.sucursalesToolStripMenuItem.Name = "sucursalesToolStripMenuItem";
+            this.sucursalesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sucursalesToolStripMenuItem.Text = "Sucursales";
+            this.sucursalesToolStripMenuItem.Click += new System.EventHandler(this.sucursalesToolStripMenuItem_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -387,9 +405,11 @@
         private System.Windows.Forms.ToolStripMenuItem localidadesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ventasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem presupuestosToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem presupuestosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem remitosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ventasToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem chequesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bancosToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem bancosToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem sucursalesToolStripMenuItem;
     }
 }

@@ -104,7 +104,7 @@ namespace ERP.Forms.Clientes
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             var a = ObtenerClienteseleccionado();
-            if (MessageBox.Show("¿Está seguro de que desea eliminar el alumno seleccionado?",
+            if (MessageBox.Show("¿Está seguro de que desea eliminar el cliente seleccionado?",
                 "Eliminar Clientes", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
                 try

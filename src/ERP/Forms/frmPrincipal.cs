@@ -188,5 +188,10 @@ namespace ERP.Forms
         {
             using (var f = new Cheques.frmListado()) f.ShowDialog();
         }
+
+        private void sucursalesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var f = new Sucursales.frmListado()) f.ShowDialog();
+        }
     }
 }

@@ -12,19 +12,20 @@ namespace ERP.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class BancoSucursal
+    public partial class Sucursales
     {
         public int Id { get; set; }
+        public int IdEmpresa { get; set; }
         public int IdBanco { get; set; }
-        public int SucursalNro { get; set; }
         public string Sucursal { get; set; }
-        public Nullable<int> IdProvincia { get; set; }
-        public Nullable<int> IdDepartamento { get; set; }
-        public Nullable<int> IdLocalidad { get; set; }
-        public Nullable<int> IdBarrio { get; set; }
+        public Nullable<int> Numero { get; set; }
+        public Nullable<int> IdDomicilio { get; set; }
         public string Direccion { get; set; }
-        public string Web { get; set; }
-        public string Email { get; set; }
+        public string EMail { get; set; }
         public string Telefono { get; set; }
+        public string Web { get; set; }
+        public byte Estado { get; set; }
+    
+        public virtual Bancos Bancos { get; set; }
     }
 }

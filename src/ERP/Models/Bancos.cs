@@ -14,7 +14,16 @@ namespace ERP.Models
     
     public partial class Bancos
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Bancos()
+        {
+            this.Sucursales = new HashSet<Sucursales>();
+        }
+    
         public int Id { get; set; }
-        public string Banco { get; set; }
+        public string Nombre { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Sucursales> Sucursales { get; set; }
     }
 }

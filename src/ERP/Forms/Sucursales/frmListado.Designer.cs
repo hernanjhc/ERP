@@ -1,4 +1,4 @@
-﻿namespace ERP.Forms.SucursalesBanco
+﻿namespace ERP.Forms.Sucursales
 {
     partial class frmListado
     {
@@ -53,12 +53,12 @@
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 63);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 67);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 285F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(300, 317);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(746, 317);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // panel1
@@ -67,7 +67,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(292, 23);
+            this.panel1.Size = new System.Drawing.Size(738, 23);
             this.panel1.TabIndex = 0;
             // 
             // tsUnidades
@@ -81,7 +81,7 @@
             this.btnSalir});
             this.tsUnidades.Location = new System.Drawing.Point(0, 0);
             this.tsUnidades.Name = "tsUnidades";
-            this.tsUnidades.Size = new System.Drawing.Size(292, 23);
+            this.tsUnidades.Size = new System.Drawing.Size(738, 23);
             this.tsUnidades.TabIndex = 4;
             this.tsUnidades.Text = "toolStrip1";
             // 
@@ -94,6 +94,7 @@
             this.btnNuevo.Size = new System.Drawing.Size(23, 20);
             this.btnNuevo.Text = "toolStripButton1";
             this.btnNuevo.ToolTipText = "Nuevo (Ctrl + N)";
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // btnEditar
             // 
@@ -104,6 +105,7 @@
             this.btnEditar.Size = new System.Drawing.Size(23, 20);
             this.btnEditar.Text = "toolStripButton2";
             this.btnEditar.ToolTipText = "Editar (Ctrl + F4)";
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnEliminar
             // 
@@ -114,6 +116,7 @@
             this.btnEliminar.Size = new System.Drawing.Size(23, 20);
             this.btnEliminar.Text = "toolStripButton3";
             this.btnEliminar.ToolTipText = "Eliminar (Ctrl + Delete)";
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // toolStripSeparator1
             // 
@@ -129,6 +132,7 @@
             this.btnSalir.Size = new System.Drawing.Size(23, 20);
             this.btnSalir.Text = "toolStripButton4";
             this.btnSalir.ToolTipText = "Salir (Escape)";
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // panel2
             // 
@@ -136,7 +140,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(4, 34);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(292, 279);
+            this.panel2.Size = new System.Drawing.Size(738, 279);
             this.panel2.TabIndex = 1;
             // 
             // dgvDatos
@@ -154,14 +158,16 @@
             this.dgvDatos.OddRowColor = System.Drawing.Color.AliceBlue;
             this.dgvDatos.ReadOnly = true;
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(292, 279);
+            this.dgvDatos.Size = new System.Drawing.Size(738, 279);
             this.dgvDatos.TabIndex = 3;
+            this.dgvDatos.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvDatos_DataBindingComplete);
+            this.dgvDatos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDatos_KeyDown);
             // 
             // frmListado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 380);
+            this.ClientSize = new System.Drawing.Size(746, 384);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmListado";
             this.Text = "frmListado";

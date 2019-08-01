@@ -1,4 +1,4 @@
-﻿namespace ERP.Forms.SucursalesBanco
+﻿namespace ERP.Forms.Sucursales
 {
     partial class frmEdicion
     {
@@ -28,8 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
+            this.ckEstado = new MaterialSkin.Controls.MaterialCheckBox();
+            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.txtWeb = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtEmail = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
+            this.btnBancos = new System.Windows.Forms.Button();
+            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.cbBanco = new System.Windows.Forms.ComboBox();
             this.materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
@@ -52,16 +62,11 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.materialRaisedButton2 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
-            this.cbBanco = new System.Windows.Forms.ComboBox();
-            this.btnBancos = new System.Windows.Forms.Button();
-            this.txtEmail = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtWeb = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -71,16 +76,18 @@
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 64);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 59);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 58F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(466, 393);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(466, 432);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.materialLabel12);
+            this.panel2.Controls.Add(this.ckEstado);
             this.panel2.Controls.Add(this.materialLabel5);
             this.panel2.Controls.Add(this.txtWeb);
             this.panel2.Controls.Add(this.txtEmail);
@@ -110,8 +117,124 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(460, 329);
+            this.panel2.Size = new System.Drawing.Size(460, 368);
             this.panel2.TabIndex = 1;
+            // 
+            // materialLabel12
+            // 
+            this.materialLabel12.AutoSize = true;
+            this.materialLabel12.Depth = 0;
+            this.materialLabel12.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel12.Location = new System.Drawing.Point(59, 332);
+            this.materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel12.Name = "materialLabel12";
+            this.materialLabel12.Size = new System.Drawing.Size(56, 19);
+            this.materialLabel12.TabIndex = 69;
+            this.materialLabel12.Text = "Estado";
+            // 
+            // ckEstado
+            // 
+            this.ckEstado.AutoSize = true;
+            this.ckEstado.Depth = 0;
+            this.ckEstado.Font = new System.Drawing.Font("Roboto", 10F);
+            this.ckEstado.Location = new System.Drawing.Point(118, 328);
+            this.ckEstado.Margin = new System.Windows.Forms.Padding(0);
+            this.ckEstado.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.ckEstado.MouseState = MaterialSkin.MouseState.HOVER;
+            this.ckEstado.Name = "ckEstado";
+            this.ckEstado.Ripple = true;
+            this.ckEstado.Size = new System.Drawing.Size(93, 30);
+            this.ckEstado.TabIndex = 70;
+            this.ckEstado.Text = "Habilitado";
+            this.ckEstado.UseVisualStyleBackColor = true;
+            // 
+            // materialLabel5
+            // 
+            this.materialLabel5.AutoSize = true;
+            this.materialLabel5.Depth = 0;
+            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel5.Location = new System.Drawing.Point(72, 294);
+            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel5.Name = "materialLabel5";
+            this.materialLabel5.Size = new System.Drawing.Size(38, 19);
+            this.materialLabel5.TabIndex = 67;
+            this.materialLabel5.Text = "Web";
+            // 
+            // txtWeb
+            // 
+            this.txtWeb.Depth = 0;
+            this.txtWeb.Hint = "";
+            this.txtWeb.Location = new System.Drawing.Point(117, 290);
+            this.txtWeb.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtWeb.Name = "txtWeb";
+            this.txtWeb.PasswordChar = '\0';
+            this.txtWeb.SelectedText = "";
+            this.txtWeb.SelectionLength = 0;
+            this.txtWeb.SelectionStart = 0;
+            this.txtWeb.Size = new System.Drawing.Size(302, 23);
+            this.txtWeb.TabIndex = 68;
+            this.txtWeb.UseSystemPasswordChar = false;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Depth = 0;
+            this.txtEmail.Hint = "";
+            this.txtEmail.Location = new System.Drawing.Point(119, 232);
+            this.txtEmail.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.PasswordChar = '\0';
+            this.txtEmail.SelectedText = "";
+            this.txtEmail.SelectionLength = 0;
+            this.txtEmail.SelectionStart = 0;
+            this.txtEmail.Size = new System.Drawing.Size(302, 23);
+            this.txtEmail.TabIndex = 65;
+            this.txtEmail.UseSystemPasswordChar = false;
+            // 
+            // materialLabel4
+            // 
+            this.materialLabel4.AutoSize = true;
+            this.materialLabel4.Depth = 0;
+            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel4.Location = new System.Drawing.Point(63, 236);
+            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel4.Name = "materialLabel4";
+            this.materialLabel4.Size = new System.Drawing.Size(47, 19);
+            this.materialLabel4.TabIndex = 66;
+            this.materialLabel4.Text = "Email";
+            // 
+            // btnBancos
+            // 
+            this.btnBancos.Location = new System.Drawing.Point(428, 68);
+            this.btnBancos.Name = "btnBancos";
+            this.btnBancos.Size = new System.Drawing.Size(23, 23);
+            this.btnBancos.TabIndex = 64;
+            this.btnBancos.TabStop = false;
+            this.btnBancos.UseVisualStyleBackColor = true;
+            // 
+            // materialLabel3
+            // 
+            this.materialLabel3.AutoSize = true;
+            this.materialLabel3.Depth = 0;
+            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel3.Location = new System.Drawing.Point(59, 70);
+            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel3.Name = "materialLabel3";
+            this.materialLabel3.Size = new System.Drawing.Size(51, 19);
+            this.materialLabel3.TabIndex = 63;
+            this.materialLabel3.Text = "Banco";
+            // 
+            // cbBanco
+            // 
+            this.cbBanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbBanco.FormattingEnabled = true;
+            this.cbBanco.Location = new System.Drawing.Point(120, 68);
+            this.cbBanco.Name = "cbBanco";
+            this.cbBanco.Size = new System.Drawing.Size(302, 21);
+            this.cbBanco.TabIndex = 62;
             // 
             // materialLabel11
             // 
@@ -285,6 +408,7 @@
             this.btnBarrio.TabIndex = 45;
             this.btnBarrio.TabStop = false;
             this.btnBarrio.UseVisualStyleBackColor = true;
+            this.btnBarrio.Click += new System.EventHandler(this.btnBarrio_Click);
             // 
             // btnLocalidad
             // 
@@ -294,6 +418,7 @@
             this.btnLocalidad.TabIndex = 35;
             this.btnLocalidad.TabStop = false;
             this.btnLocalidad.UseVisualStyleBackColor = true;
+            this.btnLocalidad.Click += new System.EventHandler(this.btnLocalidad_Click);
             // 
             // btnDepartamentos
             // 
@@ -303,6 +428,7 @@
             this.btnDepartamentos.TabIndex = 25;
             this.btnDepartamentos.TabStop = false;
             this.btnDepartamentos.UseVisualStyleBackColor = true;
+            this.btnDepartamentos.Click += new System.EventHandler(this.btnDepartamentos_Click);
             // 
             // cbBarrio
             // 
@@ -321,6 +447,7 @@
             this.cbLocalidad.Name = "cbLocalidad";
             this.cbLocalidad.Size = new System.Drawing.Size(302, 21);
             this.cbLocalidad.TabIndex = 30;
+            this.cbLocalidad.SelectionChangeCommitted += new System.EventHandler(this.cbLocalidad_SelectionChangeCommitted);
             // 
             // cbDepartamento
             // 
@@ -330,6 +457,7 @@
             this.cbDepartamento.Name = "cbDepartamento";
             this.cbDepartamento.Size = new System.Drawing.Size(302, 21);
             this.cbDepartamento.TabIndex = 20;
+            this.cbDepartamento.SelectionChangeCommitted += new System.EventHandler(this.cbDepartamento_SelectionChangeCommitted);
             // 
             // cbProvincia
             // 
@@ -339,13 +467,14 @@
             this.cbProvincia.Name = "cbProvincia";
             this.cbProvincia.Size = new System.Drawing.Size(302, 21);
             this.cbProvincia.TabIndex = 15;
+            this.cbProvincia.SelectionChangeCommitted += new System.EventHandler(this.cbProvincia_SelectionChangeCommitted);
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.materialRaisedButton2);
             this.panel3.Controls.Add(this.materialRaisedButton1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 338);
+            this.panel3.Location = new System.Drawing.Point(3, 377);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(460, 52);
             this.panel3.TabIndex = 2;
@@ -361,6 +490,7 @@
             this.materialRaisedButton2.TabIndex = 1;
             this.materialRaisedButton2.Text = "Cancelar";
             this.materialRaisedButton2.UseVisualStyleBackColor = true;
+            this.materialRaisedButton2.Click += new System.EventHandler(this.materialRaisedButton2_Click);
             // 
             // materialRaisedButton1
             // 
@@ -373,99 +503,17 @@
             this.materialRaisedButton1.TabIndex = 0;
             this.materialRaisedButton1.Text = "Guardar";
             this.materialRaisedButton1.UseVisualStyleBackColor = true;
+            this.materialRaisedButton1.Click += new System.EventHandler(this.materialRaisedButton1_Click);
             // 
-            // materialLabel3
+            // errorProvider1
             // 
-            this.materialLabel3.AutoSize = true;
-            this.materialLabel3.Depth = 0;
-            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(59, 70);
-            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(51, 19);
-            this.materialLabel3.TabIndex = 63;
-            this.materialLabel3.Text = "Banco";
-            // 
-            // cbBanco
-            // 
-            this.cbBanco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbBanco.FormattingEnabled = true;
-            this.cbBanco.Location = new System.Drawing.Point(120, 68);
-            this.cbBanco.Name = "cbBanco";
-            this.cbBanco.Size = new System.Drawing.Size(302, 21);
-            this.cbBanco.TabIndex = 62;
-            // 
-            // btnBancos
-            // 
-            this.btnBancos.Location = new System.Drawing.Point(428, 68);
-            this.btnBancos.Name = "btnBancos";
-            this.btnBancos.Size = new System.Drawing.Size(23, 23);
-            this.btnBancos.TabIndex = 64;
-            this.btnBancos.TabStop = false;
-            this.btnBancos.UseVisualStyleBackColor = true;
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Depth = 0;
-            this.txtEmail.Hint = "";
-            this.txtEmail.Location = new System.Drawing.Point(119, 232);
-            this.txtEmail.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.PasswordChar = '\0';
-            this.txtEmail.SelectedText = "";
-            this.txtEmail.SelectionLength = 0;
-            this.txtEmail.SelectionStart = 0;
-            this.txtEmail.Size = new System.Drawing.Size(302, 23);
-            this.txtEmail.TabIndex = 65;
-            this.txtEmail.UseSystemPasswordChar = false;
-            // 
-            // materialLabel4
-            // 
-            this.materialLabel4.AutoSize = true;
-            this.materialLabel4.Depth = 0;
-            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(63, 236);
-            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(47, 19);
-            this.materialLabel4.TabIndex = 66;
-            this.materialLabel4.Text = "Email";
-            // 
-            // materialLabel5
-            // 
-            this.materialLabel5.AutoSize = true;
-            this.materialLabel5.Depth = 0;
-            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel5.Location = new System.Drawing.Point(72, 294);
-            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel5.Name = "materialLabel5";
-            this.materialLabel5.Size = new System.Drawing.Size(38, 19);
-            this.materialLabel5.TabIndex = 67;
-            this.materialLabel5.Text = "Web";
-            // 
-            // txtWeb
-            // 
-            this.txtWeb.Depth = 0;
-            this.txtWeb.Hint = "";
-            this.txtWeb.Location = new System.Drawing.Point(117, 290);
-            this.txtWeb.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtWeb.Name = "txtWeb";
-            this.txtWeb.PasswordChar = '\0';
-            this.txtWeb.SelectedText = "";
-            this.txtWeb.SelectionLength = 0;
-            this.txtWeb.SelectionStart = 0;
-            this.txtWeb.Size = new System.Drawing.Size(302, 23);
-            this.txtWeb.TabIndex = 68;
-            this.txtWeb.UseSystemPasswordChar = false;
+            this.errorProvider1.ContainerControl = this;
             // 
             // frmEdicion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(466, 457);
+            this.ClientSize = new System.Drawing.Size(466, 491);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmEdicion";
             this.Text = "frmEdicion";
@@ -473,6 +521,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -510,5 +559,8 @@
         private System.Windows.Forms.Panel panel3;
         private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton2;
         private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel12;
+        private MaterialSkin.Controls.MaterialCheckBox ckEstado;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
