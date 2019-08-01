@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ERP.Repositories;
 using ERP.Models;
+using ERP.Lib;
 
 namespace ERP.Forms.Presupuestos
 {
@@ -17,22 +18,25 @@ namespace ERP.Forms.Presupuestos
         public frmListado()
         {
             InitializeComponent();
+            dtpHasta.Text = Configuration.CurrentDate.ToString();
+            dtpDesde.Text = Configuration.CurrentDate.AddDays(-30).ToString(); //DateTime.Today.AddDays(-30).ToString();    //.Today.AddDays(-20);
             ConsultarDatos();
         }
 
         private void ConsultarDatos()
         {
-            dgvDatos.SetDataSource(from p in PresupuestosRepository.ObtenerPresupuestos()
-                                   
-                                   orderby p.Id
-                                   select new
-                                   {
-                                       p.Id,
-                                       p.Fecha,
-                                       DiasValidez = p.DiasValidez + " días.",
-                                       Cliente= ClientesRepository.ObtenerClientePorId(Convert.ToDecimal(p.IdCliente)).RazonSocial,
-                                       Usuario = UsuariosRepository.ObtenerUsuarioPorId(Convert.ToDecimal(p.IdUsuario)).NombreCompleto
-                                   });            //dgvDatos.Columns[0].Visible = false;
+                dgvDatos.SetDataSource(
+                    from p in PresupuestosRepository.ObtenerPresupuestos()
+                    orderby p.Id
+                    select new
+                    {
+                        p.Id,
+                        p.Fecha,
+                        DiasValidez = p.DiasValidez + " días.",
+                        Cliente= ClientesRepository.ObtenerClientePorId(Convert.ToDecimal(p.IdCliente)).RazonSocial,
+                        Usuario = UsuariosRepository.ObtenerUsuarioPorId(Convert.ToDecimal(p.IdUsuario)).NombreCompleto
+                    }
+                );            //dgvDatos.Columns[0].Visible = false;   
         }
 
 
@@ -104,16 +108,33 @@ namespace ERP.Forms.Presupuestos
             txtPresupuesto.Text = p.Id.ToString().Trim();
             txtValidez.Text = p.DiasValidez.ToString().Trim();
             txtCliente.Text = cliente.RazonSocial;
-            //if(!string.IsNullOrEmpty( p.Clientes.NroDocumento.ToString().Trim())) txtNroDoc.Text = p.Clientes.NroDocumento.ToString().Trim();
             txtNroDoc.Text = cliente.NroDocumento.ToString();
             txtDescuento.Text = p.Descuento.ToString().Trim() + " (" + p.DescuentoPorc.ToString().Trim() + "%)";
             txtDireccion.Text = cliente.Direccion; 
             txtSubTotal.Text = p.Importe.ToString().Trim(); 
             txtTotal.Text = p.ImporteTotal.ToString().Trim();
+
+            cargarDetalles(p.Id);
+        }
+
+        private void cargarDetalles(int idpresupuesto)
+        {
+            dgvDetalles.SetDataSource(
+                    from d in PresupuestosDetallesRepository.ObtenerDetallesDelPresupuesto(idpresupuesto)
+                    select new
+                    {
+                        ArticulosRepository.ObtenerArticulosPorId( 
+                            Convert.ToDecimal(d.IdArticulo)).Descripcion,
+                        d.Precio,
+                        d.Cantidad,
+                        d.Importe
+                    }
+                );
         }
 
         private void limpiarTxt()
         {
+            dgvDetalles.Rows.Clear();
             txtPresupuesto.Text = "";
             txtValidez.Text = "";
             txtCliente.Text = "";
@@ -128,13 +149,7 @@ namespace ERP.Forms.Presupuestos
         {
             if (txtFiltrar.Text != "")
             {
-                if (chbFiltrarFecha.Checked=true)
-                {
-
-                }
-                else
-                {
-                    dgvDatos.CurrentCell = null;
+                dgvDatos.CurrentCell = null;
                     foreach (DataGridViewRow r in dgvDatos.Rows)
                     {
                         r.Visible = false;
@@ -150,12 +165,67 @@ namespace ERP.Forms.Presupuestos
                             }
                         }
                     }
-                }
             }
             else
             {
                 ConsultarDatos();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ConsultarDatosEntreFechas();
+        }
+
+        private void ConsultarDatosEntreFechas()
+        {
+            if (chbFiltrarFecha.Checked == true)
+            {
+                DateTime desde = Convert.ToDateTime(dtpDesde.Text);
+                DateTime hasta = Convert.ToDateTime(dtpHasta.Text);
+                dgvDatos.SetDataSource(
+                    from p in PresupuestosRepository.ObtenerPresupuestos()
+                    .Where(p => p.Fecha >= desde && p.Fecha <= hasta)
+                    orderby p.Id
+                    select new
+                    {
+                        p.Id,
+                        p.Fecha,
+                        DiasValidez = p.DiasValidez + " días.",
+                        Cliente = ClientesRepository.ObtenerClientePorId(Convert.ToDecimal(p.IdCliente)).RazonSocial,
+                        Usuario = UsuariosRepository.ObtenerUsuarioPorId(Convert.ToDecimal(p.IdUsuario)).NombreCompleto
+                    }
+                );
+            }
+            else
+            {
+                ConsultarDatos();
+            }
+        }
+
+        private void dgvDetalles_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            foreach (DataGridViewColumn c in dgvDetalles.Columns)
+            {
+                c.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            dgvDetalles.Columns[0].HeaderText = "Descripcion";
+            dgvDetalles.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvDetalles.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            
+            dgvDetalles.Columns[1].HeaderText = "Precio";
+            dgvDetalles.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvDetalles.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            //dgvDetalles.Columns[1].DefaultCellStyle.Format = "dd/MM/yyyy";
+
+            dgvDetalles.Columns[2].HeaderText = "Cantidad";
+            dgvDetalles.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvDetalles.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            
+            dgvDetalles.Columns[3].HeaderText = "Importe";
+            dgvDetalles.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvDetalles.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
         }
     }
 }
