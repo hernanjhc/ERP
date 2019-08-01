@@ -19,7 +19,7 @@ namespace ERP.Forms.Presupuestos
         {
             InitializeComponent();
             dtpHasta.Text = Configuration.CurrentDate.ToString();
-            dtpDesde.Text = Configuration.CurrentDate.AddDays(-30).ToString(); //DateTime.Today.AddDays(-30).ToString();    //.Today.AddDays(-20);
+            dtpDesde.Text = Configuration.CurrentDate.AddDays(-30).ToString(); 
             ConsultarDatos();
         }
 
@@ -27,6 +27,11 @@ namespace ERP.Forms.Presupuestos
         {
                 dgvDatos.SetDataSource(
                     from p in PresupuestosRepository.ObtenerPresupuestos()
+                    /*Controla presupuestos con fecha de validez*/
+                    .Where(x => 
+                    //fecha de presupuesto + días validez >= día actual
+                        x.Fecha.Value.AddDays(Convert.ToInt16(x.DiasValidez)) >= Configuration.CurrentDate
+                    )
                     orderby p.Id
                     select new
                     {
