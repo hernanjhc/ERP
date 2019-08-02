@@ -144,5 +144,21 @@ namespace ERP.Repositories
             }
         }
 
+        public static IEnumerable<Sucursales> ObtenerSucursalesPorBanco(int idBanco)
+        {
+            using (var db = new Models.VentasConexión())
+            {
+                var sucu = db.Sucursales.Where(d => d.IdBanco == idBanco).ToList()
+                                .Select(
+                                    d => new Sucursales
+                                    {
+                                        Id = d.Id,
+                                        Sucursal = d.Sucursal
+                                    }
+                                 ).ToList();
+                return sucu.OrderBy(b => b.Sucursal).ToList();
+            }
+        }
+
     }
 }

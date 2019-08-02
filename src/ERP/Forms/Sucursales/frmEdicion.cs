@@ -354,5 +354,24 @@ namespace ERP.Forms.Sucursales
         {
             Close();
         }
+
+        private void btnBancos_Click(object sender, EventArgs e)
+        {
+            using (var f = new frmInputQuery("Nuevo Banco", "Nuevo Banco"))
+            {
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        BancosRepository.Insertar(f.Descripción.Trim());
+                        CargarBancos();
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowError("Error al intentar grabar los datos: \n" + ex.Message);
+                    }
+                }
+            }
+        }
     }
 }

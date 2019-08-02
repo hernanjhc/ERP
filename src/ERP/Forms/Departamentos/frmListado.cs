@@ -146,5 +146,7 @@ namespace ERP.Forms.Departamentos
         {
             ConsultarDatos();
         }
+
+
     }
 }

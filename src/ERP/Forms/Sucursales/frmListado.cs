@@ -18,6 +18,22 @@ namespace ERP.Forms.Sucursales
         public frmListado()
         {
             InitializeComponent();
+
+            cbBancos.DataSource = BancosRepository.ObtenerBancos();
+            cbBancos.ValueMember = "Id";
+            cbBancos.DisplayMember = "Nombre";
+            Action<ComboBox, string> seleccionar = (cb, s) =>
+            {
+                for (int i = 0; i < cb.Items.Count; i++)
+                {
+                    if (cb.GetItemText(cb.Items[i]).Contains(s))
+                    {
+                        cb.SelectedIndex = i;
+                        break;
+                    }
+                }
+            };
+
             ConsultarDatos();
         }
 
@@ -61,7 +77,7 @@ namespace ERP.Forms.Sucursales
 
             dgvDatos.Columns[1].HeaderText = "Banco";
             dgvDatos.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvDatos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dgvDatos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             dgvDatos.Columns[2].HeaderText = "Sucursal";
             dgvDatos.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -186,6 +202,27 @@ namespace ERP.Forms.Sucursales
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        
+
+        private void ConsultarSucursalesPorBanco()
+        {
+            var query = SucursalesRepository.ObtenerSucursalesPorBanco(IdBanco);
+            dgvDatos.SetDataSource(from d in query select new { d.Id, d.Sucursal });
+        }
+
+        public int IdBanco
+        {
+            get
+            {
+                return Convert.ToInt32(cbBancos.SelectedValue);
+            }
+        }
+
+        private void cbBancos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ConsultarSucursalesPorBanco();
         }
     }
 }

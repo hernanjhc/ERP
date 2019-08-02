@@ -213,6 +213,7 @@
             this.btnBancos.TabIndex = 64;
             this.btnBancos.TabStop = false;
             this.btnBancos.UseVisualStyleBackColor = true;
+            this.btnBancos.Click += new System.EventHandler(this.btnBancos_Click);
             // 
             // materialLabel3
             // 
