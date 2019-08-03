@@ -144,6 +144,32 @@
           <Property Name="Cantidad" Type="int" />
           <Property Name="Precio" Type="numeric" Precision="17" Scale="2" />
         </EntityType>
+        <EntityType Name="ERemitos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" Nullable="false" />
+          <Property Name="IdCliente" Type="int" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="IdVenta" Type="int" Nullable="false" />
+          <Property Name="EntregaNombre" Type="varchar" MaxLength="200" />
+          <Property Name="RecibeNombre" Type="varchar" MaxLength="200" />
+          <Property Name="RecibeTipoDocumento" Type="int" />
+          <Property Name="RecibeNroDocumento" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IdUsuario" Type="int" />
+          <Property Name="Estado" Type="int" />
+        </EntityType>
+        <EntityType Name="ERemitosDetalles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" Nullable="false" />
+          <Property Name="IdRemito" Type="int" />
+          <Property Name="IdArticulo" Type="int" />
+          <Property Name="Cantidad" Type="int" />
+        </EntityType>
         <EntityType Name="ERubros">
           <Key>
             <PropertyRef Name="Id" />
@@ -535,6 +561,78 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ERemitos_Clientes">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+          <End Role="ERemitos" Type="Self.ERemitos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ERemitos">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ERemitos_Empresas">
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="1" />
+          <End Role="ERemitos" Type="Self.ERemitos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ERemitos">
+              <PropertyRef Name="IdEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ERemitos_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="ERemitos" Type="Self.ERemitos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ERemitos">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ERemitosDetalles_Articulos">
+          <End Role="EArticulos" Type="Self.EArticulos" Multiplicity="0..1" />
+          <End Role="ERemitosDetalles" Type="Self.ERemitosDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EArticulos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ERemitosDetalles">
+              <PropertyRef Name="IdArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ERemitosDetalles_Empresas">
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="1" />
+          <End Role="ERemitosDetalles" Type="Self.ERemitosDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ERemitosDetalles">
+              <PropertyRef Name="IdEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ERemitosDetalles_Remitos">
+          <End Role="ERemitos" Type="Self.ERemitos" Multiplicity="0..1" />
+          <End Role="ERemitosDetalles" Type="Self.ERemitosDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ERemitos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ERemitosDetalles">
+              <PropertyRef Name="IdRemito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ERubros_Empresas">
           <End Role="Empresas" Type="Self.Empresas" Multiplicity="0..1" />
           <End Role="ERubros" Type="Self.ERubros" Multiplicity="*" />
@@ -678,6 +776,8 @@
           <EntitySet Name="Empresas" EntityType="Self.Empresas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EPresupuestos" EntityType="Self.EPresupuestos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EPresupuestosDetalles" EntityType="Self.EPresupuestosDetalles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ERemitos" EntityType="Self.ERemitos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ERemitosDetalles" EntityType="Self.ERemitosDetalles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ERubros" EntityType="Self.ERubros" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Grupos" EntityType="Self.Grupos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GruposItemsMenu" EntityType="Self.GruposItemsMenu" Schema="dbo" store:Type="Tables" />
@@ -779,6 +879,30 @@
             <End Role="EPresupuestos" EntitySet="EPresupuestos" />
             <End Role="EPresupuestosDetalles" EntitySet="EPresupuestosDetalles" />
           </AssociationSet>
+          <AssociationSet Name="FK_ERemitos_Clientes" Association="Self.FK_ERemitos_Clientes">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="ERemitos" EntitySet="ERemitos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ERemitos_Empresas" Association="Self.FK_ERemitos_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="ERemitos" EntitySet="ERemitos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ERemitos_Usuarios" Association="Self.FK_ERemitos_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="ERemitos" EntitySet="ERemitos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ERemitosDetalles_Articulos" Association="Self.FK_ERemitosDetalles_Articulos">
+            <End Role="EArticulos" EntitySet="EArticulos" />
+            <End Role="ERemitosDetalles" EntitySet="ERemitosDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ERemitosDetalles_Empresas" Association="Self.FK_ERemitosDetalles_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="ERemitosDetalles" EntitySet="ERemitosDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ERemitosDetalles_Remitos" Association="Self.FK_ERemitosDetalles_Remitos">
+            <End Role="ERemitos" EntitySet="ERemitos" />
+            <End Role="ERemitosDetalles" EntitySet="ERemitosDetalles" />
+          </AssociationSet>
           <AssociationSet Name="FK_ERubros_Empresas" Association="Self.FK_ERubros_Empresas">
             <End Role="Empresas" EntitySet="Empresas" />
             <End Role="ERubros" EntitySet="ERubros" />
@@ -856,6 +980,7 @@
           <NavigationProperty Name="Domicilios" Relationship="Self.FK_Clientes_Domicilios" FromRole="Clientes" ToRole="Domicilios" />
           <NavigationProperty Name="TiposDocumento" Relationship="Self.FK_Clientes_TiposDocumento" FromRole="Clientes" ToRole="TiposDocumento" />
           <NavigationProperty Name="EPresupuestos" Relationship="VentasModel.FK_EPresupuestos_Clientes" FromRole="Clientes" ToRole="EPresupuestos" />
+          <NavigationProperty Name="ERemitos" Relationship="VentasModel.FK_ERemitos_Clientes" FromRole="Clientes" ToRole="ERemitos" />
         </EntityType>
         <EntityType Name="Departamentos">
           <Key>
@@ -921,6 +1046,8 @@
           <NavigationProperty Name="EArticulos" Relationship="VentasModel.FK_EArticulos_Empresas" FromRole="Empresas" ToRole="EArticulos" />
           <NavigationProperty Name="EPresupuestos" Relationship="VentasModel.FK_EPresupuestos_Empresas" FromRole="Empresas" ToRole="EPresupuestos" />
           <NavigationProperty Name="EPresupuestosDetalles" Relationship="VentasModel.FK_EPresupuestosDetalles_Empresas" FromRole="Empresas" ToRole="EPresupuestosDetalles" />
+          <NavigationProperty Name="ERemitos" Relationship="VentasModel.FK_ERemitos_Empresas" FromRole="Empresas" ToRole="ERemitos" />
+          <NavigationProperty Name="ERemitosDetalles" Relationship="VentasModel.FK_ERemitosDetalles_Empresas" FromRole="Empresas" ToRole="ERemitosDetalles" />
         </EntityType>
         <EntityType Name="ERubros">
           <Key>
@@ -1049,6 +1176,7 @@
           <NavigationProperty Name="GruposUsuarios" Relationship="Self.FK_GruposUsuarios_Usuarios" FromRole="Usuarios" ToRole="GruposUsuarios" />
           <NavigationProperty Name="UsuariosItemsMenu" Relationship="Self.FK_UsuariosItemsMenu_Usuarios" FromRole="Usuarios" ToRole="UsuariosItemsMenu" />
           <NavigationProperty Name="EPresupuestos" Relationship="VentasModel.FK_EPresupuestos_Usuarios" FromRole="Usuarios" ToRole="EPresupuestos" />
+          <NavigationProperty Name="ERemitos" Relationship="VentasModel.FK_ERemitos_Usuarios" FromRole="Usuarios" ToRole="ERemitos" />
         </EntityType>
         <EntityType Name="UsuariosItemsMenu">
           <Key>
@@ -1468,6 +1596,32 @@
             <End Role="EPresupuestos" EntitySet="EPresupuestos" />
             <End Role="EPresupuestosDetalles" EntitySet="EPresupuestosDetalles" />
           </AssociationSet>
+          <EntitySet Name="ERemitos" EntityType="VentasModel.ERemitos" />
+          <EntitySet Name="ERemitosDetalles" EntityType="VentasModel.ERemitosDetalles" />
+          <AssociationSet Name="FK_ERemitos_Clientes" Association="VentasModel.FK_ERemitos_Clientes">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="ERemitos" EntitySet="ERemitos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ERemitosDetalles_Articulos" Association="VentasModel.FK_ERemitosDetalles_Articulos">
+            <End Role="EArticulos" EntitySet="EArticulos" />
+            <End Role="ERemitosDetalles" EntitySet="ERemitosDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ERemitos_Empresas" Association="VentasModel.FK_ERemitos_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="ERemitos" EntitySet="ERemitos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ERemitosDetalles_Empresas" Association="VentasModel.FK_ERemitosDetalles_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="ERemitosDetalles" EntitySet="ERemitosDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ERemitos_Usuarios" Association="VentasModel.FK_ERemitos_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="ERemitos" EntitySet="ERemitos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ERemitosDetalles_Remitos" Association="VentasModel.FK_ERemitosDetalles_Remitos">
+            <End Role="ERemitos" EntitySet="ERemitos" />
+            <End Role="ERemitosDetalles" EntitySet="ERemitosDetalles" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="EArticulos">
           <Key>
@@ -1507,6 +1661,7 @@
           <NavigationProperty Name="ERubros" Relationship="VentasModel.FK_EArticulos_Rubros" FromRole="EArticulos" ToRole="ERubros" />
           <NavigationProperty Name="Unidades" Relationship="VentasModel.FK_EArticulos_Unidades" FromRole="EArticulos" ToRole="Unidades" />
           <NavigationProperty Name="EPresupuestosDetalles" Relationship="VentasModel.FK_EPresupuestosDetalles_Articulos" FromRole="EArticulos" ToRole="EPresupuestosDetalles" />
+          <NavigationProperty Name="ERemitosDetalles" Relationship="VentasModel.FK_ERemitosDetalles_Articulos" FromRole="EArticulos" ToRole="ERemitosDetalles" />
         </EntityType>
         <Association Name="FK_EArticulos_Empresas">
           <End Type="VentasModel.Empresas" Role="Empresas" Multiplicity="1" />
@@ -1710,6 +1865,111 @@
             </Principal>
             <Dependent Role="EPresupuestosDetalles">
               <PropertyRef Name="IdPresupuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ERemitos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+          <Property Name="IdCliente" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="IdVenta" Type="Int32" Nullable="false" />
+          <Property Name="EntregaNombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RecibeNombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RecibeTipoDocumento" Type="Int32" />
+          <Property Name="RecibeNroDocumento" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <Property Name="Estado" Type="Int32" />
+          <NavigationProperty Name="Clientes" Relationship="VentasModel.FK_ERemitos_Clientes" FromRole="ERemitos" ToRole="Clientes" />
+          <NavigationProperty Name="Empresas" Relationship="VentasModel.FK_ERemitos_Empresas" FromRole="ERemitos" ToRole="Empresas" />
+          <NavigationProperty Name="Usuarios" Relationship="VentasModel.FK_ERemitos_Usuarios" FromRole="ERemitos" ToRole="Usuarios" />
+          <NavigationProperty Name="ERemitosDetalles" Relationship="VentasModel.FK_ERemitosDetalles_Remitos" FromRole="ERemitos" ToRole="ERemitosDetalles" />
+        </EntityType>
+        <EntityType Name="ERemitosDetalles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+          <Property Name="IdRemito" Type="Int32" />
+          <Property Name="IdArticulo" Type="Int32" />
+          <Property Name="Cantidad" Type="Int32" />
+          <NavigationProperty Name="EArticulos" Relationship="VentasModel.FK_ERemitosDetalles_Articulos" FromRole="ERemitosDetalles" ToRole="EArticulos" />
+          <NavigationProperty Name="Empresas" Relationship="VentasModel.FK_ERemitosDetalles_Empresas" FromRole="ERemitosDetalles" ToRole="Empresas" />
+          <NavigationProperty Name="ERemitos" Relationship="VentasModel.FK_ERemitosDetalles_Remitos" FromRole="ERemitosDetalles" ToRole="ERemitos" />
+        </EntityType>
+        <Association Name="FK_ERemitos_Clientes">
+          <End Type="VentasModel.Clientes" Role="Clientes" Multiplicity="0..1" />
+          <End Type="VentasModel.ERemitos" Role="ERemitos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ERemitos">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ERemitosDetalles_Articulos">
+          <End Type="VentasModel.EArticulos" Role="EArticulos" Multiplicity="0..1" />
+          <End Type="VentasModel.ERemitosDetalles" Role="ERemitosDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EArticulos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ERemitosDetalles">
+              <PropertyRef Name="IdArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ERemitos_Empresas">
+          <End Type="VentasModel.Empresas" Role="Empresas" Multiplicity="1" />
+          <End Type="VentasModel.ERemitos" Role="ERemitos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ERemitos">
+              <PropertyRef Name="IdEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ERemitosDetalles_Empresas">
+          <End Type="VentasModel.Empresas" Role="Empresas" Multiplicity="1" />
+          <End Type="VentasModel.ERemitosDetalles" Role="ERemitosDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ERemitosDetalles">
+              <PropertyRef Name="IdEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ERemitos_Usuarios">
+          <End Type="VentasModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
+          <End Type="VentasModel.ERemitos" Role="ERemitos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ERemitos">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ERemitosDetalles_Remitos">
+          <End Type="VentasModel.ERemitos" Role="ERemitos" Multiplicity="0..1" />
+          <End Type="VentasModel.ERemitosDetalles" Role="ERemitosDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ERemitos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ERemitosDetalles">
+              <PropertyRef Name="IdRemito" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2003,6 +2263,34 @@
                 <ScalarProperty Name="Importe" ColumnName="Importe" />
                 <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
                 <ScalarProperty Name="IdPresupuesto" ColumnName="IdPresupuesto" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ERemitos">
+            <EntityTypeMapping TypeName="VentasModel.ERemitos">
+              <MappingFragment StoreEntitySet="ERemitos">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="RecibeNroDocumento" ColumnName="RecibeNroDocumento" />
+                <ScalarProperty Name="RecibeTipoDocumento" ColumnName="RecibeTipoDocumento" />
+                <ScalarProperty Name="RecibeNombre" ColumnName="RecibeNombre" />
+                <ScalarProperty Name="EntregaNombre" ColumnName="EntregaNombre" />
+                <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ERemitosDetalles">
+            <EntityTypeMapping TypeName="VentasModel.ERemitosDetalles">
+              <MappingFragment StoreEntitySet="ERemitosDetalles">
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+                <ScalarProperty Name="IdRemito" ColumnName="IdRemito" />
                 <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
