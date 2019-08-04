@@ -50,5 +50,7 @@ namespace ERP.Models
         public virtual DbSet<EPresupuestosDetalles> EPresupuestosDetalles { get; set; }
         public virtual DbSet<ERemitos> ERemitos { get; set; }
         public virtual DbSet<ERemitosDetalles> ERemitosDetalles { get; set; }
+        public virtual DbSet<EVentas> EVentas { get; set; }
+        public virtual DbSet<EVentasDetalles> EVentasDetalles { get; set; }
     }
 }

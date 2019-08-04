@@ -69,6 +69,14 @@
         <AssociationConnector Association="VentasModel.FK_ERemitosDetalles_Empresas" />
         <AssociationConnector Association="VentasModel.FK_ERemitos_Usuarios" />
         <AssociationConnector Association="VentasModel.FK_ERemitosDetalles_Remitos" />
+        <EntityTypeShape EntityType="VentasModel.EVentas" Width="1.5" PointX="22.25" PointY="18" />
+        <EntityTypeShape EntityType="VentasModel.EVentasDetalles" Width="1.5" PointX="24.5" PointY="18" />
+        <AssociationConnector Association="VentasModel.FK_EVentas_Clientes" />
+        <AssociationConnector Association="VentasModel.FK_EVentasDetalles_Articulos" />
+        <AssociationConnector Association="VentasModel.FK_EVentas_Empresas" />
+        <AssociationConnector Association="VentasModel.FK_EVentasDetalles_Empresas" />
+        <AssociationConnector Association="VentasModel.FK_EVentas_Usuarios" />
+        <AssociationConnector Association="VentasModel.FK_EVentasDetalles_Ventas" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

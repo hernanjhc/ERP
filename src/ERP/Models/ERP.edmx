@@ -180,6 +180,34 @@
           <Property Name="Observaciones" Type="varchar" MaxLength="100" />
           <Property Name="Estado" Type="int" />
         </EntityType>
+        <EntityType Name="EVentas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" Nullable="false" />
+          <Property Name="IdCliente" Type="int" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="Importe" Type="numeric" Precision="17" Scale="2" />
+          <Property Name="Descuento" Type="numeric" Precision="17" Scale="2" />
+          <Property Name="DescuentoPorc" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="ImporteTotal" Type="numeric" Precision="17" Scale="2" />
+          <Property Name="PrecioLista" Type="int" />
+          <Property Name="IdUsuario" Type="int" />
+          <Property Name="Estado" Type="int" />
+        </EntityType>
+        <EntityType Name="EVentasDetalles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="IdEmpresa" Type="int" Nullable="false" />
+          <Property Name="IdVenta" Type="int" />
+          <Property Name="IdArticulo" Type="int" />
+          <Property Name="Importe" Type="numeric" Precision="17" Scale="2" />
+          <Property Name="Cantidad" Type="int" />
+          <Property Name="Precio" Type="numeric" Precision="17" Scale="2" />
+        </EntityType>
         <EntityType Name="Grupos">
           <Key>
             <PropertyRef Name="Id" />
@@ -645,6 +673,78 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EVentas_Clientes">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+          <End Role="EVentas" Type="Self.EVentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EVentas">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EVentas_Empresas">
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="1" />
+          <End Role="EVentas" Type="Self.EVentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EVentas">
+              <PropertyRef Name="IdEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EVentas_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
+          <End Role="EVentas" Type="Self.EVentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EVentas">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EVentasDetalles_Articulos">
+          <End Role="EArticulos" Type="Self.EArticulos" Multiplicity="0..1" />
+          <End Role="EVentasDetalles" Type="Self.EVentasDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EArticulos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EVentasDetalles">
+              <PropertyRef Name="IdArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EVentasDetalles_Empresas">
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="1" />
+          <End Role="EVentasDetalles" Type="Self.EVentasDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EVentasDetalles">
+              <PropertyRef Name="IdEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EVentasDetalles_Ventas">
+          <End Role="EVentas" Type="Self.EVentas" Multiplicity="0..1" />
+          <End Role="EVentasDetalles" Type="Self.EVentasDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVentas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EVentasDetalles">
+              <PropertyRef Name="IdVenta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_GruposItemsMenu_Grupos">
           <End Role="Grupos" Type="Self.Grupos" Multiplicity="1" />
           <End Role="GruposItemsMenu" Type="Self.GruposItemsMenu" Multiplicity="*" />
@@ -779,6 +879,8 @@
           <EntitySet Name="ERemitos" EntityType="Self.ERemitos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ERemitosDetalles" EntityType="Self.ERemitosDetalles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ERubros" EntityType="Self.ERubros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EVentas" EntityType="Self.EVentas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EVentasDetalles" EntityType="Self.EVentasDetalles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Grupos" EntityType="Self.Grupos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GruposItemsMenu" EntityType="Self.GruposItemsMenu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GruposUsuarios" EntityType="Self.GruposUsuarios" Schema="dbo" store:Type="Tables" />
@@ -907,6 +1009,30 @@
             <End Role="Empresas" EntitySet="Empresas" />
             <End Role="ERubros" EntitySet="ERubros" />
           </AssociationSet>
+          <AssociationSet Name="FK_EVentas_Clientes" Association="Self.FK_EVentas_Clientes">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="EVentas" EntitySet="EVentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EVentas_Empresas" Association="Self.FK_EVentas_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="EVentas" EntitySet="EVentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EVentas_Usuarios" Association="Self.FK_EVentas_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="EVentas" EntitySet="EVentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EVentasDetalles_Articulos" Association="Self.FK_EVentasDetalles_Articulos">
+            <End Role="EArticulos" EntitySet="EArticulos" />
+            <End Role="EVentasDetalles" EntitySet="EVentasDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EVentasDetalles_Empresas" Association="Self.FK_EVentasDetalles_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="EVentasDetalles" EntitySet="EVentasDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EVentasDetalles_Ventas" Association="Self.FK_EVentasDetalles_Ventas">
+            <End Role="EVentas" EntitySet="EVentas" />
+            <End Role="EVentasDetalles" EntitySet="EVentasDetalles" />
+          </AssociationSet>
           <AssociationSet Name="FK_GruposItemsMenu_Grupos" Association="Self.FK_GruposItemsMenu_Grupos">
             <End Role="Grupos" EntitySet="Grupos" />
             <End Role="GruposItemsMenu" EntitySet="GruposItemsMenu" />
@@ -981,6 +1107,7 @@
           <NavigationProperty Name="TiposDocumento" Relationship="Self.FK_Clientes_TiposDocumento" FromRole="Clientes" ToRole="TiposDocumento" />
           <NavigationProperty Name="EPresupuestos" Relationship="VentasModel.FK_EPresupuestos_Clientes" FromRole="Clientes" ToRole="EPresupuestos" />
           <NavigationProperty Name="ERemitos" Relationship="VentasModel.FK_ERemitos_Clientes" FromRole="Clientes" ToRole="ERemitos" />
+          <NavigationProperty Name="EVentas" Relationship="VentasModel.FK_EVentas_Clientes" FromRole="Clientes" ToRole="EVentas" />
         </EntityType>
         <EntityType Name="Departamentos">
           <Key>
@@ -1048,6 +1175,8 @@
           <NavigationProperty Name="EPresupuestosDetalles" Relationship="VentasModel.FK_EPresupuestosDetalles_Empresas" FromRole="Empresas" ToRole="EPresupuestosDetalles" />
           <NavigationProperty Name="ERemitos" Relationship="VentasModel.FK_ERemitos_Empresas" FromRole="Empresas" ToRole="ERemitos" />
           <NavigationProperty Name="ERemitosDetalles" Relationship="VentasModel.FK_ERemitosDetalles_Empresas" FromRole="Empresas" ToRole="ERemitosDetalles" />
+          <NavigationProperty Name="EVentas" Relationship="VentasModel.FK_EVentas_Empresas" FromRole="Empresas" ToRole="EVentas" />
+          <NavigationProperty Name="EVentasDetalles" Relationship="VentasModel.FK_EVentasDetalles_Empresas" FromRole="Empresas" ToRole="EVentasDetalles" />
         </EntityType>
         <EntityType Name="ERubros">
           <Key>
@@ -1177,6 +1306,7 @@
           <NavigationProperty Name="UsuariosItemsMenu" Relationship="Self.FK_UsuariosItemsMenu_Usuarios" FromRole="Usuarios" ToRole="UsuariosItemsMenu" />
           <NavigationProperty Name="EPresupuestos" Relationship="VentasModel.FK_EPresupuestos_Usuarios" FromRole="Usuarios" ToRole="EPresupuestos" />
           <NavigationProperty Name="ERemitos" Relationship="VentasModel.FK_ERemitos_Usuarios" FromRole="Usuarios" ToRole="ERemitos" />
+          <NavigationProperty Name="EVentas" Relationship="VentasModel.FK_EVentas_Usuarios" FromRole="Usuarios" ToRole="EVentas" />
         </EntityType>
         <EntityType Name="UsuariosItemsMenu">
           <Key>
@@ -1622,6 +1752,32 @@
             <End Role="ERemitos" EntitySet="ERemitos" />
             <End Role="ERemitosDetalles" EntitySet="ERemitosDetalles" />
           </AssociationSet>
+          <EntitySet Name="EVentas" EntityType="VentasModel.EVentas" />
+          <EntitySet Name="EVentasDetalles" EntityType="VentasModel.EVentasDetalles" />
+          <AssociationSet Name="FK_EVentas_Clientes" Association="VentasModel.FK_EVentas_Clientes">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="EVentas" EntitySet="EVentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EVentasDetalles_Articulos" Association="VentasModel.FK_EVentasDetalles_Articulos">
+            <End Role="EArticulos" EntitySet="EArticulos" />
+            <End Role="EVentasDetalles" EntitySet="EVentasDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EVentas_Empresas" Association="VentasModel.FK_EVentas_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="EVentas" EntitySet="EVentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EVentasDetalles_Empresas" Association="VentasModel.FK_EVentasDetalles_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="EVentasDetalles" EntitySet="EVentasDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EVentas_Usuarios" Association="VentasModel.FK_EVentas_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="EVentas" EntitySet="EVentas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EVentasDetalles_Ventas" Association="VentasModel.FK_EVentasDetalles_Ventas">
+            <End Role="EVentas" EntitySet="EVentas" />
+            <End Role="EVentasDetalles" EntitySet="EVentasDetalles" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="EArticulos">
           <Key>
@@ -1662,6 +1818,7 @@
           <NavigationProperty Name="Unidades" Relationship="VentasModel.FK_EArticulos_Unidades" FromRole="EArticulos" ToRole="Unidades" />
           <NavigationProperty Name="EPresupuestosDetalles" Relationship="VentasModel.FK_EPresupuestosDetalles_Articulos" FromRole="EArticulos" ToRole="EPresupuestosDetalles" />
           <NavigationProperty Name="ERemitosDetalles" Relationship="VentasModel.FK_ERemitosDetalles_Articulos" FromRole="EArticulos" ToRole="ERemitosDetalles" />
+          <NavigationProperty Name="EVentasDetalles" Relationship="VentasModel.FK_EVentasDetalles_Articulos" FromRole="EArticulos" ToRole="EVentasDetalles" />
         </EntityType>
         <Association Name="FK_EArticulos_Empresas">
           <End Type="VentasModel.Empresas" Role="Empresas" Multiplicity="1" />
@@ -1970,6 +2127,113 @@
             </Principal>
             <Dependent Role="ERemitosDetalles">
               <PropertyRef Name="IdRemito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EVentas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+          <Property Name="IdCliente" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Importe" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="Descuento" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="DescuentoPorc" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="ImporteTotal" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="PrecioLista" Type="Int32" />
+          <Property Name="IdUsuario" Type="Int32" />
+          <Property Name="Estado" Type="Int32" />
+          <NavigationProperty Name="Clientes" Relationship="VentasModel.FK_EVentas_Clientes" FromRole="EVentas" ToRole="Clientes" />
+          <NavigationProperty Name="Empresas" Relationship="VentasModel.FK_EVentas_Empresas" FromRole="EVentas" ToRole="Empresas" />
+          <NavigationProperty Name="Usuarios" Relationship="VentasModel.FK_EVentas_Usuarios" FromRole="EVentas" ToRole="Usuarios" />
+          <NavigationProperty Name="EVentasDetalles" Relationship="VentasModel.FK_EVentasDetalles_Ventas" FromRole="EVentas" ToRole="EVentasDetalles" />
+        </EntityType>
+        <EntityType Name="EVentasDetalles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+          <Property Name="IdVenta" Type="Int32" />
+          <Property Name="IdArticulo" Type="Int32" />
+          <Property Name="Importe" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="Cantidad" Type="Int32" />
+          <Property Name="Precio" Type="Decimal" Precision="17" Scale="2" />
+          <NavigationProperty Name="EArticulos" Relationship="VentasModel.FK_EVentasDetalles_Articulos" FromRole="EVentasDetalles" ToRole="EArticulos" />
+          <NavigationProperty Name="Empresas" Relationship="VentasModel.FK_EVentasDetalles_Empresas" FromRole="EVentasDetalles" ToRole="Empresas" />
+          <NavigationProperty Name="EVentas" Relationship="VentasModel.FK_EVentasDetalles_Ventas" FromRole="EVentasDetalles" ToRole="EVentas" />
+        </EntityType>
+        <Association Name="FK_EVentas_Clientes">
+          <End Type="VentasModel.Clientes" Role="Clientes" Multiplicity="0..1" />
+          <End Type="VentasModel.EVentas" Role="EVentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clientes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EVentas">
+              <PropertyRef Name="IdCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EVentasDetalles_Articulos">
+          <End Type="VentasModel.EArticulos" Role="EArticulos" Multiplicity="0..1" />
+          <End Type="VentasModel.EVentasDetalles" Role="EVentasDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EArticulos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EVentasDetalles">
+              <PropertyRef Name="IdArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EVentas_Empresas">
+          <End Type="VentasModel.Empresas" Role="Empresas" Multiplicity="1" />
+          <End Type="VentasModel.EVentas" Role="EVentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EVentas">
+              <PropertyRef Name="IdEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EVentasDetalles_Empresas">
+          <End Type="VentasModel.Empresas" Role="Empresas" Multiplicity="1" />
+          <End Type="VentasModel.EVentasDetalles" Role="EVentasDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EVentasDetalles">
+              <PropertyRef Name="IdEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EVentas_Usuarios">
+          <End Type="VentasModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
+          <End Type="VentasModel.EVentas" Role="EVentas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EVentas">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EVentasDetalles_Ventas">
+          <End Type="VentasModel.EVentas" Role="EVentas" Multiplicity="0..1" />
+          <End Type="VentasModel.EVentasDetalles" Role="EVentasDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVentas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EVentasDetalles">
+              <PropertyRef Name="IdVenta" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2291,6 +2555,36 @@
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
                 <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
                 <ScalarProperty Name="IdRemito" ColumnName="IdRemito" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EVentas">
+            <EntityTypeMapping TypeName="VentasModel.EVentas">
+              <MappingFragment StoreEntitySet="EVentas">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="PrecioLista" ColumnName="PrecioLista" />
+                <ScalarProperty Name="ImporteTotal" ColumnName="ImporteTotal" />
+                <ScalarProperty Name="DescuentoPorc" ColumnName="DescuentoPorc" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="Importe" ColumnName="Importe" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EVentasDetalles">
+            <EntityTypeMapping TypeName="VentasModel.EVentasDetalles">
+              <MappingFragment StoreEntitySet="EVentasDetalles">
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Importe" ColumnName="Importe" />
+                <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+                <ScalarProperty Name="IdVenta" ColumnName="IdVenta" />
                 <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
