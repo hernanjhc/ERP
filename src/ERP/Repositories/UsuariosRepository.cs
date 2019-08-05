@@ -17,7 +17,16 @@ namespace ERP.Repositories
             {
                 return false;
             }
-            return usr.Contraseña == Lib.Security.Cryptography.CalcularSHA512(contraseña);
+            if (usr.Contraseña == Lib.Security.Cryptography.CalcularSHA512(contraseña))
+            {
+                Configuration.IdUsuarioConectado = usr.Id;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+           
         }
 
         internal Usuarios ObtenerUsuario(string nombre)

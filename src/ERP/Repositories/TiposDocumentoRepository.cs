@@ -23,5 +23,14 @@ namespace ERP.Repositories
                 return deptos.OrderBy(b => b.Descripcion).ToList();
             }
         }
+
+        public static TiposDocumento TiposDocumentoPorId(int idTipoDocumento)
+        {
+            using (var db = new VentasConexión())
+            {
+                return db.TiposDocumento.Find(idTipoDocumento);
+            }
+        }
+
     }
 }

@@ -7,6 +7,8 @@ namespace ERP.Lib
     public static class Configuration
     {
         private static DateTime _currentDate;
+        public static int IdUsuarioConectado;
+
         public static DateTime CurrentDate
         {
             get
@@ -30,5 +32,6 @@ namespace ERP.Lib
                 return 1;
             }
         }
+        
     }
 }
