@@ -14,6 +14,9 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_ERemitos_Usuarios]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ERemitos] DROP CONSTRAINT [FK_ERemitos_Usuarios];
 GO
+IF OBJECT_ID(N'[dbo].[FK_ERemitos_Ventas]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EVentas] DROP CONSTRAINT [FK_ERemitos_EVentas];
+GO
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
@@ -72,6 +75,15 @@ ALTER TABLE [dbo].[ERemitos]
 ADD CONSTRAINT [FK_ERemitos_Usuarios]
     FOREIGN KEY ([IdUsuario])
     REFERENCES [dbo].[Usuarios]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [IdVenta] in table 'ERemitos'
+ALTER TABLE [dbo].[ERemitos]
+ADD CONSTRAINT [FK_ERemitos_EVentas]
+    FOREIGN KEY ([IdVenta])
+    REFERENCES [dbo].[EVentas]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
