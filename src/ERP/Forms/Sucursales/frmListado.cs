@@ -208,8 +208,22 @@ namespace ERP.Forms.Sucursales
 
         private void ConsultarSucursalesPorBanco()
         {
-            var query = SucursalesRepository.ObtenerSucursalesPorBanco(IdBanco);
-            dgvDatos.SetDataSource(from d in query select new { d.Id, d.Sucursal });
+            //var query = SucursalesRepository.ObtenerSucursalesPorBanco(IdBanco);
+            //dgvDatos.SetDataSource(from d in query select new { d.Id, d.Sucursal });
+            var tds = BancosRepository.ObtenerBancos();
+            dgvDatos.SetDataSource(from s in SucursalesRepository.ObtenerSucursalesPorBanco(IdBanco)
+                                   orderby s.Id
+                                   select new
+                                   {
+                                       s.Id,
+                                       Bancos = s.Bancos.Nombre,
+                                       s.Sucursal,
+                                       s.Numero,
+                                       s.Direccion,
+                                       s.EMail,
+                                       s.Telefono,
+                                       s.Web
+                                   });
         }
 
         public int IdBanco
@@ -220,9 +234,16 @@ namespace ERP.Forms.Sucursales
             }
         }
 
-        private void cbBancos_SelectedIndexChanged(object sender, EventArgs e)
+        //private void cbBancos_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    ConsultarSucursalesPorBanco();
+        //}
+
+        private void button1_Click(object sender, EventArgs e)
         {
             ConsultarSucursalesPorBanco();
         }
+
+        
     }
 }

@@ -38,6 +38,7 @@
             this.btnSalir = new System.Windows.Forms.ToolStripButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.cbBancos = new System.Windows.Forms.ComboBox();
             this.dgvDatos = new CustomLibrary.ComponentModel.CustomDataGridView();
@@ -150,6 +151,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.materialLabel1);
             this.panel3.Controls.Add(this.cbBancos);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -157,6 +159,22 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(792, 43);
             this.panel3.TabIndex = 4;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.DarkCyan;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Image = global::ERP.Properties.Resources.zoom;
+            this.button1.Location = new System.Drawing.Point(307, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(32, 32);
+            this.button1.TabIndex = 8;
+            this.button1.Tag = "Buscar";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // materialLabel1
             // 
@@ -179,7 +197,6 @@
             this.cbBancos.Name = "cbBancos";
             this.cbBancos.Size = new System.Drawing.Size(199, 21);
             this.cbBancos.TabIndex = 1;
-            this.cbBancos.SelectedIndexChanged += new System.EventHandler(this.cbBancos_SelectedIndexChanged);
             // 
             // dgvDatos
             // 
@@ -208,7 +225,7 @@
             this.ClientSize = new System.Drawing.Size(800, 438);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmListado";
-            this.Text = "frmListado";
+            this.Text = "Sucursales";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -237,5 +254,6 @@
         private System.Windows.Forms.Panel panel3;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private System.Windows.Forms.ComboBox cbBancos;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -93,6 +93,8 @@ namespace ERP.Forms.Presupuestos
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             AgregarArticulo(Convert.ToInt32(cbArticulos.SelectedValue));  //enviamos id Artículo
+            //dgvDetalles.CurrentCell = dgvDetalles.CurrentRow.Cells[3];
+            
             cbLista.Enabled = false;                                    //no cambia lista de precios luego de elegir el primer articulo
         }
 
@@ -104,7 +106,10 @@ namespace ERP.Forms.Presupuestos
             if (precio >= 0)
             {
                 dgvDetalles.Rows.Add(art.CodBarra, art.Descripcion, 1, precio, precio);
-                
+                //dgvDetalles.CurrentCell = dgvDetalles.CurrentRow.Cells[2];
+                dgvDetalles.CurrentCell = dgvDetalles.Rows[dgvDetalles.Rows.Count - 1].Cells[2];
+                dgvDetalles.BeginEdit(true);
+
             }
             
         }
@@ -119,32 +124,77 @@ namespace ERP.Forms.Presupuestos
             return precio;
         }
 
-       // private void dgvDetalles_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-       // {
-       //     foreach (DataGridViewColumn c in dgvDetalles.Columns)
-       //     {
-       //         c.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-       //     }
-       //     
-       //     dgvDetalles.Columns[0].HeaderText = "Id";
-       //     dgvDetalles.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-       //     dgvDetalles.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-       //     
-       //     dgvDetalles.Columns[1].HeaderText = "Descripción";
-       //     dgvDetalles.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-       //     dgvDetalles.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-       //     
-       //     dgvDetalles.Columns[2].HeaderText = "Cantidad";
-       //     dgvDetalles.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-       //     dgvDetalles.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-       //     
-       //     dgvDetalles.Columns[3].HeaderText = "Precio";
-       //     dgvDetalles.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-       //     dgvDetalles.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-       //     
-       //     dgvDetalles.Columns[3].HeaderText = "Importe";
-       //     dgvDetalles.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-       //     dgvDetalles.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-       // }
+        private void dgvDetalles_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) cbArticulos.Focus();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void dgvDetalles_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            DataGridViewTextBoxEditingControl dText = (DataGridViewTextBoxEditingControl)e.Control;
+
+            dText.KeyPress -= new KeyPressEventHandler(dText_KeyPress);
+            dText.KeyPress += new KeyPressEventHandler(dText_KeyPress);
+        }
+        void dText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // _validator.IngresaDecimal(sender, e);
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == ',')
+            {
+                if (((TextBox)sender).Text.Contains(","))
+                    e.Handled = true;
+                else
+                    e.Handled = false;
+            }
+        }
+
+        // private void dgvDetalles_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        // {
+        //     foreach (DataGridViewColumn c in dgvDetalles.Columns)
+        //     {
+        //         c.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        //     }
+        //     
+        //     dgvDetalles.Columns[0].HeaderText = "Id";
+        //     dgvDetalles.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        //     dgvDetalles.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+        //     
+        //     dgvDetalles.Columns[1].HeaderText = "Descripción";
+        //     dgvDetalles.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        //     dgvDetalles.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        //     
+        //     dgvDetalles.Columns[2].HeaderText = "Cantidad";
+        //     dgvDetalles.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        //     dgvDetalles.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+        //     
+        //     dgvDetalles.Columns[3].HeaderText = "Precio";
+        //     dgvDetalles.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        //     dgvDetalles.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+        //     
+        //     dgvDetalles.Columns[3].HeaderText = "Importe";
+        //     dgvDetalles.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        //     dgvDetalles.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+        // }
     }
 }

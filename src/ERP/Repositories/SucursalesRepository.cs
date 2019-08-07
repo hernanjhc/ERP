@@ -152,8 +152,23 @@ namespace ERP.Repositories
                                 .Select(
                                     d => new Sucursales
                                     {
+                                        //Id = d.Id,
+                                        //Sucursal = d.Sucursal
                                         Id = d.Id,
-                                        Sucursal = d.Sucursal
+                                        IdEmpresa = d.IdEmpresa,
+                                        IdBanco = d.IdBanco,
+                                        Bancos = d.Bancos,
+                                        Sucursal = d.Sucursal,
+                                        //IdTipoDocumento = c.IdTipoDocumento,
+                                        // Preparar un modelo
+                                        //TiposDocumento = c.TiposDocumento,
+                                        Numero = d.Numero,
+                                        IdDomicilio = d.IdDomicilio,
+                                        Direccion = d.Direccion,
+                                        EMail = d.EMail,
+                                        Telefono = d.Telefono,
+                                        Web = d.Web,
+                                        Estado = d.Estado
                                     }
                                  ).ToList();
                 return sucu.OrderBy(b => b.Sucursal).ToList();
