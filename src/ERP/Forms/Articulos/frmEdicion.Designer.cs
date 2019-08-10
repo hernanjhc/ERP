@@ -131,28 +131,28 @@
             // btnCancelar
             // 
             this.btnCancelar.Depth = 0;
-            this.btnCancelar.Location = new System.Drawing.Point(263, 3);
+            this.btnCancelar.Location = new System.Drawing.Point(262, 6);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Primary = true;
-            this.btnCancelar.Size = new System.Drawing.Size(116, 31);
-            this.btnCancelar.TabIndex = 1;
-            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(112, 35);
+            this.btnCancelar.TabIndex = 3;
+            this.btnCancelar.Text = "CANCELAR";
             this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click_1);
             // 
             // btnGuardar
             // 
             this.btnGuardar.Depth = 0;
-            this.btnGuardar.Location = new System.Drawing.Point(97, 3);
+            this.btnGuardar.Location = new System.Drawing.Point(145, 6);
             this.btnGuardar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Primary = true;
-            this.btnGuardar.Size = new System.Drawing.Size(116, 31);
-            this.btnGuardar.TabIndex = 0;
-            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.Size = new System.Drawing.Size(112, 35);
+            this.btnGuardar.TabIndex = 2;
+            this.btnGuardar.Text = "GUARDAR";
             this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click_1);
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click_2);
             // 
             // panel1
             // 
@@ -278,6 +278,7 @@
             this.txtObservaciones.SelectionStart = 0;
             this.txtObservaciones.Size = new System.Drawing.Size(383, 23);
             this.txtObservaciones.TabIndex = 103;
+            this.txtObservaciones.TabStop = false;
             this.txtObservaciones.UseSystemPasswordChar = false;
             // 
             // materialLabel33
@@ -306,6 +307,7 @@
             this.txtStockMinimo.SelectionStart = 0;
             this.txtStockMinimo.Size = new System.Drawing.Size(91, 23);
             this.txtStockMinimo.TabIndex = 101;
+            this.txtStockMinimo.TabStop = false;
             this.txtStockMinimo.UseSystemPasswordChar = false;
             this.txtStockMinimo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStockMinimo_KeyPress);
             // 
@@ -335,6 +337,7 @@
             this.txtStock.SelectionStart = 0;
             this.txtStock.Size = new System.Drawing.Size(91, 23);
             this.txtStock.TabIndex = 99;
+            this.txtStock.TabStop = false;
             this.txtStock.UseSystemPasswordChar = false;
             this.txtStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStock_KeyPress);
             // 
@@ -364,6 +367,7 @@
             this.txtIVA.SelectionStart = 0;
             this.txtIVA.Size = new System.Drawing.Size(49, 23);
             this.txtIVA.TabIndex = 97;
+            this.txtIVA.TabStop = false;
             this.txtIVA.UseSystemPasswordChar = false;
             this.txtIVA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIVA_KeyPress);
             // 
@@ -406,6 +410,7 @@
             this.txtLista3.SelectionStart = 0;
             this.txtLista3.Size = new System.Drawing.Size(57, 23);
             this.txtLista3.TabIndex = 93;
+            this.txtLista3.TabStop = false;
             this.txtLista3.UseSystemPasswordChar = false;
             this.txtLista3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLista3_KeyPress);
             this.txtLista3.TextChanged += new System.EventHandler(this.txtLista3_TextChanged);
@@ -436,6 +441,7 @@
             this.txtListaPorc3.SelectionStart = 0;
             this.txtListaPorc3.Size = new System.Drawing.Size(30, 23);
             this.txtListaPorc3.TabIndex = 91;
+            this.txtListaPorc3.TabStop = false;
             this.txtListaPorc3.UseSystemPasswordChar = false;
             this.txtListaPorc3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtListaPorc3_KeyPress);
             this.txtListaPorc3.TextChanged += new System.EventHandler(this.txtListaPorc3_TextChanged);
@@ -479,6 +485,7 @@
             this.txtLista2.SelectionStart = 0;
             this.txtLista2.Size = new System.Drawing.Size(57, 23);
             this.txtLista2.TabIndex = 88;
+            this.txtLista2.TabStop = false;
             this.txtLista2.UseSystemPasswordChar = false;
             this.txtLista2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLista2_KeyPress);
             this.txtLista2.TextChanged += new System.EventHandler(this.txtLista2_TextChanged);
@@ -509,6 +516,7 @@
             this.txtListaPorc2.SelectionStart = 0;
             this.txtListaPorc2.Size = new System.Drawing.Size(30, 23);
             this.txtListaPorc2.TabIndex = 86;
+            this.txtListaPorc2.TabStop = false;
             this.txtListaPorc2.UseSystemPasswordChar = false;
             this.txtListaPorc2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtListaPorc2_KeyPress);
             this.txtListaPorc2.TextChanged += new System.EventHandler(this.txtListaPorc2_TextChanged);
@@ -552,6 +560,7 @@
             this.txtLista1.SelectionStart = 0;
             this.txtLista1.Size = new System.Drawing.Size(57, 23);
             this.txtLista1.TabIndex = 83;
+            this.txtLista1.TabStop = false;
             this.txtLista1.UseSystemPasswordChar = false;
             this.txtLista1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLista1_KeyPress);
             this.txtLista1.TextChanged += new System.EventHandler(this.txtLista1_TextChanged);
@@ -582,6 +591,7 @@
             this.txtListaPorc1.SelectionStart = 0;
             this.txtListaPorc1.Size = new System.Drawing.Size(30, 23);
             this.txtListaPorc1.TabIndex = 81;
+            this.txtListaPorc1.TabStop = false;
             this.txtListaPorc1.UseSystemPasswordChar = false;
             this.txtListaPorc1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtListaPorc1_KeyPress);
             this.txtListaPorc1.TextChanged += new System.EventHandler(this.txtListaPorc1_TextChanged);
@@ -625,6 +635,7 @@
             this.txtCosto.SelectionStart = 0;
             this.txtCosto.Size = new System.Drawing.Size(59, 23);
             this.txtCosto.TabIndex = 75;
+            this.txtCosto.TabStop = false;
             this.txtCosto.UseSystemPasswordChar = false;
             this.txtCosto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCosto_KeyPress);
             // 
@@ -680,6 +691,7 @@
             this.txtDesc3.SelectionStart = 0;
             this.txtDesc3.Size = new System.Drawing.Size(57, 23);
             this.txtDesc3.TabIndex = 71;
+            this.txtDesc3.TabStop = false;
             this.txtDesc3.UseSystemPasswordChar = false;
             this.txtDesc3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDesc3_KeyPress);
             this.txtDesc3.TextChanged += new System.EventHandler(this.txtDesc3_TextChanged);
@@ -710,6 +722,7 @@
             this.txtDescPorc3.SelectionStart = 0;
             this.txtDescPorc3.Size = new System.Drawing.Size(30, 23);
             this.txtDescPorc3.TabIndex = 69;
+            this.txtDescPorc3.TabStop = false;
             this.txtDescPorc3.UseSystemPasswordChar = false;
             this.txtDescPorc3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescPorc3_KeyPress);
             this.txtDescPorc3.TextChanged += new System.EventHandler(this.txtDescPorc3_TextChanged);
@@ -753,6 +766,7 @@
             this.txtDesc2.SelectionStart = 0;
             this.txtDesc2.Size = new System.Drawing.Size(57, 23);
             this.txtDesc2.TabIndex = 66;
+            this.txtDesc2.TabStop = false;
             this.txtDesc2.UseSystemPasswordChar = false;
             this.txtDesc2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDesc2_KeyPress);
             this.txtDesc2.TextChanged += new System.EventHandler(this.txtDesc2_TextChanged);
@@ -783,6 +797,7 @@
             this.txtDescPorc2.SelectionStart = 0;
             this.txtDescPorc2.Size = new System.Drawing.Size(30, 23);
             this.txtDescPorc2.TabIndex = 64;
+            this.txtDescPorc2.TabStop = false;
             this.txtDescPorc2.UseSystemPasswordChar = false;
             this.txtDescPorc2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescPorc2_KeyPress);
             this.txtDescPorc2.TextChanged += new System.EventHandler(this.txtDescPorc2_TextChanged);
@@ -826,6 +841,7 @@
             this.txtDesc1.SelectionStart = 0;
             this.txtDesc1.Size = new System.Drawing.Size(57, 23);
             this.txtDesc1.TabIndex = 61;
+            this.txtDesc1.TabStop = false;
             this.txtDesc1.UseSystemPasswordChar = false;
             this.txtDesc1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDesc1_KeyPress);
             this.txtDesc1.TextChanged += new System.EventHandler(this.txtDesc1_TextChanged);
@@ -856,6 +872,7 @@
             this.txtDescPorc1.SelectionStart = 0;
             this.txtDescPorc1.Size = new System.Drawing.Size(30, 23);
             this.txtDescPorc1.TabIndex = 59;
+            this.txtDescPorc1.TabStop = false;
             this.txtDescPorc1.UseSystemPasswordChar = false;
             this.txtDescPorc1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescPorc1_KeyPress);
             this.txtDescPorc1.TextChanged += new System.EventHandler(this.txtDescPorc1_TextChanged);
@@ -886,6 +903,7 @@
             this.txtCostoInicial.SelectionStart = 0;
             this.txtCostoInicial.Size = new System.Drawing.Size(59, 23);
             this.txtCostoInicial.TabIndex = 57;
+            this.txtCostoInicial.TabStop = false;
             this.txtCostoInicial.UseSystemPasswordChar = false;
             this.txtCostoInicial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCostoInicial_KeyPress);
             // 
@@ -1011,6 +1029,7 @@
             this.txtCodBarra.SelectionStart = 0;
             this.txtCodBarra.Size = new System.Drawing.Size(205, 23);
             this.txtCodBarra.TabIndex = 4;
+            this.txtCodBarra.TabStop = false;
             this.txtCodBarra.UseSystemPasswordChar = false;
             // 
             // materialLabel18
@@ -1039,6 +1058,7 @@
             this.txtDescripcion.SelectionStart = 0;
             this.txtDescripcion.Size = new System.Drawing.Size(402, 23);
             this.txtDescripcion.TabIndex = 7;
+            this.txtDescripcion.TabStop = false;
             this.txtDescripcion.UseSystemPasswordChar = false;
             // 
             // materialLabel2
@@ -1067,6 +1087,7 @@
             this.txtCodigo.SelectionStart = 0;
             this.txtCodigo.Size = new System.Drawing.Size(112, 23);
             this.txtCodigo.TabIndex = 3;
+            this.txtCodigo.TabStop = false;
             this.txtCodigo.UseSystemPasswordChar = false;
             // 
             // materialLabel1
@@ -1166,11 +1187,11 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField txtCostoInicial;
         private MaterialSkin.Controls.MaterialLabel materialLabel7;
         private System.Windows.Forms.Panel panel3;
-        private MaterialSkin.Controls.MaterialRaisedButton btnCancelar;
-        private MaterialSkin.Controls.MaterialRaisedButton btnGuardar;
         private MaterialSkin.Controls.MaterialLabel materialLabel34;
         private MaterialSkin.Controls.MaterialLabel materialLabel35;
         private MaterialSkin.Controls.MaterialCheckBox ckEstado;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private MaterialSkin.Controls.MaterialRaisedButton btnCancelar;
+        private MaterialSkin.Controls.MaterialRaisedButton btnGuardar;
     }
 }

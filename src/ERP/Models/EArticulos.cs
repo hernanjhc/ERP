@@ -53,9 +53,6 @@ namespace ERP.Models
     
         public virtual Empresas Empresas { get; set; }
         public virtual EMarcas EMarcas { get; set; }
-        public virtual Proveedores Proveedores { get; set; }
-        public virtual ERubros ERubros { get; set; }
-        public virtual Unidades Unidades { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EPresupuestosDetalles> EPresupuestosDetalles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

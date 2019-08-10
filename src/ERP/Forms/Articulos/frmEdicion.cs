@@ -847,5 +847,19 @@ namespace ERP.Forms.Articulos
         {
             calcularPreciosPorcentaje();
         }
+
+        private void btnGuardar_Click_2(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.None;
+            if (this.ValidarDatos())
+            {
+                DialogResult = DialogResult.OK;
+            }
+        }
+
+        private void btnCancelar_Click_1(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

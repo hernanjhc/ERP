@@ -20,8 +20,8 @@ namespace ERP.Models
         public Nullable<int> IdArticulo { get; set; }
         public Nullable<int> Cantidad { get; set; }
     
-        public virtual EArticulos EArticulos { get; set; }
         public virtual Empresas Empresas { get; set; }
         public virtual ERemitos ERemitos { get; set; }
+        public virtual EArticulos EArticulos { get; set; }
     }
 }

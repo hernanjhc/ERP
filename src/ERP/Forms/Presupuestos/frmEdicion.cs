@@ -9,11 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ERP.Repositories;
+using ERP.Models;
 
 namespace ERP.Forms.Presupuestos
 {
     public partial class frmEdicion : FormBase 
     {
+        decimal subTotal;
         public frmEdicion()
         {
             InitializeComponent();
@@ -23,9 +25,12 @@ namespace ERP.Forms.Presupuestos
             rbCodigo.Checked = true;
             CargarProductosCodBarra();
             cbLista.SelectedIndex = 0;
+            subTotal = 0;
             
         }
 
+
+        
         private void CargarProductosCodBarra()
         {
             var a = ArticulosRepository.ObtenerArticulos();
@@ -126,7 +131,37 @@ namespace ERP.Forms.Presupuestos
 
         private void dgvDetalles_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) cbArticulos.Focus();
+            if (e.KeyCode == Keys.Enter){
+                decimal cantidad = Convert.ToDecimal(dgvDetalles.CurrentRow.Cells[2].Value);
+                decimal precio = Convert.ToDecimal(dgvDetalles.CurrentRow.Cells[3].Value);
+                calcularImportes(cantidad, precio);
+                cbArticulos.Focus();
+            }
+            
+
+        }
+
+        private void calcularImportes(decimal cantidad, decimal precio)
+        {
+            decimal importe = cantidad * precio;
+            dgvDetalles.CurrentRow.Cells[4].Value = importe;
+
+            foreach (DataGridViewRow row in dgvDetalles.Rows)
+            {
+                subTotal = subTotal + Convert.ToDecimal(dgvDetalles.CurrentRow.Cells[4].Value);
+                
+            }
+            txtsubtotal.Text = Convert.ToString(subTotal);
+
+            if (nudDescuento.Text != "")
+            {
+                txtDescuentoPesos.Text = Convert.ToString(Math.Round((Convert.ToDecimal(txtsubtotal.Text) * Convert.ToDecimal(nudDescuento.Text)) / 100, 2));
+                txtTotal.Text = Convert.ToString(Math.Round(Convert.ToDecimal(txtsubtotal.Text)-(Convert.ToDecimal(txtsubtotal.Text) * Convert.ToDecimal(nudDescuento.Text))/100, 2));
+            }else
+            {
+                txtTotal.Text = txtsubtotal.Text;
+            }
+         
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -144,6 +179,12 @@ namespace ERP.Forms.Presupuestos
         void dText_KeyPress(object sender, KeyPressEventArgs e)
         {
             // _validator.IngresaDecimal(sender, e);
+            ingresaDecimal(sender,e);
+
+        }
+
+        private void ingresaDecimal(object sender, KeyPressEventArgs e)
+        {
             if (Char.IsDigit(e.KeyChar))
             {
                 e.Handled = false;
@@ -169,32 +210,119 @@ namespace ERP.Forms.Presupuestos
             }
         }
 
-        // private void dgvDetalles_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        // {
-        //     foreach (DataGridViewColumn c in dgvDetalles.Columns)
-        //     {
-        //         c.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        //     }
-        //     
-        //     dgvDetalles.Columns[0].HeaderText = "Id";
-        //     dgvDetalles.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        //     dgvDetalles.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-        //     
-        //     dgvDetalles.Columns[1].HeaderText = "Descripción";
-        //     dgvDetalles.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        //     dgvDetalles.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-        //     
-        //     dgvDetalles.Columns[2].HeaderText = "Cantidad";
-        //     dgvDetalles.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        //     dgvDetalles.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-        //     
-        //     dgvDetalles.Columns[3].HeaderText = "Precio";
-        //     dgvDetalles.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        //     dgvDetalles.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-        //     
-        //     dgvDetalles.Columns[3].HeaderText = "Importe";
-        //     dgvDetalles.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        //     dgvDetalles.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-        // }
+        private void dgvDetalles_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+      
+        private void nudDescuento_ValueChanged(object sender, EventArgs e)
+        {
+            calcularImporteDescuento();
+        }
+
+        private void calcularImporteDescuento()
+        {
+            if (nudDescuento.Text != "")
+            {
+                txtDescuentoPesos.Text = Convert.ToString(Math.Round((Convert.ToDecimal(txtsubtotal.Text) * Convert.ToDecimal(nudDescuento.Text)) / 100, 2));
+                txtTotal.Text = Convert.ToString(Math.Round(Convert.ToDecimal(txtsubtotal.Text) - (Convert.ToDecimal(txtsubtotal.Text) * Convert.ToDecimal(nudDescuento.Text)) / 100, 2));
+            }
+            else
+            {
+                txtTotal.Text = txtsubtotal.Text;
+            }
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.None;
+            if (this.ValidarDatos())
+            {
+                DialogResult = DialogResult.OK;
+            }
+        }
+
+        private bool ValidarDatos()
+        {
+            return true;
+        }
+
+        //Insertar(int idCliente, DateTime fecha, int diasValidez, decimal importe, decimal descuento, decimal descPorc,
+        //decimal importeTotal, int PrecioLista, int idUsuario, byte estado)
+        public DateTime Fecha
+        {
+            get
+            {
+                return Convert.ToDateTime(dtpFecha.Value);
+            }
+        }
+
+        public int DiasValidez
+        {
+            get
+            {
+                return Convert.ToInt16(nDias.Value);
+            }
+        }
+
+        public Decimal ImporteB
+        {
+            get
+            {
+                return Convert.ToDecimal(txtsubtotal.Text);
+            }
+        }
+
+        public Decimal Descuento
+        {
+            get
+            {
+                return Convert.ToDecimal(txtDescuentoPesos.Text);
+            }
+        }
+
+        public Decimal DescPorc
+        {
+            get
+            {
+                return Convert.ToDecimal(nudDescuento.Value);
+            }
+        }
+
+        public Decimal ImporteTotal
+        {
+            get
+            {
+                return Convert.ToDecimal(txtTotal.Text);
+            }
+        }
+
+        public int PrecioLista
+        {
+            get
+            {
+                return Convert.ToInt16(cbLista.Text);
+            }
+        }
+
+        public byte Estado
+        {
+            get
+            {
+                return 1; //Revisar
+            }
+        }
+
+        public int IdUsuario
+        {
+            get
+            {
+                var usuario = UsuariosRepository.ObtenerUsuarioPorId(Lib.Configuration.IdUsuarioConectado);
+                return  usuario.Id;
+            }
+            
+        }
+
     }
 }

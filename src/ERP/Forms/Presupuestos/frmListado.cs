@@ -47,7 +47,26 @@ namespace ERP.Forms.Presupuestos
 
         private void btnNuevo_Click_1(object sender, EventArgs e)
         {
-            using (var f = new Presupuestos.frmEdicion()) f.ShowDialog();
+            //using (var f = new Presupuestos.frmEdicion()) f.ShowDialog();
+            using (var f = new frmEdicion())
+            {
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        //Insertar(int idCliente, DateTime fecha, int diasValidez, decimal importe, decimal descuento, decimal descPorc,
+                        //decimal importeTotal, int PrecioLista, int idUsuario, byte estado)
+                        var a = PresupuestosRepository.Insertar(f.IdCliente, f.Fecha, f.DiasValidez, f.ImporteB, f.Descuento,
+                                                            f.DescPorc, f.ImporteTotal, f.PrecioLista, f.IdUsuario, f.Estado);
+                        ConsultarDatos();
+                        dgvDatos.SetRow(r => Convert.ToDecimal(r.Cells[0].Value) == a.Id);
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowError("Error al intentar grabar los datos: \n" + ex.Message);
+                    }
+                }
+            }
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

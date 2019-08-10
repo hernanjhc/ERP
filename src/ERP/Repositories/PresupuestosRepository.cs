@@ -46,5 +46,45 @@ namespace ERP.Repositories
                 return db.EPresupuestos.Find(id);
             }
         }
+
+        public static EPresupuestos Insertar(int idCliente, DateTime fecha, int diasValidez, decimal importe, decimal descuento, decimal descPorc,
+                                            decimal importeTotal, int PrecioLista, int idUsuario, byte estado)
+        //id int, idEmpresa int, idCliente int, fecha datetime, diasValidez int, 
+        //importe decimal, descuento decimal, descuentoPorc decimal, ImporteTotal decimal,
+        //PrecioLista int, idUsuario int, Estado int
+        {
+            using (var db = new VentasConexión())
+            {
+                var trx = db.Database.BeginTransaction();
+                try
+                {
+                    var id = db.EPresupuestos.Any() ? db.EPresupuestos.Max(a1 => a1.Id) + 1 : 1;
+                    var a = new EPresupuestos
+                    {
+                        Id = id,
+                        IdEmpresa = Lib.Configuration.IdEmpresa,
+                        IdCliente = idCliente,
+                        Fecha = fecha,
+                        DiasValidez = diasValidez,
+                        Importe = importe,
+                        Descuento = descuento,
+                        DescuentoPorc = descPorc,
+                        ImporteTotal = importeTotal,
+                        PrecioLista = PrecioLista,
+                        IdUsuario = idUsuario,                        
+                        Estado = estado
+                    };
+                    db.EPresupuestos.Add(a);
+                    db.SaveChanges();
+                    trx.Commit();
+                    return a;
+                }
+                catch (Exception)
+                {
+                    trx.Rollback();
+                    throw;
+                }
+            }
+        }
     }
 }
