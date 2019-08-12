@@ -130,6 +130,14 @@ namespace ERP.Repositories
             }
         }
 
+        internal static EArticulos ObtenerArticulosPorDescripcion(string descripcion)
+        {
+            using (var db = new VentasConexión())
+            {
+                return (from a in db.EArticulos where a.Descripcion.ToLower() == descripcion.ToLower() select a).FirstOrDefault();
+            }
+        }
+
         public static void Actualizar(decimal id, int IdEmpresa, string codigo, string codbarra, string descripcion, int? idmarca, int? idrubro,
                                            int? idproveedor, int? idunidad, decimal costoinicial, decimal desc1, decimal? descporc1,
                                            decimal desc2, decimal? descporc2, decimal desc3, decimal? descporc3, decimal costo,

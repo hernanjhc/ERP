@@ -14,18 +14,9 @@ namespace ERP.Models
     
     public partial class Unidades
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Unidades()
-        {
-            this.EArticulos = new HashSet<EArticulos>();
-        }
-    
         public int Id { get; set; }
         public string Unidad { get; set; }
         public string Observaciones { get; set; }
         public Nullable<int> Estado { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EArticulos> EArticulos { get; set; }
     }
 }

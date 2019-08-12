@@ -53,11 +53,21 @@ namespace ERP.Forms.Presupuestos
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     try
-                    {
-                        //Insertar(int idCliente, DateTime fecha, int diasValidez, decimal importe, decimal descuento, decimal descPorc,
-                        //decimal importeTotal, int PrecioLista, int idUsuario, byte estado)
+                    {                        
                         var a = PresupuestosRepository.Insertar(f.IdCliente, f.Fecha, f.DiasValidez, f.ImporteB, f.Descuento,
                                                             f.DescPorc, f.ImporteTotal, f.PrecioLista, f.IdUsuario, f.Estado);
+
+                       
+                         for (int i = 0; i <= Convert.ToInt32(f.dgvDetalles.Rows.Count-1); i++)
+                        {
+                            var artId = ArticulosRepository.ObtenerArticulosPorDescripcion(Convert.ToString(f.dgvDetalles.Rows[i].Cells[1].Value));
+                            var b = PresupuestosDetallesRepository.Insertar(a.Id, artId.Id, Convert.ToDecimal(f.dgvDetalles.Rows[i].Cells[4].Value),
+                                Convert.ToInt16(f.dgvDetalles.Rows[i].Cells[2].Value), Convert.ToDecimal(f.dgvDetalles.Rows[i].Cells[3].Value));
+                        }
+                            
+
+
+
                         ConsultarDatos();
                         dgvDatos.SetRow(r => Convert.ToDecimal(r.Cells[0].Value) == a.Id);
                     }
@@ -68,7 +78,7 @@ namespace ERP.Forms.Presupuestos
                 }
             }
         }
-
+                
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();

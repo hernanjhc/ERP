@@ -50,6 +50,8 @@
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtDescuentoPesos = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
             this.nudDescuento = new System.Windows.Forms.NumericUpDown();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
@@ -70,8 +72,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancelar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnGuardar = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.txtDescuentoPesos = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nDias)).BeginInit();
@@ -287,12 +287,14 @@
             // 
             // cbClientes
             // 
+            this.cbClientes.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbClientes.FormattingEnabled = true;
             this.cbClientes.Location = new System.Drawing.Point(590, 21);
             this.cbClientes.Name = "cbClientes";
             this.cbClientes.Size = new System.Drawing.Size(214, 21);
             this.cbClientes.TabIndex = 5;
             this.cbClientes.SelectionChangeCommitted += new System.EventHandler(this.cbClientes_SelectionChangeCommitted);
+            this.cbClientes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbClientes_KeyDown);
             // 
             // materialLabel3
             // 
@@ -379,6 +381,36 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lista de Conceptos";
+            // 
+            // txtDescuentoPesos
+            // 
+            this.txtDescuentoPesos.Depth = 0;
+            this.txtDescuentoPesos.Enabled = false;
+            this.txtDescuentoPesos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescuentoPesos.Hint = "";
+            this.txtDescuentoPesos.Location = new System.Drawing.Point(703, 411);
+            this.txtDescuentoPesos.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtDescuentoPesos.Name = "txtDescuentoPesos";
+            this.txtDescuentoPesos.PasswordChar = '\0';
+            this.txtDescuentoPesos.SelectedText = "";
+            this.txtDescuentoPesos.SelectionLength = 0;
+            this.txtDescuentoPesos.SelectionStart = 0;
+            this.txtDescuentoPesos.Size = new System.Drawing.Size(129, 23);
+            this.txtDescuentoPesos.TabIndex = 19;
+            this.txtDescuentoPesos.UseSystemPasswordChar = false;
+            // 
+            // materialLabel9
+            // 
+            this.materialLabel9.AutoSize = true;
+            this.materialLabel9.Depth = 0;
+            this.materialLabel9.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel9.Location = new System.Drawing.Point(595, 415);
+            this.materialLabel9.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel9.Name = "materialLabel9";
+            this.materialLabel9.Size = new System.Drawing.Size(93, 19);
+            this.materialLabel9.TabIndex = 18;
+            this.materialLabel9.Text = "Descuento $";
             // 
             // nudDescuento
             // 
@@ -628,36 +660,6 @@
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // txtDescuentoPesos
-            // 
-            this.txtDescuentoPesos.Depth = 0;
-            this.txtDescuentoPesos.Enabled = false;
-            this.txtDescuentoPesos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescuentoPesos.Hint = "";
-            this.txtDescuentoPesos.Location = new System.Drawing.Point(703, 411);
-            this.txtDescuentoPesos.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtDescuentoPesos.Name = "txtDescuentoPesos";
-            this.txtDescuentoPesos.PasswordChar = '\0';
-            this.txtDescuentoPesos.SelectedText = "";
-            this.txtDescuentoPesos.SelectionLength = 0;
-            this.txtDescuentoPesos.SelectionStart = 0;
-            this.txtDescuentoPesos.Size = new System.Drawing.Size(129, 23);
-            this.txtDescuentoPesos.TabIndex = 19;
-            this.txtDescuentoPesos.UseSystemPasswordChar = false;
-            // 
-            // materialLabel9
-            // 
-            this.materialLabel9.AutoSize = true;
-            this.materialLabel9.Depth = 0;
-            this.materialLabel9.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel9.Location = new System.Drawing.Point(595, 415);
-            this.materialLabel9.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel9.Name = "materialLabel9";
-            this.materialLabel9.Size = new System.Drawing.Size(93, 19);
-            this.materialLabel9.TabIndex = 18;
-            this.materialLabel9.Text = "Descuento $";
-            // 
             // frmEdicion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -699,7 +701,6 @@
         private System.Windows.Forms.ComboBox cbArticulos;
         private MaterialSkin.Controls.MaterialRadioButton rbDescripcion;
         private MaterialSkin.Controls.MaterialRadioButton rbCodigo;
-        private CustomLibrary.ComponentModel.CustomDataGridView dgvDetalles;
         private System.Windows.Forms.Panel panel1;
         private MaterialSkin.Controls.MaterialRaisedButton btnCancelar;
         private MaterialSkin.Controls.MaterialRaisedButton btnGuardar;
@@ -724,5 +725,6 @@
         private System.Windows.Forms.NumericUpDown nudDescuento;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtDescuentoPesos;
         private MaterialSkin.Controls.MaterialLabel materialLabel9;
+        public CustomLibrary.ComponentModel.CustomDataGridView dgvDetalles;
     }
 }

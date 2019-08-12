@@ -28,8 +28,6 @@ namespace ERP.Forms.Presupuestos
             subTotal = 0;
             
         }
-
-
         
         private void CargarProductosCodBarra()
         {
@@ -101,6 +99,10 @@ namespace ERP.Forms.Presupuestos
             //dgvDetalles.CurrentCell = dgvDetalles.CurrentRow.Cells[3];
             
             cbLista.Enabled = false;                                    //no cambia lista de precios luego de elegir el primer articulo
+
+            decimal cantidad = Convert.ToDecimal(dgvDetalles.CurrentRow.Cells[2].Value);
+            decimal precio = Convert.ToDecimal(dgvDetalles.CurrentRow.Cells[3].Value);
+            calcularImportes(cantidad, precio);
         }
 
         private void AgregarArticulo(int idarticulo)
@@ -210,12 +212,7 @@ namespace ERP.Forms.Presupuestos
             }
         }
 
-        private void dgvDetalles_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-      
+            
         private void nudDescuento_ValueChanged(object sender, EventArgs e)
         {
             calcularImporteDescuento();
@@ -247,9 +244,7 @@ namespace ERP.Forms.Presupuestos
         {
             return true;
         }
-
-        //Insertar(int idCliente, DateTime fecha, int diasValidez, decimal importe, decimal descuento, decimal descPorc,
-        //decimal importeTotal, int PrecioLista, int idUsuario, byte estado)
+                
         public DateTime Fecha
         {
             get
@@ -324,5 +319,15 @@ namespace ERP.Forms.Presupuestos
             
         }
 
+        private void cbClientes_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                var c = ClientesRepository.ObtenerClientePorId(IdCliente);
+                txtDireccion.Text = c.Direccion;
+                txtDocumento.Text = TiposDocumentoRepository.TiposDocumentoPorId(c.IdTipoDocumento).Descripcion +
+                    "  " + c.NroDocumento.ToString().Trim();
+            }
+        }
     }
 }
