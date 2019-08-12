@@ -88,6 +88,18 @@
     <Compile Include="Forms\Articulos\frmListado.Designer.cs">
       <DependentUpon>frmListado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Bancos\frmEdicion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Bancos\frmEdicion.Designer.cs">
+      <DependentUpon>frmEdicion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Bancos\frmListado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Bancos\frmListado.Designer.cs">
+      <DependentUpon>frmListado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Cheques\frmDepositar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +232,18 @@
     <Compile Include="Forms\Rubros\frmListado.Designer.cs">
       <DependentUpon>frmListado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Sucursales\frmEdicion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sucursales\frmEdicion.Designer.cs">
+      <DependentUpon>frmEdicion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Sucursales\frmListado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Sucursales\frmListado.Designer.cs">
+      <DependentUpon>frmListado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Unidades\frmEdición.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -314,6 +338,18 @@
     <Compile Include="Models\Empresas.cs">
       <DependentUpon>ERP.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EPresupuestos.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EPresupuestosDetalles.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ERemitos.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ERemitosDetalles.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ERP.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -333,6 +369,12 @@
       <DependentUpon>ERP.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EstadoCliente.cs" />
+    <Compile Include="Models\EVentas.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EVentasDetalles.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Grupos.cs">
       <DependentUpon>ERP.tt</DependentUpon>
     </Compile>
@@ -352,6 +394,9 @@
       <DependentUpon>ERP.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Provincias.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sucursales.cs">
       <DependentUpon>ERP.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TiposDocumento.cs">
@@ -374,6 +419,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Repositories\ArticulosRepository.cs" />
+    <Compile Include="Repositories\BancosRepository.cs" />
     <Compile Include="Repositories\BarriosRepository.cs" />
     <Compile Include="Repositories\ClientesRepository.cs" />
     <Compile Include="Repositories\DepartamentosRepository.cs" />
@@ -384,18 +430,28 @@
     <Compile Include="Repositories\ItemsMenuRepository.cs" />
     <Compile Include="Repositories\LocalidadesRepository.cs" />
     <Compile Include="Repositories\MarcasRepository.cs" />
+    <Compile Include="Repositories\PresupuestosDetallesRepository.cs" />
+    <Compile Include="Repositories\PresupuestosRepository.cs" />
     <Compile Include="Repositories\ProveedoresRepository.cs" />
     <Compile Include="Repositories\ProvinciasRepository.cs" />
+    <Compile Include="Repositories\RemitosDetallesRepository.cs" />
+    <Compile Include="Repositories\RemitosRepository.cs" />
     <Compile Include="Repositories\RubrosRepository.cs" />
     <Compile Include="Repositories\StoredProcs.cs" />
+    <Compile Include="Repositories\SucursalesRepository.cs" />
     <Compile Include="Repositories\TiposDocumentoRepository.cs" />
     <Compile Include="Repositories\UnidadesRepository.cs" />
     <Compile Include="Repositories\UsuariosItemsMenuRepository.cs" />
     <Compile Include="Repositories\UsuariosRepository.cs" />
+    <Compile Include="Repositories\VentasDetallesRepository.cs" />
+    <Compile Include="Repositories\VentasRepository.cs" />
     <EmbeddedResource Include="Forms\Articulos\frmEdicion.resx">
       <DependentUpon>frmEdicion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Articulos\frmListado.resx">
+      <DependentUpon>frmListado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Bancos\frmListado.resx">
       <DependentUpon>frmListado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Cheques\frmDepositar.resx">
@@ -462,6 +518,12 @@
       <DependentUpon>frmEdición.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Rubros\frmListado.resx">
+      <DependentUpon>frmListado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sucursales\frmEdicion.resx">
+      <DependentUpon>frmEdicion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Sucursales\frmListado.resx">
       <DependentUpon>frmListado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Unidades\frmEdición.resx">
@@ -539,9 +601,11 @@
       <DependentUpon>ERP.edmx</DependentUpon>
       <LastGenOutput>ERP.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\accept.png" />
     <Content Include="Resources\add.png" />
     <Content Include="Resources\app2.ico" />
     <Content Include="Resources\arrow_refresh.png" />
+    <None Include="Resources\attach.png" />
     <Content Include="Resources\control_fastforward_blue.png" />
     <Content Include="Resources\control_play_blue.png" />
     <Content Include="Resources\control_rewind_blue.png" />

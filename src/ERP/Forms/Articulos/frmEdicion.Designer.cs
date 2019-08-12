@@ -34,52 +34,53 @@
             this.btnCancelar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnGuardar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblCosto = new System.Windows.Forms.Label();
+            this.txtStockMinimo = new System.Windows.Forms.NumericUpDown();
+            this.txtStock = new System.Windows.Forms.NumericUpDown();
+            this.txtIVA = new System.Windows.Forms.NumericUpDown();
+            this.txtLista3 = new System.Windows.Forms.NumericUpDown();
+            this.txtListaPorc3 = new System.Windows.Forms.NumericUpDown();
+            this.materialLabel27 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel28 = new MaterialSkin.Controls.MaterialLabel();
+            this.txtLista2 = new System.Windows.Forms.NumericUpDown();
+            this.txtListaPorc2 = new System.Windows.Forms.NumericUpDown();
+            this.materialLabel24 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel25 = new MaterialSkin.Controls.MaterialLabel();
+            this.txtLista1 = new System.Windows.Forms.NumericUpDown();
+            this.txtListaPorc1 = new System.Windows.Forms.NumericUpDown();
+            this.materialLabel30 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel31 = new MaterialSkin.Controls.MaterialLabel();
+            this.txtCosto = new System.Windows.Forms.NumericUpDown();
+            this.materialLabel19 = new MaterialSkin.Controls.MaterialLabel();
+            this.txtDesc3 = new System.Windows.Forms.NumericUpDown();
+            this.txtDescPorc3 = new System.Windows.Forms.NumericUpDown();
+            this.materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel15 = new MaterialSkin.Controls.MaterialLabel();
+            this.txtDesc2 = new System.Windows.Forms.NumericUpDown();
+            this.txtDescPorc2 = new System.Windows.Forms.NumericUpDown();
+            this.materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
+            this.txtDesc1 = new System.Windows.Forms.NumericUpDown();
+            this.txtDescPorc1 = new System.Windows.Forms.NumericUpDown();
+            this.txtCostoInicial = new System.Windows.Forms.NumericUpDown();
             this.materialLabel35 = new MaterialSkin.Controls.MaterialLabel();
             this.ckEstado = new MaterialSkin.Controls.MaterialCheckBox();
             this.materialLabel34 = new MaterialSkin.Controls.MaterialLabel();
             this.txtObservaciones = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel33 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtStockMinimo = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel23 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtStock = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel21 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtIVA = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel22 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel24 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtLista3 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialLabel25 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtListaPorc3 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel26 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel27 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtLista2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialLabel28 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtListaPorc2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel29 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel30 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtLista1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialLabel31 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtListaPorc1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel32 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel19 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtCosto = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel20 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel17 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtDesc3 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialLabel15 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtDescPorc3 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtDesc2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtDescPorc2 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtDesc1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtDescPorc1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtCostoInicial = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.cbUnidad = new System.Windows.Forms.ComboBox();
@@ -99,6 +100,23 @@
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStockMinimo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStock)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIVA)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLista3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtListaPorc3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLista2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtListaPorc2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLista1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtListaPorc1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCosto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDesc3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDescPorc3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDesc2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDescPorc2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDesc1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDescPorc1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCostoInicial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,77 +149,78 @@
             // btnCancelar
             // 
             this.btnCancelar.Depth = 0;
-            this.btnCancelar.Location = new System.Drawing.Point(262, 6);
+            this.btnCancelar.Location = new System.Drawing.Point(263, 3);
             this.btnCancelar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Primary = true;
-            this.btnCancelar.Size = new System.Drawing.Size(112, 35);
-            this.btnCancelar.TabIndex = 3;
-            this.btnCancelar.Text = "CANCELAR";
+            this.btnCancelar.Size = new System.Drawing.Size(116, 31);
+            this.btnCancelar.TabIndex = 1;
+            this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click_1);
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
             this.btnGuardar.Depth = 0;
-            this.btnGuardar.Location = new System.Drawing.Point(145, 6);
+            this.btnGuardar.Location = new System.Drawing.Point(97, 3);
             this.btnGuardar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Primary = true;
-            this.btnGuardar.Size = new System.Drawing.Size(112, 35);
-            this.btnGuardar.TabIndex = 2;
-            this.btnGuardar.Text = "GUARDAR";
+            this.btnGuardar.Size = new System.Drawing.Size(116, 31);
+            this.btnGuardar.TabIndex = 0;
+            this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click_2);
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click_1);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblCosto);
+            this.panel1.Controls.Add(this.txtStockMinimo);
+            this.panel1.Controls.Add(this.txtStock);
+            this.panel1.Controls.Add(this.txtIVA);
+            this.panel1.Controls.Add(this.txtLista3);
+            this.panel1.Controls.Add(this.txtListaPorc3);
+            this.panel1.Controls.Add(this.materialLabel27);
+            this.panel1.Controls.Add(this.materialLabel28);
+            this.panel1.Controls.Add(this.txtLista2);
+            this.panel1.Controls.Add(this.txtListaPorc2);
+            this.panel1.Controls.Add(this.materialLabel24);
+            this.panel1.Controls.Add(this.materialLabel25);
+            this.panel1.Controls.Add(this.txtLista1);
+            this.panel1.Controls.Add(this.txtListaPorc1);
+            this.panel1.Controls.Add(this.materialLabel30);
+            this.panel1.Controls.Add(this.materialLabel31);
+            this.panel1.Controls.Add(this.txtCosto);
+            this.panel1.Controls.Add(this.materialLabel19);
+            this.panel1.Controls.Add(this.txtDesc3);
+            this.panel1.Controls.Add(this.txtDescPorc3);
+            this.panel1.Controls.Add(this.materialLabel14);
+            this.panel1.Controls.Add(this.materialLabel15);
+            this.panel1.Controls.Add(this.txtDesc2);
+            this.panel1.Controls.Add(this.txtDescPorc2);
+            this.panel1.Controls.Add(this.materialLabel11);
+            this.panel1.Controls.Add(this.materialLabel12);
+            this.panel1.Controls.Add(this.txtDesc1);
+            this.panel1.Controls.Add(this.txtDescPorc1);
+            this.panel1.Controls.Add(this.txtCostoInicial);
             this.panel1.Controls.Add(this.materialLabel35);
             this.panel1.Controls.Add(this.ckEstado);
             this.panel1.Controls.Add(this.materialLabel34);
             this.panel1.Controls.Add(this.txtObservaciones);
             this.panel1.Controls.Add(this.materialLabel33);
-            this.panel1.Controls.Add(this.txtStockMinimo);
             this.panel1.Controls.Add(this.materialLabel23);
-            this.panel1.Controls.Add(this.txtStock);
             this.panel1.Controls.Add(this.materialLabel21);
-            this.panel1.Controls.Add(this.txtIVA);
             this.panel1.Controls.Add(this.materialLabel22);
-            this.panel1.Controls.Add(this.materialLabel24);
-            this.panel1.Controls.Add(this.txtLista3);
-            this.panel1.Controls.Add(this.materialLabel25);
-            this.panel1.Controls.Add(this.txtListaPorc3);
             this.panel1.Controls.Add(this.materialLabel26);
-            this.panel1.Controls.Add(this.materialLabel27);
-            this.panel1.Controls.Add(this.txtLista2);
-            this.panel1.Controls.Add(this.materialLabel28);
-            this.panel1.Controls.Add(this.txtListaPorc2);
             this.panel1.Controls.Add(this.materialLabel29);
-            this.panel1.Controls.Add(this.materialLabel30);
-            this.panel1.Controls.Add(this.txtLista1);
-            this.panel1.Controls.Add(this.materialLabel31);
-            this.panel1.Controls.Add(this.txtListaPorc1);
             this.panel1.Controls.Add(this.materialLabel32);
-            this.panel1.Controls.Add(this.materialLabel19);
-            this.panel1.Controls.Add(this.txtCosto);
             this.panel1.Controls.Add(this.materialLabel20);
             this.panel1.Controls.Add(this.materialLabel17);
-            this.panel1.Controls.Add(this.materialLabel14);
-            this.panel1.Controls.Add(this.txtDesc3);
-            this.panel1.Controls.Add(this.materialLabel15);
-            this.panel1.Controls.Add(this.txtDescPorc3);
             this.panel1.Controls.Add(this.materialLabel16);
-            this.panel1.Controls.Add(this.materialLabel11);
-            this.panel1.Controls.Add(this.txtDesc2);
-            this.panel1.Controls.Add(this.materialLabel12);
-            this.panel1.Controls.Add(this.txtDescPorc2);
             this.panel1.Controls.Add(this.materialLabel13);
             this.panel1.Controls.Add(this.materialLabel10);
-            this.panel1.Controls.Add(this.txtDesc1);
             this.panel1.Controls.Add(this.materialLabel9);
-            this.panel1.Controls.Add(this.txtDescPorc1);
             this.panel1.Controls.Add(this.materialLabel8);
-            this.panel1.Controls.Add(this.txtCostoInicial);
             this.panel1.Controls.Add(this.materialLabel7);
             this.panel1.Controls.Add(this.materialLabel6);
             this.panel1.Controls.Add(this.cbUnidad);
@@ -222,6 +241,319 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(526, 384);
             this.panel1.TabIndex = 0;
+            // 
+            // lblCosto
+            // 
+            this.lblCosto.AutoSize = true;
+            this.lblCosto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCosto.ForeColor = System.Drawing.Color.DarkCyan;
+            this.lblCosto.Location = new System.Drawing.Point(97, 258);
+            this.lblCosto.Name = "lblCosto";
+            this.lblCosto.Size = new System.Drawing.Size(66, 16);
+            this.lblCosto.TabIndex = 135;
+            this.lblCosto.Text = "Verificar";
+            this.lblCosto.Visible = false;
+            // 
+            // txtStockMinimo
+            // 
+            this.txtStockMinimo.DecimalPlaces = 2;
+            this.txtStockMinimo.Location = new System.Drawing.Point(420, 283);
+            this.txtStockMinimo.Name = "txtStockMinimo";
+            this.txtStockMinimo.Size = new System.Drawing.Size(85, 20);
+            this.txtStockMinimo.TabIndex = 134;
+            this.txtStockMinimo.ThousandsSeparator = true;
+            // 
+            // txtStock
+            // 
+            this.txtStock.DecimalPlaces = 2;
+            this.txtStock.Location = new System.Drawing.Point(167, 285);
+            this.txtStock.Name = "txtStock";
+            this.txtStock.Size = new System.Drawing.Size(98, 20);
+            this.txtStock.TabIndex = 133;
+            this.txtStock.ThousandsSeparator = true;
+            // 
+            // txtIVA
+            // 
+            this.txtIVA.DecimalPlaces = 2;
+            this.txtIVA.Location = new System.Drawing.Point(346, 256);
+            this.txtIVA.Name = "txtIVA";
+            this.txtIVA.Size = new System.Drawing.Size(51, 20);
+            this.txtIVA.TabIndex = 132;
+            // 
+            // txtLista3
+            // 
+            this.txtLista3.DecimalPlaces = 2;
+            this.txtLista3.Location = new System.Drawing.Point(420, 227);
+            this.txtLista3.Name = "txtLista3";
+            this.txtLista3.Size = new System.Drawing.Size(85, 20);
+            this.txtLista3.TabIndex = 131;
+            this.txtLista3.ThousandsSeparator = true;
+            this.txtLista3.ValueChanged += new System.EventHandler(this.txtLista3_ValueChanged);
+            // 
+            // txtListaPorc3
+            // 
+            this.txtListaPorc3.DecimalPlaces = 2;
+            this.txtListaPorc3.Location = new System.Drawing.Point(346, 227);
+            this.txtListaPorc3.Name = "txtListaPorc3";
+            this.txtListaPorc3.Size = new System.Drawing.Size(51, 20);
+            this.txtListaPorc3.TabIndex = 130;
+            this.txtListaPorc3.ValueChanged += new System.EventHandler(this.txtListaPorc3_ValueChanged);
+            // 
+            // materialLabel27
+            // 
+            this.materialLabel27.AutoSize = true;
+            this.materialLabel27.Depth = 0;
+            this.materialLabel27.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel27.Location = new System.Drawing.Point(401, 227);
+            this.materialLabel27.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel27.Name = "materialLabel27";
+            this.materialLabel27.Size = new System.Drawing.Size(17, 19);
+            this.materialLabel27.TabIndex = 129;
+            this.materialLabel27.Text = "$";
+            // 
+            // materialLabel28
+            // 
+            this.materialLabel28.AutoSize = true;
+            this.materialLabel28.Depth = 0;
+            this.materialLabel28.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel28.Location = new System.Drawing.Point(324, 227);
+            this.materialLabel28.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel28.Name = "materialLabel28";
+            this.materialLabel28.Size = new System.Drawing.Size(20, 19);
+            this.materialLabel28.TabIndex = 128;
+            this.materialLabel28.Text = "%";
+            // 
+            // txtLista2
+            // 
+            this.txtLista2.DecimalPlaces = 2;
+            this.txtLista2.Location = new System.Drawing.Point(420, 200);
+            this.txtLista2.Name = "txtLista2";
+            this.txtLista2.Size = new System.Drawing.Size(85, 20);
+            this.txtLista2.TabIndex = 127;
+            this.txtLista2.ThousandsSeparator = true;
+            this.txtLista2.ValueChanged += new System.EventHandler(this.txtLista2_ValueChanged);
+            // 
+            // txtListaPorc2
+            // 
+            this.txtListaPorc2.DecimalPlaces = 2;
+            this.txtListaPorc2.Location = new System.Drawing.Point(346, 200);
+            this.txtListaPorc2.Name = "txtListaPorc2";
+            this.txtListaPorc2.Size = new System.Drawing.Size(51, 20);
+            this.txtListaPorc2.TabIndex = 126;
+            this.txtListaPorc2.ValueChanged += new System.EventHandler(this.txtListaPorc2_ValueChanged);
+            // 
+            // materialLabel24
+            // 
+            this.materialLabel24.AutoSize = true;
+            this.materialLabel24.Depth = 0;
+            this.materialLabel24.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel24.Location = new System.Drawing.Point(401, 200);
+            this.materialLabel24.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel24.Name = "materialLabel24";
+            this.materialLabel24.Size = new System.Drawing.Size(17, 19);
+            this.materialLabel24.TabIndex = 125;
+            this.materialLabel24.Text = "$";
+            // 
+            // materialLabel25
+            // 
+            this.materialLabel25.AutoSize = true;
+            this.materialLabel25.Depth = 0;
+            this.materialLabel25.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel25.Location = new System.Drawing.Point(324, 200);
+            this.materialLabel25.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel25.Name = "materialLabel25";
+            this.materialLabel25.Size = new System.Drawing.Size(20, 19);
+            this.materialLabel25.TabIndex = 124;
+            this.materialLabel25.Text = "%";
+            // 
+            // txtLista1
+            // 
+            this.txtLista1.DecimalPlaces = 2;
+            this.txtLista1.Location = new System.Drawing.Point(420, 173);
+            this.txtLista1.Name = "txtLista1";
+            this.txtLista1.Size = new System.Drawing.Size(85, 20);
+            this.txtLista1.TabIndex = 123;
+            this.txtLista1.ThousandsSeparator = true;
+            this.txtLista1.ValueChanged += new System.EventHandler(this.txtLista1_ValueChanged);
+            // 
+            // txtListaPorc1
+            // 
+            this.txtListaPorc1.DecimalPlaces = 2;
+            this.txtListaPorc1.Location = new System.Drawing.Point(346, 173);
+            this.txtListaPorc1.Name = "txtListaPorc1";
+            this.txtListaPorc1.Size = new System.Drawing.Size(51, 20);
+            this.txtListaPorc1.TabIndex = 122;
+            this.txtListaPorc1.ValueChanged += new System.EventHandler(this.txtListaPorc1_ValueChanged);
+            // 
+            // materialLabel30
+            // 
+            this.materialLabel30.AutoSize = true;
+            this.materialLabel30.Depth = 0;
+            this.materialLabel30.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel30.Location = new System.Drawing.Point(401, 173);
+            this.materialLabel30.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel30.Name = "materialLabel30";
+            this.materialLabel30.Size = new System.Drawing.Size(17, 19);
+            this.materialLabel30.TabIndex = 121;
+            this.materialLabel30.Text = "$";
+            // 
+            // materialLabel31
+            // 
+            this.materialLabel31.AutoSize = true;
+            this.materialLabel31.Depth = 0;
+            this.materialLabel31.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel31.Location = new System.Drawing.Point(324, 173);
+            this.materialLabel31.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel31.Name = "materialLabel31";
+            this.materialLabel31.Size = new System.Drawing.Size(20, 19);
+            this.materialLabel31.TabIndex = 120;
+            this.materialLabel31.Text = "%";
+            // 
+            // txtCosto
+            // 
+            this.txtCosto.DecimalPlaces = 2;
+            this.txtCosto.Location = new System.Drawing.Point(166, 256);
+            this.txtCosto.Name = "txtCosto";
+            this.txtCosto.Size = new System.Drawing.Size(98, 20);
+            this.txtCosto.TabIndex = 119;
+            this.txtCosto.ThousandsSeparator = true;
+            // 
+            // materialLabel19
+            // 
+            this.materialLabel19.AutoSize = true;
+            this.materialLabel19.Depth = 0;
+            this.materialLabel19.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel19.Location = new System.Drawing.Point(147, 256);
+            this.materialLabel19.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel19.Name = "materialLabel19";
+            this.materialLabel19.Size = new System.Drawing.Size(17, 19);
+            this.materialLabel19.TabIndex = 118;
+            this.materialLabel19.Text = "$";
+            // 
+            // txtDesc3
+            // 
+            this.txtDesc3.DecimalPlaces = 2;
+            this.txtDesc3.Location = new System.Drawing.Point(166, 230);
+            this.txtDesc3.Name = "txtDesc3";
+            this.txtDesc3.Size = new System.Drawing.Size(98, 20);
+            this.txtDesc3.TabIndex = 117;
+            this.txtDesc3.ThousandsSeparator = true;
+            this.txtDesc3.ValueChanged += new System.EventHandler(this.txtDesc3_ValueChanged);
+            // 
+            // txtDescPorc3
+            // 
+            this.txtDescPorc3.DecimalPlaces = 2;
+            this.txtDescPorc3.Location = new System.Drawing.Point(92, 230);
+            this.txtDescPorc3.Name = "txtDescPorc3";
+            this.txtDescPorc3.Size = new System.Drawing.Size(51, 20);
+            this.txtDescPorc3.TabIndex = 116;
+            this.txtDescPorc3.ValueChanged += new System.EventHandler(this.txtDescPorc3_ValueChanged);
+            // 
+            // materialLabel14
+            // 
+            this.materialLabel14.AutoSize = true;
+            this.materialLabel14.Depth = 0;
+            this.materialLabel14.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel14.Location = new System.Drawing.Point(147, 230);
+            this.materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel14.Name = "materialLabel14";
+            this.materialLabel14.Size = new System.Drawing.Size(17, 19);
+            this.materialLabel14.TabIndex = 115;
+            this.materialLabel14.Text = "$";
+            // 
+            // materialLabel15
+            // 
+            this.materialLabel15.AutoSize = true;
+            this.materialLabel15.Depth = 0;
+            this.materialLabel15.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel15.Location = new System.Drawing.Point(70, 230);
+            this.materialLabel15.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel15.Name = "materialLabel15";
+            this.materialLabel15.Size = new System.Drawing.Size(20, 19);
+            this.materialLabel15.TabIndex = 114;
+            this.materialLabel15.Text = "%";
+            // 
+            // txtDesc2
+            // 
+            this.txtDesc2.DecimalPlaces = 2;
+            this.txtDesc2.Location = new System.Drawing.Point(166, 202);
+            this.txtDesc2.Name = "txtDesc2";
+            this.txtDesc2.Size = new System.Drawing.Size(98, 20);
+            this.txtDesc2.TabIndex = 113;
+            this.txtDesc2.ThousandsSeparator = true;
+            this.txtDesc2.ValueChanged += new System.EventHandler(this.txtDesc2_ValueChanged);
+            // 
+            // txtDescPorc2
+            // 
+            this.txtDescPorc2.DecimalPlaces = 2;
+            this.txtDescPorc2.Location = new System.Drawing.Point(92, 202);
+            this.txtDescPorc2.Name = "txtDescPorc2";
+            this.txtDescPorc2.Size = new System.Drawing.Size(51, 20);
+            this.txtDescPorc2.TabIndex = 112;
+            this.txtDescPorc2.ValueChanged += new System.EventHandler(this.txtDescPorc2_ValueChanged);
+            // 
+            // materialLabel11
+            // 
+            this.materialLabel11.AutoSize = true;
+            this.materialLabel11.Depth = 0;
+            this.materialLabel11.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel11.Location = new System.Drawing.Point(147, 202);
+            this.materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel11.Name = "materialLabel11";
+            this.materialLabel11.Size = new System.Drawing.Size(17, 19);
+            this.materialLabel11.TabIndex = 111;
+            this.materialLabel11.Text = "$";
+            // 
+            // materialLabel12
+            // 
+            this.materialLabel12.AutoSize = true;
+            this.materialLabel12.Depth = 0;
+            this.materialLabel12.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel12.Location = new System.Drawing.Point(70, 202);
+            this.materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel12.Name = "materialLabel12";
+            this.materialLabel12.Size = new System.Drawing.Size(20, 19);
+            this.materialLabel12.TabIndex = 110;
+            this.materialLabel12.Text = "%";
+            // 
+            // txtDesc1
+            // 
+            this.txtDesc1.DecimalPlaces = 2;
+            this.txtDesc1.Location = new System.Drawing.Point(166, 173);
+            this.txtDesc1.Name = "txtDesc1";
+            this.txtDesc1.Size = new System.Drawing.Size(98, 20);
+            this.txtDesc1.TabIndex = 109;
+            this.txtDesc1.ThousandsSeparator = true;
+            this.txtDesc1.ValueChanged += new System.EventHandler(this.txtDesc1_ValueChanged);
+            // 
+            // txtDescPorc1
+            // 
+            this.txtDescPorc1.DecimalPlaces = 2;
+            this.txtDescPorc1.Location = new System.Drawing.Point(92, 173);
+            this.txtDescPorc1.Name = "txtDescPorc1";
+            this.txtDescPorc1.Size = new System.Drawing.Size(51, 20);
+            this.txtDescPorc1.TabIndex = 108;
+            this.txtDescPorc1.ValueChanged += new System.EventHandler(this.txtDescPorc1_ValueChanged);
+            // 
+            // txtCostoInicial
+            // 
+            this.txtCostoInicial.DecimalPlaces = 2;
+            this.txtCostoInicial.Location = new System.Drawing.Point(167, 143);
+            this.txtCostoInicial.Name = "txtCostoInicial";
+            this.txtCostoInicial.Size = new System.Drawing.Size(98, 20);
+            this.txtCostoInicial.TabIndex = 107;
+            this.txtCostoInicial.ValueChanged += new System.EventHandler(this.txtCostoInicial_ValueChanged);
             // 
             // materialLabel35
             // 
@@ -258,7 +590,7 @@
             this.materialLabel34.Depth = 0;
             this.materialLabel34.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel34.Location = new System.Drawing.Point(301, 143);
+            this.materialLabel34.Location = new System.Drawing.Point(275, 143);
             this.materialLabel34.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel34.Name = "materialLabel34";
             this.materialLabel34.Size = new System.Drawing.Size(115, 19);
@@ -278,7 +610,6 @@
             this.txtObservaciones.SelectionStart = 0;
             this.txtObservaciones.Size = new System.Drawing.Size(383, 23);
             this.txtObservaciones.TabIndex = 103;
-            this.txtObservaciones.TabStop = false;
             this.txtObservaciones.UseSystemPasswordChar = false;
             // 
             // materialLabel33
@@ -294,52 +625,18 @@
             this.materialLabel33.TabIndex = 102;
             this.materialLabel33.Text = "Observaciones";
             // 
-            // txtStockMinimo
-            // 
-            this.txtStockMinimo.Depth = 0;
-            this.txtStockMinimo.Hint = "";
-            this.txtStockMinimo.Location = new System.Drawing.Point(268, 297);
-            this.txtStockMinimo.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtStockMinimo.Name = "txtStockMinimo";
-            this.txtStockMinimo.PasswordChar = '\0';
-            this.txtStockMinimo.SelectedText = "";
-            this.txtStockMinimo.SelectionLength = 0;
-            this.txtStockMinimo.SelectionStart = 0;
-            this.txtStockMinimo.Size = new System.Drawing.Size(91, 23);
-            this.txtStockMinimo.TabIndex = 101;
-            this.txtStockMinimo.TabStop = false;
-            this.txtStockMinimo.UseSystemPasswordChar = false;
-            this.txtStockMinimo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStockMinimo_KeyPress);
-            // 
             // materialLabel23
             // 
             this.materialLabel23.AutoSize = true;
             this.materialLabel23.Depth = 0;
             this.materialLabel23.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel23.Location = new System.Drawing.Point(162, 297);
+            this.materialLabel23.Location = new System.Drawing.Point(276, 285);
             this.materialLabel23.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel23.Name = "materialLabel23";
             this.materialLabel23.Size = new System.Drawing.Size(103, 19);
             this.materialLabel23.TabIndex = 100;
             this.materialLabel23.Text = "Stock Mínimo";
-            // 
-            // txtStock
-            // 
-            this.txtStock.Depth = 0;
-            this.txtStock.Hint = "";
-            this.txtStock.Location = new System.Drawing.Point(67, 297);
-            this.txtStock.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtStock.Name = "txtStock";
-            this.txtStock.PasswordChar = '\0';
-            this.txtStock.SelectedText = "";
-            this.txtStock.SelectionLength = 0;
-            this.txtStock.SelectionStart = 0;
-            this.txtStock.Size = new System.Drawing.Size(91, 23);
-            this.txtStock.TabIndex = 99;
-            this.txtStock.TabStop = false;
-            this.txtStock.UseSystemPasswordChar = false;
-            this.txtStock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStock_KeyPress);
             // 
             // materialLabel21
             // 
@@ -347,29 +644,12 @@
             this.materialLabel21.Depth = 0;
             this.materialLabel21.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel21.Location = new System.Drawing.Point(13, 297);
+            this.materialLabel21.Location = new System.Drawing.Point(14, 289);
             this.materialLabel21.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel21.Name = "materialLabel21";
             this.materialLabel21.Size = new System.Drawing.Size(48, 19);
             this.materialLabel21.TabIndex = 98;
             this.materialLabel21.Text = "Stock";
-            // 
-            // txtIVA
-            // 
-            this.txtIVA.Depth = 0;
-            this.txtIVA.Hint = "";
-            this.txtIVA.Location = new System.Drawing.Point(376, 257);
-            this.txtIVA.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtIVA.Name = "txtIVA";
-            this.txtIVA.PasswordChar = '\0';
-            this.txtIVA.SelectedText = "";
-            this.txtIVA.SelectionLength = 0;
-            this.txtIVA.SelectionStart = 0;
-            this.txtIVA.Size = new System.Drawing.Size(49, 23);
-            this.txtIVA.TabIndex = 97;
-            this.txtIVA.TabStop = false;
-            this.txtIVA.UseSystemPasswordChar = false;
-            this.txtIVA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIVA_KeyPress);
             // 
             // materialLabel22
             // 
@@ -377,74 +657,12 @@
             this.materialLabel22.Depth = 0;
             this.materialLabel22.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel22.Location = new System.Drawing.Point(304, 258);
+            this.materialLabel22.Location = new System.Drawing.Point(277, 258);
             this.materialLabel22.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel22.Name = "materialLabel22";
             this.materialLabel22.Size = new System.Drawing.Size(33, 19);
             this.materialLabel22.TabIndex = 96;
             this.materialLabel22.Text = "IVA";
-            // 
-            // materialLabel24
-            // 
-            this.materialLabel24.AutoSize = true;
-            this.materialLabel24.Depth = 0;
-            this.materialLabel24.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel24.Location = new System.Drawing.Point(429, 228);
-            this.materialLabel24.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel24.Name = "materialLabel24";
-            this.materialLabel24.Size = new System.Drawing.Size(17, 19);
-            this.materialLabel24.TabIndex = 94;
-            this.materialLabel24.Text = "$";
-            // 
-            // txtLista3
-            // 
-            this.txtLista3.Depth = 0;
-            this.txtLista3.Hint = "";
-            this.txtLista3.Location = new System.Drawing.Point(450, 228);
-            this.txtLista3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtLista3.Name = "txtLista3";
-            this.txtLista3.PasswordChar = '\0';
-            this.txtLista3.SelectedText = "";
-            this.txtLista3.SelectionLength = 0;
-            this.txtLista3.SelectionStart = 0;
-            this.txtLista3.Size = new System.Drawing.Size(57, 23);
-            this.txtLista3.TabIndex = 93;
-            this.txtLista3.TabStop = false;
-            this.txtLista3.UseSystemPasswordChar = false;
-            this.txtLista3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLista3_KeyPress);
-            this.txtLista3.TextChanged += new System.EventHandler(this.txtLista3_TextChanged);
-            // 
-            // materialLabel25
-            // 
-            this.materialLabel25.AutoSize = true;
-            this.materialLabel25.Depth = 0;
-            this.materialLabel25.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel25.Location = new System.Drawing.Point(371, 228);
-            this.materialLabel25.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel25.Name = "materialLabel25";
-            this.materialLabel25.Size = new System.Drawing.Size(20, 19);
-            this.materialLabel25.TabIndex = 92;
-            this.materialLabel25.Text = "%";
-            // 
-            // txtListaPorc3
-            // 
-            this.txtListaPorc3.Depth = 0;
-            this.txtListaPorc3.Hint = "";
-            this.txtListaPorc3.Location = new System.Drawing.Point(395, 228);
-            this.txtListaPorc3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtListaPorc3.Name = "txtListaPorc3";
-            this.txtListaPorc3.PasswordChar = '\0';
-            this.txtListaPorc3.SelectedText = "";
-            this.txtListaPorc3.SelectionLength = 0;
-            this.txtListaPorc3.SelectionStart = 0;
-            this.txtListaPorc3.Size = new System.Drawing.Size(30, 23);
-            this.txtListaPorc3.TabIndex = 91;
-            this.txtListaPorc3.TabStop = false;
-            this.txtListaPorc3.UseSystemPasswordChar = false;
-            this.txtListaPorc3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtListaPorc3_KeyPress);
-            this.txtListaPorc3.TextChanged += new System.EventHandler(this.txtListaPorc3_TextChanged);
             // 
             // materialLabel26
             // 
@@ -452,74 +670,12 @@
             this.materialLabel26.Depth = 0;
             this.materialLabel26.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel26.Location = new System.Drawing.Point(303, 228);
+            this.materialLabel26.Location = new System.Drawing.Point(276, 228);
             this.materialLabel26.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel26.Name = "materialLabel26";
             this.materialLabel26.Size = new System.Drawing.Size(54, 19);
             this.materialLabel26.TabIndex = 90;
             this.materialLabel26.Text = "Lista 3";
-            // 
-            // materialLabel27
-            // 
-            this.materialLabel27.AutoSize = true;
-            this.materialLabel27.Depth = 0;
-            this.materialLabel27.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel27.Location = new System.Drawing.Point(429, 199);
-            this.materialLabel27.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel27.Name = "materialLabel27";
-            this.materialLabel27.Size = new System.Drawing.Size(17, 19);
-            this.materialLabel27.TabIndex = 89;
-            this.materialLabel27.Text = "$";
-            // 
-            // txtLista2
-            // 
-            this.txtLista2.Depth = 0;
-            this.txtLista2.Hint = "";
-            this.txtLista2.Location = new System.Drawing.Point(450, 199);
-            this.txtLista2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtLista2.Name = "txtLista2";
-            this.txtLista2.PasswordChar = '\0';
-            this.txtLista2.SelectedText = "";
-            this.txtLista2.SelectionLength = 0;
-            this.txtLista2.SelectionStart = 0;
-            this.txtLista2.Size = new System.Drawing.Size(57, 23);
-            this.txtLista2.TabIndex = 88;
-            this.txtLista2.TabStop = false;
-            this.txtLista2.UseSystemPasswordChar = false;
-            this.txtLista2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLista2_KeyPress);
-            this.txtLista2.TextChanged += new System.EventHandler(this.txtLista2_TextChanged);
-            // 
-            // materialLabel28
-            // 
-            this.materialLabel28.AutoSize = true;
-            this.materialLabel28.Depth = 0;
-            this.materialLabel28.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel28.Location = new System.Drawing.Point(371, 199);
-            this.materialLabel28.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel28.Name = "materialLabel28";
-            this.materialLabel28.Size = new System.Drawing.Size(20, 19);
-            this.materialLabel28.TabIndex = 87;
-            this.materialLabel28.Text = "%";
-            // 
-            // txtListaPorc2
-            // 
-            this.txtListaPorc2.Depth = 0;
-            this.txtListaPorc2.Hint = "";
-            this.txtListaPorc2.Location = new System.Drawing.Point(395, 199);
-            this.txtListaPorc2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtListaPorc2.Name = "txtListaPorc2";
-            this.txtListaPorc2.PasswordChar = '\0';
-            this.txtListaPorc2.SelectedText = "";
-            this.txtListaPorc2.SelectionLength = 0;
-            this.txtListaPorc2.SelectionStart = 0;
-            this.txtListaPorc2.Size = new System.Drawing.Size(30, 23);
-            this.txtListaPorc2.TabIndex = 86;
-            this.txtListaPorc2.TabStop = false;
-            this.txtListaPorc2.UseSystemPasswordChar = false;
-            this.txtListaPorc2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtListaPorc2_KeyPress);
-            this.txtListaPorc2.TextChanged += new System.EventHandler(this.txtListaPorc2_TextChanged);
             // 
             // materialLabel29
             // 
@@ -527,74 +683,12 @@
             this.materialLabel29.Depth = 0;
             this.materialLabel29.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel29.Location = new System.Drawing.Point(302, 199);
+            this.materialLabel29.Location = new System.Drawing.Point(275, 199);
             this.materialLabel29.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel29.Name = "materialLabel29";
             this.materialLabel29.Size = new System.Drawing.Size(54, 19);
             this.materialLabel29.TabIndex = 85;
             this.materialLabel29.Text = "Lista 2";
-            // 
-            // materialLabel30
-            // 
-            this.materialLabel30.AutoSize = true;
-            this.materialLabel30.Depth = 0;
-            this.materialLabel30.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel30.Location = new System.Drawing.Point(429, 170);
-            this.materialLabel30.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel30.Name = "materialLabel30";
-            this.materialLabel30.Size = new System.Drawing.Size(17, 19);
-            this.materialLabel30.TabIndex = 84;
-            this.materialLabel30.Text = "$";
-            // 
-            // txtLista1
-            // 
-            this.txtLista1.Depth = 0;
-            this.txtLista1.Hint = "";
-            this.txtLista1.Location = new System.Drawing.Point(450, 170);
-            this.txtLista1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtLista1.Name = "txtLista1";
-            this.txtLista1.PasswordChar = '\0';
-            this.txtLista1.SelectedText = "";
-            this.txtLista1.SelectionLength = 0;
-            this.txtLista1.SelectionStart = 0;
-            this.txtLista1.Size = new System.Drawing.Size(57, 23);
-            this.txtLista1.TabIndex = 83;
-            this.txtLista1.TabStop = false;
-            this.txtLista1.UseSystemPasswordChar = false;
-            this.txtLista1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLista1_KeyPress);
-            this.txtLista1.TextChanged += new System.EventHandler(this.txtLista1_TextChanged);
-            // 
-            // materialLabel31
-            // 
-            this.materialLabel31.AutoSize = true;
-            this.materialLabel31.Depth = 0;
-            this.materialLabel31.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel31.Location = new System.Drawing.Point(371, 170);
-            this.materialLabel31.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel31.Name = "materialLabel31";
-            this.materialLabel31.Size = new System.Drawing.Size(20, 19);
-            this.materialLabel31.TabIndex = 82;
-            this.materialLabel31.Text = "%";
-            // 
-            // txtListaPorc1
-            // 
-            this.txtListaPorc1.Depth = 0;
-            this.txtListaPorc1.Hint = "";
-            this.txtListaPorc1.Location = new System.Drawing.Point(395, 170);
-            this.txtListaPorc1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtListaPorc1.Name = "txtListaPorc1";
-            this.txtListaPorc1.PasswordChar = '\0';
-            this.txtListaPorc1.SelectedText = "";
-            this.txtListaPorc1.SelectionLength = 0;
-            this.txtListaPorc1.SelectionStart = 0;
-            this.txtListaPorc1.Size = new System.Drawing.Size(30, 23);
-            this.txtListaPorc1.TabIndex = 81;
-            this.txtListaPorc1.TabStop = false;
-            this.txtListaPorc1.UseSystemPasswordChar = false;
-            this.txtListaPorc1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtListaPorc1_KeyPress);
-            this.txtListaPorc1.TextChanged += new System.EventHandler(this.txtListaPorc1_TextChanged);
             // 
             // materialLabel32
             // 
@@ -602,42 +696,12 @@
             this.materialLabel32.Depth = 0;
             this.materialLabel32.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel32.Location = new System.Drawing.Point(302, 170);
+            this.materialLabel32.Location = new System.Drawing.Point(274, 172);
             this.materialLabel32.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel32.Name = "materialLabel32";
             this.materialLabel32.Size = new System.Drawing.Size(54, 19);
             this.materialLabel32.TabIndex = 80;
             this.materialLabel32.Text = "Lista 1";
-            // 
-            // materialLabel19
-            // 
-            this.materialLabel19.AutoSize = true;
-            this.materialLabel19.Depth = 0;
-            this.materialLabel19.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel19.Location = new System.Drawing.Point(141, 259);
-            this.materialLabel19.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel19.Name = "materialLabel19";
-            this.materialLabel19.Size = new System.Drawing.Size(17, 19);
-            this.materialLabel19.TabIndex = 76;
-            this.materialLabel19.Text = "$";
-            // 
-            // txtCosto
-            // 
-            this.txtCosto.Depth = 0;
-            this.txtCosto.Hint = "";
-            this.txtCosto.Location = new System.Drawing.Point(160, 259);
-            this.txtCosto.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtCosto.Name = "txtCosto";
-            this.txtCosto.PasswordChar = '\0';
-            this.txtCosto.SelectedText = "";
-            this.txtCosto.SelectionLength = 0;
-            this.txtCosto.SelectionStart = 0;
-            this.txtCosto.Size = new System.Drawing.Size(59, 23);
-            this.txtCosto.TabIndex = 75;
-            this.txtCosto.TabStop = false;
-            this.txtCosto.UseSystemPasswordChar = false;
-            this.txtCosto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCosto_KeyPress);
             // 
             // materialLabel20
             // 
@@ -658,74 +722,12 @@
             this.materialLabel17.Depth = 0;
             this.materialLabel17.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel17.Location = new System.Drawing.Point(141, 143);
+            this.materialLabel17.Location = new System.Drawing.Point(148, 143);
             this.materialLabel17.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel17.Name = "materialLabel17";
             this.materialLabel17.Size = new System.Drawing.Size(17, 19);
             this.materialLabel17.TabIndex = 73;
             this.materialLabel17.Text = "$";
-            // 
-            // materialLabel14
-            // 
-            this.materialLabel14.AutoSize = true;
-            this.materialLabel14.Depth = 0;
-            this.materialLabel14.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel14.Location = new System.Drawing.Point(141, 230);
-            this.materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel14.Name = "materialLabel14";
-            this.materialLabel14.Size = new System.Drawing.Size(17, 19);
-            this.materialLabel14.TabIndex = 72;
-            this.materialLabel14.Text = "$";
-            // 
-            // txtDesc3
-            // 
-            this.txtDesc3.Depth = 0;
-            this.txtDesc3.Hint = "";
-            this.txtDesc3.Location = new System.Drawing.Point(162, 230);
-            this.txtDesc3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtDesc3.Name = "txtDesc3";
-            this.txtDesc3.PasswordChar = '\0';
-            this.txtDesc3.SelectedText = "";
-            this.txtDesc3.SelectionLength = 0;
-            this.txtDesc3.SelectionStart = 0;
-            this.txtDesc3.Size = new System.Drawing.Size(57, 23);
-            this.txtDesc3.TabIndex = 71;
-            this.txtDesc3.TabStop = false;
-            this.txtDesc3.UseSystemPasswordChar = false;
-            this.txtDesc3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDesc3_KeyPress);
-            this.txtDesc3.TextChanged += new System.EventHandler(this.txtDesc3_TextChanged);
-            // 
-            // materialLabel15
-            // 
-            this.materialLabel15.AutoSize = true;
-            this.materialLabel15.Depth = 0;
-            this.materialLabel15.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel15.Location = new System.Drawing.Point(83, 230);
-            this.materialLabel15.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel15.Name = "materialLabel15";
-            this.materialLabel15.Size = new System.Drawing.Size(20, 19);
-            this.materialLabel15.TabIndex = 70;
-            this.materialLabel15.Text = "%";
-            // 
-            // txtDescPorc3
-            // 
-            this.txtDescPorc3.Depth = 0;
-            this.txtDescPorc3.Hint = "";
-            this.txtDescPorc3.Location = new System.Drawing.Point(107, 230);
-            this.txtDescPorc3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtDescPorc3.Name = "txtDescPorc3";
-            this.txtDescPorc3.PasswordChar = '\0';
-            this.txtDescPorc3.SelectedText = "";
-            this.txtDescPorc3.SelectionLength = 0;
-            this.txtDescPorc3.SelectionStart = 0;
-            this.txtDescPorc3.Size = new System.Drawing.Size(30, 23);
-            this.txtDescPorc3.TabIndex = 69;
-            this.txtDescPorc3.TabStop = false;
-            this.txtDescPorc3.UseSystemPasswordChar = false;
-            this.txtDescPorc3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescPorc3_KeyPress);
-            this.txtDescPorc3.TextChanged += new System.EventHandler(this.txtDescPorc3_TextChanged);
             // 
             // materialLabel16
             // 
@@ -739,68 +741,6 @@
             this.materialLabel16.Size = new System.Drawing.Size(59, 19);
             this.materialLabel16.TabIndex = 68;
             this.materialLabel16.Text = "Desc. 3";
-            // 
-            // materialLabel11
-            // 
-            this.materialLabel11.AutoSize = true;
-            this.materialLabel11.Depth = 0;
-            this.materialLabel11.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel11.Location = new System.Drawing.Point(141, 201);
-            this.materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel11.Name = "materialLabel11";
-            this.materialLabel11.Size = new System.Drawing.Size(17, 19);
-            this.materialLabel11.TabIndex = 67;
-            this.materialLabel11.Text = "$";
-            // 
-            // txtDesc2
-            // 
-            this.txtDesc2.Depth = 0;
-            this.txtDesc2.Hint = "";
-            this.txtDesc2.Location = new System.Drawing.Point(162, 201);
-            this.txtDesc2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtDesc2.Name = "txtDesc2";
-            this.txtDesc2.PasswordChar = '\0';
-            this.txtDesc2.SelectedText = "";
-            this.txtDesc2.SelectionLength = 0;
-            this.txtDesc2.SelectionStart = 0;
-            this.txtDesc2.Size = new System.Drawing.Size(57, 23);
-            this.txtDesc2.TabIndex = 66;
-            this.txtDesc2.TabStop = false;
-            this.txtDesc2.UseSystemPasswordChar = false;
-            this.txtDesc2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDesc2_KeyPress);
-            this.txtDesc2.TextChanged += new System.EventHandler(this.txtDesc2_TextChanged);
-            // 
-            // materialLabel12
-            // 
-            this.materialLabel12.AutoSize = true;
-            this.materialLabel12.Depth = 0;
-            this.materialLabel12.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel12.Location = new System.Drawing.Point(83, 201);
-            this.materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel12.Name = "materialLabel12";
-            this.materialLabel12.Size = new System.Drawing.Size(20, 19);
-            this.materialLabel12.TabIndex = 65;
-            this.materialLabel12.Text = "%";
-            // 
-            // txtDescPorc2
-            // 
-            this.txtDescPorc2.Depth = 0;
-            this.txtDescPorc2.Hint = "";
-            this.txtDescPorc2.Location = new System.Drawing.Point(107, 201);
-            this.txtDescPorc2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtDescPorc2.Name = "txtDescPorc2";
-            this.txtDescPorc2.PasswordChar = '\0';
-            this.txtDescPorc2.SelectedText = "";
-            this.txtDescPorc2.SelectionLength = 0;
-            this.txtDescPorc2.SelectionStart = 0;
-            this.txtDescPorc2.Size = new System.Drawing.Size(30, 23);
-            this.txtDescPorc2.TabIndex = 64;
-            this.txtDescPorc2.TabStop = false;
-            this.txtDescPorc2.UseSystemPasswordChar = false;
-            this.txtDescPorc2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescPorc2_KeyPress);
-            this.txtDescPorc2.TextChanged += new System.EventHandler(this.txtDescPorc2_TextChanged);
             // 
             // materialLabel13
             // 
@@ -821,30 +761,12 @@
             this.materialLabel10.Depth = 0;
             this.materialLabel10.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel10.Location = new System.Drawing.Point(141, 172);
+            this.materialLabel10.Location = new System.Drawing.Point(147, 173);
             this.materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel10.Name = "materialLabel10";
             this.materialLabel10.Size = new System.Drawing.Size(17, 19);
             this.materialLabel10.TabIndex = 62;
             this.materialLabel10.Text = "$";
-            // 
-            // txtDesc1
-            // 
-            this.txtDesc1.Depth = 0;
-            this.txtDesc1.Hint = "";
-            this.txtDesc1.Location = new System.Drawing.Point(162, 172);
-            this.txtDesc1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtDesc1.Name = "txtDesc1";
-            this.txtDesc1.PasswordChar = '\0';
-            this.txtDesc1.SelectedText = "";
-            this.txtDesc1.SelectionLength = 0;
-            this.txtDesc1.SelectionStart = 0;
-            this.txtDesc1.Size = new System.Drawing.Size(57, 23);
-            this.txtDesc1.TabIndex = 61;
-            this.txtDesc1.TabStop = false;
-            this.txtDesc1.UseSystemPasswordChar = false;
-            this.txtDesc1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDesc1_KeyPress);
-            this.txtDesc1.TextChanged += new System.EventHandler(this.txtDesc1_TextChanged);
             // 
             // materialLabel9
             // 
@@ -852,30 +774,12 @@
             this.materialLabel9.Depth = 0;
             this.materialLabel9.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel9.Location = new System.Drawing.Point(83, 172);
+            this.materialLabel9.Location = new System.Drawing.Point(70, 173);
             this.materialLabel9.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel9.Name = "materialLabel9";
             this.materialLabel9.Size = new System.Drawing.Size(20, 19);
             this.materialLabel9.TabIndex = 60;
             this.materialLabel9.Text = "%";
-            // 
-            // txtDescPorc1
-            // 
-            this.txtDescPorc1.Depth = 0;
-            this.txtDescPorc1.Hint = "";
-            this.txtDescPorc1.Location = new System.Drawing.Point(107, 172);
-            this.txtDescPorc1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtDescPorc1.Name = "txtDescPorc1";
-            this.txtDescPorc1.PasswordChar = '\0';
-            this.txtDescPorc1.SelectedText = "";
-            this.txtDescPorc1.SelectionLength = 0;
-            this.txtDescPorc1.SelectionStart = 0;
-            this.txtDescPorc1.Size = new System.Drawing.Size(30, 23);
-            this.txtDescPorc1.TabIndex = 59;
-            this.txtDescPorc1.TabStop = false;
-            this.txtDescPorc1.UseSystemPasswordChar = false;
-            this.txtDescPorc1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescPorc1_KeyPress);
-            this.txtDescPorc1.TextChanged += new System.EventHandler(this.txtDescPorc1_TextChanged);
             // 
             // materialLabel8
             // 
@@ -889,23 +793,6 @@
             this.materialLabel8.Size = new System.Drawing.Size(59, 19);
             this.materialLabel8.TabIndex = 58;
             this.materialLabel8.Text = "Desc. 1";
-            // 
-            // txtCostoInicial
-            // 
-            this.txtCostoInicial.Depth = 0;
-            this.txtCostoInicial.Hint = "";
-            this.txtCostoInicial.Location = new System.Drawing.Point(160, 143);
-            this.txtCostoInicial.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtCostoInicial.Name = "txtCostoInicial";
-            this.txtCostoInicial.PasswordChar = '\0';
-            this.txtCostoInicial.SelectedText = "";
-            this.txtCostoInicial.SelectionLength = 0;
-            this.txtCostoInicial.SelectionStart = 0;
-            this.txtCostoInicial.Size = new System.Drawing.Size(59, 23);
-            this.txtCostoInicial.TabIndex = 57;
-            this.txtCostoInicial.TabStop = false;
-            this.txtCostoInicial.UseSystemPasswordChar = false;
-            this.txtCostoInicial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCostoInicial_KeyPress);
             // 
             // materialLabel7
             // 
@@ -1029,7 +916,6 @@
             this.txtCodBarra.SelectionStart = 0;
             this.txtCodBarra.Size = new System.Drawing.Size(205, 23);
             this.txtCodBarra.TabIndex = 4;
-            this.txtCodBarra.TabStop = false;
             this.txtCodBarra.UseSystemPasswordChar = false;
             // 
             // materialLabel18
@@ -1058,7 +944,6 @@
             this.txtDescripcion.SelectionStart = 0;
             this.txtDescripcion.Size = new System.Drawing.Size(402, 23);
             this.txtDescripcion.TabIndex = 7;
-            this.txtDescripcion.TabStop = false;
             this.txtDescripcion.UseSystemPasswordChar = false;
             // 
             // materialLabel2
@@ -1087,7 +972,6 @@
             this.txtCodigo.SelectionStart = 0;
             this.txtCodigo.Size = new System.Drawing.Size(112, 23);
             this.txtCodigo.TabIndex = 3;
-            this.txtCodigo.TabStop = false;
             this.txtCodigo.UseSystemPasswordChar = false;
             // 
             // materialLabel1
@@ -1119,6 +1003,23 @@
             this.panel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStockMinimo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtStock)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIVA)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLista3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtListaPorc3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLista2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtListaPorc2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLista1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtListaPorc1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCosto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDesc3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDescPorc3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDesc2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDescPorc2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDesc1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDescPorc1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCostoInicial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
@@ -1144,54 +1045,55 @@
         private System.Windows.Forms.ComboBox cbUnidad;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtObservaciones;
         private MaterialSkin.Controls.MaterialLabel materialLabel33;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtStockMinimo;
         private MaterialSkin.Controls.MaterialLabel materialLabel23;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtStock;
         private MaterialSkin.Controls.MaterialLabel materialLabel21;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtIVA;
         private MaterialSkin.Controls.MaterialLabel materialLabel22;
-        private MaterialSkin.Controls.MaterialLabel materialLabel24;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtLista3;
-        private MaterialSkin.Controls.MaterialLabel materialLabel25;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtListaPorc3;
         private MaterialSkin.Controls.MaterialLabel materialLabel26;
-        private MaterialSkin.Controls.MaterialLabel materialLabel27;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtLista2;
-        private MaterialSkin.Controls.MaterialLabel materialLabel28;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtListaPorc2;
         private MaterialSkin.Controls.MaterialLabel materialLabel29;
-        private MaterialSkin.Controls.MaterialLabel materialLabel30;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtLista1;
-        private MaterialSkin.Controls.MaterialLabel materialLabel31;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtListaPorc1;
         private MaterialSkin.Controls.MaterialLabel materialLabel32;
-        private MaterialSkin.Controls.MaterialLabel materialLabel19;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtCosto;
         private MaterialSkin.Controls.MaterialLabel materialLabel20;
         private MaterialSkin.Controls.MaterialLabel materialLabel17;
-        private MaterialSkin.Controls.MaterialLabel materialLabel14;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtDesc3;
-        private MaterialSkin.Controls.MaterialLabel materialLabel15;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtDescPorc3;
         private MaterialSkin.Controls.MaterialLabel materialLabel16;
-        private MaterialSkin.Controls.MaterialLabel materialLabel11;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtDesc2;
-        private MaterialSkin.Controls.MaterialLabel materialLabel12;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtDescPorc2;
         private MaterialSkin.Controls.MaterialLabel materialLabel13;
         private MaterialSkin.Controls.MaterialLabel materialLabel10;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtDesc1;
         private MaterialSkin.Controls.MaterialLabel materialLabel9;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtDescPorc1;
         private MaterialSkin.Controls.MaterialLabel materialLabel8;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtCostoInicial;
         private MaterialSkin.Controls.MaterialLabel materialLabel7;
         private System.Windows.Forms.Panel panel3;
+        private MaterialSkin.Controls.MaterialRaisedButton btnCancelar;
+        private MaterialSkin.Controls.MaterialRaisedButton btnGuardar;
         private MaterialSkin.Controls.MaterialLabel materialLabel34;
         private MaterialSkin.Controls.MaterialLabel materialLabel35;
         private MaterialSkin.Controls.MaterialCheckBox ckEstado;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private MaterialSkin.Controls.MaterialRaisedButton btnCancelar;
-        private MaterialSkin.Controls.MaterialRaisedButton btnGuardar;
+        private System.Windows.Forms.NumericUpDown txtCostoInicial;
+        private System.Windows.Forms.NumericUpDown txtDescPorc1;
+        private System.Windows.Forms.NumericUpDown txtDesc2;
+        private System.Windows.Forms.NumericUpDown txtDescPorc2;
+        private MaterialSkin.Controls.MaterialLabel materialLabel11;
+        private MaterialSkin.Controls.MaterialLabel materialLabel12;
+        private System.Windows.Forms.NumericUpDown txtDesc1;
+        private System.Windows.Forms.NumericUpDown txtStockMinimo;
+        private System.Windows.Forms.NumericUpDown txtStock;
+        private System.Windows.Forms.NumericUpDown txtIVA;
+        private System.Windows.Forms.NumericUpDown txtLista3;
+        private System.Windows.Forms.NumericUpDown txtListaPorc3;
+        private MaterialSkin.Controls.MaterialLabel materialLabel27;
+        private MaterialSkin.Controls.MaterialLabel materialLabel28;
+        private System.Windows.Forms.NumericUpDown txtLista2;
+        private System.Windows.Forms.NumericUpDown txtListaPorc2;
+        private MaterialSkin.Controls.MaterialLabel materialLabel24;
+        private MaterialSkin.Controls.MaterialLabel materialLabel25;
+        private System.Windows.Forms.NumericUpDown txtLista1;
+        private System.Windows.Forms.NumericUpDown txtListaPorc1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel30;
+        private MaterialSkin.Controls.MaterialLabel materialLabel31;
+        private System.Windows.Forms.NumericUpDown txtCosto;
+        private MaterialSkin.Controls.MaterialLabel materialLabel19;
+        private System.Windows.Forms.NumericUpDown txtDesc3;
+        private System.Windows.Forms.NumericUpDown txtDescPorc3;
+        private MaterialSkin.Controls.MaterialLabel materialLabel14;
+        private MaterialSkin.Controls.MaterialLabel materialLabel15;
+        private System.Windows.Forms.Label lblCosto;
     }
 }

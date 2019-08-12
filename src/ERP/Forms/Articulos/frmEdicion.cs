@@ -33,6 +33,36 @@ namespace ERP.Forms.Articulos
             _validator = new FormValidations(this, errorProvider1);
             CargaInicial();
             ckEstado.Checked = true;
+
+            definirMinimosMaximos();
+            lblCosto.Visible = false;
+        }
+
+        private void definirMinimosMaximos()
+        {
+            txtDescPorc1.Minimum = 0;
+            txtDescPorc1.Maximum = 100;
+
+            txtDescPorc2.Minimum = 0;
+            txtDescPorc2.Maximum = 100;
+
+            txtDescPorc3.Minimum = 0;
+            txtDescPorc3.Maximum = 100;
+
+            txtIVA.Minimum = 0;
+            txtIVA.Maximum = 21;
+
+            txtStock.Minimum = 0;
+
+            txtStockMinimo.Minimum = 0;
+
+            txtLista1.Maximum = 100000;
+            txtLista2.Maximum = 100000;
+            txtLista3.Maximum = 100000;
+
+            txtListaPorc1.Maximum = 1000;
+            txtListaPorc2.Maximum = 1000;
+            txtListaPorc3.Maximum = 1000;
         }
 
         public frmEdicion(EArticulos articulo) : this()
@@ -45,23 +75,27 @@ namespace ERP.Forms.Articulos
             cbRubro.SelectedIndex = cbRubro.FindString(RubrosRepository.ObtenerRubroStringPorId(articulo.IdRubro));
             cbProveedores.SelectedIndex = cbProveedores.FindString(ProveedoresRepository.ObtenerProveedorStringPorID(articulo.IdProveedor));
             cbUnidad.SelectedIndex = cbUnidad.FindString(UnidadesRepository.ObtenerUnidadStringPorId(articulo.IdUnidad));
-            txtCostoInicial.Text = Convert.ToString(articulo.CostoInicial);
-            txtDescPorc1.Text = Convert.ToString(articulo.DescuentoPorc1);
-            txtDesc1.Text = Convert.ToString(articulo.Descuento1);
-            txtDescPorc2.Text = Convert.ToString(articulo.DescuentoPorc2);
-            txtDesc2.Text = Convert.ToString(articulo.Descuento2);
-            txtDescPorc3.Text = Convert.ToString(articulo.DescuentoPorc3);
-            txtDesc3.Text = Convert.ToString(articulo.Descuento3);
-            txtCosto.Text = Convert.ToString(articulo.Costo);
-            txtListaPorc1.Text = Convert.ToString(articulo.PrecioPorcL1);
-            txtLista1.Text = Convert.ToString(articulo.PrecioL1);
-            txtListaPorc2.Text = Convert.ToString(articulo.PrecioPorcL2);
-            txtLista2.Text = Convert.ToString(articulo.PrecioL2);
-            txtListaPorc3.Text = Convert.ToString(articulo.PrecioPorcL3);
-            txtLista3.Text = Convert.ToString(articulo.PrecioL3);
-            txtIVA.Text = Convert.ToString(articulo.IVA);
-            txtStock.Text = Convert.ToString(articulo.Stock);
-            txtStockMinimo.Text = Convert.ToString(articulo.StockMinimo);
+            //txtCostoInicial2.Text = Convert.ToString(articulo.CostoInicial);
+            txtCostoInicial.Value = articulo.CostoInicial.Value;
+            txtDescPorc1.Value = articulo.DescuentoPorc1.Value;
+            txtDesc1.Value = articulo.Descuento1.Value;
+            txtDescPorc2.Value = articulo.DescuentoPorc2.Value;
+            txtDesc2.Value = articulo.Descuento2.Value;
+            txtDescPorc3.Value = articulo.DescuentoPorc3.Value;
+            txtDesc3.Value = articulo.Descuento3.Value;
+            txtCosto.Value = articulo.Costo;
+
+            txtListaPorc1.Value = articulo.PrecioPorcL1.Value;
+            txtLista1.Value= articulo.PrecioL1.Value;
+            txtListaPorc2.Value = articulo.PrecioPorcL2.Value;
+            txtLista2.Value = articulo.PrecioL2.Value;
+            txtListaPorc3.Value = articulo.PrecioPorcL3.Value;
+            txtLista3.Value = articulo.PrecioL3.Value;
+
+            txtIVA.Value = articulo.IVA.Value;
+            txtStock.Value = articulo.Stock.Value;
+            txtStockMinimo.Value = articulo.StockMinimo;
+
             txtObservaciones.Text = Convert.ToString(articulo.Observaciones);
             ckEstado.Checked = articulo.Estado == 1;
         }
@@ -72,25 +106,6 @@ namespace ERP.Forms.Articulos
             CargaRubros();
             CargaProveedores();
             CargaUnidades();
-            //txtCostoInicial.Text = "0";
-            //txtDesc1.Text = "0";
-            //txtDescPorc1.Text = "0";
-            //txtDesc2.Text = "0";
-            //txtDescPorc2.Text = "0";
-            //txtDesc3.Text = "0";
-            //txtDescPorc3.Text = "0";
-            //txtCosto.Text = "0";
-            //
-            //txtLista1.Text = "0";
-            //txtListaPorc1.Text = "0";
-            //txtLista2.Text = "0";
-            //txtListaPorc2.Text = "0";
-            //txtLista3.Text = "0";
-            //txtListaPorc3.Text = "0";
-
-            txtIVA.Text = "0";
-            txtStock.Text = "0";
-            txtStockMinimo.Text = "0";
         }
 
         private void CargaUnidades()
@@ -154,14 +169,15 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                if (!string.IsNullOrEmpty(txtStock.Text.Trim()))
-                {
-                    return Convert.ToDecimal(txtStock.Text.Trim());
-                }
-                else
-                {
-                    return 0;
-                }
+                //if (!string.IsNullOrEmpty(txtStock.Text.Trim()))
+                //{
+                //    return Convert.ToDecimal(txtStock.Text.Trim());
+                //}
+                //else
+                //{
+                //    return 0;
+                //}
+                return txtStock.Value;
             }
         }
 
@@ -169,14 +185,7 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                if (!string.IsNullOrEmpty(txtStockMinimo.Text.Trim()))
-                {
-                    return Convert.ToDecimal(txtStockMinimo.Text.Trim());
-                }
-                else
-                {
-                    return 0;
-                }
+                return txtStockMinimo.Value;
             }
         }
 
@@ -184,14 +193,7 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                if (!string.IsNullOrEmpty(txtIVA.Text.Trim()))
-                {
-                    return Convert.ToDecimal(txtIVA.Text.Trim());
-                }
-                else
-                {
-                    return 0;
-                }
+                return txtIVA.Value;
             }
         }
 
@@ -199,14 +201,7 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                if (!string.IsNullOrEmpty(txtLista3.Text.Trim()))
-                {
-                    return Convert.ToDecimal(txtLista3.Text.Trim());
-                }
-                else
-                {
-                    return 0;
-                }
+                return txtLista3.Value;
             }
         }
 
@@ -214,14 +209,7 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                if (!string.IsNullOrEmpty(txtListaPorc3.Text.Trim()))
-                {
-                    return Convert.ToDecimal(txtListaPorc3.Text.Trim());
-                }
-                else
-                {
-                    return 0;
-                }
+                return txtListaPorc3.Value;
             }
         }
 
@@ -229,14 +217,7 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                if (!string.IsNullOrEmpty(txtLista2.Text.Trim()))
-                {
-                    return Convert.ToDecimal(txtLista2.Text.Trim());
-                }
-                else
-                {
-                    return 0;
-                }
+                return txtLista2.Value;
             }
         }
 
@@ -244,14 +225,7 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                if (!string.IsNullOrEmpty(txtListaPorc2.Text.Trim()))
-                {
-                    return Convert.ToDecimal(txtListaPorc2.Text.Trim());
-                }
-                else
-                {
-                    return 0;
-                }
+                return txtListaPorc2.Value;
             }
         }
 
@@ -259,14 +233,7 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                if (!string.IsNullOrEmpty(txtLista1.Text.Trim()))
-                {
-                    return Convert.ToDecimal(txtLista1.Text.Trim());
-                }
-                else
-                {
-                    return 0;
-                }
+                return txtLista1.Value;
             }
         }
 
@@ -274,14 +241,7 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                if (!string.IsNullOrEmpty(txtListaPorc1.Text.Trim()))
-                {
-                    return Convert.ToDecimal(txtListaPorc1.Text.Trim());
-                }
-                else
-                {
-                    return 0;
-                }
+                return txtListaPorc1.Value;
             }
         }
 
@@ -289,14 +249,7 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                if (!string.IsNullOrEmpty(txtCosto.Text.Trim()))
-                {
-                    return Convert.ToDecimal(txtCosto.Text.Trim());
-                }
-                else
-                {
-                    return 0;
-                }
+                return txtCosto.Value;
             }
         }
 
@@ -304,14 +257,7 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                if (!string.IsNullOrEmpty(txtDesc3.Text.Trim()))
-                {
-                    return Convert.ToDecimal(txtDesc3.Text.Trim());
-                }
-                else
-                {
-                    return 0;
-                }
+                return txtDesc3.Value;
             }
         }
 
@@ -319,14 +265,7 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                if (!string.IsNullOrEmpty(txtDescPorc3.Text.Trim()))
-                {
-                    return Convert.ToDecimal(txtDescPorc3.Text.Trim());
-                }
-                else
-                {
-                    return 0;
-                }
+                return txtDescPorc3.Value;
             }
         }
 
@@ -334,14 +273,7 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                if (!string.IsNullOrEmpty(txtDesc2.Text.Trim()))
-                {
-                    return Convert.ToDecimal(txtDesc2.Text.Trim());
-                }
-                else
-                {
-                    return 0;
-                }
+                return txtDesc2.Value;
             }
         }
 
@@ -349,14 +281,7 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                if (!string.IsNullOrEmpty(txtDescPorc2.Text.Trim()))
-                {
-                    return Convert.ToDecimal(txtDescPorc2.Text.Trim());
-                }
-                else
-                {
-                    return 0;
-                }
+                return txtDescPorc2.Value;
             }
         }
 
@@ -364,14 +289,7 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                if (!string.IsNullOrEmpty(txtDesc1.Text.Trim()))
-                {
-                    return Convert.ToDecimal(txtDesc1.Text.Trim());
-                }
-                else
-                {
-                    return 0;
-                }
+                return txtDesc1.Value;
             }
         }
 
@@ -379,14 +297,7 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                if (!string.IsNullOrEmpty(txtDescPorc1.Text.Trim()))
-                {
-                    return Convert.ToDecimal(txtDescPorc1.Text.Trim());
-                }
-                else
-                {
-                    return 0;
-                }
+                return txtDescPorc1.Value;
             }
         }
 
@@ -394,16 +305,10 @@ namespace ERP.Forms.Articulos
         {
             get
             {
-                if (!string.IsNullOrEmpty(txtCostoInicial.Text.Trim()))
-                {
-                    return Convert.ToDecimal(txtCostoInicial.Text.Trim());
-                }
-                else
-                {
-                    return 0;
-                }
+                return txtCostoInicial.Value;
             }
         }
+
         public int IdUnidad
         {
             get
@@ -491,42 +396,25 @@ namespace ERP.Forms.Articulos
             }
         }
 
-        private void CalcularCostoArticuloPorcentaje()
+        private void CalcularCostoArticuloPorcentaje(NumericUpDown desc)
         {
-            if (String.IsNullOrEmpty(txtCostoInicial.Text)) return;
+            //if (String.IsNullOrEmpty(txtCostoInicial2.Text)) return;
+            if (txtCostoInicial.Value == 0) return;
+            //if (_validator.ControlVaciosPorCalculos(txtCostoInicial2, txtDescPorc12))
+            //{
+            //    txtDesc12.Text =
+            //    (
+            //        Math.Round(
+            //            (Convert.ToDecimal(txtDescPorc12.Text) / 100) *
+            //            (Convert.ToDecimal(txtCostoInicial2.Text))
+            //        , 2)
+            //    ).ToString();
+            //}
+            if(desc == txtDescPorc1) txtDesc1.Value = (txtDescPorc1.Value / 100) * txtCostoInicial.Value;
 
-            if (_validator.ControlVaciosPorCalculos(txtCostoInicial, txtDescPorc1))
-            {
-                txtDesc1.Text =
-                (
-                    Math.Round(
-                        (Convert.ToDecimal(txtDescPorc1.Text) / 100) *
-                        (Convert.ToDecimal(txtCostoInicial.Text))
-                    , 2)
-                ).ToString();
-            }
+            if (desc == txtDescPorc2) txtDesc2.Value = (txtDescPorc2.Value / 100) * txtCosto.Value;
 
-            if (_validator.ControlVaciosPorCalculos(txtDescPorc2, txtDesc1))
-            {
-                txtDesc2.Text =
-                (
-                    Math.Round(
-                        (Convert.ToDecimal(txtDescPorc2.Text) / 100) *
-                        (Convert.ToDecimal(txtDesc1.Text))
-                    , 2)
-                ).ToString();
-            }
-
-            if (_validator.ControlVaciosPorCalculos(txtDescPorc3, txtDesc2))
-            {
-                txtDesc3.Text =
-                (
-                    Math.Round(
-                        (Convert.ToDecimal(txtDescPorc3.Text) / 100) *
-                        (Convert.ToDecimal(txtDesc2.Text))
-                    , 2)
-                ).ToString();
-            }
+            if (desc == txtDescPorc3) txtDesc3.Value = (txtDescPorc3.Value / 100) * txtCosto.Value;
 
             CalcularCosto();
         }
@@ -539,327 +427,167 @@ namespace ERP.Forms.Articulos
             _descuento3 = 0;
             _costo = 0;
 
-            if (_validator.ControlVacio(txtCostoInicial))
-            {
-                _costoInicial = Convert.ToDecimal(txtCostoInicial.Text);
-            }
+            //if (_validator.ControlVacio(txtCostoInicial2))
+            //{
+            //    _costoInicial = Convert.ToDecimal(txtCostoInicial2.Text);
+            //}
 
-            if (_validator.ControlVacio(txtDesc1))
-            {
-                _descuento1 = Convert.ToDecimal(txtDesc1.Text);
-            }
+            _costoInicial = txtCostoInicial.Value;
+            _descuento1 = txtDesc1.Value;
+            _descuento2 = txtDesc2.Value;
+            _descuento3 = txtDesc3.Value;
+            _costo = _costoInicial - _descuento1 - _descuento2 - _descuento3;
 
-            if (_validator.ControlVacio(txtDesc2))
+            if (_costo >= 0)
             {
-                _descuento2 = Convert.ToDecimal(txtDesc2.Text);
+                lblCosto.Visible = false;
+                txtCosto.Value = _costo;
             }
-
-            if (_validator.ControlVacio(txtDesc3))
+            else
             {
-                _descuento3 = Convert.ToDecimal(txtDesc3.Text);
+                lblCosto.Visible = true;
+                txtCosto.Value = 0;
             }
-
-            txtCosto.Text =
-                (
-                    Math.Round(
-                        _costo = _costoInicial - _descuento1 - _descuento2 - _descuento3
-                    , 2)
-                ).ToString();
         }
 
-        private void txtDescPorc1_TextChanged(object sender, EventArgs e)
+        
+
+        private void CalcularCostoArticulo(NumericUpDown desc)
         {
-            CalcularCostoArticuloPorcentaje();
-        }
+            //if (String.IsNullOrEmpty(txtCostoInicial2.Text)) return;
+            if (txtCostoInicial.Value <= 0 | txtCosto.Value <= 0) return;
 
-        private void txtDescPorc2_TextChanged(object sender, EventArgs e)
-        {
-            CalcularCostoArticuloPorcentaje();
-        }
+            //if (_validator.ControlVaciosPorCalculos(txtCostoInicial2, txtDesc12))
+            //{
+            //    txtDescPorc12.Text =
+            //    (
+            //        Math.Round(
+            //            (Convert.ToDecimal(txtDesc12.Text) * 100) /
+            //            (Convert.ToDecimal(txtCostoInicial2.Text))
+            //            , 2)
+            //    ).ToString();
+            //}
 
-        private void txtDescPorc3_TextChanged(object sender, EventArgs e)
-        {
-            CalcularCostoArticuloPorcentaje();
-        }
+            if (desc == txtDesc1 ) txtDescPorc1.Value = (txtDesc1.Value * 100) / txtCostoInicial.Value;
 
-        private void CalcularCostoArticulo()
-        {
-            if (String.IsNullOrEmpty(txtCostoInicial.Text)) return;
+            if (desc == txtDesc2 & txtDesc2.Value > 0) txtDescPorc2.Value = (txtDesc2.Value * 100) / txtCosto.Value;
 
-            if (_validator.ControlVaciosPorCalculos(txtCostoInicial, txtDesc1))
-            {
-                txtDescPorc1.Text =
-                (
-                    Math.Round(
-                        (Convert.ToDecimal(txtDesc1.Text) * 100) /
-                        (Convert.ToDecimal(txtCostoInicial.Text))
-                        , 2)
-                ).ToString();
-            }
-
-            if (_validator.ControlVaciosPorCalculos(txtDesc2, txtDesc1))
-            {
-                txtDescPorc2.Text =
-                (
-                    Math.Round(
-                        (Convert.ToDecimal(txtDesc2.Text) * 100) /
-                        (Convert.ToDecimal(txtDesc1.Text))
-                        , 2)
-                ).ToString();
-            }
-
-            if (_validator.ControlVaciosPorCalculos(txtDesc3, txtDesc2))
-            {
-                txtDescPorc3.Text =
-                (
-                    Math.Round(
-                        (Convert.ToDecimal(txtDesc3.Text) * 100) /
-                        (Convert.ToDecimal(txtDesc2.Text))
-                        , 2)
-                ).ToString();
-            }
+            if (desc == txtDesc3 & txtDesc3.Value > 0) txtDescPorc3.Value = (txtDesc3.Value * 100) / txtCosto.Value;
 
             CalcularCosto();
         }
 
-        private void txtDesc1_TextChanged(object sender, EventArgs e)
-        {
-            CalcularCostoArticulo();
-        }
-
-        private void txtDesc2_TextChanged(object sender, EventArgs e)
-        {
-            CalcularCostoArticulo();
-        }
-
-        private void txtDesc3_TextChanged(object sender, EventArgs e)
-        {
-            CalcularCostoArticulo();
-        }
-
-        private void txtCostoInicial_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            _validator.IngresaDecimal(sender, e);
-        }
-
-        private void txtDescPorc1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            _validator.IngresaDecimal(sender, e);
-        }
-
-        private void txtDesc1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            _validator.IngresaDecimal(sender, e);
-        }
-
-        private void txtDescPorc2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            _validator.IngresaDecimal(sender, e);
-        }
-
-        private void txtDesc2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            _validator.IngresaDecimal(sender, e);
-        }
-
-        private void txtDescPorc3_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            _validator.IngresaDecimal(sender, e);
-        }
-
-        private void txtDesc3_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            _validator.IngresaDecimal(sender, e);
-        }
-
-        private void txtCosto_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            _validator.IngresaDecimal(sender, e);
-        }
-
-        private void txtListaPorc1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            _validator.IngresaDecimal(sender, e);
-        }
-
-        private void txtLista1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            _validator.IngresaDecimal(sender, e);
-        }
-
-        private void txtListaPorc2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            _validator.IngresaDecimal(sender, e);
-        }
-
-        private void txtLista2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            _validator.IngresaDecimal(sender, e);
-        }
-
-        private void txtListaPorc3_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            _validator.IngresaDecimal(sender, e);
-        }
-
-        private void txtLista3_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            _validator.IngresaDecimal(sender, e);
-        }
-
-        private void txtIVA_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            _validator.IngresaDecimal(sender, e);
-        }
-
-        private void txtStock_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            _validator.IngresaDecimal(sender, e);
-        }
-
-        private void txtStockMinimo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            _validator.IngresaDecimal(sender, e);
-        }
-
         private void calcularPreciosPorcentaje()
         {
+            if (txtCosto.Value <= 0) return;
             decimal costo = 0;
-            if (!String.IsNullOrEmpty(txtCosto.Text))
-            {
-                costo = Convert.ToDecimal(txtCosto.Text.Trim());
-            }
-            else
-            {
-                return;
-            }
+            costo = txtCosto.Value;
 
-            if (_validator.ControlVaciosPorCalculos(txtCosto, txtListaPorc1))
-            {
-                txtLista1.Text =
-                (
-                Math.Round(
-                        Convert.ToDecimal(txtCosto.Text)    +
-                        (Convert.ToDecimal(txtListaPorc1.Text)  * Convert.ToDecimal(txtCosto.Text)
-                        ) / 100
+            txtLista1.Value =   txtCosto.Value +
+                        (txtListaPorc1.Value * txtCosto.Value) / 100;
+                        
+            txtLista2.Value =   txtCosto.Value +
+                        (txtListaPorc2.Value * txtCosto.Value) / 100;
 
-                    //((Convert.ToDecimal(txtCosto.Text) / 100) *
-                    //(Convert.ToDecimal(txtListaPorc1.Text)))
-                    , 2)
-                ).ToString();
-            }
-
-            if (_validator.ControlVaciosPorCalculos(txtCosto, txtListaPorc2))
-            {
-                txtLista2.Text =
-                (
-                    Math.Round(
-                        Convert.ToDecimal(txtCosto.Text) +
-                        ((Convert.ToDecimal(txtCosto.Text) / 100) *
-                        (Convert.ToDecimal(txtListaPorc2.Text)))
-                    , 2)
-                ).ToString();
-            }
-
-            if (_validator.ControlVaciosPorCalculos(txtCosto, txtListaPorc3))
-            {
-                txtLista3.Text =
-                (
-                    Math.Round(
-                        Convert.ToDecimal(txtCosto.Text) +
-                        ((Convert.ToDecimal(txtCosto.Text) / 100) *
-                        (Convert.ToDecimal(txtListaPorc3.Text)))
-                    , 2)
-                ).ToString();
-            }
+            txtLista3.Value = txtCosto.Value +
+                        (txtListaPorc3.Value * txtCosto.Value) / 100;
         }
 
         private void calcularPrecios()
         {
-            if (String.IsNullOrEmpty(txtCosto.Text)) return;
-            //if (!String.IsNullOrEmpty(txtListaPorc1.Text)) return;
+            //((Convert.ToDecimal(txtLista1.Text) - Convert.ToDecimal(txtCosto.Text)) * 100) /
+            //Convert.ToDecimal(txtCosto.Text)
 
-            if (_validator.ControlVaciosPorCalculos(txtCosto, txtLista1))
+            if (txtCosto.Value <= 0) return;
+
+            if((txtLista1.Value - txtCosto.Value) > 0)
             {
-                txtListaPorc1.Text =
-                (
-                    Math.Round(
-                        //Convert.ToDecimal(txtCosto.Text) +
-                        //((Convert.ToDecimal(txtLista1.Text) * 100) /
-                        //(Convert.ToDecimal(txtCosto.Text)))
-                        ((Convert.ToDecimal(txtLista1.Text) - Convert.ToDecimal(txtCosto.Text)) * 100) /
-                        Convert.ToDecimal(txtCosto.Text)
-                    , 2)
-                ).ToString();
+                txtListaPorc1.Value =
+                ((txtLista1.Value - txtCosto.Value) * 100) /
+                txtCosto.Value;
             }
-
-            if (_validator.ControlVaciosPorCalculos(txtCosto, txtLista2))
+            if ((txtLista2.Value - txtCosto.Value) > 0)
             {
-                txtListaPorc2.Text =
-                (
-                    Math.Round(
-                        ((Convert.ToDecimal(txtLista2.Text) - Convert.ToDecimal(txtCosto.Text)) * 100) /
-                        Convert.ToDecimal(txtCosto.Text)
-                    , 2)
-                ).ToString();
+                txtListaPorc2.Value =
+                ((txtLista2.Value - txtCosto.Value) * 100) /
+                txtCosto.Value;
             }
-
-            if (_validator.ControlVaciosPorCalculos(txtCosto, txtLista3))
+                
+            if ((txtLista3.Value - txtCosto.Value) > 0)
             {
-                txtListaPorc3.Text =
-                (
-                    Math.Round(
-                        ((Convert.ToDecimal(txtLista3.Text) - Convert.ToDecimal(txtCosto.Text)) * 100) /
-                        Convert.ToDecimal(txtCosto.Text)
-                    , 2)
-                ).ToString();
+                txtListaPorc3.Value =
+                ((txtLista3.Value - txtCosto.Value) * 100) /
+                txtCosto.Value;
             }
+            
 
-            return;
+            //return;
         }
 
-        private void txtListaPorc2_TextChanged(object sender, EventArgs e)
+        private void txtDescPorc1_ValueChanged(object sender, EventArgs e)
+        {
+            CalcularCostoArticuloPorcentaje(txtDescPorc1);
+        }
+
+        private void txtDescPorc2_ValueChanged(object sender, EventArgs e)
+        {
+            CalcularCostoArticuloPorcentaje(txtDescPorc2);
+        }
+
+        private void txtDescPorc3_ValueChanged(object sender, EventArgs e)
+        {
+            CalcularCostoArticuloPorcentaje(txtDescPorc3);
+        }
+
+        private void txtDesc1_ValueChanged(object sender, EventArgs e)
+        {
+            CalcularCostoArticulo(txtDesc1);
+        }
+
+        private void txtDesc2_ValueChanged(object sender, EventArgs e)
+        {
+            CalcularCostoArticulo(txtDesc2);
+        }
+
+        private void txtDesc3_ValueChanged(object sender, EventArgs e)
+        {
+            CalcularCostoArticulo(txtDesc3);
+        }
+
+        private void txtListaPorc1_ValueChanged(object sender, EventArgs e)
         {
             calcularPreciosPorcentaje();
         }
 
-        private void txtListaPorc3_TextChanged(object sender, EventArgs e)
+        private void txtListaPorc2_ValueChanged(object sender, EventArgs e)
         {
             calcularPreciosPorcentaje();
         }
 
-        private void txtLista1_TextChanged(object sender, EventArgs e)
-        {
-            calcularPrecios();
-        }
-
-        private void txtLista2_TextChanged(object sender, EventArgs e)
-        {
-            calcularPrecios();
-        }
-
-        private void txtLista3_TextChanged(object sender, EventArgs e)
-        {
-            calcularPrecios();
-        }
-
-        private void txtListaPorc1_TextChanged(object sender, EventArgs e)
+        private void txtListaPorc3_ValueChanged(object sender, EventArgs e)
         {
             calcularPreciosPorcentaje();
         }
 
-        private void btnGuardar_Click_2(object sender, EventArgs e)
+        private void txtLista1_ValueChanged(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.None;
-            if (this.ValidarDatos())
-            {
-                DialogResult = DialogResult.OK;
-            }
+            calcularPrecios();
         }
 
-        private void btnCancelar_Click_1(object sender, EventArgs e)
+        private void txtLista2_ValueChanged(object sender, EventArgs e)
         {
-            Close();
+            calcularPrecios();
+        }
+
+        private void txtLista3_ValueChanged(object sender, EventArgs e)
+        {
+            calcularPrecios();
+        }
+
+        private void txtCostoInicial_ValueChanged(object sender, EventArgs e)
+        {
+            //Si actualiza costo inicial. Se mueve Costo Final
+            txtCosto.Value = txtCostoInicial.Value;
         }
     }
 }

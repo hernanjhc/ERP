@@ -22,8 +22,8 @@ namespace ERP.Models
         public Nullable<int> Cantidad { get; set; }
         public Nullable<decimal> Precio { get; set; }
     
+        public virtual EArticulos EArticulos { get; set; }
         public virtual Empresas Empresas { get; set; }
         public virtual EPresupuestos EPresupuestos { get; set; }
-        public virtual EArticulos EArticulos { get; set; }
     }
 }

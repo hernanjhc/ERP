@@ -34,6 +34,7 @@ namespace ERP.Models
     
         public virtual Clientes Clientes { get; set; }
         public virtual Empresas Empresas { get; set; }
+        public virtual EVentas EVentas { get; set; }
         public virtual Usuarios Usuarios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ERemitosDetalles> ERemitosDetalles { get; set; }

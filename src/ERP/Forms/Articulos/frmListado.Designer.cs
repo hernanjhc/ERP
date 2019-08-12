@@ -99,7 +99,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 56.66667F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 302F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 125F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(832, 491);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(857, 491);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // toolStrip1
@@ -113,7 +113,7 @@
             this.btnSalir});
             this.toolStrip1.Location = new System.Drawing.Point(1, 1);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(830, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(855, 25);
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -173,7 +173,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(4, 30);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(824, 27);
+            this.panel1.Size = new System.Drawing.Size(849, 27);
             this.panel1.TabIndex = 5;
             // 
             // materialLabel3
@@ -182,7 +182,7 @@
             this.materialLabel3.Depth = 0;
             this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(463, 3);
+            this.materialLabel3.Location = new System.Drawing.Point(507, 3);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
             this.materialLabel3.Size = new System.Drawing.Size(59, 19);
@@ -193,7 +193,7 @@
             // 
             this.txtFiltrar.Depth = 0;
             this.txtFiltrar.Hint = "Ingrese el artículo que desea buscar";
-            this.txtFiltrar.Location = new System.Drawing.Point(528, 3);
+            this.txtFiltrar.Location = new System.Drawing.Point(572, 3);
             this.txtFiltrar.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtFiltrar.Name = "txtFiltrar";
             this.txtFiltrar.PasswordChar = '\0';
@@ -211,7 +211,7 @@
             this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDatos.Location = new System.Drawing.Point(4, 64);
             this.dgvDatos.Name = "dgvDatos";
-            this.dgvDatos.Size = new System.Drawing.Size(824, 296);
+            this.dgvDatos.Size = new System.Drawing.Size(849, 296);
             this.dgvDatos.TabIndex = 6;
             this.dgvDatos.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvDatos_DataBindingComplete);
             this.dgvDatos.SelectionChanged += new System.EventHandler(this.dgvDatos_SelectionChanged);
@@ -258,7 +258,7 @@
             this.panel2.ForeColor = System.Drawing.Color.Blue;
             this.panel2.Location = new System.Drawing.Point(4, 367);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(824, 120);
+            this.panel2.Size = new System.Drawing.Size(849, 120);
             this.panel2.TabIndex = 7;
             // 
             // materialLabel19
@@ -285,7 +285,7 @@
             this.txtCodBarra.SelectedText = "";
             this.txtCodBarra.SelectionLength = 0;
             this.txtCodBarra.SelectionStart = 0;
-            this.txtCodBarra.Size = new System.Drawing.Size(134, 23);
+            this.txtCodBarra.Size = new System.Drawing.Size(165, 23);
             this.txtCodBarra.TabIndex = 33;
             this.txtCodBarra.UseSystemPasswordChar = false;
             // 
@@ -306,7 +306,7 @@
             // 
             this.txtIVA.Depth = 0;
             this.txtIVA.Hint = "";
-            this.txtIVA.Location = new System.Drawing.Point(709, 95);
+            this.txtIVA.Location = new System.Drawing.Point(731, 95);
             this.txtIVA.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtIVA.Name = "txtIVA";
             this.txtIVA.PasswordChar = '\0';
@@ -323,7 +323,7 @@
             this.materialLabel14.Depth = 0;
             this.materialLabel14.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel14.Location = new System.Drawing.Point(673, 95);
+            this.materialLabel14.Location = new System.Drawing.Point(695, 95);
             this.materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel14.Name = "materialLabel14";
             this.materialLabel14.Size = new System.Drawing.Size(33, 19);
@@ -334,14 +334,14 @@
             // 
             this.txtLista3.Depth = 0;
             this.txtLista3.Hint = "";
-            this.txtLista3.Location = new System.Drawing.Point(554, 95);
+            this.txtLista3.Location = new System.Drawing.Point(574, 95);
             this.txtLista3.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtLista3.Name = "txtLista3";
             this.txtLista3.PasswordChar = '\0';
             this.txtLista3.SelectedText = "";
             this.txtLista3.SelectionLength = 0;
             this.txtLista3.SelectionStart = 0;
-            this.txtLista3.Size = new System.Drawing.Size(110, 23);
+            this.txtLista3.Size = new System.Drawing.Size(118, 23);
             this.txtLista3.TabIndex = 31;
             this.txtLista3.UseSystemPasswordChar = false;
             // 
@@ -351,7 +351,7 @@
             this.materialLabel15.Depth = 0;
             this.materialLabel15.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel15.Location = new System.Drawing.Point(496, 95);
+            this.materialLabel15.Location = new System.Drawing.Point(515, 95);
             this.materialLabel15.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel15.Name = "materialLabel15";
             this.materialLabel15.Size = new System.Drawing.Size(54, 19);
@@ -362,14 +362,14 @@
             // 
             this.txtLista2.Depth = 0;
             this.txtLista2.Hint = "";
-            this.txtLista2.Location = new System.Drawing.Point(381, 95);
+            this.txtLista2.Location = new System.Drawing.Point(391, 95);
             this.txtLista2.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtLista2.Name = "txtLista2";
             this.txtLista2.PasswordChar = '\0';
             this.txtLista2.SelectedText = "";
             this.txtLista2.SelectionLength = 0;
             this.txtLista2.SelectionStart = 0;
-            this.txtLista2.Size = new System.Drawing.Size(110, 23);
+            this.txtLista2.Size = new System.Drawing.Size(120, 23);
             this.txtLista2.TabIndex = 27;
             this.txtLista2.UseSystemPasswordChar = false;
             // 
@@ -379,7 +379,7 @@
             this.materialLabel16.Depth = 0;
             this.materialLabel16.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel16.Location = new System.Drawing.Point(323, 95);
+            this.materialLabel16.Location = new System.Drawing.Point(332, 95);
             this.materialLabel16.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel16.Name = "materialLabel16";
             this.materialLabel16.Size = new System.Drawing.Size(54, 19);
@@ -390,14 +390,14 @@
             // 
             this.txtLista1.Depth = 0;
             this.txtLista1.Hint = "";
-            this.txtLista1.Location = new System.Drawing.Point(208, 95);
+            this.txtLista1.Location = new System.Drawing.Point(209, 95);
             this.txtLista1.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtLista1.Name = "txtLista1";
             this.txtLista1.PasswordChar = '\0';
             this.txtLista1.SelectedText = "";
             this.txtLista1.SelectionLength = 0;
             this.txtLista1.SelectionStart = 0;
-            this.txtLista1.Size = new System.Drawing.Size(110, 23);
+            this.txtLista1.Size = new System.Drawing.Size(120, 23);
             this.txtLista1.TabIndex = 25;
             this.txtLista1.UseSystemPasswordChar = false;
             // 
@@ -418,14 +418,14 @@
             // 
             this.txtCosto.Depth = 0;
             this.txtCosto.Hint = "";
-            this.txtCosto.Location = new System.Drawing.Point(724, 66);
+            this.txtCosto.Location = new System.Drawing.Point(747, 67);
             this.txtCosto.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtCosto.Name = "txtCosto";
             this.txtCosto.PasswordChar = '\0';
             this.txtCosto.SelectedText = "";
             this.txtCosto.SelectionLength = 0;
             this.txtCosto.SelectionStart = 0;
-            this.txtCosto.Size = new System.Drawing.Size(86, 23);
+            this.txtCosto.Size = new System.Drawing.Size(92, 23);
             this.txtCosto.TabIndex = 21;
             this.txtCosto.UseSystemPasswordChar = false;
             // 
@@ -435,7 +435,7 @@
             this.materialLabel13.Depth = 0;
             this.materialLabel13.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel13.Location = new System.Drawing.Point(671, 66);
+            this.materialLabel13.Location = new System.Drawing.Point(694, 67);
             this.materialLabel13.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel13.Name = "materialLabel13";
             this.materialLabel13.Size = new System.Drawing.Size(50, 19);
@@ -446,14 +446,14 @@
             // 
             this.txtDesc3.Depth = 0;
             this.txtDesc3.Hint = "";
-            this.txtDesc3.Location = new System.Drawing.Point(556, 66);
+            this.txtDesc3.Location = new System.Drawing.Point(575, 67);
             this.txtDesc3.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtDesc3.Name = "txtDesc3";
             this.txtDesc3.PasswordChar = '\0';
             this.txtDesc3.SelectedText = "";
             this.txtDesc3.SelectionLength = 0;
             this.txtDesc3.SelectionStart = 0;
-            this.txtDesc3.Size = new System.Drawing.Size(110, 23);
+            this.txtDesc3.Size = new System.Drawing.Size(118, 23);
             this.txtDesc3.TabIndex = 21;
             this.txtDesc3.UseSystemPasswordChar = false;
             // 
@@ -463,7 +463,7 @@
             this.materialLabel12.Depth = 0;
             this.materialLabel12.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel12.Location = new System.Drawing.Point(495, 66);
+            this.materialLabel12.Location = new System.Drawing.Point(514, 67);
             this.materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel12.Name = "materialLabel12";
             this.materialLabel12.Size = new System.Drawing.Size(59, 19);
@@ -474,14 +474,14 @@
             // 
             this.txtDesc2.Depth = 0;
             this.txtDesc2.Hint = "";
-            this.txtDesc2.Location = new System.Drawing.Point(383, 66);
+            this.txtDesc2.Location = new System.Drawing.Point(392, 67);
             this.txtDesc2.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtDesc2.Name = "txtDesc2";
             this.txtDesc2.PasswordChar = '\0';
             this.txtDesc2.SelectedText = "";
             this.txtDesc2.SelectionLength = 0;
             this.txtDesc2.SelectionStart = 0;
-            this.txtDesc2.Size = new System.Drawing.Size(110, 23);
+            this.txtDesc2.Size = new System.Drawing.Size(120, 23);
             this.txtDesc2.TabIndex = 19;
             this.txtDesc2.UseSystemPasswordChar = false;
             // 
@@ -491,7 +491,7 @@
             this.materialLabel11.Depth = 0;
             this.materialLabel11.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel11.Location = new System.Drawing.Point(322, 66);
+            this.materialLabel11.Location = new System.Drawing.Point(331, 67);
             this.materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel11.Name = "materialLabel11";
             this.materialLabel11.Size = new System.Drawing.Size(59, 19);
@@ -502,14 +502,14 @@
             // 
             this.txtDesc1.Depth = 0;
             this.txtDesc1.Hint = "";
-            this.txtDesc1.Location = new System.Drawing.Point(210, 66);
+            this.txtDesc1.Location = new System.Drawing.Point(210, 67);
             this.txtDesc1.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtDesc1.Name = "txtDesc1";
             this.txtDesc1.PasswordChar = '\0';
             this.txtDesc1.SelectedText = "";
             this.txtDesc1.SelectionLength = 0;
             this.txtDesc1.SelectionStart = 0;
-            this.txtDesc1.Size = new System.Drawing.Size(110, 23);
+            this.txtDesc1.Size = new System.Drawing.Size(120, 23);
             this.txtDesc1.TabIndex = 17;
             this.txtDesc1.UseSystemPasswordChar = false;
             // 
@@ -519,7 +519,7 @@
             this.materialLabel10.Depth = 0;
             this.materialLabel10.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel10.Location = new System.Drawing.Point(149, 66);
+            this.materialLabel10.Location = new System.Drawing.Point(149, 67);
             this.materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel10.Name = "materialLabel10";
             this.materialLabel10.Size = new System.Drawing.Size(59, 19);
@@ -558,14 +558,14 @@
             // 
             this.txtStockMin.Depth = 0;
             this.txtStockMin.Hint = "";
-            this.txtStockMin.Location = new System.Drawing.Point(756, 35);
+            this.txtStockMin.Location = new System.Drawing.Point(778, 35);
             this.txtStockMin.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtStockMin.Name = "txtStockMin";
             this.txtStockMin.PasswordChar = '\0';
             this.txtStockMin.SelectedText = "";
             this.txtStockMin.SelectionLength = 0;
             this.txtStockMin.SelectionStart = 0;
-            this.txtStockMin.Size = new System.Drawing.Size(54, 23);
+            this.txtStockMin.Size = new System.Drawing.Size(63, 23);
             this.txtStockMin.TabIndex = 30;
             this.txtStockMin.UseSystemPasswordChar = false;
             // 
@@ -575,7 +575,7 @@
             this.materialLabel8.Depth = 0;
             this.materialLabel8.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel8.Location = new System.Drawing.Point(671, 35);
+            this.materialLabel8.Location = new System.Drawing.Point(694, 35);
             this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel8.Name = "materialLabel8";
             this.materialLabel8.Size = new System.Drawing.Size(81, 19);
@@ -593,7 +593,7 @@
             this.txtStock.SelectedText = "";
             this.txtStock.SelectionLength = 0;
             this.txtStock.SelectionStart = 0;
-            this.txtStock.Size = new System.Drawing.Size(82, 23);
+            this.txtStock.Size = new System.Drawing.Size(101, 23);
             this.txtStock.TabIndex = 25;
             this.txtStock.UseSystemPasswordChar = false;
             // 
@@ -754,7 +754,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(832, 556);
+            this.ClientSize = new System.Drawing.Size(857, 556);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmListado";
             this.Text = "Artículos";

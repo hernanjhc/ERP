@@ -31,12 +31,12 @@ namespace ERP.Models
         public Nullable<int> IdRubro { get; set; }
         public Nullable<int> IdProveedor { get; set; }
         public Nullable<int> IdUnidad { get; set; }
-        public decimal CostoInicial { get; set; }
-        public decimal Descuento1 { get; set; }
+        public Nullable<decimal> CostoInicial { get; set; }
+        public Nullable<decimal> Descuento1 { get; set; }
         public Nullable<decimal> DescuentoPorc1 { get; set; }
-        public decimal Descuento2 { get; set; }
+        public Nullable<decimal> Descuento2 { get; set; }
         public Nullable<decimal> DescuentoPorc2 { get; set; }
-        public decimal Descuento3 { get; set; }
+        public Nullable<decimal> Descuento3 { get; set; }
         public Nullable<decimal> DescuentoPorc3 { get; set; }
         public decimal Costo { get; set; }
         public Nullable<decimal> Stock { get; set; }
@@ -53,6 +53,9 @@ namespace ERP.Models
     
         public virtual Empresas Empresas { get; set; }
         public virtual EMarcas EMarcas { get; set; }
+        public virtual Proveedores Proveedores { get; set; }
+        public virtual ERubros ERubros { get; set; }
+        public virtual Unidades Unidades { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EPresupuestosDetalles> EPresupuestosDetalles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
