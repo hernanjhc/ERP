@@ -14,6 +14,12 @@ namespace ERP.Models
     
     public partial class ERubros
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ERubros()
+        {
+            this.EArticulos = new HashSet<EArticulos>();
+        }
+    
         public int Id { get; set; }
         public Nullable<int> IdEmpresa { get; set; }
         public string Rubro { get; set; }
@@ -21,5 +27,7 @@ namespace ERP.Models
         public Nullable<int> Estado { get; set; }
     
         public virtual Empresas Empresas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EArticulos> EArticulos { get; set; }
     }
 }

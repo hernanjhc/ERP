@@ -12,23 +12,6 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="BancoSucursal">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="IdBanco" Type="int" Nullable="false" />
-          <Property Name="SucursalNro" Type="int" Nullable="false" />
-          <Property Name="Sucursal" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="IdProvincia" Type="int" />
-          <Property Name="IdDepartamento" Type="int" />
-          <Property Name="IdLocalidad" Type="int" />
-          <Property Name="IdBarrio" Type="int" />
-          <Property Name="Direccion" Type="varchar" MaxLength="50" />
-          <Property Name="Web" Type="varchar" MaxLength="100" />
-          <Property Name="Email" Type="varchar" MaxLength="100" />
-          <Property Name="Telefono" Type="varchar" MaxLength="100" />
-        </EntityType>
         <EntityType Name="Barrios">
           <Key>
             <PropertyRef Name="Id" />
@@ -84,23 +67,23 @@
           <Property Name="IdRubro" Type="int" />
           <Property Name="IdProveedor" Type="int" />
           <Property Name="IdUnidad" Type="int" />
-          <Property Name="CostoInicial" Type="numeric" Precision="17" Scale="2" />
-          <Property Name="Descuento1" Type="numeric" Precision="17" Scale="2" />
-          <Property Name="DescuentoPorc1" Type="numeric" Precision="5" Scale="2" />
-          <Property Name="Descuento2" Type="numeric" Precision="17" Scale="2" />
-          <Property Name="DescuentoPorc2" Type="numeric" Precision="5" Scale="2" />
-          <Property Name="Descuento3" Type="numeric" Precision="17" Scale="2" />
-          <Property Name="DescuentoPorc3" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="CostoInicial" Type="numeric" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="Descuento1" Type="numeric" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="DescuentoPorc1" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="Descuento2" Type="numeric" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="DescuentoPorc2" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="Descuento3" Type="numeric" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="DescuentoPorc3" Type="decimal" Precision="5" Scale="2" />
           <Property Name="Costo" Type="numeric" Precision="17" Scale="2" Nullable="false" />
           <Property Name="Stock" Type="numeric" Precision="17" Scale="2" />
           <Property Name="StockMinimo" Type="numeric" Precision="17" Scale="2" Nullable="false" />
           <Property Name="PrecioL1" Type="numeric" Precision="17" Scale="2" />
-          <Property Name="PrecioPorcL1" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="PrecioPorcL1" Type="decimal" Precision="5" Scale="2" />
           <Property Name="PrecioL2" Type="numeric" Precision="17" Scale="2" />
-          <Property Name="PrecioPorcL2" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="PrecioPorcL2" Type="decimal" Precision="5" Scale="2" />
           <Property Name="PrecioL3" Type="numeric" Precision="17" Scale="2" />
-          <Property Name="PrecioPorcL3" Type="numeric" Precision="5" Scale="2" />
-          <Property Name="IVA" Type="numeric" Precision="5" Scale="2" />
+          <Property Name="PrecioPorcL3" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="IVA" Type="decimal" Precision="5" Scale="2" />
           <Property Name="Observaciones" Type="varchar" MaxLength="100" />
           <Property Name="Estado" Type="int" />
         </EntityType>
@@ -462,42 +445,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_EArticulos_Proveedores">
-          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="0..1" />
-          <End Role="EArticulos" Type="Self.EArticulos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Proveedores">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="EArticulos">
-              <PropertyRef Name="IdProveedor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EArticulos_Rubros">
-          <End Role="ERubros" Type="Self.ERubros" Multiplicity="0..1" />
-          <End Role="EArticulos" Type="Self.EArticulos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ERubros">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="EArticulos">
-              <PropertyRef Name="IdRubro" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EArticulos_Unidades">
-          <End Role="Unidades" Type="Self.Unidades" Multiplicity="0..1" />
-          <End Role="EArticulos" Type="Self.EArticulos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Unidades">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="EArticulos">
-              <PropertyRef Name="IdUnidad" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_EMarcas_Empresas">
           <End Role="Empresas" Type="Self.Empresas" Multiplicity="1" />
           <End Role="EMarcas" Type="Self.EMarcas" Multiplicity="*" />
@@ -627,18 +574,6 @@
             </Principal>
             <Dependent Role="ERemitos">
               <PropertyRef Name="IdEmpresa" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ERemitos_EVentas">
-          <End Role="EVentas" Type="Self.EVentas" Multiplicity="1" />
-          <End Role="ERemitos" Type="Self.ERemitos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EVentas">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ERemitos">
-              <PropertyRef Name="IdVenta" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -896,7 +831,6 @@
         </Association>
         <EntityContainer Name="VentasModelStoreContainer">
           <EntitySet Name="Bancos" EntityType="Self.Bancos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="BancoSucursal" EntityType="Self.BancoSucursal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Barrios" EntityType="Self.Barrios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
@@ -963,18 +897,6 @@
             <End Role="EMarcas" EntitySet="EMarcas" />
             <End Role="EArticulos" EntitySet="EArticulos" />
           </AssociationSet>
-          <AssociationSet Name="FK_EArticulos_Proveedores" Association="Self.FK_EArticulos_Proveedores">
-            <End Role="Proveedores" EntitySet="Proveedores" />
-            <End Role="EArticulos" EntitySet="EArticulos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EArticulos_Rubros" Association="Self.FK_EArticulos_Rubros">
-            <End Role="ERubros" EntitySet="ERubros" />
-            <End Role="EArticulos" EntitySet="EArticulos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EArticulos_Unidades" Association="Self.FK_EArticulos_Unidades">
-            <End Role="Unidades" EntitySet="Unidades" />
-            <End Role="EArticulos" EntitySet="EArticulos" />
-          </AssociationSet>
           <AssociationSet Name="FK_EMarcas_Empresas" Association="Self.FK_EMarcas_Empresas">
             <End Role="Empresas" EntitySet="Empresas" />
             <End Role="EMarcas" EntitySet="EMarcas" />
@@ -1017,10 +939,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_ERemitos_Empresas" Association="Self.FK_ERemitos_Empresas">
             <End Role="Empresas" EntitySet="Empresas" />
-            <End Role="ERemitos" EntitySet="ERemitos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ERemitos_EVentas" Association="Self.FK_ERemitos_EVentas">
-            <End Role="EVentas" EntitySet="EVentas" />
             <End Role="ERemitos" EntitySet="ERemitos" />
           </AssociationSet>
           <AssociationSet Name="FK_ERemitos_Usuarios" Association="Self.FK_ERemitos_Usuarios">
@@ -1760,7 +1678,6 @@
             <End Role="EPresupuestos" EntitySet="EPresupuestos" />
             <End Role="EPresupuestosDetalles" EntitySet="EPresupuestosDetalles" />
           </AssociationSet>
-          <EntitySet Name="BancoSucursal" EntityType="VentasModel.BancoSucursal" />
           <EntitySet Name="ERemitos" EntityType="VentasModel.ERemitos" />
           <EntitySet Name="ERemitosDetalles" EntityType="VentasModel.ERemitosDetalles" />
           <EntitySet Name="EVentas" EntityType="VentasModel.EVentas" />
@@ -1831,12 +1748,12 @@
           <Property Name="IdRubro" Type="Int32" />
           <Property Name="IdProveedor" Type="Int32" />
           <Property Name="IdUnidad" Type="Int32" />
-          <Property Name="CostoInicial" Type="Decimal" Precision="17" Scale="2" />
-          <Property Name="Descuento1" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="CostoInicial" Type="Decimal" Precision="17" Scale="2" Nullable="false" />
+          <Property Name="Descuento1" Type="Decimal" Precision="17" Scale="2" Nullable="false" />
           <Property Name="DescuentoPorc1" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="Descuento2" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="Descuento2" Type="Decimal" Precision="17" Scale="2" Nullable="false" />
           <Property Name="DescuentoPorc2" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="Descuento3" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="Descuento3" Type="Decimal" Precision="17" Scale="2" Nullable="false" />
           <Property Name="DescuentoPorc3" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="Costo" Type="Decimal" Nullable="false" Precision="17" Scale="2" />
           <Property Name="Stock" Type="Decimal" Precision="17" Scale="2" />
@@ -2064,23 +1981,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="BancoSucursal">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="IdBanco" Type="Int32" Nullable="false" />
-          <Property Name="SucursalNro" Type="Int32" Nullable="false" />
-          <Property Name="Sucursal" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="IdProvincia" Type="Int32" />
-          <Property Name="IdDepartamento" Type="Int32" />
-          <Property Name="IdLocalidad" Type="Int32" />
-          <Property Name="IdBarrio" Type="Int32" />
-          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Web" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Telefono" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="ERemitos">
           <Key>
             <PropertyRef Name="Id" />
@@ -2598,24 +2498,6 @@
                 <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
                 <ScalarProperty Name="IdPresupuesto" ColumnName="IdPresupuesto" />
                 <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BancoSucursal">
-            <EntityTypeMapping TypeName="VentasModel.BancoSucursal">
-              <MappingFragment StoreEntitySet="BancoSucursal">
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Web" ColumnName="Web" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="IdBarrio" ColumnName="IdBarrio" />
-                <ScalarProperty Name="IdLocalidad" ColumnName="IdLocalidad" />
-                <ScalarProperty Name="IdDepartamento" ColumnName="IdDepartamento" />
-                <ScalarProperty Name="IdProvincia" ColumnName="IdProvincia" />
-                <ScalarProperty Name="Sucursal" ColumnName="Sucursal" />
-                <ScalarProperty Name="SucursalNro" ColumnName="SucursalNro" />
-                <ScalarProperty Name="IdBanco" ColumnName="IdBanco" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

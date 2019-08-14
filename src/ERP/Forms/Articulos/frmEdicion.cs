@@ -76,13 +76,13 @@ namespace ERP.Forms.Articulos
             cbProveedores.SelectedIndex = cbProveedores.FindString(ProveedoresRepository.ObtenerProveedorStringPorID(articulo.IdProveedor));
             cbUnidad.SelectedIndex = cbUnidad.FindString(UnidadesRepository.ObtenerUnidadStringPorId(articulo.IdUnidad));
             //txtCostoInicial2.Text = Convert.ToString(articulo.CostoInicial);
-            txtCostoInicial.Value = articulo.CostoInicial.Value;
+            //txtCostoInicial.Value = articulo.CostoInicial.Value;
             txtDescPorc1.Value = articulo.DescuentoPorc1.Value;
-            txtDesc1.Value = articulo.Descuento1.Value;
+            //txtDesc1.Value = articulo.Descuento1.Value;
             txtDescPorc2.Value = articulo.DescuentoPorc2.Value;
-            txtDesc2.Value = articulo.Descuento2.Value;
+            //txtDesc2.Value = articulo.Descuento2.Value;
             txtDescPorc3.Value = articulo.DescuentoPorc3.Value;
-            txtDesc3.Value = articulo.Descuento3.Value;
+            //txtDesc3.Value = articulo.Descuento3.Value;
             txtCosto.Value = articulo.Costo;
 
             txtListaPorc1.Value = articulo.PrecioPorcL1.Value;

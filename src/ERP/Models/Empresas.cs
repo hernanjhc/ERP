@@ -19,13 +19,13 @@ namespace ERP.Models
         {
             this.EMarcas = new HashSet<EMarcas>();
             this.ERubros = new HashSet<ERubros>();
+            this.EArticulos = new HashSet<EArticulos>();
             this.EPresupuestos = new HashSet<EPresupuestos>();
             this.EPresupuestosDetalles = new HashSet<EPresupuestosDetalles>();
             this.ERemitos = new HashSet<ERemitos>();
             this.ERemitosDetalles = new HashSet<ERemitosDetalles>();
             this.EVentas = new HashSet<EVentas>();
             this.EVentasDetalles = new HashSet<EVentasDetalles>();
-            this.EArticulos = new HashSet<EArticulos>();
         }
     
         public int Id { get; set; }
@@ -50,6 +50,8 @@ namespace ERP.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ERubros> ERubros { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EArticulos> EArticulos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EPresupuestos> EPresupuestos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EPresupuestosDetalles> EPresupuestosDetalles { get; set; }
@@ -61,7 +63,5 @@ namespace ERP.Models
         public virtual ICollection<EVentas> EVentas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EVentasDetalles> EVentasDetalles { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EArticulos> EArticulos { get; set; }
     }
 }

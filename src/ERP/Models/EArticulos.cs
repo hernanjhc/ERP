@@ -31,12 +31,12 @@ namespace ERP.Models
         public Nullable<int> IdRubro { get; set; }
         public Nullable<int> IdProveedor { get; set; }
         public Nullable<int> IdUnidad { get; set; }
-        public Nullable<decimal> CostoInicial { get; set; }
-        public Nullable<decimal> Descuento1 { get; set; }
+        public decimal CostoInicial { get; set; }
+        public decimal Descuento1 { get; set; }
         public Nullable<decimal> DescuentoPorc1 { get; set; }
-        public Nullable<decimal> Descuento2 { get; set; }
+        public decimal Descuento2 { get; set; }
         public Nullable<decimal> DescuentoPorc2 { get; set; }
-        public Nullable<decimal> Descuento3 { get; set; }
+        public decimal Descuento3 { get; set; }
         public Nullable<decimal> DescuentoPorc3 { get; set; }
         public decimal Costo { get; set; }
         public Nullable<decimal> Stock { get; set; }

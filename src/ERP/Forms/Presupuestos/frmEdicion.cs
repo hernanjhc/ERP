@@ -25,7 +25,7 @@ namespace ERP.Forms.Presupuestos
             rbCodigo.Checked = true;
             CargarProductosCodBarra();
             cbLista.SelectedIndex = 0;
-            subTotal = 0;
+            
             
         }
         
@@ -133,25 +133,29 @@ namespace ERP.Forms.Presupuestos
 
         private void dgvDetalles_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter){
+            if (e.KeyCode == Keys.Enter)
+            {
                 decimal cantidad = Convert.ToDecimal(dgvDetalles.CurrentRow.Cells[2].Value);
                 decimal precio = Convert.ToDecimal(dgvDetalles.CurrentRow.Cells[3].Value);
                 calcularImportes(cantidad, precio);
                 cbArticulos.Focus();
             }
-            
+
 
         }
 
         private void calcularImportes(decimal cantidad, decimal precio)
         {
+            subTotal = 0;
             decimal importe = cantidad * precio;
             dgvDetalles.CurrentRow.Cells[4].Value = importe;
 
-            foreach (DataGridViewRow row in dgvDetalles.Rows)
+            //foreach (DataGridViewRow row in dgvDetalles.Rows)
+            for (int i = 0; i <= Convert.ToInt32(dgvDetalles.Rows.Count - 1); i++)
             {
-                subTotal = subTotal + Convert.ToDecimal(dgvDetalles.CurrentRow.Cells[4].Value);
-                
+                //subTotal = subTotal + Convert.ToDecimal(dgvDetalles.CurrentRow.Cells[4].Value);
+                subTotal = subTotal + Convert.ToDecimal(dgvDetalles.Rows[i].Cells[4].Value);
+
             }
             txtsubtotal.Text = Convert.ToString(subTotal);
 
@@ -328,6 +332,8 @@ namespace ERP.Forms.Presupuestos
                 txtDocumento.Text = TiposDocumentoRepository.TiposDocumentoPorId(c.IdTipoDocumento).Descripcion +
                     "  " + c.NroDocumento.ToString().Trim();
             }
-        }
+        }          
+
+        
     }
 }
