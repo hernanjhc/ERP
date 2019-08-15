@@ -101,6 +101,7 @@ namespace ERP.Forms.Presupuestos
 
         private void AgregarArticulo(int idarticulo)
         {
+
             var art = ArticulosRepository.ObtenerArticulosPorId(idarticulo);
             
             if (buscarArticuloEnDetalle(idarticulo))
@@ -112,8 +113,9 @@ namespace ERP.Forms.Presupuestos
                 decimal precio = ObtenerPrecioPorLista(Convert.ToInt16(cbLista.Text), art.Id);
                 dgvDetalles.Rows.Add(art.Id, art.CodBarra, art.Descripcion, 1, precio, precio);
                 modificarCantidadDetalles(dgvDetalles.Rows.Count-1);
+                calcularImportes();
             }
-            calcularImportes();
+            
         }
 
         private bool buscarArticuloEnDetalle(int idarticulo)
@@ -151,6 +153,7 @@ namespace ERP.Forms.Presupuestos
         {
             if (e.KeyCode == Keys.Enter)
             {
+                //calcularImportes();
                 cbArticulos.Focus();
             }
 
@@ -342,7 +345,8 @@ namespace ERP.Forms.Presupuestos
             calcularImportes();
         }
 
-        private void dgvDetalles_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+       
+        private void dgvDetalles_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             calcularImportes();
         }

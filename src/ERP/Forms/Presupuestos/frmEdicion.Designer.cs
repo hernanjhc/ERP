@@ -527,7 +527,7 @@
             this.dgvDetalles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDetalles.Size = new System.Drawing.Size(860, 294);
             this.dgvDetalles.TabIndex = 11;
-            this.dgvDetalles.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalles_CellValueChanged);
+            this.dgvDetalles.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalles_CellEndEdit);
             this.dgvDetalles.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvDetalles_EditingControlShowing);
             this.dgvDetalles.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvDetalles_UserDeletingRow);
             this.dgvDetalles.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDetalles_KeyDown);
