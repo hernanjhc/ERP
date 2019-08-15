@@ -15,7 +15,8 @@ namespace ERP.Forms.Presupuestos
 {
     public partial class frmEdicion : FormBase 
     {
-        decimal subTotal;
+        decimal _subTotal;
+        int _filaArticulo;
         public frmEdicion()
         {
             InitializeComponent();
@@ -96,31 +97,46 @@ namespace ERP.Forms.Presupuestos
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             AgregarArticulo(Convert.ToInt32(cbArticulos.SelectedValue));  //enviamos id Artículo
-            //dgvDetalles.CurrentCell = dgvDetalles.CurrentRow.Cells[3];
-            
-            cbLista.Enabled = false;                                    //no cambia lista de precios luego de elegir el primer articulo
-
-            decimal cantidad = Convert.ToDecimal(dgvDetalles.CurrentRow.Cells[2].Value);
-            decimal precio = Convert.ToDecimal(dgvDetalles.CurrentRow.Cells[3].Value);
-            calcularImportes(cantidad, precio);
         }
 
         private void AgregarArticulo(int idarticulo)
         {
-            //id    /   descripcion /   cantidad    /   precio  /   importe
             var art = ArticulosRepository.ObtenerArticulosPorId(idarticulo);
-            decimal precio = ObtenerPrecioPorLista(Convert.ToInt16(cbLista.Text), art.Id);
-            if (precio >= 0)
-            {
-                dgvDetalles.Rows.Add(art.CodBarra, art.Descripcion, 1, precio, precio);
-                //dgvDetalles.CurrentCell = dgvDetalles.CurrentRow.Cells[2];
-                dgvDetalles.CurrentCell = dgvDetalles.Rows[dgvDetalles.Rows.Count - 1].Cells[2];
-                dgvDetalles.BeginEdit(true);
-
-            }
             
+            if (buscarArticuloEnDetalle(idarticulo))
+            {
+                modificarCantidadDetalles(_filaArticulo);
+            }
+            else
+            {
+                decimal precio = ObtenerPrecioPorLista(Convert.ToInt16(cbLista.Text), art.Id);
+                dgvDetalles.Rows.Add(art.Id, art.CodBarra, art.Descripcion, 1, precio, precio);
+                modificarCantidadDetalles(dgvDetalles.Rows.Count-1);
+            }
+            calcularImportes();
         }
-       
+
+        private bool buscarArticuloEnDetalle(int idarticulo)
+        {
+            bool articuloEnDetalle = false;
+            for (int i = 0; i <= dgvDetalles.Rows.Count - 1; i++)
+            {
+                if (Convert.ToInt32(dgvDetalles.Rows[i].Cells[0].Value) == idarticulo)
+                {
+                    _filaArticulo = i;
+                    i = dgvDetalles.Rows.Count;
+                    articuloEnDetalle = true;
+                }
+            }
+            return articuloEnDetalle;
+        }
+
+        private void modificarCantidadDetalles(int i)
+        {
+            dgvDetalles.CurrentCell = dgvDetalles.Rows[i].Cells[3];
+            dgvDetalles.BeginEdit(true);
+        }
+
         private decimal ObtenerPrecioPorLista(short lista, int idarticulo)
         {
             decimal precio = -1;
@@ -135,39 +151,40 @@ namespace ERP.Forms.Presupuestos
         {
             if (e.KeyCode == Keys.Enter)
             {
-                decimal cantidad = Convert.ToDecimal(dgvDetalles.CurrentRow.Cells[2].Value);
-                decimal precio = Convert.ToDecimal(dgvDetalles.CurrentRow.Cells[3].Value);
-                calcularImportes(cantidad, precio);
                 cbArticulos.Focus();
             }
 
-
         }
 
-        private void calcularImportes(decimal cantidad, decimal precio)
+        private void calcularImportes()
         {
-            subTotal = 0;
-            decimal importe = cantidad * precio;
-            dgvDetalles.CurrentRow.Cells[4].Value = importe;
+            _subTotal = 0;
 
-            //foreach (DataGridViewRow row in dgvDetalles.Rows)
             for (int i = 0; i <= Convert.ToInt32(dgvDetalles.Rows.Count - 1); i++)
             {
-                //subTotal = subTotal + Convert.ToDecimal(dgvDetalles.CurrentRow.Cells[4].Value);
-                subTotal = subTotal + Convert.ToDecimal(dgvDetalles.Rows[i].Cells[4].Value);
+                dgvDetalles.Rows[i].Cells[5].Value =
+                    Convert.ToDecimal(dgvDetalles.Rows[i].Cells[3].Value) *
+                    Convert.ToDecimal(dgvDetalles.Rows[i].Cells[4].Value);
+                
+                _subTotal = _subTotal + Convert.ToDecimal(dgvDetalles.Rows[i].Cells[5].Value);
 
             }
-            txtsubtotal.Text = Convert.ToString(subTotal);
+            txtsubtotal.Text = Convert.ToString(_subTotal);
 
-            if (nudDescuento.Text != "")
+            if (nudDescuento.Value > 0)
             {
-                txtDescuentoPesos.Text = Convert.ToString(Math.Round((Convert.ToDecimal(txtsubtotal.Text) * Convert.ToDecimal(nudDescuento.Text)) / 100, 2));
-                txtTotal.Text = Convert.ToString(Math.Round(Convert.ToDecimal(txtsubtotal.Text)-(Convert.ToDecimal(txtsubtotal.Text) * Convert.ToDecimal(nudDescuento.Text))/100, 2));
+                txtDescuentoPesos.Text = 
+                    Convert.ToString(Math.Round((Convert.ToDecimal(txtsubtotal.Text) * 
+                    Convert.ToDecimal(nudDescuento.Text)) / 100, 2));
+                txtTotal.Text = 
+                    Convert.ToString(Math.Round(Convert.ToDecimal(txtsubtotal.Text)-
+                    (Convert.ToDecimal(txtsubtotal.Text) * Convert.ToDecimal(nudDescuento.Text))/100, 2));
             }else
             {
+                txtDescuentoPesos.Text = "0.00";
                 txtTotal.Text = txtsubtotal.Text;
             }
-         
+            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -177,6 +194,7 @@ namespace ERP.Forms.Presupuestos
 
         private void dgvDetalles_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
+            //COntrola ingreso de valores decimales
             DataGridViewTextBoxEditingControl dText = (DataGridViewTextBoxEditingControl)e.Control;
 
             dText.KeyPress -= new KeyPressEventHandler(dText_KeyPress);
@@ -184,9 +202,7 @@ namespace ERP.Forms.Presupuestos
         }
         void dText_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // _validator.IngresaDecimal(sender, e);
-            ingresaDecimal(sender,e);
-
+           ingresaDecimal(sender,e);
         }
 
         private void ingresaDecimal(object sender, KeyPressEventArgs e)
@@ -219,20 +235,7 @@ namespace ERP.Forms.Presupuestos
             
         private void nudDescuento_ValueChanged(object sender, EventArgs e)
         {
-            calcularImporteDescuento();
-        }
-
-        private void calcularImporteDescuento()
-        {
-            if (nudDescuento.Text != "")
-            {
-                txtDescuentoPesos.Text = Convert.ToString(Math.Round((Convert.ToDecimal(txtsubtotal.Text) * Convert.ToDecimal(nudDescuento.Text)) / 100, 2));
-                txtTotal.Text = Convert.ToString(Math.Round(Convert.ToDecimal(txtsubtotal.Text) - (Convert.ToDecimal(txtsubtotal.Text) * Convert.ToDecimal(nudDescuento.Text)) / 100, 2));
-            }
-            else
-            {
-                txtTotal.Text = txtsubtotal.Text;
-            }
+            calcularImportes();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -332,8 +335,16 @@ namespace ERP.Forms.Presupuestos
                 txtDocumento.Text = TiposDocumentoRepository.TiposDocumentoPorId(c.IdTipoDocumento).Descripcion +
                     "  " + c.NroDocumento.ToString().Trim();
             }
-        }          
+        }
 
-        
+        private void dgvDetalles_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            calcularImportes();
+        }
+
+        private void dgvDetalles_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            calcularImportes();
+        }
     }
 }

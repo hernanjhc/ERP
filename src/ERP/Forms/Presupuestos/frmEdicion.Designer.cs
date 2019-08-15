@@ -60,6 +60,7 @@
             this.txtsubtotal = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.dgvDetalles = new CustomLibrary.ComponentModel.CustomDataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Código = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -424,7 +425,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Image = global::ERP.Properties.Resources.add;
+            this.btnAgregar.Image = global::ERP.Properties.Resources.accept;
             this.btnAgregar.Location = new System.Drawing.Point(471, 34);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(31, 25);
@@ -508,11 +509,11 @@
             // dgvDetalles
             // 
             this.dgvDetalles.AllowUserToAddRows = false;
-            this.dgvDetalles.AllowUserToDeleteRows = false;
             this.dgvDetalles.AllowUserToResizeRows = false;
             this.dgvDetalles.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvDetalles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetalles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
             this.Código,
             this.Descripcion,
             this.Cantidad,
@@ -526,8 +527,16 @@
             this.dgvDetalles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDetalles.Size = new System.Drawing.Size(860, 294);
             this.dgvDetalles.TabIndex = 11;
+            this.dgvDetalles.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalles_CellValueChanged);
             this.dgvDetalles.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvDetalles_EditingControlShowing);
+            this.dgvDetalles.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvDetalles_UserDeletingRow);
             this.dgvDetalles.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDetalles_KeyDown);
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.Visible = false;
             // 
             // Código
             // 
@@ -717,14 +726,15 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel12;
         private System.Windows.Forms.NumericUpDown nDias;
         private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.NumericUpDown nudDescuento;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtDescuentoPesos;
+        private MaterialSkin.Controls.MaterialLabel materialLabel9;
+        public CustomLibrary.ComponentModel.CustomDataGridView dgvDetalles;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Código;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Importe;
-        private System.Windows.Forms.NumericUpDown nudDescuento;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtDescuentoPesos;
-        private MaterialSkin.Controls.MaterialLabel materialLabel9;
-        public CustomLibrary.ComponentModel.CustomDataGridView dgvDetalles;
     }
 }
