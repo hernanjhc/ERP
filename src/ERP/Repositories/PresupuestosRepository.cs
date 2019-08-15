@@ -49,9 +49,6 @@ namespace ERP.Repositories
 
         public static EPresupuestos Insertar(int idCliente, DateTime fecha, int diasValidez, decimal importe, decimal descuento, decimal descPorc,
                                             decimal importeTotal, int PrecioLista, int idUsuario, byte estado)
-        //id int, idEmpresa int, idCliente int, fecha datetime, diasValidez int, 
-        //importe decimal, descuento decimal, descuentoPorc decimal, ImporteTotal decimal,
-        //PrecioLista int, idUsuario int, Estado int
         {
             using (var db = new VentasConexión())
             {

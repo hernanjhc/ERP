@@ -323,8 +323,9 @@ namespace ERP.Forms.Presupuestos
         {
             get
             {
-                var usuario = UsuariosRepository.ObtenerUsuarioPorId(Lib.Configuration.IdUsuarioConectado);
-                return  usuario.Id;
+                //var usuario = UsuariosRepository.ObtenerUsuarioPorId(Lib.Configuration.IdUsuarioConectado);
+                //return  usuario.Id;
+                return Lib.Configuration.IdUsuarioConectado;
             }
             
         }
@@ -340,13 +341,12 @@ namespace ERP.Forms.Presupuestos
             }
         }
 
-        private void dgvDetalles_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        private void dgvDetalles_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             calcularImportes();
         }
 
-       
-        private void dgvDetalles_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void dgvDetalles_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
         {
             calcularImportes();
         }

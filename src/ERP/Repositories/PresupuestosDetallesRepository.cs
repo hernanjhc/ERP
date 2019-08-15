@@ -33,10 +33,7 @@ namespace ERP.Repositories
             }
         }
 
-        public static EPresupuestosDetalles Insertar(int idPresupuesto, int idArticulo, decimal importe, int cantidad, decimal precio)
-        //id int, idEmpresa int, idPresupuesto int, idArticulo int,
-        //importe decimal, cantidad int, precio decimal
-        
+        public static EPresupuestosDetalles Insertar(int idPresupuesto, int idArticulo, int cantidad, decimal precio, decimal importe)
         {
             using (var db = new VentasConexión())
             {

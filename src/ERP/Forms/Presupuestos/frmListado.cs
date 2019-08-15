@@ -27,9 +27,7 @@ namespace ERP.Forms.Presupuestos
         {
                 dgvDatos.SetDataSource(
                     from p in PresupuestosRepository.ObtenerPresupuestos()
-                    /*Controla presupuestos con fecha de validez*/
                     .Where(x => 
-                    //fecha de presupuesto + días validez >= día actual
                         x.Fecha.Value.AddDays(Convert.ToInt16(x.DiasValidez)) >= Configuration.CurrentDate
                     )
                     orderby p.Id
@@ -41,35 +39,31 @@ namespace ERP.Forms.Presupuestos
                         Cliente= ClientesRepository.ObtenerClientePorId(Convert.ToDecimal(p.IdCliente)).RazonSocial,
                         Usuario = UsuariosRepository.ObtenerUsuarioPorId(Convert.ToDecimal(p.IdUsuario)).NombreCompleto
                     }
-                );            //dgvDatos.Columns[0].Visible = false;   
+                );
         }
 
 
         private void btnNuevo_Click_1(object sender, EventArgs e)
         {
-            //using (var f = new Presupuestos.frmEdicion()) f.ShowDialog();
             using (var f = new frmEdicion())
             {
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {                        
-                        var a = PresupuestosRepository.Insertar(f.IdCliente, f.Fecha, f.DiasValidez, f.ImporteB, f.Descuento,
+                        var presupuesto = PresupuestosRepository.Insertar(f.IdCliente, f.Fecha, f.DiasValidez, f.ImporteB, f.Descuento,
                                                             f.DescPorc, f.ImporteTotal, f.PrecioLista, f.IdUsuario, f.Estado);
 
                        
                          for (int i = 0; i <= Convert.ToInt32(f.dgvDetalles.Rows.Count-1); i++)
                         {
-                            var artId = ArticulosRepository.ObtenerArticulosPorDescripcion(Convert.ToString(f.dgvDetalles.Rows[i].Cells[1].Value));
-                            var b = PresupuestosDetallesRepository.Insertar(a.Id, artId.Id, Convert.ToDecimal(f.dgvDetalles.Rows[i].Cells[4].Value),
-                                Convert.ToInt16(f.dgvDetalles.Rows[i].Cells[2].Value), Convert.ToDecimal(f.dgvDetalles.Rows[i].Cells[3].Value));
+                            PresupuestosDetallesRepository.Insertar(presupuesto.Id, Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[0].Value),
+                                    Convert.ToInt16(f.dgvDetalles.Rows[i].Cells[3].Value), Convert.ToDecimal(f.dgvDetalles.Rows[i].Cells[4].Value),
+                                    Convert.ToDecimal(f.dgvDetalles.Rows[i].Cells[5].Value));
+                                                            
                         }
-                            
-
-
-
                         ConsultarDatos();
-                        dgvDatos.SetRow(r => Convert.ToDecimal(r.Cells[0].Value) == a.Id);
+                        dgvDatos.SetRow(r => Convert.ToDecimal(r.Cells[0].Value) == presupuesto.Id);
                     }
                     catch (Exception ex)
                     {
