@@ -25,8 +25,7 @@ namespace ERP.Forms.Presupuestos
             CargarVendedor();
             rbCodigo.Checked = true;
             CargarProductosCodBarra();
-            cbLista.SelectedIndex = 0;
-            
+            cbLista.SelectedIndex = 0;           
             
         }
         

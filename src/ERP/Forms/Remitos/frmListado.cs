@@ -95,7 +95,7 @@ namespace ERP.Forms.Remitos
             dtpFecha.Value = Convert.ToDateTime(p.Fecha);          
             txtCliente.Text = cliente.RazonSocial;
             txtNroDoc.Text = cliente.NroDocumento.ToString();
-            //txtVentaNro.Text = cliente.NroDocumento.ToString();
+            txtVentaNro.Text = Convert.ToString(p.IdVenta);
             txtDireccion.Text = cliente.Direccion;
             
 
@@ -199,6 +199,42 @@ namespace ERP.Forms.Remitos
             dgvDetalles.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
 
             
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            using (var f = new frmEdicion())
+            {
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        //Insertar(int idCliente, DateTime fecha, int idVenta, string entregaNombre, string recibeNombre, int recibeTipoDoc,
+                        //decimal recibeNroDoc, int idUsuario, byte estado)
+                        var remito = RemitosRepository.Insertar(f.IdCliente, f.Fecha, f.IdVenta, "", "", 0, 0, f.IdUsuario, f.Estado);
+
+
+                        for (int i = 0; i <= Convert.ToInt32(f.dgvDetalles.Rows.Count - 1); i++)
+                        {
+                            //Insertar(int idRemito, int idArticulo, int cantidad)
+                            RemitosDetallesRepository.Insertar(remito.Id, Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[0].Value),
+                                    Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[3].Value));
+
+                        }
+                        ConsultarDatos();
+                        dgvDatos.SetRow(r => Convert.ToDecimal(r.Cells[0].Value) == remito.Id);
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowError("Error al intentar grabar los datos: \n" + ex.Message);
+                    }
+                }
+            }
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

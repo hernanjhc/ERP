@@ -47,5 +47,41 @@ namespace ERP.Repositories
                 return db.ERemitos.Find(id);
             }
         }
+
+        public static ERemitos Insertar(int idCliente, DateTime fecha, int idVenta, string entregaNombre, string recibeNombre, int recibeTipoDoc,
+                                            decimal recibeNroDoc, int idUsuario, byte estado)
+        {
+            using (var db = new VentasConexión())
+            {
+                var trx = db.Database.BeginTransaction();
+                try
+                {
+                    var id = db.ERemitos.Any() ? db.ERemitos.Max(a1 => a1.Id) + 1 : 1;
+                    var a = new ERemitos
+                    {
+                        Id = id,
+                        IdEmpresa = Lib.Configuration.IdEmpresa,
+                        IdCliente = idCliente,
+                        Fecha = fecha,
+                        IdVenta = idVenta,
+                        EntregaNombre = entregaNombre,
+                        RecibeNombre = recibeNombre,
+                        RecibeTipoDocumento = recibeTipoDoc, //revisar
+                        RecibeNroDocumento = recibeNroDoc,
+                        IdUsuario = idUsuario,
+                        Estado = estado
+                    };
+                    db.ERemitos.Add(a);
+                    db.SaveChanges();
+                    trx.Commit();
+                    return a;
+                }
+                catch (Exception)
+                {
+                    trx.Rollback();
+                    throw;
+                }
+            }
+        }
     }
 }

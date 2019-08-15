@@ -31,38 +31,40 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEdicion));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnBuscarVenta = new System.Windows.Forms.Button();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
-            this.txtVendedor = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.txtCuit = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtLocalidad = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
+            this.txtDocumento = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.lVendedor = new MaterialSkin.Controls.MaterialLabel();
+            this.Documento = new MaterialSkin.Controls.MaterialLabel();
             this.txtRemitoNro = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.txtDireccion = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.btnNuevoCliente = new System.Windows.Forms.Button();
-            this.cbCliente = new System.Windows.Forms.ComboBox();
+            this.cbClientes = new System.Windows.Forms.ComboBox();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.cbVentas = new System.Windows.Forms.ComboBox();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dgvDatos = new CustomLibrary.ComponentModel.CustomDataGridView();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnArticuloNuevo = new System.Windows.Forms.Button();
+            this.dgvDetalles = new CustomLibrary.ComponentModel.CustomDataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rbDescripcion = new MaterialSkin.Controls.MaterialRadioButton();
             this.rbCodigo = new MaterialSkin.Controls.MaterialRadioButton();
-            this.btnArticuloNuevo = new System.Windows.Forms.Button();
             this.cbArticulos = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancelar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnGuardar = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.cbVenta = new System.Windows.Forms.ComboBox();
-            this.btnBuscarVenta = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalles)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,20 +90,17 @@
             // 
             this.groupBox1.Controls.Add(this.btnBuscarVenta);
             this.groupBox1.Controls.Add(this.materialDivider1);
-            this.groupBox1.Controls.Add(this.txtVendedor);
-            this.groupBox1.Controls.Add(this.txtCuit);
-            this.groupBox1.Controls.Add(this.materialLabel9);
-            this.groupBox1.Controls.Add(this.materialLabel11);
-            this.groupBox1.Controls.Add(this.txtLocalidad);
-            this.groupBox1.Controls.Add(this.materialLabel10);
+            this.groupBox1.Controls.Add(this.txtDocumento);
+            this.groupBox1.Controls.Add(this.lVendedor);
+            this.groupBox1.Controls.Add(this.Documento);
             this.groupBox1.Controls.Add(this.txtRemitoNro);
             this.groupBox1.Controls.Add(this.materialLabel5);
             this.groupBox1.Controls.Add(this.txtDireccion);
             this.groupBox1.Controls.Add(this.materialLabel4);
             this.groupBox1.Controls.Add(this.btnNuevoCliente);
-            this.groupBox1.Controls.Add(this.cbCliente);
+            this.groupBox1.Controls.Add(this.cbClientes);
             this.groupBox1.Controls.Add(this.materialLabel3);
-            this.groupBox1.Controls.Add(this.cbVenta);
+            this.groupBox1.Controls.Add(this.cbVentas);
             this.groupBox1.Controls.Add(this.materialLabel2);
             this.groupBox1.Controls.Add(this.dtpFecha);
             this.groupBox1.Controls.Add(this.materialLabel1);
@@ -114,6 +113,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "General";
             // 
+            // btnBuscarVenta
+            // 
+            this.btnBuscarVenta.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarVenta.Image")));
+            this.btnBuscarVenta.Location = new System.Drawing.Point(257, 104);
+            this.btnBuscarVenta.Name = "btnBuscarVenta";
+            this.btnBuscarVenta.Size = new System.Drawing.Size(31, 25);
+            this.btnBuscarVenta.TabIndex = 2;
+            this.btnBuscarVenta.UseVisualStyleBackColor = true;
+            // 
             // materialDivider1
             // 
             this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -125,92 +133,47 @@
             this.materialDivider1.TabIndex = 15;
             this.materialDivider1.Text = "materialDivider1";
             // 
-            // txtVendedor
+            // txtDocumento
             // 
-            this.txtVendedor.Depth = 0;
-            this.txtVendedor.Enabled = false;
-            this.txtVendedor.Hint = "";
-            this.txtVendedor.Location = new System.Drawing.Point(106, 19);
-            this.txtVendedor.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtVendedor.Name = "txtVendedor";
-            this.txtVendedor.PasswordChar = '\0';
-            this.txtVendedor.SelectedText = "";
-            this.txtVendedor.SelectionLength = 0;
-            this.txtVendedor.SelectionStart = 0;
-            this.txtVendedor.Size = new System.Drawing.Size(145, 23);
-            this.txtVendedor.TabIndex = 21;
-            this.txtVendedor.UseSystemPasswordChar = false;
+            this.txtDocumento.Depth = 0;
+            this.txtDocumento.Enabled = false;
+            this.txtDocumento.Hint = "";
+            this.txtDocumento.Location = new System.Drawing.Point(604, 90);
+            this.txtDocumento.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtDocumento.Name = "txtDocumento";
+            this.txtDocumento.PasswordChar = '\0';
+            this.txtDocumento.SelectedText = "";
+            this.txtDocumento.SelectionLength = 0;
+            this.txtDocumento.SelectionStart = 0;
+            this.txtDocumento.Size = new System.Drawing.Size(200, 23);
+            this.txtDocumento.TabIndex = 14;
+            this.txtDocumento.UseSystemPasswordChar = false;
             // 
-            // txtCuit
+            // lVendedor
             // 
-            this.txtCuit.Depth = 0;
-            this.txtCuit.Enabled = false;
-            this.txtCuit.Hint = "";
-            this.txtCuit.Location = new System.Drawing.Point(590, 106);
-            this.txtCuit.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtCuit.Name = "txtCuit";
-            this.txtCuit.PasswordChar = '\0';
-            this.txtCuit.SelectedText = "";
-            this.txtCuit.SelectionLength = 0;
-            this.txtCuit.SelectionStart = 0;
-            this.txtCuit.Size = new System.Drawing.Size(214, 23);
-            this.txtCuit.TabIndex = 14;
-            this.txtCuit.UseSystemPasswordChar = false;
+            this.lVendedor.AutoSize = true;
+            this.lVendedor.Depth = 0;
+            this.lVendedor.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lVendedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lVendedor.Location = new System.Drawing.Point(4, 24);
+            this.lVendedor.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lVendedor.Name = "lVendedor";
+            this.lVendedor.Size = new System.Drawing.Size(73, 19);
+            this.lVendedor.TabIndex = 11;
+            this.lVendedor.Text = "Vendedor";
             // 
-            // materialLabel9
+            // Documento
             // 
-            this.materialLabel9.AutoSize = true;
-            this.materialLabel9.Depth = 0;
-            this.materialLabel9.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel9.Location = new System.Drawing.Point(4, 24);
-            this.materialLabel9.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel9.Name = "materialLabel9";
-            this.materialLabel9.Size = new System.Drawing.Size(77, 19);
-            this.materialLabel9.TabIndex = 11;
-            this.materialLabel9.Text = "Vendedor:";
-            // 
-            // materialLabel11
-            // 
-            this.materialLabel11.AutoSize = true;
-            this.materialLabel11.Depth = 0;
-            this.materialLabel11.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel11.Location = new System.Drawing.Point(511, 110);
-            this.materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel11.Name = "materialLabel11";
-            this.materialLabel11.Size = new System.Drawing.Size(77, 19);
-            this.materialLabel11.TabIndex = 13;
-            this.materialLabel11.Text = "CUIT/DNI:";
-            // 
-            // txtLocalidad
-            // 
-            this.txtLocalidad.Depth = 0;
-            this.txtLocalidad.Enabled = false;
-            this.txtLocalidad.Hint = "";
-            this.txtLocalidad.Location = new System.Drawing.Point(590, 77);
-            this.txtLocalidad.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtLocalidad.Name = "txtLocalidad";
-            this.txtLocalidad.PasswordChar = '\0';
-            this.txtLocalidad.SelectedText = "";
-            this.txtLocalidad.SelectionLength = 0;
-            this.txtLocalidad.SelectionStart = 0;
-            this.txtLocalidad.Size = new System.Drawing.Size(214, 23);
-            this.txtLocalidad.TabIndex = 12;
-            this.txtLocalidad.UseSystemPasswordChar = false;
-            // 
-            // materialLabel10
-            // 
-            this.materialLabel10.AutoSize = true;
-            this.materialLabel10.Depth = 0;
-            this.materialLabel10.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel10.Location = new System.Drawing.Point(511, 82);
-            this.materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel10.Name = "materialLabel10";
-            this.materialLabel10.Size = new System.Drawing.Size(78, 19);
-            this.materialLabel10.TabIndex = 11;
-            this.materialLabel10.Text = "Localidad:";
+            this.Documento.AutoSize = true;
+            this.Documento.Depth = 0;
+            this.Documento.Font = new System.Drawing.Font("Roboto", 11F);
+            this.Documento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Documento.Location = new System.Drawing.Point(511, 94);
+            this.Documento.MouseState = MaterialSkin.MouseState.HOVER;
+            this.Documento.Name = "Documento";
+            this.Documento.Size = new System.Drawing.Size(87, 19);
+            this.Documento.TabIndex = 13;
+            this.Documento.Text = "Documento";
             // 
             // txtRemitoNro
             // 
@@ -236,23 +199,23 @@
             this.materialLabel5.Location = new System.Drawing.Point(7, 69);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
-            this.materialLabel5.Size = new System.Drawing.Size(61, 19);
+            this.materialLabel5.Size = new System.Drawing.Size(57, 19);
             this.materialLabel5.TabIndex = 9;
-            this.materialLabel5.Text = "Remito:";
+            this.materialLabel5.Text = "Remito";
             // 
             // txtDireccion
             // 
             this.txtDireccion.Depth = 0;
             this.txtDireccion.Enabled = false;
             this.txtDireccion.Hint = "";
-            this.txtDireccion.Location = new System.Drawing.Point(590, 48);
+            this.txtDireccion.Location = new System.Drawing.Point(604, 54);
             this.txtDireccion.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.PasswordChar = '\0';
             this.txtDireccion.SelectedText = "";
             this.txtDireccion.SelectionLength = 0;
             this.txtDireccion.SelectionStart = 0;
-            this.txtDireccion.Size = new System.Drawing.Size(214, 23);
+            this.txtDireccion.Size = new System.Drawing.Size(200, 23);
             this.txtDireccion.TabIndex = 8;
             this.txtDireccion.UseSystemPasswordChar = false;
             // 
@@ -262,29 +225,31 @@
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(511, 52);
+            this.materialLabel4.Location = new System.Drawing.Point(511, 58);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(77, 19);
+            this.materialLabel4.Size = new System.Drawing.Size(73, 19);
             this.materialLabel4.TabIndex = 7;
-            this.materialLabel4.Text = "Dirección:";
+            this.materialLabel4.Text = "Dirección";
             // 
             // btnNuevoCliente
             // 
             this.btnNuevoCliente.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevoCliente.Image")));
-            this.btnNuevoCliente.Location = new System.Drawing.Point(812, 19);
+            this.btnNuevoCliente.Location = new System.Drawing.Point(812, 25);
             this.btnNuevoCliente.Name = "btnNuevoCliente";
             this.btnNuevoCliente.Size = new System.Drawing.Size(31, 25);
             this.btnNuevoCliente.TabIndex = 6;
             this.btnNuevoCliente.UseVisualStyleBackColor = true;
             // 
-            // cbCliente
+            // cbClientes
             // 
-            this.cbCliente.FormattingEnabled = true;
-            this.cbCliente.Location = new System.Drawing.Point(590, 21);
-            this.cbCliente.Name = "cbCliente";
-            this.cbCliente.Size = new System.Drawing.Size(214, 21);
-            this.cbCliente.TabIndex = 3;
+            this.cbClientes.FormattingEnabled = true;
+            this.cbClientes.Location = new System.Drawing.Point(604, 27);
+            this.cbClientes.Name = "cbClientes";
+            this.cbClientes.Size = new System.Drawing.Size(200, 21);
+            this.cbClientes.TabIndex = 3;
+            this.cbClientes.SelectionChangeCommitted += new System.EventHandler(this.cbClientes_SelectionChangeCommitted);
+            this.cbClientes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbClientes_KeyDown);
             // 
             // materialLabel3
             // 
@@ -292,12 +257,33 @@
             this.materialLabel3.Depth = 0;
             this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(511, 25);
+            this.materialLabel3.Location = new System.Drawing.Point(511, 31);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(60, 19);
+            this.materialLabel3.Size = new System.Drawing.Size(56, 19);
             this.materialLabel3.TabIndex = 4;
-            this.materialLabel3.Text = "Cliente:";
+            this.materialLabel3.Text = "Cliente";
+            // 
+            // cbVentas
+            // 
+            this.cbVentas.FormattingEnabled = true;
+            this.cbVentas.Location = new System.Drawing.Point(106, 106);
+            this.cbVentas.Name = "cbVentas";
+            this.cbVentas.Size = new System.Drawing.Size(145, 21);
+            this.cbVentas.TabIndex = 1;
+            // 
+            // materialLabel2
+            // 
+            this.materialLabel2.AutoSize = true;
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel2.Location = new System.Drawing.Point(10, 108);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(77, 19);
+            this.materialLabel2.TabIndex = 2;
+            this.materialLabel2.Text = "Venta Nro";
             // 
             // dtpFecha
             // 
@@ -323,10 +309,11 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dgvDatos);
+            this.groupBox2.Controls.Add(this.btnAgregar);
+            this.groupBox2.Controls.Add(this.btnArticuloNuevo);
+            this.groupBox2.Controls.Add(this.dgvDetalles);
             this.groupBox2.Controls.Add(this.rbDescripcion);
             this.groupBox2.Controls.Add(this.rbCodigo);
-            this.groupBox2.Controls.Add(this.btnArticuloNuevo);
             this.groupBox2.Controls.Add(this.cbArticulos);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -337,23 +324,75 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lista de Conceptos";
             // 
-            // dgvDatos
+            // btnAgregar
             // 
-            this.dgvDatos.AllowUserToAddRows = false;
-            this.dgvDatos.AllowUserToDeleteRows = false;
-            this.dgvDatos.AllowUserToResizeRows = false;
-            this.dgvDatos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvDatos.EvenRowColor = System.Drawing.Color.Empty;
-            this.dgvDatos.Location = new System.Drawing.Point(3, 94);
-            this.dgvDatos.MultiSelect = false;
-            this.dgvDatos.Name = "dgvDatos";
-            this.dgvDatos.OddRowColor = System.Drawing.Color.AliceBlue;
-            this.dgvDatos.ReadOnly = true;
-            this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(853, 350);
-            this.dgvDatos.TabIndex = 11;
+            this.btnAgregar.Image = global::ERP.Properties.Resources.accept;
+            this.btnAgregar.Location = new System.Drawing.Point(385, 32);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(31, 25);
+            this.btnAgregar.TabIndex = 12;
+            this.btnAgregar.Tag = "Agregar artículo";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // btnArticuloNuevo
+            // 
+            this.btnArticuloNuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnArticuloNuevo.Image")));
+            this.btnArticuloNuevo.Location = new System.Drawing.Point(422, 32);
+            this.btnArticuloNuevo.Name = "btnArticuloNuevo";
+            this.btnArticuloNuevo.Size = new System.Drawing.Size(31, 25);
+            this.btnArticuloNuevo.TabIndex = 13;
+            this.btnArticuloNuevo.UseVisualStyleBackColor = true;
+            // 
+            // dgvDetalles
+            // 
+            this.dgvDetalles.AllowUserToAddRows = false;
+            this.dgvDetalles.AllowUserToResizeRows = false;
+            this.dgvDetalles.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvDetalles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDetalles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.Codigo,
+            this.Descripcion,
+            this.cantidad});
+            this.dgvDetalles.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvDetalles.EvenRowColor = System.Drawing.Color.Empty;
+            this.dgvDetalles.Location = new System.Drawing.Point(3, 94);
+            this.dgvDetalles.MultiSelect = false;
+            this.dgvDetalles.Name = "dgvDetalles";
+            this.dgvDetalles.OddRowColor = System.Drawing.Color.AliceBlue;
+            this.dgvDetalles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDetalles.Size = new System.Drawing.Size(853, 350);
+            this.dgvDetalles.TabIndex = 11;
+            this.dgvDetalles.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvDetalles_EditingControlShowing);
+            this.dgvDetalles.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDetalles_KeyDown);
+            // 
+            // Id
+            // 
+            this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Id.HeaderText = "ID";
+            this.Id.Name = "Id";
+            this.Id.Visible = false;
+            // 
+            // Codigo
+            // 
+            this.Codigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Codigo.HeaderText = "Cod. Barra";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.Width = 92;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Descripcion.HeaderText = "Descripción";
+            this.Descripcion.Name = "Descripcion";
+            // 
+            // cantidad
+            // 
+            this.cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.cantidad.HeaderText = "Cantidad";
+            this.cantidad.Name = "cantidad";
+            this.cantidad.Width = 82;
             // 
             // rbDescripcion
             // 
@@ -371,6 +410,7 @@
             this.rbDescripcion.TabStop = true;
             this.rbDescripcion.Text = "Descripción";
             this.rbDescripcion.UseVisualStyleBackColor = true;
+            this.rbDescripcion.CheckedChanged += new System.EventHandler(this.rbDescripcion_CheckedChanged);
             // 
             // rbCodigo
             // 
@@ -389,15 +429,7 @@
             this.rbCodigo.TabStop = true;
             this.rbCodigo.Text = "Codigo";
             this.rbCodigo.UseVisualStyleBackColor = true;
-            // 
-            // btnArticuloNuevo
-            // 
-            this.btnArticuloNuevo.Image = ((System.Drawing.Image)(resources.GetObject("btnArticuloNuevo.Image")));
-            this.btnArticuloNuevo.Location = new System.Drawing.Point(380, 31);
-            this.btnArticuloNuevo.Name = "btnArticuloNuevo";
-            this.btnArticuloNuevo.Size = new System.Drawing.Size(31, 25);
-            this.btnArticuloNuevo.TabIndex = 5;
-            this.btnArticuloNuevo.UseVisualStyleBackColor = true;
+            this.rbCodigo.CheckedChanged += new System.EventHandler(this.rbCodigo_CheckedChanged);
             // 
             // cbArticulos
             // 
@@ -406,6 +438,7 @@
             this.cbArticulos.Name = "cbArticulos";
             this.cbArticulos.Size = new System.Drawing.Size(244, 21);
             this.cbArticulos.TabIndex = 4;
+            this.cbArticulos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbArticulos_KeyDown);
             // 
             // panel1
             // 
@@ -428,6 +461,7 @@
             this.btnCancelar.TabIndex = 7;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -440,36 +474,7 @@
             this.btnGuardar.TabIndex = 6;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
-            // 
-            // materialLabel2
-            // 
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(10, 108);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(81, 19);
-            this.materialLabel2.TabIndex = 2;
-            this.materialLabel2.Text = "Venta Nro:";
-            // 
-            // cbVenta
-            // 
-            this.cbVenta.FormattingEnabled = true;
-            this.cbVenta.Location = new System.Drawing.Point(106, 106);
-            this.cbVenta.Name = "cbVenta";
-            this.cbVenta.Size = new System.Drawing.Size(145, 21);
-            this.cbVenta.TabIndex = 1;
-            // 
-            // btnBuscarVenta
-            // 
-            this.btnBuscarVenta.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarVenta.Image")));
-            this.btnBuscarVenta.Location = new System.Drawing.Point(257, 104);
-            this.btnBuscarVenta.Name = "btnBuscarVenta";
-            this.btnBuscarVenta.Size = new System.Drawing.Size(31, 25);
-            this.btnBuscarVenta.TabIndex = 2;
-            this.btnBuscarVenta.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // frmEdicion
             // 
@@ -484,7 +489,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalles)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -495,32 +500,34 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.GroupBox groupBox1;
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtVendedor;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtCuit;
-        private MaterialSkin.Controls.MaterialLabel materialLabel9;
-        private MaterialSkin.Controls.MaterialLabel materialLabel11;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtLocalidad;
-        private MaterialSkin.Controls.MaterialLabel materialLabel10;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtDocumento;
+        private MaterialSkin.Controls.MaterialLabel lVendedor;
+        private MaterialSkin.Controls.MaterialLabel Documento;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtRemitoNro;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtDireccion;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private System.Windows.Forms.Button btnNuevoCliente;
-        private System.Windows.Forms.ComboBox cbCliente;
+        private System.Windows.Forms.ComboBox cbClientes;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private System.Windows.Forms.DateTimePicker dtpFecha;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private CustomLibrary.ComponentModel.CustomDataGridView dgvDatos;
         private MaterialSkin.Controls.MaterialRadioButton rbDescripcion;
         private MaterialSkin.Controls.MaterialRadioButton rbCodigo;
-        private System.Windows.Forms.Button btnArticuloNuevo;
         private System.Windows.Forms.ComboBox cbArticulos;
         private System.Windows.Forms.Panel panel1;
         private MaterialSkin.Controls.MaterialRaisedButton btnCancelar;
         private MaterialSkin.Controls.MaterialRaisedButton btnGuardar;
         private System.Windows.Forms.Button btnBuscarVenta;
-        private System.Windows.Forms.ComboBox cbVenta;
+        private System.Windows.Forms.ComboBox cbVentas;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnArticuloNuevo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
+        public CustomLibrary.ComponentModel.CustomDataGridView dgvDetalles;
     }
 }

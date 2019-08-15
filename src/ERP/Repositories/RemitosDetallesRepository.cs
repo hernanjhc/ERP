@@ -30,5 +30,34 @@ namespace ERP.Repositories
                 return query.OrderBy(p => p.Id).ToList();
             }
         }
+
+        public static ERemitosDetalles Insertar(int idRemito, int idArticulo, int cantidad)
+        {
+            using (var db = new VentasConexión())
+            {
+                var trx = db.Database.BeginTransaction();
+                try
+                {
+                    var id = db.ERemitosDetalles.Any() ? db.ERemitosDetalles.Max(a1 => a1.Id) + 1 : 1;
+                    var a = new ERemitosDetalles
+                    {
+                        Id = id,
+                        IdEmpresa = Lib.Configuration.IdEmpresa,
+                        IdRemito = idRemito,
+                        IdArticulo = idArticulo,                        
+                        Cantidad = cantidad
+                    };
+                    db.ERemitosDetalles.Add(a);
+                    db.SaveChanges();
+                    trx.Commit();
+                    return a;
+                }
+                catch (Exception)
+                {
+                    trx.Rollback();
+                    throw;
+                }
+            }
+        }
     }
 }

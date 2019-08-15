@@ -31,6 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListado));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.dtpHasta = new System.Windows.Forms.DateTimePicker();
+            this.chbFiltrarFecha = new MaterialSkin.Controls.MaterialCheckBox();
+            this.dtpDesde = new System.Windows.Forms.DateTimePicker();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.txtFiltrar = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -60,12 +66,6 @@
             this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.dtpHasta = new System.Windows.Forms.DateTimePicker();
-            this.chbFiltrarFecha = new MaterialSkin.Controls.MaterialCheckBox();
-            this.dtpDesde = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -109,6 +109,82 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(797, 69);
             this.panel5.TabIndex = 10;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackColor = System.Drawing.Color.DarkCyan;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.ForeColor = System.Drawing.Color.White;
+            this.btnBuscar.Image = global::ERP.Properties.Resources.zoom;
+            this.btnBuscar.Location = new System.Drawing.Point(708, 30);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(32, 32);
+            this.btnBuscar.TabIndex = 13;
+            this.btnBuscar.Tag = "Buscar";
+            this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // materialLabel2
+            // 
+            this.materialLabel2.AutoSize = true;
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel2.Location = new System.Drawing.Point(560, 42);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(49, 19);
+            this.materialLabel2.TabIndex = 12;
+            this.materialLabel2.Text = "Hasta";
+            // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(421, 42);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(51, 19);
+            this.materialLabel1.TabIndex = 11;
+            this.materialLabel1.Text = "Desde";
+            // 
+            // dtpHasta
+            // 
+            this.dtpHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpHasta.Location = new System.Drawing.Point(611, 42);
+            this.dtpHasta.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dtpHasta.Name = "dtpHasta";
+            this.dtpHasta.Size = new System.Drawing.Size(91, 20);
+            this.dtpHasta.TabIndex = 10;
+            // 
+            // chbFiltrarFecha
+            // 
+            this.chbFiltrarFecha.AutoSize = true;
+            this.chbFiltrarFecha.Depth = 0;
+            this.chbFiltrarFecha.Font = new System.Drawing.Font("Roboto", 10F);
+            this.chbFiltrarFecha.Location = new System.Drawing.Point(419, 8);
+            this.chbFiltrarFecha.Margin = new System.Windows.Forms.Padding(0);
+            this.chbFiltrarFecha.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.chbFiltrarFecha.MouseState = MaterialSkin.MouseState.HOVER;
+            this.chbFiltrarFecha.Name = "chbFiltrarFecha";
+            this.chbFiltrarFecha.Ripple = true;
+            this.chbFiltrarFecha.Size = new System.Drawing.Size(128, 30);
+            this.chbFiltrarFecha.TabIndex = 8;
+            this.chbFiltrarFecha.Text = "Filtrar por fecha";
+            this.chbFiltrarFecha.UseVisualStyleBackColor = true;
+            // 
+            // dtpDesde
+            // 
+            this.dtpDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDesde.Location = new System.Drawing.Point(474, 42);
+            this.dtpDesde.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.dtpDesde.Name = "dtpDesde";
+            this.dtpDesde.Size = new System.Drawing.Size(84, 20);
+            this.dtpDesde.TabIndex = 9;
             // 
             // materialLabel3
             // 
@@ -225,6 +301,7 @@
             this.btnSalir.Text = "SALIR";
             this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnAnular
             // 
@@ -273,6 +350,7 @@
             this.btnNuevo.Text = "NUEVO";
             this.btnNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // panel4
             // 
@@ -536,82 +614,6 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 71.18056F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(979, 289);
             this.tableLayoutPanel3.TabIndex = 11;
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.BackColor = System.Drawing.Color.DarkCyan;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Image = global::ERP.Properties.Resources.zoom;
-            this.btnBuscar.Location = new System.Drawing.Point(708, 30);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(32, 32);
-            this.btnBuscar.TabIndex = 13;
-            this.btnBuscar.Tag = "Buscar";
-            this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnBuscar.UseVisualStyleBackColor = false;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
-            // materialLabel2
-            // 
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(560, 42);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(49, 19);
-            this.materialLabel2.TabIndex = 12;
-            this.materialLabel2.Text = "Hasta";
-            // 
-            // materialLabel1
-            // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(421, 42);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(51, 19);
-            this.materialLabel1.TabIndex = 11;
-            this.materialLabel1.Text = "Desde";
-            // 
-            // dtpHasta
-            // 
-            this.dtpHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpHasta.Location = new System.Drawing.Point(611, 42);
-            this.dtpHasta.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.dtpHasta.Name = "dtpHasta";
-            this.dtpHasta.Size = new System.Drawing.Size(91, 20);
-            this.dtpHasta.TabIndex = 10;
-            // 
-            // chbFiltrarFecha
-            // 
-            this.chbFiltrarFecha.AutoSize = true;
-            this.chbFiltrarFecha.Depth = 0;
-            this.chbFiltrarFecha.Font = new System.Drawing.Font("Roboto", 10F);
-            this.chbFiltrarFecha.Location = new System.Drawing.Point(419, 8);
-            this.chbFiltrarFecha.Margin = new System.Windows.Forms.Padding(0);
-            this.chbFiltrarFecha.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.chbFiltrarFecha.MouseState = MaterialSkin.MouseState.HOVER;
-            this.chbFiltrarFecha.Name = "chbFiltrarFecha";
-            this.chbFiltrarFecha.Ripple = true;
-            this.chbFiltrarFecha.Size = new System.Drawing.Size(128, 30);
-            this.chbFiltrarFecha.TabIndex = 8;
-            this.chbFiltrarFecha.Text = "Filtrar por fecha";
-            this.chbFiltrarFecha.UseVisualStyleBackColor = true;
-            // 
-            // dtpDesde
-            // 
-            this.dtpDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDesde.Location = new System.Drawing.Point(474, 42);
-            this.dtpDesde.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.dtpDesde.Name = "dtpDesde";
-            this.dtpDesde.Size = new System.Drawing.Size(84, 20);
-            this.dtpDesde.TabIndex = 9;
             // 
             // frmListado
             // 
