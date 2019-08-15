@@ -32,5 +32,36 @@ namespace ERP.Repositories
                 return query.OrderBy(p => p.Id).ToList();
             }
         }
+
+        public static EVentasDetalles Insertar(int idVenta, int idArticulo, int cantidad, decimal precio, decimal importe)
+        {
+            using (var db = new VentasConexión())
+            {
+                var trx = db.Database.BeginTransaction();
+                try
+                {
+                    var id = db.EVentasDetalles.Any() ? db.EVentasDetalles.Max(a1 => a1.Id) + 1 : 1;
+                    var a = new EVentasDetalles
+                    {
+                        Id = id,
+                        IdEmpresa = Lib.Configuration.IdEmpresa,
+                        IdVenta = idVenta,
+                        IdArticulo = idArticulo,
+                        Importe = importe,
+                        Cantidad = cantidad,
+                        Precio = precio
+                    };
+                    db.EVentasDetalles.Add(a);
+                    db.SaveChanges();
+                    trx.Commit();
+                    return a;
+                }
+                catch (Exception)
+                {
+                    trx.Rollback();
+                    throw;
+                }
+            }
+        }
     }
 }

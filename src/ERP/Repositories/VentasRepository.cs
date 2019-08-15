@@ -45,5 +45,41 @@ namespace ERP.Repositories
                 return db.EVentas.Find(id);
             }
         }
+
+        public static EVentas Insertar(int idCliente, DateTime fecha, decimal importe, decimal descuento, decimal descPorc,
+                                            decimal importeTotal, int PrecioLista, int idUsuario, byte estado)
+        {
+            using (var db = new VentasConexión())
+            {
+                var trx = db.Database.BeginTransaction();
+                try
+                {
+                    var id = db.EVentas.Any() ? db.EVentas.Max(a1 => a1.Id) + 1 : 1;
+                    var a = new EVentas
+                    {
+                        Id = id,
+                        IdEmpresa = Lib.Configuration.IdEmpresa,
+                        IdCliente = idCliente,
+                        Fecha = fecha,                        
+                        Importe = importe,
+                        Descuento = descuento,
+                        DescuentoPorc = descPorc,
+                        ImporteTotal = importeTotal,
+                        PrecioLista = PrecioLista,
+                        IdUsuario = idUsuario,
+                        Estado = estado
+                    };
+                    db.EVentas.Add(a);
+                    db.SaveChanges();
+                    trx.Commit();
+                    return a;
+                }
+                catch (Exception)
+                {
+                    trx.Rollback();
+                    throw;
+                }
+            }
+        }
     }
 }

@@ -41,7 +41,32 @@ namespace ERP.Forms.Ventas
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            using (var f = new Ventas.frmEdicion()) f.ShowDialog();
+            using (var f = new frmEdicion())
+            {
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        var venta = VentasRepository.Insertar(f.IdCliente, f.Fecha, f.ImporteB, f.Descuento,
+                                                            f.DescPorc, f.ImporteTotal, f.PrecioLista, f.IdUsuario, f.Estado);
+
+
+                        for (int i = 0; i <= Convert.ToInt32(f.dgvDetalles.Rows.Count - 1); i++)
+                        {
+                            VentasDetallesRepository.Insertar(venta.Id, Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[0].Value),
+                                    Convert.ToInt16(f.dgvDetalles.Rows[i].Cells[3].Value), Convert.ToDecimal(f.dgvDetalles.Rows[i].Cells[4].Value),
+                                    Convert.ToDecimal(f.dgvDetalles.Rows[i].Cells[5].Value));
+
+                        }
+                        ConsultarDatos();
+                        dgvDatos.SetRow(r => Convert.ToDecimal(r.Cells[0].Value) == venta.Id);
+                    }
+                    catch (Exception ex)
+                    {
+                        ShowError("Error al intentar grabar los datos: \n" + ex.Message);
+                    }
+                }
+            }
         }
 
         private void dgvDatos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -212,6 +237,11 @@ namespace ERP.Forms.Ventas
             dgvDetalles.Columns[3].HeaderText = "Importe";
             dgvDetalles.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvDetalles.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
