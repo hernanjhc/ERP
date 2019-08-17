@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ERP.Repositories;
 using ERP.Models;
+using ERP.Reports.DataSet;
+using ERP.Reports.Designs;
 
 namespace ERP.Forms.Presupuestos
 {
@@ -17,6 +19,10 @@ namespace ERP.Forms.Presupuestos
     {
         decimal _subTotal;
         int _filaArticulo;
+        DataTable _empresa;
+        DataTable _cliente;
+        DataTable _comprobante;
+
         public frmEdicion()
         {
             InitializeComponent();
@@ -348,6 +354,97 @@ namespace ERP.Forms.Presupuestos
         private void dgvDetalles_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
         {
             calcularImportes();
+        }
+
+        private void materialRaisedButton1_Click(object sender, EventArgs e)
+        {
+            using (var dt = ObtenerDatos())
+            {
+                if (dt.Rows.Count > 0)
+                {
+                    MostrarReporte(dt);
+                }
+                else
+                {
+                    ShowError("No hay ningún registro que coincida con su consulta.");
+                }
+            }
+        }
+
+        private void MostrarReporte(DataTable detalles)
+        {
+            using (var reporte = new Presupuesto())
+            {
+                reporte.Database.Tables["Detalles"].SetDataSource(detalles);
+                reporte.Database.Tables["Cliente"].SetDataSource(_cliente);
+                reporte.Database.Tables["Comprobante"].SetDataSource(_comprobante);
+                reporte.Database.Tables["Empresa"].SetDataSource(_empresa);
+                using (var f = new frmReporte(reporte)) f.ShowDialog();
+            }
+        }
+
+        private DataTable ObtenerDatos()
+        {
+            CargaDatosEmpresa();
+            cargaDatosCliente();
+            cargaDatosComprobante();
+            var detalles = CargarDetalles();
+            return detalles;
+        }
+
+        private void cargaDatosComprobante()
+        {
+            var tabla = new dsImpresiones.ComprobanteDataTable();
+            string comprobante = "Presupuesto";
+            string numero = "1";
+            string fecha = "01/01/2019";
+            string lista = "Lista 1";
+            string validez = "10 días";
+            string subTotal = "10,00";
+            string descuento = "0,00";
+            string Total = "10,00";
+            tabla.AddComprobanteRow(comprobante, numero, fecha, lista, validez, subTotal, descuento, Total);
+            _comprobante = tabla;
+        }
+
+        private void cargaDatosCliente()
+        {
+            var tabla = new dsImpresiones.ClienteDataTable();
+            string razonSocial = "Razón Social";
+            string documento = "Documento";
+            string dirección = "Dirección";
+            tabla.AddClienteRow(razonSocial, documento, dirección);
+            _cliente = tabla;
+        }
+
+        private DataTable CargarDetalles()
+        {
+            var tabla = new dsImpresiones.DetallesDataTable(); //new dsImpresiones.AlumnoMorosoDataTable();
+            for (int i = 0; i <= Convert.ToInt32(dgvDetalles.Rows.Count - 1); i++)
+            {
+                string id = Convert.ToString(dgvDetalles.Rows[i].Cells[0].Value);
+                string codBarra = Convert.ToString(dgvDetalles.Rows[i].Cells[1].Value);
+                string descripcion = Convert.ToString(dgvDetalles.Rows[i].Cells[2].Value);
+                string cantidad = Convert.ToString(dgvDetalles.Rows[i].Cells[3].Value);
+                string precio = Convert.ToString(dgvDetalles.Rows[i].Cells[4].Value);
+                string importe = Convert.ToString(dgvDetalles.Rows[i].Cells[5].Value);
+
+                tabla.AddDetallesRow(id, codBarra, descripcion, cantidad, precio, importe);
+            }
+            return tabla;
+        }
+
+        private void CargaDatosEmpresa()
+        {
+            var tabla = new dsImpresiones.EmpresaDataTable();
+            string nombreFantasía = "Nombre Fantasía";
+            string descripcion = "Descripción";
+            string razonSocial = "Razón Social";
+            string documento = "Documento";
+            string dirección = "Dirección";
+            string telefono = "Teléfono";
+            tabla.AddEmpresaRow(nombreFantasía, descripcion, razonSocial, documento, dirección, telefono);
+            _empresa = tabla;
         }
     }
 }
