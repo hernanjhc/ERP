@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using ERP.Repositories;
 using ERP.Models;
 using ERP.Lib;
+using ERP.Reports.Designs;
+using ERP.Forms.Presupuestos;
 
 namespace ERP.Forms.Presupuestos
 {
@@ -51,17 +53,16 @@ namespace ERP.Forms.Presupuestos
                 {
                     try
                     {                        
-                        var presupuesto = PresupuestosRepository.Insertar(f.IdCliente, f.Fecha, f.DiasValidez, f.ImporteB, f.Descuento,
+                        var presupuesto = PresupuestosRepository.Insertar(f.IdCliente, f.Fecha, f.DiasValidez, f.SubTotal, f.Descuento,
                                                             f.DescPorc, f.ImporteTotal, f.PrecioLista, f.IdUsuario, f.Estado);
 
-                       
-                         for (int i = 0; i <= Convert.ToInt32(f.dgvDetalles.Rows.Count-1); i++)
+                        for (int i = 0; i <= Convert.ToInt32(f.dgvDetalles.Rows.Count-1); i++)
                         {
                             PresupuestosDetallesRepository.Insertar(presupuesto.Id, Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[0].Value),
                                     Convert.ToInt16(f.dgvDetalles.Rows[i].Cells[3].Value), Convert.ToDecimal(f.dgvDetalles.Rows[i].Cells[4].Value),
                                     Convert.ToDecimal(f.dgvDetalles.Rows[i].Cells[5].Value));
-                                                            
                         }
+                        ImprimirPresupuesto(f, presupuesto.Id);
                         ConsultarDatos();
                         dgvDatos.SetRow(r => Convert.ToDecimal(r.Cells[0].Value) == presupuesto.Id);
                     }
@@ -72,7 +73,49 @@ namespace ERP.Forms.Presupuestos
                 }
             }
         }
-                
+
+        private void ImprimirPresupuesto(Forms.Presupuestos.frmEdicion f, int idPresupuesto)
+        {
+            using (var dt = f.ObtenerDetalles())
+            {
+                if (dt.Rows.Count > 0)
+                {
+                    string dirección = f.DireccionCliente;
+                    string razónSocial = f.RazónSocialCliente;
+                    string documento = f.Documento.ToString();
+                    string tipoDocumento = f.TipoDocumento.ToString();
+                    string comprobante = "Presupuesto";
+                    string número = idPresupuesto.ToString();
+                    string fecha = f.Fecha.Date.ToString("dd/MM/yyyy");
+                    string subTotal = f.SubTotal.ToString();
+                    string descuento = f.Descuento.ToString();
+                    string total = f.ImporteTotal.ToString();
+                    string validez = f.DiasValidez.ToString();
+                    MostrarReporte(dt, dirección, razónSocial, documento,
+                        tipoDocumento, comprobante, número, fecha,
+                        subTotal, descuento, total, validez);
+                }
+                else
+                {
+                    ShowError("No pudo imprimir el documento.");
+                }
+            }
+        }
+
+        private void MostrarReporte(DataTable detalles, string dirección, string razónSocial, string documento,
+                string tipoDocumento, string comprobante, string número, string fecha,
+                string subtotal, string descuento, string total, string validez)
+        {
+            using (var reporte = new Presupuesto())
+            {
+                reporte.Database.Tables["Detalles"].SetDataSource(detalles);
+                using (
+                    var f = new frmReporte(reporte, dirección,  razónSocial,    documento,
+                                            tipoDocumento,  comprobante,    número, fecha,
+                                            subtotal,   descuento,  total,  validez)) f.ShowDialog();
+            }
+        }
+
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
@@ -255,5 +298,6 @@ namespace ERP.Forms.Presupuestos
             dgvDetalles.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvDetalles.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
         }
+
     }
 }

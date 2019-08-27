@@ -19,9 +19,6 @@ namespace ERP.Forms.Presupuestos
     {
         decimal _subTotal;
         int _filaArticulo;
-        DataTable _empresa;
-        DataTable _cliente;
-        DataTable _comprobante;
 
         public frmEdicion()
         {
@@ -31,8 +28,7 @@ namespace ERP.Forms.Presupuestos
             CargarVendedor();
             rbCodigo.Checked = true;
             CargarProductosCodBarra();
-            cbLista.SelectedIndex = 0;           
-            
+            cbLista.SelectedIndex = 0;            
         }
         
         private void CargarProductosCodBarra()
@@ -106,6 +102,7 @@ namespace ERP.Forms.Presupuestos
 
         private void AgregarArticulo(int idarticulo)
         {
+            if (idarticulo == 0) return;
 
             var art = ArticulosRepository.ObtenerArticulosPorId(idarticulo);
             
@@ -276,7 +273,7 @@ namespace ERP.Forms.Presupuestos
             }
         }
 
-        public Decimal ImporteB
+        public Decimal SubTotal
         {
             get
             {
@@ -305,6 +302,39 @@ namespace ERP.Forms.Presupuestos
             get
             {
                 return Convert.ToDecimal(txtTotal.Text);
+            }
+        }
+
+        public String DireccionCliente
+        {
+            get
+            {
+                return ClientesRepository.ObtenerClientePorId(IdCliente).Direccion;
+            }
+        }
+
+        public String RazónSocialCliente
+        {
+            get
+            {
+                return ClientesRepository.ObtenerClientePorId(IdCliente).RazonSocial;
+            }
+        }
+
+        public String TipoDocumento
+        {
+            get
+            {
+                var c = ClientesRepository.ObtenerClientePorId(IdCliente);
+                return TiposDocumentoRepository.TiposDocumentoPorId(c.IdTipoDocumento).Descripcion.ToString();
+            }
+        }
+
+        public decimal Documento
+        {
+            get
+            {
+                return ClientesRepository.ObtenerClientePorId(IdCliente).NroDocumento;
             }
         }
 
@@ -341,7 +371,7 @@ namespace ERP.Forms.Presupuestos
             {
                 var c = ClientesRepository.ObtenerClientePorId(IdCliente);
                 txtDireccion.Text = c.Direccion;
-                txtDocumento.Text = TiposDocumentoRepository.TiposDocumentoPorId(c.IdTipoDocumento).Descripcion +
+                txtDocumento.Text = TiposDocumentoRepository.TiposDocumentoPorId(c.IdTipoDocumento).Descripcion.ToString() +
                     "  " + c.NroDocumento.ToString().Trim();
             }
         }
@@ -356,70 +386,15 @@ namespace ERP.Forms.Presupuestos
             calcularImportes();
         }
 
-        private void materialRaisedButton1_Click(object sender, EventArgs e)
+        public DataTable ObtenerDetalles()
         {
-            using (var dt = ObtenerDatos())
-            {
-                if (dt.Rows.Count > 0)
-                {
-                    MostrarReporte(dt);
-                }
-                else
-                {
-                    ShowError("No hay ningún registro que coincida con su consulta.");
-                }
-            }
-        }
-
-        private void MostrarReporte(DataTable detalles)
-        {
-            using (var reporte = new Presupuesto())
-            {
-                reporte.Database.Tables["Detalles"].SetDataSource(detalles);
-                reporte.Database.Tables["Cliente"].SetDataSource(_cliente);
-                reporte.Database.Tables["Comprobante"].SetDataSource(_comprobante);
-                reporte.Database.Tables["Empresa"].SetDataSource(_empresa);
-                using (var f = new frmReporte(reporte)) f.ShowDialog();
-            }
-        }
-
-        private DataTable ObtenerDatos()
-        {
-            CargaDatosEmpresa();
-            cargaDatosCliente();
-            cargaDatosComprobante();
             var detalles = CargarDetalles();
             return detalles;
         }
 
-        private void cargaDatosComprobante()
-        {
-            var tabla = new dsImpresiones.ComprobanteDataTable();
-            string comprobante = "Presupuesto";
-            string numero = "1";
-            string fecha = "01/01/2019";
-            string lista = "Lista 1";
-            string validez = "10 días";
-            string subTotal = "10,00";
-            string descuento = "0,00";
-            string Total = "10,00";
-            tabla.AddComprobanteRow(comprobante, numero, fecha, lista, validez, subTotal, descuento, Total);
-            _comprobante = tabla;
-        }
-
-        private void cargaDatosCliente()
-        {
-            var tabla = new dsImpresiones.ClienteDataTable();
-            string razonSocial = "Razón Social";
-            string documento = "Documento";
-            string dirección = "Dirección";
-            tabla.AddClienteRow(razonSocial, documento, dirección);
-            _cliente = tabla;
-        }
-
         private DataTable CargarDetalles()
         {
-            var tabla = new dsImpresiones.DetallesDataTable(); //new dsImpresiones.AlumnoMorosoDataTable();
+            var tabla = new dsImpresiones.DetallesDataTable();
             for (int i = 0; i <= Convert.ToInt32(dgvDetalles.Rows.Count - 1); i++)
             {
                 string id = Convert.ToString(dgvDetalles.Rows[i].Cells[0].Value);
@@ -433,18 +408,6 @@ namespace ERP.Forms.Presupuestos
             }
             return tabla;
         }
-
-        private void CargaDatosEmpresa()
-        {
-            var tabla = new dsImpresiones.EmpresaDataTable();
-            string nombreFantasía = "Nombre Fantasía";
-            string descripcion = "Descripción";
-            string razonSocial = "Razón Social";
-            string documento = "Documento";
-            string dirección = "Dirección";
-            string telefono = "Teléfono";
-            tabla.AddEmpresaRow(nombreFantasía, descripcion, razonSocial, documento, dirección, telefono);
-            _empresa = tabla;
-        }
+        
     }
 }
