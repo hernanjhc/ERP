@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ERP.Models;
+using System.Data;
+using ERP.Reports.DataSet;
 
 namespace ERP.Repositories
 {
@@ -63,5 +65,44 @@ namespace ERP.Repositories
                 }
             }
         }
+
+        public static DataTable CargarDetalles(int idPresupuesto)
+        {
+            var tabla = new dsImpresiones.DetallesDataTable();
+
+            var detalles = ObtenerDetalles(idPresupuesto);
+            foreach (var d in detalles)
+            {
+                string id = d.IdArticulo.ToString();
+                string codBarra = ArticulosRepository.ObtenerArticulosPorId(Convert.ToInt32(d.IdArticulo)).CodBarra;
+                string descripcion = ArticulosRepository.ObtenerArticulosPorId(Convert.ToInt32(d.IdArticulo)).Descripcion;
+                string cantidad = d.Cantidad.ToString();
+                string precio = d.Precio.ToString();
+                string importe = d.Importe.ToString();
+
+                tabla.AddDetallesRow(id, codBarra, descripcion, cantidad, precio, importe);
+            }
+            return tabla;
+        }
+
+        internal static EPresupuestosDetalles ObtenerDetallesPorId(int id)
+        {
+            using (var db = new VentasConexión())
+            {
+                return db.EPresupuestosDetalles.Find(id);
+            }
+        }
+
+        public static IList<EPresupuestosDetalles> ObtenerDetalles(int idPresupuesto)
+        {
+            using (var db = new VentasConexión())
+            {
+                var query = (from a in db.EPresupuestosDetalles
+                             select a).Where(x => x.IdPresupuesto == idPresupuesto)
+                               .ToList();
+                return query.ToList();
+            }
+        }
+
     }
 }

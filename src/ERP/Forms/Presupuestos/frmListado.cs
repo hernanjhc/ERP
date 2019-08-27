@@ -47,16 +47,21 @@ namespace ERP.Forms.Presupuestos
 
         private void btnNuevo_Click_1(object sender, EventArgs e)
         {
+            NuevoPresupuesto();
+        }
+
+        private void NuevoPresupuesto()
+        {
             using (var f = new frmEdicion())
             {
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     try
-                    {                        
+                    {
                         var presupuesto = PresupuestosRepository.Insertar(f.IdCliente, f.Fecha, f.DiasValidez, f.SubTotal, f.Descuento,
                                                             f.DescPorc, f.ImporteTotal, f.PrecioLista, f.IdUsuario, f.Estado);
 
-                        for (int i = 0; i <= Convert.ToInt32(f.dgvDetalles.Rows.Count-1); i++)
+                        for (int i = 0; i <= Convert.ToInt32(f.dgvDetalles.Rows.Count - 1); i++)
                         {
                             PresupuestosDetallesRepository.Insertar(presupuesto.Id, Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[0].Value),
                                     Convert.ToInt16(f.dgvDetalles.Rows[i].Cells[3].Value), Convert.ToDecimal(f.dgvDetalles.Rows[i].Cells[4].Value),
@@ -119,7 +124,6 @@ namespace ERP.Forms.Presupuestos
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
-
         }
 
         private void dgvDatos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -136,6 +140,7 @@ namespace ERP.Forms.Presupuestos
             dgvDatos.Columns[1].HeaderText = "Fecha";
             dgvDatos.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvDatos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dgvDatos.Columns[1].DefaultCellStyle.Format = "dd/MM/yyyy";
 
             dgvDatos.Columns[2].HeaderText = "Validez";
             dgvDatos.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -184,8 +189,16 @@ namespace ERP.Forms.Presupuestos
             txtDireccion.Text = cliente.Direccion; 
             txtSubTotal.Text = p.Importe.ToString().Trim(); 
             txtTotal.Text = p.ImporteTotal.ToString().Trim();
-
+            txtEstado.Text = cargarEstado(p.Estado);
             cargarDetalles(p.Id);
+        }
+
+        private string cargarEstado(int? estado)
+        {
+            string valor = "";
+            if (estado == 1) valor = "Activo";
+            if (estado == 2) valor = "Anulado";
+            return valor;
         }
 
         private void cargarDetalles(int idpresupuesto)
@@ -288,8 +301,7 @@ namespace ERP.Forms.Presupuestos
             dgvDetalles.Columns[1].HeaderText = "Precio";
             dgvDetalles.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvDetalles.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            //dgvDetalles.Columns[1].DefaultCellStyle.Format = "dd/MM/yyyy";
-
+            
             dgvDetalles.Columns[2].HeaderText = "Cantidad";
             dgvDetalles.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvDetalles.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -299,5 +311,66 @@ namespace ERP.Forms.Presupuestos
             dgvDetalles.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
         }
 
+        private void btnAnular_Click(object sender, EventArgs e)
+        {
+            AnularPresupuesto();
+        }
+
+        private void AnularPresupuesto()
+        {
+            var p = ObtenerPresupuestoSeleccionado();
+            if (p == null) return;
+
+            if (MessageBox.Show("¿Está seguro de que desea anular el presupuesto seleccionado?",
+                "Anular Presupuesto", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                PresupuestosRepository.Anular(p.Id);
+            }
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            ReImprimir();
+        }
+
+        private void ReImprimir()
+        {
+            var p = ObtenerPresupuestoSeleccionado();
+            if (p == null) return;
+
+            if (MessageBox.Show("¿Está seguro de que desea ReImprimir el presupuesto seleccionado?",
+                "Imprimirr Presupuesto", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                ImprimirPresupuesto(p);
+            }
+        }
+
+        private void ImprimirPresupuesto(EPresupuestos p)
+        {
+            var cliente = ClientesRepository.ObtenerClientePorId(Convert.ToDecimal(p.IdCliente));
+            string dirección = cliente.Direccion;
+            string razónSocial = cliente.RazonSocial;
+            string documento = cliente.NroDocumento.ToString();
+            string tipoDocumento = TiposDocumentoRepository.TiposDocumentoPorId(cliente.IdTipoDocumento).Descripcion;
+            string comprobante = "Presupuesto";
+            string número = p.Id.ToString();
+            string fecha = String.Format("{0: dd/MM/yyyy}", p.Fecha);
+            string subTotal = p.Importe.ToString();
+            string descuento = p.Descuento.ToString();
+            string total = p.ImporteTotal.ToString();
+            string validez = p.DiasValidez.ToString();
+            DataTable dt = PresupuestosDetallesRepository.CargarDetalles(p.Id);
+
+            MostrarReporte(dt, dirección, razónSocial, documento,
+                tipoDocumento, comprobante, número, fecha,
+                subTotal, descuento, total, validez);
+        }
+
+        
     }
 }

@@ -50,7 +50,7 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.materialSingleLineTextField9 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtEstado = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
             this.txtValidez = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -292,6 +292,7 @@
             this.btnImprimir.Text = "IMPRIMIR";
             this.btnImprimir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnImprimir.UseVisualStyleBackColor = false;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnSalir
             // 
@@ -325,6 +326,7 @@
             this.btnAnular.Text = "ANULAR";
             this.btnAnular.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAnular.UseVisualStyleBackColor = false;
+            this.btnAnular.Click += new System.EventHandler(this.btnAnular_Click);
             // 
             // btnActualizar
             // 
@@ -341,6 +343,7 @@
             this.btnActualizar.Text = "ACTUALIZAR";
             this.btnActualizar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnNuevo
             // 
@@ -377,7 +380,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.materialSingleLineTextField9);
+            this.panel2.Controls.Add(this.txtEstado);
             this.panel2.Controls.Add(this.materialLabel16);
             this.panel2.Controls.Add(this.materialLabel13);
             this.panel2.Controls.Add(this.txtValidez);
@@ -398,20 +401,20 @@
             this.panel2.Size = new System.Drawing.Size(971, 76);
             this.panel2.TabIndex = 0;
             // 
-            // materialSingleLineTextField9
+            // txtEstado
             // 
-            this.materialSingleLineTextField9.Depth = 0;
-            this.materialSingleLineTextField9.Hint = "";
-            this.materialSingleLineTextField9.Location = new System.Drawing.Point(739, 7);
-            this.materialSingleLineTextField9.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField9.Name = "materialSingleLineTextField9";
-            this.materialSingleLineTextField9.PasswordChar = '\0';
-            this.materialSingleLineTextField9.SelectedText = "";
-            this.materialSingleLineTextField9.SelectionLength = 0;
-            this.materialSingleLineTextField9.SelectionStart = 0;
-            this.materialSingleLineTextField9.Size = new System.Drawing.Size(201, 23);
-            this.materialSingleLineTextField9.TabIndex = 31;
-            this.materialSingleLineTextField9.UseSystemPasswordChar = false;
+            this.txtEstado.Depth = 0;
+            this.txtEstado.Hint = "";
+            this.txtEstado.Location = new System.Drawing.Point(739, 7);
+            this.txtEstado.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtEstado.Name = "txtEstado";
+            this.txtEstado.PasswordChar = '\0';
+            this.txtEstado.SelectedText = "";
+            this.txtEstado.SelectionLength = 0;
+            this.txtEstado.SelectionStart = 0;
+            this.txtEstado.Size = new System.Drawing.Size(201, 23);
+            this.txtEstado.TabIndex = 31;
+            this.txtEstado.UseSystemPasswordChar = false;
             // 
             // materialLabel16
             // 
@@ -629,7 +632,7 @@
             this.txtTotal.Enabled = false;
             this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotal.Hint = "";
-            this.txtTotal.Location = new System.Drawing.Point(861, 148);
+            this.txtTotal.Location = new System.Drawing.Point(868, 126);
             this.txtTotal.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.PasswordChar = '\0';
@@ -646,7 +649,7 @@
             this.materialLabel7.Depth = 0;
             this.materialLabel7.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel7.Location = new System.Drawing.Point(770, 148);
+            this.materialLabel7.Location = new System.Drawing.Point(808, 126);
             this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel7.Name = "materialLabel7";
             this.materialLabel7.Size = new System.Drawing.Size(56, 19);
@@ -658,7 +661,7 @@
             this.txtSubTotal.Depth = 0;
             this.txtSubTotal.Enabled = false;
             this.txtSubTotal.Hint = "";
-            this.txtSubTotal.Location = new System.Drawing.Point(861, 119);
+            this.txtSubTotal.Location = new System.Drawing.Point(868, 48);
             this.txtSubTotal.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtSubTotal.Name = "txtSubTotal";
             this.txtSubTotal.PasswordChar = '\0';
@@ -675,7 +678,7 @@
             this.materialLabel6.Depth = 0;
             this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel6.Location = new System.Drawing.Point(770, 119);
+            this.materialLabel6.Location = new System.Drawing.Point(780, 48);
             this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel6.Name = "materialLabel6";
             this.materialLabel6.Size = new System.Drawing.Size(85, 19);
@@ -687,14 +690,14 @@
             this.txtDescuento.Depth = 0;
             this.txtDescuento.Enabled = false;
             this.txtDescuento.Hint = "";
-            this.txtDescuento.Location = new System.Drawing.Point(861, 28);
+            this.txtDescuento.Location = new System.Drawing.Point(868, 86);
             this.txtDescuento.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.PasswordChar = '\0';
             this.txtDescuento.SelectedText = "";
             this.txtDescuento.SelectionLength = 0;
             this.txtDescuento.SelectionStart = 0;
-            this.txtDescuento.Size = new System.Drawing.Size(102, 23);
+            this.txtDescuento.Size = new System.Drawing.Size(95, 23);
             this.txtDescuento.TabIndex = 8;
             this.txtDescuento.UseSystemPasswordChar = false;
             // 
@@ -704,7 +707,7 @@
             this.materialLabel5.Depth = 0;
             this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel5.Location = new System.Drawing.Point(770, 28);
+            this.materialLabel5.Location = new System.Drawing.Point(772, 86);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
             this.materialLabel5.Size = new System.Drawing.Size(93, 19);
@@ -800,7 +803,7 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel13;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtValidez;
         private MaterialSkin.Controls.MaterialLabel materialLabel12;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField9;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtEstado;
         private MaterialSkin.Controls.MaterialLabel materialLabel16;
         private System.Windows.Forms.Button button1;
     }
