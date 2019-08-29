@@ -331,6 +331,7 @@
             // btnActualizar
             // 
             this.btnActualizar.BackColor = System.Drawing.Color.DarkCyan;
+            this.btnActualizar.Enabled = false;
             this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizar.ForeColor = System.Drawing.Color.White;

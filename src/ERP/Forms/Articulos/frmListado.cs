@@ -255,5 +255,10 @@ namespace ERP.Forms.Articulos
                 }
             }
         }
+
+        private void btnImportar_Click(object sender, EventArgs e)
+        {
+            using (var f = new Forms.Articulos.frmImportarArticulos()) f.ShowDialog();
+        }
     }
 }

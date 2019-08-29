@@ -103,6 +103,16 @@ namespace ERP.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap box_down {
+            get {
+                object obj = ResourceManager.GetObject("box_down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap control_fastforward_blue {
             get {
                 object obj = ResourceManager.GetObject("control_fastforward_blue", resourceCulture);
