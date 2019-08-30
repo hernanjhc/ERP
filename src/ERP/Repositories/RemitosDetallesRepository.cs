@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ERP.Models;
+using System.Data;
+using ERP.Reports.DataSet;
 
 namespace ERP.Repositories
 {
@@ -57,6 +59,45 @@ namespace ERP.Repositories
                     trx.Rollback();
                     throw;
                 }
+            }
+        }
+
+        public static DataTable CargarDetalles(int idRemito)
+        {
+            var tabla = new dsImpresiones.DetallesDataTable();
+
+            var detalles = ObtenerDetalles(idRemito);
+            foreach (var d in detalles)
+            {
+                string id = d.IdArticulo.ToString();
+                string codBarra = ArticulosRepository.ObtenerArticulosPorId(Convert.ToInt32(d.IdArticulo)).CodBarra;
+                string descripcion = ArticulosRepository.ObtenerArticulosPorId(Convert.ToInt32(d.IdArticulo)).Descripcion;
+                string cantidad = d.Cantidad.ToString();
+                //string precio = d.Precio.ToString();
+                //string importe = d.Importe.ToString();
+
+                //tabla.AddDetallesRow(id, codBarra, descripcion, cantidad, precio, importe);
+                tabla.AddDetallesRow(id, codBarra, descripcion, cantidad, "", "");
+            }
+            return tabla;
+        }
+
+        internal static ERemitosDetalles ObtenerDetallesPorId(int id)
+        {
+            using (var db = new VentasConexión())
+            {
+                return db.ERemitosDetalles.Find(id);
+            }
+        }
+
+        public static IList<ERemitosDetalles> ObtenerDetalles(int idRemito)
+        {
+            using (var db = new VentasConexión())
+            {
+                var query = (from a in db.ERemitosDetalles
+                             select a).Where(x => x.IdRemito == idRemito)
+                               .ToList();
+                return query.ToList();
             }
         }
     }

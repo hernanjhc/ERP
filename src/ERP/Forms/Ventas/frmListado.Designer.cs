@@ -50,7 +50,7 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.materialSingleLineTextField9 = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtEstado = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
             this.txtNroDoc = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
@@ -289,6 +289,7 @@
             this.btnImprimir.Text = "IMPRIMIR";
             this.btnImprimir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnImprimir.UseVisualStyleBackColor = false;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnSalir
             // 
@@ -322,6 +323,7 @@
             this.btnAnular.Text = "ANULAR";
             this.btnAnular.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAnular.UseVisualStyleBackColor = false;
+            this.btnAnular.Click += new System.EventHandler(this.btnAnular_Click);
             // 
             // btnActualizar
             // 
@@ -374,7 +376,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.materialSingleLineTextField9);
+            this.panel2.Controls.Add(this.txtEstado);
             this.panel2.Controls.Add(this.materialLabel16);
             this.panel2.Controls.Add(this.txtNroDoc);
             this.panel2.Controls.Add(this.materialLabel4);
@@ -392,20 +394,20 @@
             this.panel2.Size = new System.Drawing.Size(971, 76);
             this.panel2.TabIndex = 0;
             // 
-            // materialSingleLineTextField9
+            // txtEstado
             // 
-            this.materialSingleLineTextField9.Depth = 0;
-            this.materialSingleLineTextField9.Hint = "";
-            this.materialSingleLineTextField9.Location = new System.Drawing.Point(532, 10);
-            this.materialSingleLineTextField9.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextField9.Name = "materialSingleLineTextField9";
-            this.materialSingleLineTextField9.PasswordChar = '\0';
-            this.materialSingleLineTextField9.SelectedText = "";
-            this.materialSingleLineTextField9.SelectionLength = 0;
-            this.materialSingleLineTextField9.SelectionStart = 0;
-            this.materialSingleLineTextField9.Size = new System.Drawing.Size(156, 23);
-            this.materialSingleLineTextField9.TabIndex = 33;
-            this.materialSingleLineTextField9.UseSystemPasswordChar = false;
+            this.txtEstado.Depth = 0;
+            this.txtEstado.Hint = "";
+            this.txtEstado.Location = new System.Drawing.Point(532, 10);
+            this.txtEstado.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtEstado.Name = "txtEstado";
+            this.txtEstado.PasswordChar = '\0';
+            this.txtEstado.SelectedText = "";
+            this.txtEstado.SelectionLength = 0;
+            this.txtEstado.SelectionStart = 0;
+            this.txtEstado.Size = new System.Drawing.Size(156, 23);
+            this.txtEstado.TabIndex = 33;
+            this.txtEstado.UseSystemPasswordChar = false;
             // 
             // materialLabel16
             // 
@@ -740,7 +742,7 @@
         private CustomLibrary.ComponentModel.CustomDataGridView dgvDetalles;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtDescuentoPesos;
         private MaterialSkin.Controls.MaterialLabel materialLabel8;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField9;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtEstado;
         private MaterialSkin.Controls.MaterialLabel materialLabel16;
         private System.Windows.Forms.Button button1;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;

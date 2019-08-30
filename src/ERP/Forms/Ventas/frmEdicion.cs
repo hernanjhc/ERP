@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ERP.Repositories;
 using ERP.Models;
+using ERP.Reports.DataSet;
+using ERP.Reports.Designs;
 
 namespace ERP.Forms.Ventas
 {
@@ -69,10 +71,7 @@ namespace ERP.Forms.Ventas
                 return Convert.ToInt32(cbClientes.SelectedValue);
             }
         }
-
-
-
-
+        
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.None;
@@ -265,7 +264,7 @@ namespace ERP.Forms.Ventas
             }
         }               
 
-        public Decimal ImporteB
+        public Decimal Subtotal
         {
             get
             {
@@ -294,6 +293,39 @@ namespace ERP.Forms.Ventas
             get
             {
                 return Convert.ToDecimal(txtTotal.Text);
+            }
+        }
+
+        public String DireccionCliente
+        {
+            get
+            {
+                return ClientesRepository.ObtenerClientePorId(IdCliente).Direccion;
+            }
+        }
+
+        public String RazónSocialCliente
+        {
+            get
+            {
+                return ClientesRepository.ObtenerClientePorId(IdCliente).RazonSocial;
+            }
+        }
+
+        public String TipoDocumento
+        {
+            get
+            {
+                var c = ClientesRepository.ObtenerClientePorId(IdCliente);
+                return TiposDocumentoRepository.TiposDocumentoPorId(c.IdTipoDocumento).Descripcion.ToString();
+            }
+        }
+
+        public decimal Documento
+        {
+            get
+            {
+                return ClientesRepository.ObtenerClientePorId(IdCliente).NroDocumento;
             }
         }
 
@@ -343,6 +375,29 @@ namespace ERP.Forms.Ventas
         private void dgvDetalles_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
         {
             calcularImportes();
+        }
+
+        public DataTable ObtenerDetalles()
+        {
+            var detalles = CargarDetalles();
+            return detalles;
+        }
+
+        private DataTable CargarDetalles()
+        {
+            var tabla = new dsImpresiones.DetallesDataTable();
+            for (int i = 0; i <= Convert.ToInt32(dgvDetalles.Rows.Count - 1); i++)
+            {
+                string id = Convert.ToString(dgvDetalles.Rows[i].Cells[0].Value);
+                string codBarra = Convert.ToString(dgvDetalles.Rows[i].Cells[1].Value);
+                string descripcion = Convert.ToString(dgvDetalles.Rows[i].Cells[2].Value);
+                string cantidad = Convert.ToString(dgvDetalles.Rows[i].Cells[3].Value);
+                string precio = Convert.ToString(dgvDetalles.Rows[i].Cells[4].Value);
+                string importe = Convert.ToString(dgvDetalles.Rows[i].Cells[5].Value);
+
+                tabla.AddDetallesRow(id, codBarra, descripcion, cantidad, precio, importe);
+            }
+            return tabla;
         }
     }
 }

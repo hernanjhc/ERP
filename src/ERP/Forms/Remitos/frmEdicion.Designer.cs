@@ -35,7 +35,6 @@
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.txtDocumento = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.lVendedor = new MaterialSkin.Controls.MaterialLabel();
-            this.Documento = new MaterialSkin.Controls.MaterialLabel();
             this.txtRemitoNro = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.txtDireccion = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -61,6 +60,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancelar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnGuardar = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -88,11 +88,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.materialLabel6);
             this.groupBox1.Controls.Add(this.btnBuscarVenta);
             this.groupBox1.Controls.Add(this.materialDivider1);
             this.groupBox1.Controls.Add(this.txtDocumento);
             this.groupBox1.Controls.Add(this.lVendedor);
-            this.groupBox1.Controls.Add(this.Documento);
             this.groupBox1.Controls.Add(this.txtRemitoNro);
             this.groupBox1.Controls.Add(this.materialLabel5);
             this.groupBox1.Controls.Add(this.txtDireccion);
@@ -161,19 +161,6 @@
             this.lVendedor.Size = new System.Drawing.Size(73, 19);
             this.lVendedor.TabIndex = 11;
             this.lVendedor.Text = "Vendedor";
-            // 
-            // Documento
-            // 
-            this.Documento.AutoSize = true;
-            this.Documento.Depth = 0;
-            this.Documento.Font = new System.Drawing.Font("Roboto", 11F);
-            this.Documento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Documento.Location = new System.Drawing.Point(511, 94);
-            this.Documento.MouseState = MaterialSkin.MouseState.HOVER;
-            this.Documento.Name = "Documento";
-            this.Documento.Size = new System.Drawing.Size(87, 19);
-            this.Documento.TabIndex = 13;
-            this.Documento.Text = "Documento";
             // 
             // txtRemitoNro
             // 
@@ -476,6 +463,19 @@
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // materialLabel6
+            // 
+            this.materialLabel6.AutoSize = true;
+            this.materialLabel6.Depth = 0;
+            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel6.Location = new System.Drawing.Point(511, 94);
+            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel6.Name = "materialLabel6";
+            this.materialLabel6.Size = new System.Drawing.Size(87, 19);
+            this.materialLabel6.TabIndex = 21;
+            this.materialLabel6.Text = "Documento";
+            // 
             // frmEdicion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -502,7 +502,7 @@
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtDocumento;
         private MaterialSkin.Controls.MaterialLabel lVendedor;
-        private MaterialSkin.Controls.MaterialLabel Documento;
+        //private MaterialSkin.Controls.MaterialLabel Documento;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtRemitoNro;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtDireccion;
@@ -529,5 +529,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
         public CustomLibrary.ComponentModel.CustomDataGridView dgvDetalles;
+        private MaterialSkin.Controls.MaterialLabel materialLabel6;
     }
 }

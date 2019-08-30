@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using ERP.Repositories;
 using ERP.Models;
 using ERP.Lib;
+using ERP.Reports.Designs;
 
 namespace ERP.Forms.Remitos
 {
@@ -65,7 +66,7 @@ namespace ERP.Forms.Remitos
             dgvDatos.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
-        private ERemitos ObtenerRemittoSeleccionado()
+        private ERemitos ObtenerRemitoSeleccionado()
         {
             try
             {
@@ -82,7 +83,7 @@ namespace ERP.Forms.Remitos
 
         private void dgvDatos_SelectionChanged(object sender, EventArgs e)
         {
-            var p = ObtenerRemittoSeleccionado();
+            var p = ObtenerRemitoSeleccionado();
             if (p == null)
             {
                 limpiarTxt();
@@ -97,7 +98,8 @@ namespace ERP.Forms.Remitos
             txtNroDoc.Text = cliente.NroDocumento.ToString();
             txtVentaNro.Text = Convert.ToString(p.IdVenta);
             txtDireccion.Text = cliente.Direccion;
-            
+            txtEstado.Text = cargarEstado(p.Estado);
+
 
             cargarDetalles(p.Id);
         }
@@ -203,6 +205,11 @@ namespace ERP.Forms.Remitos
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+            nuevoRemito();
+        }
+
+        private void nuevoRemito()
+        {
             using (var f = new frmEdicion())
             {
                 if (f.ShowDialog() == DialogResult.OK)
@@ -221,6 +228,7 @@ namespace ERP.Forms.Remitos
                                     Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[3].Value));
 
                         }
+                        ImprimirRemito(f, remito.Id);
                         ConsultarDatos();
                         dgvDatos.SetRow(r => Convert.ToDecimal(r.Cells[0].Value) == remito.Id);
                     }
@@ -232,9 +240,122 @@ namespace ERP.Forms.Remitos
             }
         }
 
+        private void ImprimirRemito(frmEdicion f, int idRemito)
+        {
+            using (var dt = f.ObtenerDetalles())
+            {
+                if (dt.Rows.Count > 0)
+                {
+                    string dirección = f.DireccionCliente;
+                    string razónSocial = f.RazónSocialCliente;
+                    string documento = f.Documento.ToString();
+                    string tipoDocumento = f.TipoDocumento.ToString();
+                    string comprobante = "Remito";
+                    string número = idRemito.ToString();
+                    string fecha = f.Fecha.Date.ToString("dd/MM/yyyy");
+                    //string subTotal = f.SubTotal.ToString();
+                    //string descuento = f.Descuento.ToString();
+                    //string total = f.ImporteTotal.ToString();
+                    //string validez = f.DiasValidez.ToString();
+                    //MostrarReporte(dt, dirección, razónSocial, documento,
+                    //    tipoDocumento, comprobante, número, fecha,
+                    //    subTotal, descuento, total, validez);
+                    MostrarReporte(dt, dirección, razónSocial, documento,
+                        tipoDocumento, comprobante, número, fecha);
+                }
+                else
+                {
+                    ShowError("No pudo imprimir el documento.");
+                }
+            }
+        }
+
+        //private void MostrarReporte(DataTable detalles, string dirección, string razónSocial, string documento,
+        //       string tipoDocumento, string comprobante, string número, string fecha,
+        //       string subtotal, string descuento, string total, string validez)
+        private void MostrarReporte(DataTable detalles, string dirección, string razónSocial, string documento,
+               string tipoDocumento, string comprobante, string número, string fecha)
+        {
+            using (var reporte = new Presupuesto())
+            {
+                reporte.Database.Tables["Detalles"].SetDataSource(detalles);
+                using (
+                    //var f = new frmReporte(reporte, dirección, razónSocial, documento,
+                    //                        tipoDocumento, comprobante, número, fecha,
+                    //                        subtotal, descuento, total, validez)) f.ShowDialog();
+                    var f = new frmReporte(reporte, dirección, razónSocial, documento,
+                                            tipoDocumento, comprobante, número, fecha,"","","","")) f.ShowDialog();
+            }
+        }
+
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private string cargarEstado(int? estado)
+        {
+            string valor = "";
+            if (estado == 1) valor = "Activo";
+            if (estado == 2) valor = "Anulado";
+            return valor;
+        }
+
+        private void btnAnular_Click(object sender, EventArgs e)
+        {
+            AnularRemito();
+        }
+
+        private void AnularRemito()
+        {
+            var p = ObtenerRemitoSeleccionado();
+            if (p == null) return;
+
+            if (MessageBox.Show("¿Está seguro de que desea anular el remito seleccionado?",
+                "Anular Remito", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                RemitosRepository.Anular(p.Id);
+            }
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            ReImprimir();
+        }
+
+        private void ReImprimir()
+        {
+            var p = ObtenerRemitoSeleccionado();
+            if (p == null) return;
+
+            if (MessageBox.Show("¿Está seguro de que desea ReImprimir el remito seleccionado?",
+                "Imprimirr Remito", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                ImprimirRemito(p);
+            }
+        }
+
+        private void ImprimirRemito(ERemitos p)
+        {
+            var cliente = ClientesRepository.ObtenerClientePorId(Convert.ToDecimal(p.IdCliente));
+            string dirección = cliente.Direccion;
+            string razónSocial = cliente.RazonSocial;
+            string documento = cliente.NroDocumento.ToString();
+            string tipoDocumento = TiposDocumentoRepository.TiposDocumentoPorId(cliente.IdTipoDocumento).Descripcion;
+            string comprobante = "Remito";
+            string número = p.Id.ToString();
+            string fecha = String.Format("{0: dd/MM/yyyy}", p.Fecha);
+            //string subTotal = p.Importe.ToString();
+            //string descuento = p.Descuento.ToString();
+            //string total = p.ImporteTotal.ToString();
+            //string validez = p.DiasValidez.ToString();
+            DataTable dt = RemitosDetallesRepository.CargarDetalles(p.Id);
+
+            //MostrarReporte(dt, dirección, razónSocial, documento,
+            //    tipoDocumento, comprobante, número, fecha,
+            //    subTotal, descuento, total, validez);
+            MostrarReporte(dt, dirección, razónSocial, documento,
+                tipoDocumento, comprobante, número, fecha);
         }
     }
 }

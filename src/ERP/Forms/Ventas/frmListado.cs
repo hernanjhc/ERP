@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using ERP.Repositories;
 using ERP.Models;
 using ERP.Lib;
+using ERP.Reports.Designs;
 
 namespace ERP.Forms.Ventas
 {
@@ -41,13 +42,18 @@ namespace ERP.Forms.Ventas
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+            nuevaVenta();
+        }
+
+        private void nuevaVenta()
+        {
             using (var f = new frmEdicion())
             {
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {
-                        var venta = VentasRepository.Insertar(f.IdCliente, f.Fecha, f.ImporteB, f.Descuento,
+                        var venta = VentasRepository.Insertar(f.IdCliente, f.Fecha, f.Subtotal, f.Descuento,
                                                             f.DescPorc, f.ImporteTotal, f.PrecioLista, f.IdUsuario, f.Estado);
 
 
@@ -58,6 +64,7 @@ namespace ERP.Forms.Ventas
                                     Convert.ToDecimal(f.dgvDetalles.Rows[i].Cells[5].Value));
 
                         }
+                        ImprimirVenta(f, venta.Id);
                         ConsultarDatos();
                         dgvDatos.SetRow(r => Convert.ToDecimal(r.Cells[0].Value) == venta.Id);
                     }
@@ -66,6 +73,57 @@ namespace ERP.Forms.Ventas
                         ShowError("Error al intentar grabar los datos: \n" + ex.Message);
                     }
                 }
+            }
+        }
+
+        private void ImprimirVenta(frmEdicion f, object idVenta)
+        {
+            using (var dt = f.ObtenerDetalles())
+            {
+                if (dt.Rows.Count > 0)
+                {
+                    string dirección = f.DireccionCliente;
+                    string razónSocial = f.RazónSocialCliente;
+                    string documento = f.Documento.ToString();
+                    string tipoDocumento = f.TipoDocumento.ToString();
+                    string comprobante = "Venta";
+                    string número = idVenta.ToString();
+                    string fecha = f.Fecha.Date.ToString("dd/MM/yyyy");
+                    string subTotal = f.Subtotal.ToString();
+                    string descuento = f.Descuento.ToString();
+                    string total = f.ImporteTotal.ToString();
+                    //string validez = f.DiasValidez.ToString();
+                    //MostrarReporte(dt, dirección, razónSocial, documento,
+                    //    tipoDocumento, comprobante, número, fecha,
+                    //    subTotal, descuento, total, validez);
+                    MostrarReporte(dt, dirección, razónSocial, documento,
+                        tipoDocumento, comprobante, número, fecha,
+                        subTotal, descuento, total);
+                }
+                else
+                {
+                    ShowError("No pudo imprimir el documento.");
+                }
+            }
+        }
+
+        //private void MostrarReporte(DataTable detalles, string dirección, string razónSocial, string documento,
+        //        string tipoDocumento, string comprobante, string número, string fecha,
+        //        string subtotal, string descuento, string total, string validez)
+        private void MostrarReporte(DataTable detalles, string dirección, string razónSocial, string documento,
+                string tipoDocumento, string comprobante, string número, string fecha,
+                string subtotal, string descuento, string total)
+        {
+            using (var reporte = new Presupuesto())
+            {
+                reporte.Database.Tables["Detalles"].SetDataSource(detalles);
+                using (
+                    //var f = new frmReporte(reporte, dirección, razónSocial, documento,
+                    //                        tipoDocumento, comprobante, número, fecha,
+                    //                        subtotal, descuento, total, validez)) f.ShowDialog();
+                    var f = new frmReporte(reporte, dirección, razónSocial, documento,
+                                            tipoDocumento, comprobante, número, fecha,
+                                            subtotal, descuento, total,"")) f.ShowDialog();
             }
         }
 
@@ -126,8 +184,17 @@ namespace ERP.Forms.Ventas
             txtDireccion.Text = cliente.Direccion;
             txtSubTotal.Text = p.Importe.ToString().Trim();
             txtTotal.Text = p.ImporteTotal.ToString().Trim();
+            txtEstado.Text = cargarEstado(p.Estado);
 
             cargarDetalles(p.Id);
+        }
+
+        private string cargarEstado(int? estado)
+        {
+            string valor = "";
+            if (estado == 1) valor = "Activo";
+            if (estado == 2) valor = "Anulado";
+            return valor;
         }
 
         private void cargarDetalles(int idVenta)
@@ -242,6 +309,64 @@ namespace ERP.Forms.Ventas
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnAnular_Click(object sender, EventArgs e)
+        {
+            AnularRemito();
+        }
+
+        private void AnularRemito()
+        {
+            var p = ObtenerVentaSeleccionada();
+            if (p == null) return;
+
+            if (MessageBox.Show("¿Está seguro de que desea anular la venta seleccionada?",
+                "Anular Venta", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                VentasRepository.Anular(p.Id);
+            }
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            ReImprimir();
+        }
+
+        private void ReImprimir()
+        {
+            var p = ObtenerVentaSeleccionada();
+            if (p == null) return;
+
+            if (MessageBox.Show("¿Está seguro de que desea ReImprimir la venta seleccionada?",
+                "Imprimir Venta", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                ImprimirVenta(p);
+            }
+        }
+
+        private void ImprimirVenta(EVentas p)
+        {
+            var cliente = ClientesRepository.ObtenerClientePorId(Convert.ToDecimal(p.IdCliente));
+            string dirección = cliente.Direccion;
+            string razónSocial = cliente.RazonSocial;
+            string documento = cliente.NroDocumento.ToString();
+            string tipoDocumento = TiposDocumentoRepository.TiposDocumentoPorId(cliente.IdTipoDocumento).Descripcion;
+            string comprobante = "Venta";
+            string número = p.Id.ToString();
+            string fecha = String.Format("{0: dd/MM/yyyy}", p.Fecha);
+            string subTotal = p.Importe.ToString();
+            string descuento = p.Descuento.ToString();
+            string total = p.ImporteTotal.ToString();
+            //string validez = p.DiasValidez.ToString();
+            DataTable dt = VentasDetallesRepository.CargarDetalles(p.Id);
+
+            //MostrarReporte(dt, dirección, razónSocial, documento,
+            //    tipoDocumento, comprobante, número, fecha,
+            //    subTotal, descuento, total, validez);
+            MostrarReporte(dt, dirección, razónSocial, documento,
+                tipoDocumento, comprobante, número, fecha,
+                subTotal, descuento, total);
         }
     }
 }

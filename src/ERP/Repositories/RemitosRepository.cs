@@ -83,5 +83,29 @@ namespace ERP.Repositories
                 }
             }
         }
+
+        public static void Anular(int id)
+        {
+            using (var db = new VentasConexión())
+            {
+                var trx = db.Database.BeginTransaction();
+                try
+                {
+                    if (!db.ERemitos.Any(t => t.Id == id))
+                    {
+                        throw new Exception(String.Format("No existe el Remito {0}", id));
+                    }
+                    var p = db.ERemitos.Find(id);
+                    p.Estado = 2;   // anulado
+                    db.SaveChanges();
+                    trx.Commit();
+                }
+                catch (Exception)
+                {
+                    trx.Rollback();
+                    throw;
+                }
+            }
+        }
     }
 }
