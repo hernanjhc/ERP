@@ -1,7 +1,27 @@
+FUNCIONA==>
+1 - Productos (ABM)
+		Alta
+		Baja
+		MOdificación
+2 - Clientes ABM
+3 - Seguridad
+		Grupos, Usuarios, Permisos
+4 - Presupuestos
+		Nuevo, con impresión
+5 - Ventas
+		Nuevo, con impresión
+		NO COBRA
+FALTA==>
 l - Login
 		activar tecla [Enter]
 2 - Principal
 		Seguridad
-			Usuarios - ok
-			Cambiar contraseña - ok
 			Grupos - falta eliminar
+3 - Cobrar en Ventas
+		A cuenta
+		Efectivo
+4 - Actualizar Stock
+		Por venta
+		Por compra
+		Por devolución de producto
+		Movimiento de un depósito a otro depósito

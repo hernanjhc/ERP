@@ -1,4 +1,5 @@
 ﻿using ERP.Lib.AppForms;
+using ERP.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,6 +37,8 @@ namespace ERP.Forms.Articulos
                 return;
             }
 
+            //var excel = ArticulosBetaRepository.LeerExcel(Archivo);
+                //ArticulosBetaRepository.LeerExcel(Archivo);
             //var rendición = RendicionBSERepository.CargarRendición(Archivo);
 
             //_pagos = from p in PagosBSERepository.ObtenerPagosRelacionados(rendición) orderby p.Id select p;

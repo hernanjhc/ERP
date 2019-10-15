@@ -53,6 +53,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="LinqToExcel, Version=1.11.0.0, Culture=neutral, PublicKeyToken=9c8ea65a58f03f1f, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqToExcel.1.11.0\lib\LinqToExcel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
       <Private>True</Private>
@@ -63,6 +67,18 @@
     </Reference>
     <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Remotion, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqToExcel.1.11.0\lib\Remotion.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Remotion.Data.Linq, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqToExcel.1.11.0\lib\Remotion.Data.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Remotion.Interfaces, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqToExcel.1.11.0\lib\Remotion.Interfaces.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -329,6 +345,7 @@
     <Compile Include="Lib\Security\StringCipher.cs" />
     <Compile Include="Lib\Session.cs" />
     <Compile Include="Lib\Validations\FormValidations.cs" />
+    <Compile Include="Models\articulosBeta.cs" />
     <Compile Include="Models\Bancos.cs">
       <DependentUpon>ERP.tt</DependentUpon>
     </Compile>
@@ -448,6 +465,7 @@
       <DependentUpon>Presupuesto.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Repositories\ArticulosBetaRepository.cs" />
     <Compile Include="Repositories\ArticulosRepository.cs" />
     <Compile Include="Repositories\BancosRepository.cs" />
     <Compile Include="Repositories\BarriosRepository.cs" />
@@ -655,6 +673,7 @@
     <Content Include="Resources\add.png" />
     <Content Include="Resources\app2.ico" />
     <Content Include="Resources\arrow_refresh.png" />
+    <None Include="Resources\articulo.xlsx" />
     <None Include="Resources\attach.png" />
     <None Include="Resources\box_down.png" />
     <Content Include="Resources\control_fastforward_blue.png" />
