@@ -32,6 +32,16 @@ namespace ERP.Lib
                 return 1;
             }
         }
+
+        public static string Version
+        {
+            get
+            {
+                System.Reflection.Assembly assembly = System.Reflection.Assembly.GetExecutingAssembly();
+                var v = System.Diagnostics.FileVersionInfo.GetVersionInfo(assembly.Location);
+                return v.FileVersion;
+            }
+        }
         
     }
 }

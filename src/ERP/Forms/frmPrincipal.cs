@@ -38,6 +38,8 @@ namespace ERP.Forms
                 archivoToolStripMenuItem.Visible = true;
                 salirToolStripMenuItem.Enabled = true;
                 salirToolStripMenuItem.Visible = true;
+                tsLogin.Text = Lib.Session.CurrentUser.NombreCompleto;
+                tsVersion.Text = "v. " + Lib.Configuration.Version;
                 return true;
             }
             return false;

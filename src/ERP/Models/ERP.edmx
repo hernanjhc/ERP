@@ -309,13 +309,13 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Contraseña" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="FechaAlta" Type="datetime" Nullable="false" />
-          <Property Name="Estado" Type="tinyint" Nullable="false" />
+          <Property Name="Id" Nullable="false" Type="int" />
+          <Property Name="Nombre" Nullable="false" MaxLength="50" Type="varchar" />
+          <Property Name="Contraseña" Nullable="false" MaxLength="255" Type="varchar" />
+          <Property Name="FechaAlta" Nullable="false" Type="datetime" />
+          <Property Name="Estado" Nullable="false" Type="tinyint" />
           <Property Name="FechaBaja" Type="datetime" />
-          <Property Name="NombreCompleto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NombreCompleto" Nullable="false" MaxLength="50" Type="varchar" />
         </EntityType>
         <EntityType Name="UsuariosItemsMenu">
           <Key>
@@ -506,8 +506,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_EPresupuestos_Usuarios">
-          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
-          <End Role="EPresupuestos" Type="Self.EPresupuestos" Multiplicity="*" />
+          <End Type="Self.Usuarios" Multiplicity="0..1" Role="Usuarios" />
+          <End Type="Self.EPresupuestos" Multiplicity="*" Role="EPresupuestos" />
           <ReferentialConstraint>
             <Principal Role="Usuarios">
               <PropertyRef Name="Id" />
@@ -578,8 +578,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ERemitos_Usuarios">
-          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
-          <End Role="ERemitos" Type="Self.ERemitos" Multiplicity="*" />
+          <End Type="Self.Usuarios" Multiplicity="0..1" Role="Usuarios" />
+          <End Type="Self.ERemitos" Multiplicity="*" Role="ERemitos" />
           <ReferentialConstraint>
             <Principal Role="Usuarios">
               <PropertyRef Name="Id" />
@@ -662,8 +662,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_EVentas_Usuarios">
-          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1" />
-          <End Role="EVentas" Type="Self.EVentas" Multiplicity="*" />
+          <End Type="Self.Usuarios" Multiplicity="0..1" Role="Usuarios" />
+          <End Type="Self.EVentas" Multiplicity="*" Role="EVentas" />
           <ReferentialConstraint>
             <Principal Role="Usuarios">
               <PropertyRef Name="Id" />
@@ -746,8 +746,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_GruposUsuarios_Usuarios">
-          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
-          <End Role="GruposUsuarios" Type="Self.GruposUsuarios" Multiplicity="*" />
+          <End Type="Self.Usuarios" Multiplicity="1" Role="Usuarios" />
+          <End Type="Self.GruposUsuarios" Multiplicity="*" Role="GruposUsuarios" />
           <ReferentialConstraint>
             <Principal Role="Usuarios">
               <PropertyRef Name="Id" />
@@ -818,8 +818,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UsuariosItemsMenu_Usuarios">
-          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
-          <End Role="UsuariosItemsMenu" Type="Self.UsuariosItemsMenu" Multiplicity="*" />
+          <End Type="Self.Usuarios" Multiplicity="1" Role="Usuarios" />
+          <End Type="Self.UsuariosItemsMenu" Multiplicity="*" Role="UsuariosItemsMenu" />
           <ReferentialConstraint>
             <Principal Role="Usuarios">
               <PropertyRef Name="Id" />
@@ -918,8 +918,8 @@
             <End Role="EPresupuestos" EntitySet="EPresupuestos" />
           </AssociationSet>
           <AssociationSet Name="FK_EPresupuestos_Usuarios" Association="Self.FK_EPresupuestos_Usuarios">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="EPresupuestos" EntitySet="EPresupuestos" />
+            <End EntitySet="Usuarios" Role="Usuarios" />
+            <End EntitySet="EPresupuestos" Role="EPresupuestos" />
           </AssociationSet>
           <AssociationSet Name="FK_EPresupuestosDetalles_Articulos" Association="Self.FK_EPresupuestosDetalles_Articulos">
             <End Role="EArticulos" EntitySet="EArticulos" />
@@ -942,8 +942,8 @@
             <End Role="ERemitos" EntitySet="ERemitos" />
           </AssociationSet>
           <AssociationSet Name="FK_ERemitos_Usuarios" Association="Self.FK_ERemitos_Usuarios">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="ERemitos" EntitySet="ERemitos" />
+            <End EntitySet="Usuarios" Role="Usuarios" />
+            <End EntitySet="ERemitos" Role="ERemitos" />
           </AssociationSet>
           <AssociationSet Name="FK_ERemitosDetalles_Articulos" Association="Self.FK_ERemitosDetalles_Articulos">
             <End Role="EArticulos" EntitySet="EArticulos" />
@@ -970,8 +970,8 @@
             <End Role="EVentas" EntitySet="EVentas" />
           </AssociationSet>
           <AssociationSet Name="FK_EVentas_Usuarios" Association="Self.FK_EVentas_Usuarios">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="EVentas" EntitySet="EVentas" />
+            <End EntitySet="Usuarios" Role="Usuarios" />
+            <End EntitySet="EVentas" Role="EVentas" />
           </AssociationSet>
           <AssociationSet Name="FK_EVentasDetalles_Articulos" Association="Self.FK_EVentasDetalles_Articulos">
             <End Role="EArticulos" EntitySet="EArticulos" />
@@ -998,8 +998,8 @@
             <End Role="GruposUsuarios" EntitySet="GruposUsuarios" />
           </AssociationSet>
           <AssociationSet Name="FK_GruposUsuarios_Usuarios" Association="Self.FK_GruposUsuarios_Usuarios">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="GruposUsuarios" EntitySet="GruposUsuarios" />
+            <End EntitySet="Usuarios" Role="Usuarios" />
+            <End EntitySet="GruposUsuarios" Role="GruposUsuarios" />
           </AssociationSet>
           <AssociationSet Name="FK_Localidades_Departamentos" Association="Self.FK_Localidades_Departamentos">
             <End Role="Departamentos" EntitySet="Departamentos" />
@@ -1022,8 +1022,8 @@
             <End Role="UsuariosItemsMenu" EntitySet="UsuariosItemsMenu" />
           </AssociationSet>
           <AssociationSet Name="FK_UsuariosItemsMenu_Usuarios" Association="Self.FK_UsuariosItemsMenu_Usuarios">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="UsuariosItemsMenu" EntitySet="UsuariosItemsMenu" />
+            <End EntitySet="Usuarios" Role="Usuarios" />
+            <End EntitySet="UsuariosItemsMenu" Role="UsuariosItemsMenu" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -1247,13 +1247,13 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Contraseña" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Estado" Type="Byte" Nullable="false" />
-          <Property Name="FechaBaja" Type="DateTime" Precision="3" />
-          <Property Name="NombreCompleto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id" Nullable="false" Type="Int32" />
+          <Property Name="Nombre" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="Contraseña" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" Type="String" />
+          <Property Name="FechaAlta" Nullable="false" Precision="3" Type="DateTime" />
+          <Property Name="Estado" Nullable="false" Type="Byte" />
+          <Property Name="FechaBaja" Precision="3" Type="DateTime" />
+          <Property Name="NombreCompleto" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
           <NavigationProperty Name="GruposUsuarios" Relationship="Self.FK_GruposUsuarios_Usuarios" FromRole="Usuarios" ToRole="GruposUsuarios" />
           <NavigationProperty Name="UsuariosItemsMenu" Relationship="Self.FK_UsuariosItemsMenu_Usuarios" FromRole="Usuarios" ToRole="UsuariosItemsMenu" />
           <NavigationProperty Name="EPresupuestos" Relationship="VentasModel.FK_EPresupuestos_Usuarios" FromRole="Usuarios" ToRole="EPresupuestos" />
@@ -1475,8 +1475,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_GruposUsuarios_Usuarios">
-          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
-          <End Role="GruposUsuarios" Type="Self.GruposUsuarios" Multiplicity="*" />
+          <End Type="Self.Usuarios" Multiplicity="1" Role="Usuarios" />
+          <End Type="Self.GruposUsuarios" Multiplicity="*" Role="GruposUsuarios" />
           <ReferentialConstraint>
             <Principal Role="Usuarios">
               <PropertyRef Name="Id" />
@@ -1511,8 +1511,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UsuariosItemsMenu_Usuarios">
-          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
-          <End Role="UsuariosItemsMenu" Type="Self.UsuariosItemsMenu" Multiplicity="*" />
+          <End Type="Self.Usuarios" Multiplicity="1" Role="Usuarios" />
+          <End Type="Self.UsuariosItemsMenu" Multiplicity="*" Role="UsuariosItemsMenu" />
           <ReferentialConstraint>
             <Principal Role="Usuarios">
               <PropertyRef Name="Id" />
@@ -1610,8 +1610,8 @@
             <End Role="GruposItemsMenu" EntitySet="GruposItemsMenu" />
           </AssociationSet>
           <AssociationSet Name="FK_GruposUsuarios_Usuarios" Association="Self.FK_GruposUsuarios_Usuarios">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="GruposUsuarios" EntitySet="GruposUsuarios" />
+            <End EntitySet="Usuarios" Role="Usuarios" />
+            <End EntitySet="GruposUsuarios" Role="GruposUsuarios" />
           </AssociationSet>
           <AssociationSet Name="FK_UsuariosItemsMenu_ItemsMenu" Association="Self.FK_UsuariosItemsMenu_ItemsMenu">
             <End Role="ItemsMenu" EntitySet="ItemsMenu" />
@@ -1622,8 +1622,8 @@
             <End Role="Proveedores" EntitySet="Proveedores" />
           </AssociationSet>
           <AssociationSet Name="FK_UsuariosItemsMenu_Usuarios" Association="Self.FK_UsuariosItemsMenu_Usuarios">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="UsuariosItemsMenu" EntitySet="UsuariosItemsMenu" />
+            <End EntitySet="Usuarios" Role="Usuarios" />
+            <End EntitySet="UsuariosItemsMenu" Role="UsuariosItemsMenu" />
           </AssociationSet>
           <EntitySet Name="EArticulos" EntityType="VentasModel.EArticulos" />
           <AssociationSet Name="FK_EArticulos_Empresas" Association="VentasModel.FK_EArticulos_Empresas">
@@ -1671,8 +1671,8 @@
             <End Role="EPresupuestosDetalles" EntitySet="EPresupuestosDetalles" />
           </AssociationSet>
           <AssociationSet Name="FK_EPresupuestos_Usuarios" Association="VentasModel.FK_EPresupuestos_Usuarios">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="EPresupuestos" EntitySet="EPresupuestos" />
+            <End EntitySet="Usuarios" Role="Usuarios" />
+            <End EntitySet="EPresupuestos" Role="EPresupuestos" />
           </AssociationSet>
           <AssociationSet Name="FK_EPresupuestosDetalles_Presupuestos" Association="VentasModel.FK_EPresupuestosDetalles_Presupuestos">
             <End Role="EPresupuestos" EntitySet="EPresupuestos" />
@@ -1719,16 +1719,16 @@
             <End Role="ERemitos" EntitySet="ERemitos" />
           </AssociationSet>
           <AssociationSet Name="FK_ERemitos_Usuarios" Association="VentasModel.FK_ERemitos_Usuarios">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="ERemitos" EntitySet="ERemitos" />
+            <End EntitySet="Usuarios" Role="Usuarios" />
+            <End EntitySet="ERemitos" Role="ERemitos" />
           </AssociationSet>
           <AssociationSet Name="FK_ERemitosDetalles_Remitos" Association="VentasModel.FK_ERemitosDetalles_Remitos">
             <End Role="ERemitos" EntitySet="ERemitos" />
             <End Role="ERemitosDetalles" EntitySet="ERemitosDetalles" />
           </AssociationSet>
           <AssociationSet Name="FK_EVentas_Usuarios" Association="VentasModel.FK_EVentas_Usuarios">
-            <End Role="Usuarios" EntitySet="Usuarios" />
-            <End Role="EVentas" EntitySet="EVentas" />
+            <End EntitySet="Usuarios" Role="Usuarios" />
+            <End EntitySet="EVentas" Role="EVentas" />
           </AssociationSet>
           <AssociationSet Name="FK_EVentasDetalles_Ventas" Association="VentasModel.FK_EVentasDetalles_Ventas">
             <End Role="EVentas" EntitySet="EVentas" />
@@ -1958,8 +1958,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_EPresupuestos_Usuarios">
-          <End Type="VentasModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
-          <End Type="VentasModel.EPresupuestos" Role="EPresupuestos" Multiplicity="*" />
+          <End Type="VentasModel.Usuarios" Multiplicity="0..1" Role="Usuarios" />
+          <End Type="VentasModel.EPresupuestos" Multiplicity="*" Role="EPresupuestos" />
           <ReferentialConstraint>
             <Principal Role="Usuarios">
               <PropertyRef Name="Id" />
@@ -2160,8 +2160,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ERemitos_Usuarios">
-          <End Type="VentasModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
-          <End Type="VentasModel.ERemitos" Role="ERemitos" Multiplicity="*" />
+          <End Type="VentasModel.Usuarios" Multiplicity="0..1" Role="Usuarios" />
+          <End Type="VentasModel.ERemitos" Multiplicity="*" Role="ERemitos" />
           <ReferentialConstraint>
             <Principal Role="Usuarios">
               <PropertyRef Name="Id" />
@@ -2184,8 +2184,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_EVentas_Usuarios">
-          <End Type="VentasModel.Usuarios" Role="Usuarios" Multiplicity="0..1" />
-          <End Type="VentasModel.EVentas" Role="EVentas" Multiplicity="*" />
+          <End Type="VentasModel.Usuarios" Multiplicity="0..1" Role="Usuarios" />
+          <End Type="VentasModel.EVentas" Multiplicity="*" Role="EVentas" />
           <ReferentialConstraint>
             <Principal Role="Usuarios">
               <PropertyRef Name="Id" />

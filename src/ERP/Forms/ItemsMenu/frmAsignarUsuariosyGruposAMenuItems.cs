@@ -95,7 +95,7 @@ namespace ERP.Forms.ItemsMenu
             var datos = consulta(ItemMenu.Id, asignados);
             lbAsignados.DataSource = datos;
             lbAsignados.ValueMember = "Id";
-            if (typeof(T).Name == "Usuario")
+            if (typeof(T).Name == "Usuarios")
             {
                 lbAsignados.DisplayMember = "NombreCompleto";
             }

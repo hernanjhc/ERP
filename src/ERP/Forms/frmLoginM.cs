@@ -26,6 +26,11 @@ namespace ERP.Forms
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            Login();
+        }
+
+        private void Login()
+        {
             var repo = new UsuariosRepository();
             if (_validator.ValidarMaterial(repo.VerificarLoginUsuario(mtxtUsuario.Text, mtxtContraseña.Text),
                 "El usuario o la contraseña son incorrectos"))
@@ -48,6 +53,14 @@ namespace ERP.Forms
         private void mtxtContraseña_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape) btnAceptar.PerformClick();
+        }
+
+        private void mtxtContraseña_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                Login();
+            }
         }
     }
 }

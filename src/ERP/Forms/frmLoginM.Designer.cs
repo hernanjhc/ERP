@@ -63,6 +63,7 @@
             this.mtxtContraseña.TabIndex = 1;
             this.mtxtContraseña.UseSystemPasswordChar = false;
             this.mtxtContraseña.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mtxtContraseña_KeyDown);
+            this.mtxtContraseña.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mtxtContraseña_KeyPress);
             // 
             // btnAceptar
             // 

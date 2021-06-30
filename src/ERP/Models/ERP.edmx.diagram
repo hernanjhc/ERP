@@ -21,7 +21,7 @@
         <EntityTypeShape EntityType="VentasModel.Provincias" Width="1.5" PointX="0.75" PointY="14.25" IsExpanded="true" />
         <EntityTypeShape EntityType="VentasModel.TiposDocumento" Width="1.5" PointX="9.75" PointY="11.125" IsExpanded="true" />
         <EntityTypeShape EntityType="VentasModel.Unidades" Width="1.5" PointX="17.25" PointY="18.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="VentasModel.Usuarios" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VentasModel.Usuarios" PointX="0.75" PointY="7.5" Width="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="VentasModel.UsuariosItemsMenu" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="VentasModel.FK_Barrios_Localidades" ManuallyRouted="false" />
         <AssociationConnector Association="VentasModel.FK_Domicilios_Barrios" ManuallyRouted="false" />
@@ -40,10 +40,10 @@
         <AssociationConnector Association="VentasModel.FK_GruposItemsMenu_Grupos" ManuallyRouted="false" />
         <AssociationConnector Association="VentasModel.FK_GruposUsuarios_Grupos" ManuallyRouted="false" />
         <AssociationConnector Association="VentasModel.FK_GruposItemsMenus_ItemsMenu" ManuallyRouted="false" />
-        <AssociationConnector Association="VentasModel.FK_GruposUsuarios_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector ManuallyRouted="false" Association="VentasModel.FK_GruposUsuarios_Usuarios" />
         <AssociationConnector Association="VentasModel.FK_UsuariosItemsMenu_ItemsMenu" ManuallyRouted="false" />
         <AssociationConnector Association="VentasModel.FK_Proveedores_TiposDocumento" ManuallyRouted="false" />
-        <AssociationConnector Association="VentasModel.FK_UsuariosItemsMenu_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector ManuallyRouted="false" Association="VentasModel.FK_UsuariosItemsMenu_Usuarios" />
         <EntityTypeShape EntityType="VentasModel.EArticulos" Width="1.5" PointX="19.5" PointY="14.5" />
         <AssociationConnector Association="VentasModel.FK_EArticulos_Empresas" />
         <AssociationConnector Association="VentasModel.FK_EArticulos_Marcas" />

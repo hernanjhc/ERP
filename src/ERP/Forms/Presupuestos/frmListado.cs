@@ -172,25 +172,29 @@ namespace ERP.Forms.Presupuestos
 
         private void dgvDatos_SelectionChanged(object sender, EventArgs e)
         {
-            var p = ObtenerPresupuestoSeleccionado();
-            if (p == null)
+            DataGridViewRow row = dgvDatos.CurrentRow;
+            if (row != null)
             {
+                var p = ObtenerPresupuestoSeleccionado();
+                if (p == null)
+                {
+                    limpiarTxt();
+                    return;
+                }
                 limpiarTxt();
-                return;
-            }
-            limpiarTxt();
-            var cliente = ClientesRepository.ObtenerClientePorId(Convert.ToDecimal(p.IdCliente));
+                var cliente = ClientesRepository.ObtenerClientePorId(Convert.ToDecimal(p.IdCliente));
 
-            txtPresupuesto.Text = p.Id.ToString().Trim();
-            txtValidez.Text = p.DiasValidez.ToString().Trim();
-            txtCliente.Text = cliente.RazonSocial;
-            txtNroDoc.Text = cliente.NroDocumento.ToString();
-            txtDescuento.Text = p.Descuento.ToString().Trim() + " (" + p.DescuentoPorc.ToString().Trim() + "%)";
-            txtDireccion.Text = cliente.Direccion; 
-            txtSubTotal.Text = p.Importe.ToString().Trim(); 
-            txtTotal.Text = p.ImporteTotal.ToString().Trim();
-            txtEstado.Text = cargarEstado(p.Estado);
-            cargarDetalles(p.Id);
+                txtPresupuesto.Text = p.Id.ToString().Trim();
+                txtValidez.Text = p.DiasValidez.ToString().Trim();
+                txtCliente.Text = cliente.RazonSocial;
+                txtNroDoc.Text = cliente.NroDocumento.ToString();
+                txtDescuento.Text = p.Descuento.ToString().Trim() + " (" + p.DescuentoPorc.ToString().Trim() + "%)";
+                txtDireccion.Text = cliente.Direccion;
+                txtSubTotal.Text = p.Importe.ToString().Trim();
+                txtTotal.Text = p.ImporteTotal.ToString().Trim();
+                txtEstado.Text = cargarEstado(p.Estado);
+                cargarDetalles(p.Id);
+            }
         }
 
         private string cargarEstado(int? estado)
