@@ -1,6 +1,7 @@
 ﻿using ERP.Models;
 using System;
 using System.Linq;
+using System.Configuration;
 
 namespace ERP.Lib
 {
@@ -42,6 +43,29 @@ namespace ERP.Lib
                 return v.FileVersion;
             }
         }
-        
+
+        public static bool ImprimePresupuestos
+        {
+            get
+            {
+                return Convert.ToBoolean(ConfigurationManager.AppSettings["ImprimePresupuesto"]);
+            }
+        }
+
+        public static bool ImprimeVentas
+        {
+            get
+            {
+                return Convert.ToBoolean(ConfigurationManager.AppSettings["ImprimeVenta"]);
+            }
+        }
+
+        public static bool VentaDescuentaStock
+        {
+            get
+            {
+                return Convert.ToBoolean(ConfigurationManager.AppSettings["VentaDescuentaStock"]);
+            }
+        }
     }
 }

@@ -25,7 +25,7 @@ namespace ERP.Forms.Articulos
         private void ConsultarDatos()
         {
         //    var tds = TiposDocumentoRepository.ObtenerTiposDocumento();
-            dgvDatos.SetDataSource(from a in ArticulosRepository.ObtenerArticulos()
+            dgvDatos.SetDataSource(from a in EArticulosRepository.ObtenerArticulos()
                                    orderby a.Id
                                    select new
                                    {
@@ -109,7 +109,7 @@ namespace ERP.Forms.Articulos
                 {
                     try
                     {
-                        var a = ArticulosRepository.Insertar(f.Codigo, f.CodigoBarra, f.Descripcion, f.IdMarca, f.IdRubro,
+                        var a = EArticulosRepository.Insertar(f.Codigo, f.CodigoBarra, f.Descripcion, f.IdMarca, f.IdRubro,
                                                             f.IdProveedor, f.IdUnidad, f.CostoInicial, f.Descuento1, f.DescuentoPorc1,
                                                             f.Descuento2, f.DescuentoPorc2, f.Descuento3, f.DescuentoPorc3, f.Costo,
                                                             f.Stock, f.StockMinimo, f.Lista1, f.ListaPorc1, f.Lista2,
@@ -133,7 +133,7 @@ namespace ERP.Forms.Articulos
             {
                 try
                 {
-                    ArticulosRepository.Eliminar(a.Id);
+                    EArticulosRepository.Eliminar(a.Id);
                     ConsultarDatos();
                     dgvDatos.SetRow(r => Convert.ToDecimal(r.Cells[0].Value) == a.Id);
                 }
@@ -150,7 +150,7 @@ namespace ERP.Forms.Articulos
             {
                 int rowindex = dgvDatos.CurrentCell.RowIndex;
                 var id = (Int32)dgvDatos.Rows[rowindex].Cells[0].Value;
-                var a = ArticulosRepository.ObtenerArticulosPorId(id);
+                var a = EArticulosRepository.ObtenerArticulosPorId(id);
                 return a;
             }
             catch (Exception)
@@ -239,7 +239,7 @@ namespace ERP.Forms.Articulos
                     try
                     {
                         int IdEmpresa = Lib.Configuration.IdEmpresa;
-                        ArticulosRepository.Actualizar(a.Id, IdEmpresa, f.Codigo, f.CodigoBarra, f.Descripcion,
+                        EArticulosRepository.Actualizar(a.Id, IdEmpresa, f.Codigo, f.CodigoBarra, f.Descripcion,
                             f.IdMarca, f.IdRubro, f.IdProveedor, f.IdUnidad, f.CostoInicial,
                             f.Descuento1, f.DescuentoPorc1, f.Descuento2, f.DescuentoPorc2, f.Descuento3,
                             f.DescuentoPorc3, f.Costo, f.Stock, f.StockMinimo, f.Lista1,

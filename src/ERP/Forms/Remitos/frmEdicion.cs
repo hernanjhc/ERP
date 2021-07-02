@@ -43,7 +43,7 @@ namespace ERP.Forms.Remitos
 
         private void CargarProductosCodBarra()
         {
-            var a = ArticulosRepository.ObtenerArticulos();
+            var a = EArticulosRepository.ObtenerArticulos();
             cbArticulos.DataSource = a;
             cbArticulos.DisplayMember = "CodBarra";
             cbArticulos.ValueMember = "Id";
@@ -52,7 +52,7 @@ namespace ERP.Forms.Remitos
 
         private void CargarProductosDescripcion()
         {
-            var a = ArticulosRepository.ObtenerArticulos();
+            var a = EArticulosRepository.ObtenerArticulos();
             cbArticulos.DataSource = a;
             cbArticulos.DisplayMember = "Descripcion";
             cbArticulos.ValueMember = "Id";
@@ -121,7 +121,7 @@ namespace ERP.Forms.Remitos
         private void AgregarArticulo(int idarticulo)
         {
 
-            var art = ArticulosRepository.ObtenerArticulosPorId(idarticulo);
+            var art = EArticulosRepository.ObtenerArticulosPorId(idarticulo);
 
             if (buscarArticuloEnDetalle(idarticulo))
             {

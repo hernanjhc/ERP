@@ -13,7 +13,7 @@ FUNCIONA==>
 		NO COBRA
 FALTA==>
 l - Login
-		activar tecla [Enter]
+		activar tecla [Enter]	==> resuelto
 2 - Principal
 		Seguridad
 			Grupos - falta eliminar

@@ -21,27 +21,27 @@ namespace ERP.Forms.Presupuestos
         {
             InitializeComponent();
             dtpHasta.Text = Configuration.CurrentDate.ToString();
-            dtpDesde.Text = Configuration.CurrentDate.AddDays(-30).ToString(); 
+            dtpDesde.Text = Configuration.CurrentDate.AddDays(-30).ToString();
             ConsultarDatos();
         }
 
         private void ConsultarDatos()
         {
-                dgvDatos.SetDataSource(
-                    from p in PresupuestosRepository.ObtenerPresupuestos()
-                    .Where(x => 
-                        x.Fecha.Value.AddDays(Convert.ToInt16(x.DiasValidez)) >= Configuration.CurrentDate
-                    )
-                    orderby p.Id
-                    select new
-                    {
-                        p.Id,
-                        p.Fecha,
-                        DiasValidez = p.DiasValidez + " días.",
-                        Cliente= ClientesRepository.ObtenerClientePorId(Convert.ToDecimal(p.IdCliente)).RazonSocial,
-                        Usuario = UsuariosRepository.ObtenerUsuarioPorId(Convert.ToDecimal(p.IdUsuario)).NombreCompleto
-                    }
-                );
+            dgvDatos.SetDataSource(
+                from p in PresupuestosRepository.ObtenerPresupuestos()
+                .Where(x =>
+                    x.Fecha.Value.AddDays(Convert.ToInt16(x.DiasValidez)) >= Configuration.CurrentDate
+                )
+                orderby p.Id
+                select new
+                {
+                    p.Id,
+                    p.Fecha,
+                    DiasValidez = p.DiasValidez + " días.",
+                    Cliente = ClientesRepository.ObtenerClientePorId(Convert.ToDecimal(p.IdCliente)).RazonSocial,
+                    Usuario = UsuariosRepository.ObtenerUsuarioPorId(Convert.ToDecimal(p.IdUsuario)).NombreCompleto
+                }
+            );
         }
 
 
@@ -67,7 +67,11 @@ namespace ERP.Forms.Presupuestos
                                     Convert.ToInt16(f.dgvDetalles.Rows[i].Cells[3].Value), Convert.ToDecimal(f.dgvDetalles.Rows[i].Cells[4].Value),
                                     Convert.ToDecimal(f.dgvDetalles.Rows[i].Cells[5].Value));
                         }
-                        ImprimirPresupuesto(f, presupuesto.Id);
+                        if (Configuration.ImprimePresupuestos)
+                        {
+                            ImprimirPresupuesto(f, presupuesto.Id);
+                        }
+
                         ConsultarDatos();
                         dgvDatos.SetRow(r => Convert.ToDecimal(r.Cells[0].Value) == presupuesto.Id);
                     }
@@ -115,9 +119,9 @@ namespace ERP.Forms.Presupuestos
             {
                 reporte.Database.Tables["Detalles"].SetDataSource(detalles);
                 using (
-                    var f = new frmReporte(reporte, dirección,  razónSocial,    documento,
-                                            tipoDocumento,  comprobante,    número, fecha,
-                                            subtotal,   descuento,  total,  validez)) f.ShowDialog();
+                    var f = new frmReporte(reporte, dirección, razónSocial, documento,
+                                            tipoDocumento, comprobante, número, fecha,
+                                            subtotal, descuento, total, validez)) f.ShowDialog();
             }
         }
 
@@ -211,7 +215,7 @@ namespace ERP.Forms.Presupuestos
                     from d in PresupuestosDetallesRepository.ObtenerDetallesDelPresupuesto(idpresupuesto)
                     select new
                     {
-                        ArticulosRepository.ObtenerArticulosPorId( 
+                        EArticulosRepository.ObtenerArticulosPorId(
                             Convert.ToDecimal(d.IdArticulo)).Descripcion,
                         d.Precio,
                         d.Cantidad,
@@ -238,21 +242,21 @@ namespace ERP.Forms.Presupuestos
             if (txtFiltrar.Text != "")
             {
                 dgvDatos.CurrentCell = null;
-                    foreach (DataGridViewRow r in dgvDatos.Rows)
+                foreach (DataGridViewRow r in dgvDatos.Rows)
+                {
+                    r.Visible = false;
+                }
+                foreach (DataGridViewRow r in dgvDatos.Rows)
+                {
+                    foreach (DataGridViewCell c in r.Cells)
                     {
-                        r.Visible = false;
-                    }
-                    foreach (DataGridViewRow r in dgvDatos.Rows)
-                    {
-                        foreach (DataGridViewCell c in r.Cells)
+                        if ((c.Value.ToString().ToUpper()).IndexOf(txtFiltrar.Text.ToUpper()) == 0)
                         {
-                            if ((c.Value.ToString().ToUpper()).IndexOf(txtFiltrar.Text.ToUpper()) == 0)
-                            {
-                                r.Visible = true;
-                                break;
-                            }
+                            r.Visible = true;
+                            break;
                         }
                     }
+                }
             }
             else
             {
@@ -270,10 +274,11 @@ namespace ERP.Forms.Presupuestos
             if (chbFiltrarFecha.Checked == true)
             {
                 DateTime desde = Convert.ToDateTime(dtpDesde.Text);
-                DateTime hasta = Convert.ToDateTime(dtpHasta.Text);
+                DateTime h = Convert.ToDateTime(dtpHasta.Text);
+                DateTime hasta = h.AddDays(1);
                 dgvDatos.SetDataSource(
                     from p in PresupuestosRepository.ObtenerPresupuestos()
-                    .Where(p => p.Fecha >= desde && p.Fecha <= hasta)
+                    .Where(p => p.Fecha >= desde && p.Fecha < hasta)
                     orderby p.Id
                     select new
                     {
@@ -301,15 +306,15 @@ namespace ERP.Forms.Presupuestos
             dgvDetalles.Columns[0].HeaderText = "Descripcion";
             dgvDetalles.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvDetalles.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            
+
             dgvDetalles.Columns[1].HeaderText = "Precio";
             dgvDetalles.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvDetalles.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            
+
             dgvDetalles.Columns[2].HeaderText = "Cantidad";
             dgvDetalles.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvDetalles.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            
+
             dgvDetalles.Columns[3].HeaderText = "Importe";
             dgvDetalles.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvDetalles.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
@@ -375,6 +380,6 @@ namespace ERP.Forms.Presupuestos
                 subTotal, descuento, total, validez);
         }
 
-        
+
     }
 }

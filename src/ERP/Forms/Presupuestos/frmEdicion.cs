@@ -33,7 +33,7 @@ namespace ERP.Forms.Presupuestos
         
         private void CargarProductosCodBarra()
         {
-            var a = ArticulosRepository.ObtenerArticulos();
+            var a = EArticulosRepository.ObtenerArticulos();
             cbArticulos.DataSource = a;
             cbArticulos.DisplayMember = "CodBarra";
             cbArticulos.ValueMember = "Id";
@@ -42,7 +42,7 @@ namespace ERP.Forms.Presupuestos
 
         private void CargarProductosDescripcion()
         {
-            var a = ArticulosRepository.ObtenerArticulos();
+            var a = EArticulosRepository.ObtenerArticulos();
             cbArticulos.DataSource = a;
             cbArticulos.DisplayMember = "Descripcion";
             cbArticulos.ValueMember = "Id";
@@ -104,7 +104,7 @@ namespace ERP.Forms.Presupuestos
         {
             if (idarticulo == 0) return;
 
-            var art = ArticulosRepository.ObtenerArticulosPorId(idarticulo);
+            var art = EArticulosRepository.ObtenerArticulosPorId(idarticulo);
             
             if (buscarArticuloEnDetalle(idarticulo))
             {
@@ -144,7 +144,7 @@ namespace ERP.Forms.Presupuestos
         private decimal ObtenerPrecioPorLista(short lista, int idarticulo)
         {
             decimal precio = -1;
-            var articulo = ArticulosRepository.ObtenerArticulosPorId(idarticulo);
+            var articulo = EArticulosRepository.ObtenerArticulosPorId(idarticulo);
             if (lista == 1 && articulo.PrecioL1 > 0) precio = Convert.ToDecimal(articulo.PrecioL1);
             if (lista == 2 && articulo.PrecioL2 > 0) precio = Convert.ToDecimal(articulo.PrecioL2);
             if (lista == 3 && articulo.PrecioL3 > 0) precio = Convert.ToDecimal(articulo.PrecioL3);
@@ -244,6 +244,11 @@ namespace ERP.Forms.Presupuestos
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            Confirmar();
+        }
+
+        private void Confirmar()
         {
             this.DialogResult = DialogResult.None;
             if (this.ValidarDatos())
@@ -408,6 +413,5 @@ namespace ERP.Forms.Presupuestos
             }
             return tabla;
         }
-        
     }
 }

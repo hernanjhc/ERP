@@ -74,8 +74,8 @@ namespace ERP.Repositories
             foreach (var d in detalles)
             {
                 string id = d.IdArticulo.ToString();
-                string codBarra = ArticulosRepository.ObtenerArticulosPorId(Convert.ToInt32(d.IdArticulo)).CodBarra;
-                string descripcion = ArticulosRepository.ObtenerArticulosPorId(Convert.ToInt32(d.IdArticulo)).Descripcion;
+                string codBarra = EArticulosRepository.ObtenerArticulosPorId(Convert.ToInt32(d.IdArticulo)).CodBarra;
+                string descripcion = EArticulosRepository.ObtenerArticulosPorId(Convert.ToInt32(d.IdArticulo)).Descripcion;
                 string cantidad = d.Cantidad.ToString();
                 string precio = d.Precio.ToString();
                 string importe = d.Importe.ToString();

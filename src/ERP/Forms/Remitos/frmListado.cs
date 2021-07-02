@@ -110,7 +110,7 @@ namespace ERP.Forms.Remitos
                     from d in RemitosDetallesRepository.ObtenerDetallesDelRemito(idRemito)
                     select new
                     {
-                        ArticulosRepository.ObtenerArticulosPorId(
+                        EArticulosRepository.ObtenerArticulosPorId(
                             Convert.ToDecimal(d.IdArticulo)).Descripcion,                        
                         d.Cantidad
                         

@@ -42,10 +42,10 @@ namespace ERP.Forms.Ventas
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            nuevaVenta();
+            NuevaVenta();
         }
 
-        private void nuevaVenta()
+        private void NuevaVenta()
         {
             using (var f = new frmEdicion())
             {
@@ -64,7 +64,19 @@ namespace ERP.Forms.Ventas
                                     Convert.ToDecimal(f.dgvDetalles.Rows[i].Cells[5].Value));
 
                         }
-                        ImprimirVenta(f, venta.Id);
+                        if (Configuration.ImprimeVentas)    ImprimirVenta(f, venta.Id);
+                        if (Configuration.VentaDescuentaStock)
+                        {
+                            for (int i = 0; i <= Convert.ToInt32(f.dgvDetalles.Rows.Count - 1); i++)
+                            {
+                                EArticulosRepository.ActualizarStockArticulo(Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[0].Value),
+                                        Convert.ToInt16(f.dgvDetalles.Rows[i].Cells[3].Value));
+                            }
+                        }
+                        
+
+                        MovimientosRepository.InsertarVenta(venta);
+
                         ConsultarDatos();
                         dgvDatos.SetRow(r => Convert.ToDecimal(r.Cells[0].Value) == venta.Id);
                     }
@@ -203,7 +215,7 @@ namespace ERP.Forms.Ventas
                     from d in VentasDetallesRepository.ObtenerDetallesDeVenta(idVenta)
                     select new
                     {
-                        ArticulosRepository.ObtenerArticulosPorId(
+                        EArticulosRepository.ObtenerArticulosPorId(
                             Convert.ToDecimal(d.IdArticulo)).Descripcion,
                         d.Precio,
                         d.Cantidad,
@@ -261,10 +273,11 @@ namespace ERP.Forms.Ventas
             if (chbFiltrarFecha.Checked == true)
             {
                 DateTime desde = Convert.ToDateTime(dtpDesde.Text);
-                DateTime hasta = Convert.ToDateTime(dtpHasta.Text);
+                DateTime h = Convert.ToDateTime(dtpHasta.Text);
+                DateTime hasta = h.AddDays(1);
                 dgvDatos.SetDataSource(
                     from p in VentasRepository.ObtenerVentas()
-                    .Where(p => p.Fecha >= desde && p.Fecha <= hasta)
+                    .Where(p => p.Fecha >= desde && p.Fecha < hasta)
                     orderby p.Id
                     select new
                     {
