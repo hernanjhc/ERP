@@ -198,14 +198,14 @@ namespace ERP.Repositories
             }
         }
 
-        public static bool ActualizarStockArticulo(decimal id, decimal stockADescontar)
+        public static bool IncrementarStockArticulo(decimal id, decimal cantidad)
         {
             try
             {
                 using (var db = new VentasConexión())
                 {
                     var a = db.EArticulos.Find(id);
-                    a.Stock = a.Stock - stockADescontar;
+                    a.Stock = a.Stock + cantidad;
                     db.SaveChanges();
                     return true;
                 }
@@ -214,7 +214,24 @@ namespace ERP.Repositories
             {
                 return false;
             }
+        }
 
+        public static bool DescontarStockArticulo(decimal id, decimal cantidad)
+        {
+            try
+            {
+                using (var db = new VentasConexión())
+                {
+                    var a = db.EArticulos.Find(id);
+                    a.Stock = a.Stock - cantidad;
+                    db.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
         public static void Actualizadr(decimal id, int IdEmpresa, string razonSocial, int idTipoDocumento, decimal nroDocumento,
             DateTime fechaNacimiento, string email, string dirección, string teléfono, Domicilios domicilio, byte estado)

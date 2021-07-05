@@ -69,7 +69,7 @@ namespace ERP.Forms.Ventas
                         {
                             for (int i = 0; i <= Convert.ToInt32(f.dgvDetalles.Rows.Count - 1); i++)
                             {
-                                EArticulosRepository.ActualizarStockArticulo(Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[0].Value),
+                                EArticulosRepository.DescontarStockArticulo(Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[0].Value),
                                         Convert.ToInt16(f.dgvDetalles.Rows[i].Cells[3].Value));
                             }
                         }
@@ -326,10 +326,10 @@ namespace ERP.Forms.Ventas
 
         private void btnAnular_Click(object sender, EventArgs e)
         {
-            AnularRemito();
+            AnularVenta();
         }
 
-        private void AnularRemito()
+        private void AnularVenta()
         {
             var p = ObtenerVentaSeleccionada();
             if (p == null) return;

@@ -195,5 +195,10 @@ namespace ERP.Forms
         {
             using (var f = new Sucursales.frmListado()) f.ShowDialog();
         }
+
+        private void comprasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            using (var f = new Compras.frmListado()) f.ShowDialog();
+        }
     }
 }

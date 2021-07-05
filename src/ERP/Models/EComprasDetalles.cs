@@ -23,7 +23,7 @@ namespace ERP.Models
         public Nullable<decimal> Precio { get; set; }
     
         public virtual EArticulos EArticulos { get; set; }
-        public virtual ECompras ECompras { get; set; }
         public virtual Empresas Empresas { get; set; }
+        public virtual ECompras ECompras { get; set; }
     }
 }

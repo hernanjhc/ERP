@@ -79,17 +79,18 @@
         <AssociationConnector Association="VentasModel.FK_EVentas_Usuarios" />
         <AssociationConnector Association="VentasModel.FK_EVentasDetalles_Ventas" />
         <EntityTypeShape EntityType="VentasModel.BancoSucursal" Width="1.5" PointX="5.375" PointY="5.75" />
-        <EntityTypeShape EntityType="VentasModel.ECompras" Width="1.5" PointX="24.25" PointY="18.125" />
         <EntityTypeShape EntityType="VentasModel.EComprasDetalles" Width="1.5" PointX="21.75" PointY="18.125" />
         <EntityTypeShape EntityType="VentasModel.ECuentas" Width="1.5" PointX="7.375" PointY="5.75" />
         <EntityTypeShape EntityType="VentasModel.EDepositos" Width="1.5" PointX="9.375" PointY="5.75" />
         <EntityTypeShape EntityType="VentasModel.EMovimientos" Width="1.5" PointX="10.375" PointY="0.75" />
         <EntityTypeShape EntityType="VentasModel.EMovimStock" Width="1.5" PointX="5.375" PointY="10.75" />
         <AssociationConnector Association="VentasModel.FK_EComprasDetalles_Articulos" />
+        <AssociationConnector Association="VentasModel.FK_EComprasDetalles_Empresas" />
+        <EntityTypeShape EntityType="VentasModel.ECompras" Width="1.5" PointX="24.25" PointY="18.625" />
         <AssociationConnector Association="VentasModel.FK_ECompras_Empresas" />
         <AssociationConnector Association="VentasModel.FK_ECompras_Proveedores" />
+        <AssociationConnector Association="VentasModel.FK_ECompras_Usuarios" />
         <AssociationConnector Association="VentasModel.FK_EComprasDetalles_Compras" />
-        <AssociationConnector Association="VentasModel.FK_EComprasDetalles_Empresas" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

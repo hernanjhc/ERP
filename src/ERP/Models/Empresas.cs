@@ -26,8 +26,8 @@ namespace ERP.Models
             this.ERemitosDetalles = new HashSet<ERemitosDetalles>();
             this.EVentas = new HashSet<EVentas>();
             this.EVentasDetalles = new HashSet<EVentasDetalles>();
-            this.ECompras = new HashSet<ECompras>();
             this.EComprasDetalles = new HashSet<EComprasDetalles>();
+            this.ECompras = new HashSet<ECompras>();
         }
     
         public int Id { get; set; }
@@ -66,8 +66,8 @@ namespace ERP.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EVentasDetalles> EVentasDetalles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ECompras> ECompras { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EComprasDetalles> EComprasDetalles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ECompras> ECompras { get; set; }
     }
 }

@@ -27,9 +27,11 @@ namespace ERP.Models
         public Nullable<decimal> Importe { get; set; }
         public Nullable<int> Retirado { get; set; }
         public Nullable<int> Pagado { get; set; }
+        public int IdUsuario { get; set; }
     
         public virtual Empresas Empresas { get; set; }
         public virtual Proveedores Proveedores { get; set; }
+        public virtual Usuarios Usuarios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EComprasDetalles> EComprasDetalles { get; set; }
     }

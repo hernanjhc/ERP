@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ERP.Models;
-using System.Linq;
 
 namespace ERP.Repositories
 {

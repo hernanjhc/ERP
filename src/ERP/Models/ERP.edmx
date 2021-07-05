@@ -115,6 +115,7 @@
           <Property Name="Importe" Type="numeric" Precision="17" Scale="2" />
           <Property Name="Retirado" Type="int" />
           <Property Name="Pagado" Type="int" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="EComprasDetalles">
           <Key>
@@ -606,6 +607,18 @@
             </Principal>
             <Dependent Role="ECompras">
               <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ECompras_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="ECompras" Type="Self.ECompras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ECompras">
+              <PropertyRef Name="IdUsuario" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1136,6 +1149,10 @@
             <End Role="Proveedores" EntitySet="Proveedores" />
             <End Role="ECompras" EntitySet="ECompras" />
           </AssociationSet>
+          <AssociationSet Name="FK_ECompras_Usuarios" Association="Self.FK_ECompras_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="ECompras" EntitySet="ECompras" />
+          </AssociationSet>
           <AssociationSet Name="FK_EComprasDetalles_Articulos" Association="Self.FK_EComprasDetalles_Articulos">
             <End Role="EArticulos" EntitySet="EArticulos" />
             <End Role="EComprasDetalles" EntitySet="EComprasDetalles" />
@@ -1384,8 +1401,8 @@
           <NavigationProperty Name="ERemitosDetalles" Relationship="VentasModel.FK_ERemitosDetalles_Empresas" FromRole="Empresas" ToRole="ERemitosDetalles" />
           <NavigationProperty Name="EVentas" Relationship="VentasModel.FK_EVentas_Empresas" FromRole="Empresas" ToRole="EVentas" />
           <NavigationProperty Name="EVentasDetalles" Relationship="VentasModel.FK_EVentasDetalles_Empresas" FromRole="Empresas" ToRole="EVentasDetalles" />
-          <NavigationProperty Name="ECompras" Relationship="VentasModel.FK_ECompras_Empresas" FromRole="Empresas" ToRole="ECompras" />
           <NavigationProperty Name="EComprasDetalles" Relationship="VentasModel.FK_EComprasDetalles_Empresas" FromRole="Empresas" ToRole="EComprasDetalles" />
+          <NavigationProperty Name="ECompras" Relationship="VentasModel.FK_ECompras_Empresas" FromRole="Empresas" ToRole="ECompras" />
         </EntityType>
         <EntityType Name="ERubros">
           <Key>
@@ -1517,6 +1534,7 @@
           <NavigationProperty Name="EPresupuestos" Relationship="VentasModel.FK_EPresupuestos_Usuarios" FromRole="Usuarios" ToRole="EPresupuestos" />
           <NavigationProperty Name="ERemitos" Relationship="VentasModel.FK_ERemitos_Usuarios" FromRole="Usuarios" ToRole="ERemitos" />
           <NavigationProperty Name="EVentas" Relationship="VentasModel.FK_EVentas_Usuarios" FromRole="Usuarios" ToRole="EVentas" />
+          <NavigationProperty Name="ECompras" Relationship="VentasModel.FK_ECompras_Usuarios" FromRole="Usuarios" ToRole="ECompras" />
         </EntityType>
         <EntityType Name="UsuariosItemsMenu">
           <Key>
@@ -1993,7 +2011,6 @@
             <End Role="EVentasDetalles" EntitySet="EVentasDetalles" />
           </AssociationSet>
           <EntitySet Name="BancoSucursal" EntityType="VentasModel.BancoSucursal" />
-          <EntitySet Name="ECompras" EntityType="VentasModel.ECompras" />
           <EntitySet Name="EComprasDetalles" EntityType="VentasModel.EComprasDetalles" />
           <EntitySet Name="ECuentas" EntityType="VentasModel.ECuentas" />
           <EntitySet Name="EDepositos" EntityType="VentasModel.EDepositos" />
@@ -2003,6 +2020,11 @@
             <End Role="EArticulos" EntitySet="EArticulos" />
             <End Role="EComprasDetalles" EntitySet="EComprasDetalles" />
           </AssociationSet>
+          <AssociationSet Name="FK_EComprasDetalles_Empresas" Association="VentasModel.FK_EComprasDetalles_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="EComprasDetalles" EntitySet="EComprasDetalles" />
+          </AssociationSet>
+          <EntitySet Name="ECompras" EntityType="VentasModel.ECompras" />
           <AssociationSet Name="FK_ECompras_Empresas" Association="VentasModel.FK_ECompras_Empresas">
             <End Role="Empresas" EntitySet="Empresas" />
             <End Role="ECompras" EntitySet="ECompras" />
@@ -2011,12 +2033,12 @@
             <End Role="Proveedores" EntitySet="Proveedores" />
             <End Role="ECompras" EntitySet="ECompras" />
           </AssociationSet>
+          <AssociationSet Name="FK_ECompras_Usuarios" Association="VentasModel.FK_ECompras_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="ECompras" EntitySet="ECompras" />
+          </AssociationSet>
           <AssociationSet Name="FK_EComprasDetalles_Compras" Association="VentasModel.FK_EComprasDetalles_Compras">
             <End Role="ECompras" EntitySet="ECompras" />
-            <End Role="EComprasDetalles" EntitySet="EComprasDetalles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EComprasDetalles_Empresas" Association="VentasModel.FK_EComprasDetalles_Empresas">
-            <End Role="Empresas" EntitySet="Empresas" />
             <End Role="EComprasDetalles" EntitySet="EComprasDetalles" />
           </AssociationSet>
           </EntityContainer>
@@ -2510,21 +2532,6 @@
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Telefono" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="ECompras">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
-          <Property Name="IdProveedor" Type="Int32" />
-          <Property Name="Fecha" Type="DateTime" Precision="3" />
-          <Property Name="Importe" Type="Decimal" Precision="17" Scale="2" />
-          <Property Name="Retirado" Type="Int32" />
-          <Property Name="Pagado" Type="Int32" />
-          <NavigationProperty Name="Empresas" Relationship="VentasModel.FK_ECompras_Empresas" FromRole="ECompras" ToRole="Empresas" />
-          <NavigationProperty Name="Proveedores" Relationship="VentasModel.FK_ECompras_Proveedores" FromRole="ECompras" ToRole="Proveedores" />
-          <NavigationProperty Name="EComprasDetalles" Relationship="VentasModel.FK_EComprasDetalles_Compras" FromRole="ECompras" ToRole="EComprasDetalles" />
-        </EntityType>
         <EntityType Name="EComprasDetalles">
           <Key>
             <PropertyRef Name="Id" />
@@ -2537,8 +2544,8 @@
           <Property Name="Cantidad" Type="Int32" />
           <Property Name="Precio" Type="Decimal" Precision="17" Scale="2" />
           <NavigationProperty Name="EArticulos" Relationship="VentasModel.FK_EComprasDetalles_Articulos" FromRole="EComprasDetalles" ToRole="EArticulos" />
-          <NavigationProperty Name="ECompras" Relationship="VentasModel.FK_EComprasDetalles_Compras" FromRole="EComprasDetalles" ToRole="ECompras" />
           <NavigationProperty Name="Empresas" Relationship="VentasModel.FK_EComprasDetalles_Empresas" FromRole="EComprasDetalles" ToRole="Empresas" />
+          <NavigationProperty Name="ECompras" Relationship="VentasModel.FK_EComprasDetalles_Compras" FromRole="EComprasDetalles" ToRole="ECompras" />
         </EntityType>
         <EntityType Name="ECuentas">
           <Key>
@@ -2615,6 +2622,35 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_EComprasDetalles_Empresas">
+          <End Type="VentasModel.Empresas" Role="Empresas" Multiplicity="1" />
+          <End Type="VentasModel.EComprasDetalles" Role="EComprasDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EComprasDetalles">
+              <PropertyRef Name="IdEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ECompras">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+          <Property Name="IdProveedor" Type="Int32" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="Importe" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="Retirado" Type="Int32" />
+          <Property Name="Pagado" Type="Int32" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Empresas" Relationship="VentasModel.FK_ECompras_Empresas" FromRole="ECompras" ToRole="Empresas" />
+          <NavigationProperty Name="Proveedores" Relationship="VentasModel.FK_ECompras_Proveedores" FromRole="ECompras" ToRole="Proveedores" />
+          <NavigationProperty Name="Usuarios" Relationship="VentasModel.FK_ECompras_Usuarios" FromRole="ECompras" ToRole="Usuarios" />
+          <NavigationProperty Name="EComprasDetalles" Relationship="VentasModel.FK_EComprasDetalles_Compras" FromRole="ECompras" ToRole="EComprasDetalles" />
+        </EntityType>
         <Association Name="FK_ECompras_Empresas">
           <End Type="VentasModel.Empresas" Role="Empresas" Multiplicity="1" />
           <End Type="VentasModel.ECompras" Role="ECompras" Multiplicity="*" />
@@ -2639,6 +2675,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ECompras_Usuarios">
+          <End Type="VentasModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+          <End Type="VentasModel.ECompras" Role="ECompras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ECompras">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_EComprasDetalles_Compras">
           <End Type="VentasModel.ECompras" Role="ECompras" Multiplicity="0..1" />
           <End Type="VentasModel.EComprasDetalles" Role="EComprasDetalles" Multiplicity="*" />
@@ -2648,18 +2696,6 @@
             </Principal>
             <Dependent Role="EComprasDetalles">
               <PropertyRef Name="IdCompra" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EComprasDetalles_Empresas">
-          <End Type="VentasModel.Empresas" Role="Empresas" Multiplicity="1" />
-          <End Type="VentasModel.EComprasDetalles" Role="EComprasDetalles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empresas">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="EComprasDetalles">
-              <PropertyRef Name="IdEmpresa" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3034,19 +3070,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ECompras">
-            <EntityTypeMapping TypeName="VentasModel.ECompras">
-              <MappingFragment StoreEntitySet="ECompras">
-                <ScalarProperty Name="Pagado" ColumnName="Pagado" />
-                <ScalarProperty Name="Retirado" ColumnName="Retirado" />
-                <ScalarProperty Name="Importe" ColumnName="Importe" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
-                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="EComprasDetalles">
             <EntityTypeMapping TypeName="VentasModel.EComprasDetalles">
               <MappingFragment StoreEntitySet="EComprasDetalles">
@@ -3122,6 +3145,20 @@
                 <ScalarProperty Name="idProveedorOrigen" ColumnName="idProveedorOrigen" />
                 <ScalarProperty Name="idArticulo" ColumnName="idArticulo" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ECompras">
+            <EntityTypeMapping TypeName="VentasModel.ECompras">
+              <MappingFragment StoreEntitySet="ECompras">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Pagado" ColumnName="Pagado" />
+                <ScalarProperty Name="Retirado" ColumnName="Retirado" />
+                <ScalarProperty Name="Importe" ColumnName="Importe" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
                 <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

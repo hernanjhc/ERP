@@ -67,5 +67,13 @@ namespace ERP.Lib
                 return Convert.ToBoolean(ConfigurationManager.AppSettings["VentaDescuentaStock"]);
             }
         }
+
+        public static bool CompraIncrementaStock
+        {
+            get
+            {
+                return Convert.ToBoolean(ConfigurationManager.AppSettings["CompraIncrementaStock"]);
+            }
+        }
     }
 }

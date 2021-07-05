@@ -1,4 +1,6 @@
 ﻿using ERP.Lib.AppForms;
+using ERP.Reports.DataSet;
+using ERP.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,12 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ERP.Repositories;
-using ERP.Models;
-using ERP.Reports.DataSet;
-using ERP.Reports.Designs;
 
-namespace ERP.Forms.Ventas
+namespace ERP.Forms.Compras
 {
     public partial class frmEdicion : FormBase
     {
@@ -25,15 +23,22 @@ namespace ERP.Forms.Ventas
             Inicializar();
         }
 
+        public int IdProveedor
+        {
+            get
+            {
+                return Convert.ToInt32(cbProveedores.SelectedValue);
+            }
+
+        }
         private void Inicializar()
         {
             InitializeComponent();
-            this.Text = "Nueva Venta";
-            CargarClientes();
-            CargarVendedor();
+            this.Text = "Nueva Compra";
+            CargarProveedores();
+            CargarUsuario();
             rbCodigo.Checked = true;
             CargarProductosCodBarra();
-            cbLista.SelectedIndex = 0;
         }
 
         private void CargarProductosCodBarra()
@@ -42,76 +47,43 @@ namespace ERP.Forms.Ventas
             cbArticulos.DataSource = a;
             cbArticulos.DisplayMember = "CodBarra";
             cbArticulos.ValueMember = "Id";
-            if (a.Any()) cbClientes.SelectedIndex = 0;
+            if (a.Any()) cbProveedores.SelectedIndex = 0;
         }
 
-        private void CargarProductosDescripcion()
-        {
-            var a = EArticulosRepository.ObtenerArticulos();
-            cbArticulos.DataSource = a;
-            cbArticulos.DisplayMember = "Descripcion";
-            cbArticulos.ValueMember = "Id";
-            if (a.Any()) cbClientes.SelectedIndex = 0;
-        }
-
-        private void CargarVendedor()
+        private void CargarUsuario()
         {
             var usuario = UsuariosRepository.ObtenerUsuarioPorId(Lib.Configuration.IdUsuarioConectado);
-            lVendedor.Text = "Vendedor " + usuario.Id + " - " + usuario.NombreCompleto;
+            lVendedor.Text = "Usuario " + usuario.Id + " - " + usuario.NombreCompleto;
         }
 
-        private void CargarClientes()
+        private void CargarProveedores()
         {
-            var c = ClientesRepository.ObtenerClientes();
-            cbClientes.DataSource = c;
-            cbClientes.DisplayMember = "RazonSocial";
-            cbClientes.ValueMember = "Id";
-            if (c.Any()) cbClientes.SelectedIndex = 0;
+            var p = ProveedoresRepository.ObtenerProveedores();
+            cbProveedores.DataSource = p;
+            cbProveedores.DisplayMember = "RazonSocial";
+            cbProveedores.ValueMember = "Id";
+            if (p.Any()) cbProveedores.SelectedIndex = 0;
         }
 
-        public int IdCliente
+        private void cbProveedores_KeyDown(object sender, KeyEventArgs e)
         {
-            get
+            if (e.KeyCode == Keys.Enter)
             {
-                return Convert.ToInt32(cbClientes.SelectedValue);
-            }
-        }
-        
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.None;
-            if (this.ValidarDatos())
-            {
-                DialogResult = DialogResult.OK;
+                CompletarDatosProveedor();
             }
         }
 
-        private void rbCodigo_CheckedChanged(object sender, EventArgs e)
+        private void cbProveedores_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            CargarProductosCodBarra();
+            CompletarDatosProveedor();
         }
 
-        private void rbDescripcion_CheckedChanged(object sender, EventArgs e)
+        private void CompletarDatosProveedor()
         {
-            CargarProductosDescripcion();
-        }
-
-        private void cbClientes_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            CompletarDatosCliente();
-        }
-
-        private void CompletarDatosCliente()
-        {
-            var c = ClientesRepository.ObtenerClientePorId(IdCliente);
-            txtDireccion.Text = c.Direccion;
-            txtDocumento.Text = TiposDocumentoRepository.TiposDocumentoPorId(c.IdTipoDocumento).Descripcion +
-                "  " + c.NroDocumento.ToString().Trim();
-        }
-
-        private void cbArticulos_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter) btnAgregar.PerformClick();
+            var p = ProveedoresRepository.ObtenerProveedorPorId(IdProveedor);
+            txtDireccion.Text = p.Direccion;
+            txtDocumento.Text = TiposDocumentoRepository.TiposDocumentoPorId(p.IdTipoDocumento).Descripcion +
+                "  " + p.NroDocumento.ToString().Trim();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -130,54 +102,13 @@ namespace ERP.Forms.Ventas
             }
             else
             {
-                decimal precio = ObtenerPrecioPorLista(Convert.ToInt16(cbLista.Text), art.Id);
+                decimal precio = EArticulosRepository.ObtenerArticulosPorId(art.Id).Costo;
                 dgvDetalles.Rows.Add(art.Id, art.CodBarra, art.Descripcion, 1, precio, precio);
                 modificarCantidadDetalles(dgvDetalles.Rows.Count - 1);
                 calcularImportes();
             }
 
         }
-
-        private bool buscarArticuloEnDetalle(int idarticulo)
-        {
-            bool articuloEnDetalle = false;
-            for (int i = 0; i <= dgvDetalles.Rows.Count - 1; i++)
-            {
-                if (Convert.ToInt32(dgvDetalles.Rows[i].Cells[0].Value) == idarticulo)
-                {
-                    _filaArticulo = i;
-                    i = dgvDetalles.Rows.Count;
-                    articuloEnDetalle = true;
-                }
-            }
-            return articuloEnDetalle;
-        }
-
-        private void modificarCantidadDetalles(int i)
-        {
-            dgvDetalles.CurrentCell = dgvDetalles.Rows[i].Cells[3];
-            dgvDetalles.BeginEdit(true);
-        }
-
-        private decimal ObtenerPrecioPorLista(short lista, int idarticulo)
-        {
-            decimal precio = -1;
-            var articulo = EArticulosRepository.ObtenerArticulosPorId(idarticulo);
-            if (lista == 1 && articulo.PrecioL1 > 0) precio = Convert.ToDecimal(articulo.PrecioL1);
-            if (lista == 2 && articulo.PrecioL2 > 0) precio = Convert.ToDecimal(articulo.PrecioL2);
-            if (lista == 3 && articulo.PrecioL3 > 0) precio = Convert.ToDecimal(articulo.PrecioL3);
-            return precio;
-        }
-
-        private void dgvDetalles_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                //calcularImportes();
-                cbArticulos.Focus();
-            }
-        }
-
         private void calcularImportes()
         {
             _subTotal = 0;
@@ -210,9 +141,38 @@ namespace ERP.Forms.Ventas
 
         }
 
+        private bool buscarArticuloEnDetalle(int idarticulo)
+        {
+            bool articuloEnDetalle = false;
+            for (int i = 0; i <= dgvDetalles.Rows.Count - 1; i++)
+            {
+                if (Convert.ToInt32(dgvDetalles.Rows[i].Cells[0].Value) == idarticulo)
+                {
+                    _filaArticulo = i;
+                    i = dgvDetalles.Rows.Count;
+                    articuloEnDetalle = true;
+                }
+            }
+            return articuloEnDetalle;
+        }
+
+        private void modificarCantidadDetalles(int i)
+        {
+            dgvDetalles.CurrentCell = dgvDetalles.Rows[i].Cells[3];
+            dgvDetalles.BeginEdit(true);
+        }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void dgvDetalles_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                cbArticulos.Focus();
+            }
         }
 
         private void dgvDetalles_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -224,7 +184,7 @@ namespace ERP.Forms.Ventas
             dText.KeyPress += new KeyPressEventHandler(dText_KeyPress);
         }
 
-        void dText_KeyPress(object sender, KeyPressEventArgs e)
+        private void dText_KeyPress(object sender, KeyPressEventArgs e)
         {
             IngresaDecimal(sender, e);
         }
@@ -260,7 +220,6 @@ namespace ERP.Forms.Ventas
         {
             calcularImportes();
         }
-
         private bool ValidarDatos()
         {
             return true;
@@ -272,7 +231,7 @@ namespace ERP.Forms.Ventas
             {
                 return Convert.ToDateTime(dtpFecha.Value);
             }
-        }               
+        }
 
         public Decimal Subtotal
         {
@@ -306,19 +265,19 @@ namespace ERP.Forms.Ventas
             }
         }
 
-        public String DireccionCliente
+        public String DireccionProveedor
         {
             get
             {
-                return ClientesRepository.ObtenerClientePorId(IdCliente).Direccion;
+                return ProveedoresRepository.ObtenerProveedorPorId(IdProveedor).Direccion;
             }
         }
 
-        public String RazónSocialCliente
+        public String RazónSocialProveedor
         {
             get
             {
-                return ClientesRepository.ObtenerClientePorId(IdCliente).RazonSocial;
+                return ProveedoresRepository.ObtenerProveedorPorId(IdProveedor).RazonSocial;
             }
         }
 
@@ -326,8 +285,8 @@ namespace ERP.Forms.Ventas
         {
             get
             {
-                var c = ClientesRepository.ObtenerClientePorId(IdCliente);
-                return TiposDocumentoRepository.TiposDocumentoPorId(c.IdTipoDocumento).Descripcion.ToString();
+                var proveedor = ProveedoresRepository.ObtenerProveedorPorId(IdProveedor);
+                return TiposDocumentoRepository.TiposDocumentoPorId(proveedor.IdTipoDocumento).Descripcion.ToString();
             }
         }
 
@@ -335,15 +294,7 @@ namespace ERP.Forms.Ventas
         {
             get
             {
-                return ClientesRepository.ObtenerClientePorId(IdCliente).NroDocumento;
-            }
-        }
-
-        public int PrecioLista
-        {
-            get
-            {
-                return Convert.ToInt16(cbLista.Text);
+                return ProveedoresRepository.ObtenerProveedorPorId(IdProveedor).NroDocumento;
             }
         }
 
@@ -355,23 +306,29 @@ namespace ERP.Forms.Ventas
             }
         }
 
+        public byte Pagado
+        {
+            get
+            {
+                return 1; //Revisar
+            }
+        }
+
+        public byte Retirado
+        {
+            get
+            {
+                return 1; //Revisar
+            }
+        }
+
         public int IdUsuario
         {
             get
             {
-                //var usuario = UsuariosRepository.ObtenerUsuarioPorId(Lib.Configuration.IdUsuarioConectado);
-                //return  usuario.Id;
                 return Lib.Configuration.IdUsuarioConectado;
             }
 
-        }
-
-        private void cbClientes_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                CompletarDatosCliente();
-            }
         }
 
         private void dgvDetalles_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -389,7 +346,6 @@ namespace ERP.Forms.Ventas
             var detalles = CargarDetalles();
             return detalles;
         }
-
         private DataTable CargarDetalles()
         {
             var tabla = new dsImpresiones.DetallesDataTable();
@@ -405,6 +361,39 @@ namespace ERP.Forms.Ventas
                 tabla.AddDetallesRow(id, codBarra, descripcion, cantidad, precio, importe);
             }
             return tabla;
+        }
+
+        private void rbCodigo_CheckedChanged(object sender, EventArgs e)
+        {
+            CargarProductosCodBarra();
+        }
+
+        private void rbDescripcion_CheckedChanged(object sender, EventArgs e)
+        {
+            CargarProductosDescripcion();
+        }
+
+        private void CargarProductosDescripcion()
+        {
+            var a = EArticulosRepository.ObtenerArticulos();
+            cbArticulos.DataSource = a;
+            cbArticulos.DisplayMember = "Descripcion";
+            cbArticulos.ValueMember = "Id";
+            if (a.Any()) cbProveedores.SelectedIndex = 0;
+        }
+
+        private void cbArticulos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) btnAgregar.PerformClick();
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.None;
+            if (this.ValidarDatos())
+            {
+                DialogResult = DialogResult.OK;
+            }
         }
     }
 }

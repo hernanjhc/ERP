@@ -96,6 +96,10 @@ namespace ERP.Repositories
                     var p = db.EVentas.Find(id);
                     p.Estado = 2;   // anulado
                     db.SaveChanges();
+
+                    var movimiento = db.EMovimientos.FirstOrDefault(m => m.idVenta == id);
+                    movimiento.Contrasiento = "C";  //Contrasienta Venta
+                    db.SaveChanges();
                     trx.Commit();
                 }
                 catch (Exception)
