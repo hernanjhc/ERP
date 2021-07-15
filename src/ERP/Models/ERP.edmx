@@ -77,7 +77,6 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="IdEmpresa" Type="int" Nullable="false" />
-          <Property Name="Codigo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CodBarra" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="IdMarca" Type="int" />
@@ -1394,7 +1393,6 @@
           <NavigationProperty Name="EMarcas" Relationship="Self.FK_EMarcas_Empresas" FromRole="Empresas" ToRole="EMarcas" />
           <NavigationProperty Name="TiposDocumento" Relationship="Self.FK_Empresas_TiposDocumento" FromRole="Empresas" ToRole="TiposDocumento" />
           <NavigationProperty Name="ERubros" Relationship="Self.FK_ERubros_Empresas" FromRole="Empresas" ToRole="ERubros" />
-          <NavigationProperty Name="EArticulos" Relationship="VentasModel.FK_EArticulos_Empresas" FromRole="Empresas" ToRole="EArticulos" />
           <NavigationProperty Name="EPresupuestos" Relationship="VentasModel.FK_EPresupuestos_Empresas" FromRole="Empresas" ToRole="EPresupuestos" />
           <NavigationProperty Name="EPresupuestosDetalles" Relationship="VentasModel.FK_EPresupuestosDetalles_Empresas" FromRole="Empresas" ToRole="EPresupuestosDetalles" />
           <NavigationProperty Name="ERemitos" Relationship="VentasModel.FK_ERemitos_Empresas" FromRole="Empresas" ToRole="ERemitos" />
@@ -1403,6 +1401,7 @@
           <NavigationProperty Name="EVentasDetalles" Relationship="VentasModel.FK_EVentasDetalles_Empresas" FromRole="Empresas" ToRole="EVentasDetalles" />
           <NavigationProperty Name="EComprasDetalles" Relationship="VentasModel.FK_EComprasDetalles_Empresas" FromRole="Empresas" ToRole="EComprasDetalles" />
           <NavigationProperty Name="ECompras" Relationship="VentasModel.FK_ECompras_Empresas" FromRole="Empresas" ToRole="ECompras" />
+          <NavigationProperty Name="EArticulos" Relationship="VentasModel.FK_EArticulos_Empresas" FromRole="Empresas" ToRole="EArticulos" />
         </EntityType>
         <EntityType Name="ERubros">
           <Key>
@@ -1486,8 +1485,8 @@
           <Property Name="Estado" Type="Byte" Nullable="false" />
           <NavigationProperty Name="Domicilios" Relationship="Self.FK_Proveedores_Domicilios" FromRole="Proveedores" ToRole="Domicilios" />
           <NavigationProperty Name="TiposDocumento" Relationship="Self.FK_Proveedores_TiposDocumento" FromRole="Proveedores" ToRole="TiposDocumento" />
-          <NavigationProperty Name="EArticulos" Relationship="VentasModel.FK_EArticulos_Proveedores" FromRole="Proveedores" ToRole="EArticulos" />
           <NavigationProperty Name="ECompras" Relationship="VentasModel.FK_ECompras_Proveedores" FromRole="Proveedores" ToRole="ECompras" />
+          <NavigationProperty Name="EArticulos" Relationship="VentasModel.FK_EArticulos_Proveedores" FromRole="Proveedores" ToRole="EArticulos" />
         </EntityType>
         <EntityType Name="Provincias">
           <Key>
@@ -1901,27 +1900,6 @@
             <End EntitySet="Usuarios" Role="Usuarios" />
             <End EntitySet="UsuariosItemsMenu" Role="UsuariosItemsMenu" />
           </AssociationSet>
-          <EntitySet Name="EArticulos" EntityType="VentasModel.EArticulos" />
-          <AssociationSet Name="FK_EArticulos_Empresas" Association="VentasModel.FK_EArticulos_Empresas">
-            <End Role="Empresas" EntitySet="Empresas" />
-            <End Role="EArticulos" EntitySet="EArticulos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EArticulos_Marcas" Association="VentasModel.FK_EArticulos_Marcas">
-            <End Role="EMarcas" EntitySet="EMarcas" />
-            <End Role="EArticulos" EntitySet="EArticulos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EArticulos_Proveedores" Association="VentasModel.FK_EArticulos_Proveedores">
-            <End Role="Proveedores" EntitySet="Proveedores" />
-            <End Role="EArticulos" EntitySet="EArticulos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EArticulos_Rubros" Association="VentasModel.FK_EArticulos_Rubros">
-            <End Role="ERubros" EntitySet="ERubros" />
-            <End Role="EArticulos" EntitySet="EArticulos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EArticulos_Unidades" Association="VentasModel.FK_EArticulos_Unidades">
-            <End Role="Unidades" EntitySet="Unidades" />
-            <End Role="EArticulos" EntitySet="EArticulos" />
-          </AssociationSet>
           <EntitySet Name="Bancos" EntityType="VentasModel.Bancos" />
           <EntitySet Name="Sucursales" EntityType="VentasModel.Sucursales" />
           <AssociationSet Name="FK_Sucursales_Bancos" Association="VentasModel.FK_Sucursales_Bancos">
@@ -1933,10 +1911,6 @@
           <AssociationSet Name="FK_EPresupuestos_Clientes" Association="VentasModel.FK_EPresupuestos_Clientes">
             <End Role="Clientes" EntitySet="Clientes" />
             <End Role="EPresupuestos" EntitySet="EPresupuestos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EPresupuestosDetalles_Articulos" Association="VentasModel.FK_EPresupuestosDetalles_Articulos">
-            <End Role="EArticulos" EntitySet="EArticulos" />
-            <End Role="EPresupuestosDetalles" EntitySet="EPresupuestosDetalles" />
           </AssociationSet>
           <AssociationSet Name="FK_EPresupuestos_Empresas" Association="VentasModel.FK_EPresupuestos_Empresas">
             <End Role="Empresas" EntitySet="Empresas" />
@@ -1965,14 +1939,6 @@
           <AssociationSet Name="FK_EVentas_Clientes" Association="VentasModel.FK_EVentas_Clientes">
             <End Role="Clientes" EntitySet="Clientes" />
             <End Role="EVentas" EntitySet="EVentas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ERemitosDetalles_Articulos" Association="VentasModel.FK_ERemitosDetalles_Articulos">
-            <End Role="EArticulos" EntitySet="EArticulos" />
-            <End Role="ERemitosDetalles" EntitySet="ERemitosDetalles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EVentasDetalles_Articulos" Association="VentasModel.FK_EVentasDetalles_Articulos">
-            <End Role="EArticulos" EntitySet="EArticulos" />
-            <End Role="EVentasDetalles" EntitySet="EVentasDetalles" />
           </AssociationSet>
           <AssociationSet Name="FK_ERemitos_Empresas" Association="VentasModel.FK_ERemitos_Empresas">
             <End Role="Empresas" EntitySet="Empresas" />
@@ -2016,10 +1982,6 @@
           <EntitySet Name="EDepositos" EntityType="VentasModel.EDepositos" />
           <EntitySet Name="EMovimientos" EntityType="VentasModel.EMovimientos" />
           <EntitySet Name="EMovimStock" EntityType="VentasModel.EMovimStock" />
-          <AssociationSet Name="FK_EComprasDetalles_Articulos" Association="VentasModel.FK_EComprasDetalles_Articulos">
-            <End Role="EArticulos" EntitySet="EArticulos" />
-            <End Role="EComprasDetalles" EntitySet="EComprasDetalles" />
-          </AssociationSet>
           <AssociationSet Name="FK_EComprasDetalles_Empresas" Association="VentasModel.FK_EComprasDetalles_Empresas">
             <End Role="Empresas" EntitySet="Empresas" />
             <End Role="EComprasDetalles" EntitySet="EComprasDetalles" />
@@ -2041,109 +2003,44 @@
             <End Role="ECompras" EntitySet="ECompras" />
             <End Role="EComprasDetalles" EntitySet="EComprasDetalles" />
           </AssociationSet>
+          <EntitySet Name="EArticulos" EntityType="VentasModel.EArticulos" />
+          <AssociationSet Name="FK_EArticulos_Empresas" Association="VentasModel.FK_EArticulos_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="EArticulos" EntitySet="EArticulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EArticulos_Marcas" Association="VentasModel.FK_EArticulos_Marcas">
+            <End Role="EMarcas" EntitySet="EMarcas" />
+            <End Role="EArticulos" EntitySet="EArticulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EArticulos_Proveedores" Association="VentasModel.FK_EArticulos_Proveedores">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="EArticulos" EntitySet="EArticulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EArticulos_Rubros" Association="VentasModel.FK_EArticulos_Rubros">
+            <End Role="ERubros" EntitySet="ERubros" />
+            <End Role="EArticulos" EntitySet="EArticulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EArticulos_Unidades" Association="VentasModel.FK_EArticulos_Unidades">
+            <End Role="Unidades" EntitySet="Unidades" />
+            <End Role="EArticulos" EntitySet="EArticulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EComprasDetalles_Articulos" Association="VentasModel.FK_EComprasDetalles_Articulos">
+            <End Role="EArticulos" EntitySet="EArticulos" />
+            <End Role="EComprasDetalles" EntitySet="EComprasDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EPresupuestosDetalles_Articulos" Association="VentasModel.FK_EPresupuestosDetalles_Articulos">
+            <End Role="EArticulos" EntitySet="EArticulos" />
+            <End Role="EPresupuestosDetalles" EntitySet="EPresupuestosDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ERemitosDetalles_Articulos" Association="VentasModel.FK_ERemitosDetalles_Articulos">
+            <End Role="EArticulos" EntitySet="EArticulos" />
+            <End Role="ERemitosDetalles" EntitySet="ERemitosDetalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EVentasDetalles_Articulos" Association="VentasModel.FK_EVentasDetalles_Articulos">
+            <End Role="EArticulos" EntitySet="EArticulos" />
+            <End Role="EVentasDetalles" EntitySet="EVentasDetalles" />
+          </AssociationSet>
           </EntityContainer>
-        <EntityType Name="EArticulos">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
-          <Property Name="Codigo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CodBarra" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IdMarca" Type="Int32" />
-          <Property Name="IdRubro" Type="Int32" />
-          <Property Name="IdProveedor" Type="Int32" />
-          <Property Name="IdUnidad" Type="Int32" />
-          <Property Name="CostoInicial" Type="Decimal" Precision="17" Scale="2" />
-          <Property Name="Descuento1" Type="Decimal" Precision="17" Scale="2" />
-          <Property Name="DescuentoPorc1" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="Descuento2" Type="Decimal" Precision="17" Scale="2" />
-          <Property Name="DescuentoPorc2" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="Descuento3" Type="Decimal" Precision="17" Scale="2" />
-          <Property Name="DescuentoPorc3" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="Costo" Type="Decimal" Nullable="false" Precision="17" Scale="2" />
-          <Property Name="Stock" Type="Decimal" Precision="17" Scale="2" />
-          <Property Name="StockMinimo" Type="Decimal" Nullable="false" Precision="17" Scale="2" />
-          <Property Name="PrecioL1" Type="Decimal" Precision="17" Scale="2" />
-          <Property Name="PrecioPorcL1" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="PrecioL2" Type="Decimal" Precision="17" Scale="2" />
-          <Property Name="PrecioPorcL2" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="PrecioL3" Type="Decimal" Precision="17" Scale="2" />
-          <Property Name="PrecioPorcL3" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="IVA" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="Observaciones" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Estado" Type="Int32" />
-          <NavigationProperty Name="Empresas" Relationship="VentasModel.FK_EArticulos_Empresas" FromRole="EArticulos" ToRole="Empresas" />
-          <NavigationProperty Name="EMarcas" Relationship="VentasModel.FK_EArticulos_Marcas" FromRole="EArticulos" ToRole="EMarcas" />
-          <NavigationProperty Name="Proveedores" Relationship="VentasModel.FK_EArticulos_Proveedores" FromRole="EArticulos" ToRole="Proveedores" />
-          <NavigationProperty Name="ERubros" Relationship="VentasModel.FK_EArticulos_Rubros" FromRole="EArticulos" ToRole="ERubros" />
-          <NavigationProperty Name="Unidades" Relationship="VentasModel.FK_EArticulos_Unidades" FromRole="EArticulos" ToRole="Unidades" />
-          <NavigationProperty Name="EPresupuestosDetalles" Relationship="VentasModel.FK_EPresupuestosDetalles_Articulos" FromRole="EArticulos" ToRole="EPresupuestosDetalles" />
-          <NavigationProperty Name="ERemitosDetalles" Relationship="VentasModel.FK_ERemitosDetalles_Articulos" FromRole="EArticulos" ToRole="ERemitosDetalles" />
-          <NavigationProperty Name="EVentasDetalles" Relationship="VentasModel.FK_EVentasDetalles_Articulos" FromRole="EArticulos" ToRole="EVentasDetalles" />
-          <NavigationProperty Name="EComprasDetalles" Relationship="VentasModel.FK_EComprasDetalles_Articulos" FromRole="EArticulos" ToRole="EComprasDetalles" />
-        </EntityType>
-        <Association Name="FK_EArticulos_Empresas">
-          <End Type="VentasModel.Empresas" Role="Empresas" Multiplicity="1" />
-          <End Type="VentasModel.EArticulos" Role="EArticulos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empresas">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="EArticulos">
-              <PropertyRef Name="IdEmpresa" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EArticulos_Marcas">
-          <End Type="VentasModel.EMarcas" Role="EMarcas" Multiplicity="0..1" />
-          <End Type="VentasModel.EArticulos" Role="EArticulos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EMarcas">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="EArticulos">
-              <PropertyRef Name="IdMarca" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EArticulos_Proveedores">
-          <End Type="VentasModel.Proveedores" Role="Proveedores" Multiplicity="0..1" />
-          <End Type="VentasModel.EArticulos" Role="EArticulos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Proveedores">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="EArticulos">
-              <PropertyRef Name="IdProveedor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EArticulos_Rubros">
-          <End Type="VentasModel.ERubros" Role="ERubros" Multiplicity="0..1" />
-          <End Type="VentasModel.EArticulos" Role="EArticulos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ERubros">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="EArticulos">
-              <PropertyRef Name="IdRubro" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EArticulos_Unidades">
-          <End Type="VentasModel.Unidades" Role="Unidades" Multiplicity="0..1" />
-          <End Type="VentasModel.EArticulos" Role="EArticulos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Unidades">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="EArticulos">
-              <PropertyRef Name="IdUnidad" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Bancos">
           <Key>
             <PropertyRef Name="Id" />
@@ -2213,9 +2110,9 @@
           <Property Name="Importe" Type="Decimal" Precision="17" Scale="2" />
           <Property Name="Cantidad" Type="Int32" />
           <Property Name="Precio" Type="Decimal" Precision="17" Scale="2" />
-          <NavigationProperty Name="EArticulos" Relationship="VentasModel.FK_EPresupuestosDetalles_Articulos" FromRole="EPresupuestosDetalles" ToRole="EArticulos" />
           <NavigationProperty Name="Empresas" Relationship="VentasModel.FK_EPresupuestosDetalles_Empresas" FromRole="EPresupuestosDetalles" ToRole="Empresas" />
           <NavigationProperty Name="EPresupuestos" Relationship="VentasModel.FK_EPresupuestosDetalles_Presupuestos" FromRole="EPresupuestosDetalles" ToRole="EPresupuestos" />
+          <NavigationProperty Name="EArticulos" Relationship="VentasModel.FK_EPresupuestosDetalles_Articulos" FromRole="EPresupuestosDetalles" ToRole="EArticulos" />
         </EntityType>
         <Association Name="FK_EPresupuestos_Clientes">
           <End Type="VentasModel.Clientes" Role="Clientes" Multiplicity="0..1" />
@@ -2226,18 +2123,6 @@
             </Principal>
             <Dependent Role="EPresupuestos">
               <PropertyRef Name="IdCliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EPresupuestosDetalles_Articulos">
-          <End Type="VentasModel.EArticulos" Role="EArticulos" Multiplicity="0..1" />
-          <End Type="VentasModel.EPresupuestosDetalles" Role="EPresupuestosDetalles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EArticulos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="EPresupuestosDetalles">
-              <PropertyRef Name="IdArticulo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2319,9 +2204,9 @@
           <Property Name="IdRemito" Type="Int32" />
           <Property Name="IdArticulo" Type="Int32" />
           <Property Name="Cantidad" Type="Int32" />
-          <NavigationProperty Name="EArticulos" Relationship="VentasModel.FK_ERemitosDetalles_Articulos" FromRole="ERemitosDetalles" ToRole="EArticulos" />
           <NavigationProperty Name="Empresas" Relationship="VentasModel.FK_ERemitosDetalles_Empresas" FromRole="ERemitosDetalles" ToRole="Empresas" />
           <NavigationProperty Name="ERemitos" Relationship="VentasModel.FK_ERemitosDetalles_Remitos" FromRole="ERemitosDetalles" ToRole="ERemitos" />
+          <NavigationProperty Name="EArticulos" Relationship="VentasModel.FK_ERemitosDetalles_Articulos" FromRole="ERemitosDetalles" ToRole="EArticulos" />
         </EntityType>
         <EntityType Name="EVentas">
           <Key>
@@ -2355,9 +2240,9 @@
           <Property Name="Importe" Type="Decimal" Precision="17" Scale="2" />
           <Property Name="Cantidad" Type="Int32" />
           <Property Name="Precio" Type="Decimal" Precision="17" Scale="2" />
-          <NavigationProperty Name="EArticulos" Relationship="VentasModel.FK_EVentasDetalles_Articulos" FromRole="EVentasDetalles" ToRole="EArticulos" />
           <NavigationProperty Name="Empresas" Relationship="VentasModel.FK_EVentasDetalles_Empresas" FromRole="EVentasDetalles" ToRole="Empresas" />
           <NavigationProperty Name="EVentas" Relationship="VentasModel.FK_EVentasDetalles_Ventas" FromRole="EVentasDetalles" ToRole="EVentas" />
+          <NavigationProperty Name="EArticulos" Relationship="VentasModel.FK_EVentasDetalles_Articulos" FromRole="EVentasDetalles" ToRole="EArticulos" />
         </EntityType>
         <Association Name="FK_ERemitos_Clientes">
           <End Type="VentasModel.Clientes" Role="Clientes" Multiplicity="0..1" />
@@ -2380,30 +2265,6 @@
             </Principal>
             <Dependent Role="EVentas">
               <PropertyRef Name="IdCliente" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ERemitosDetalles_Articulos">
-          <End Type="VentasModel.EArticulos" Role="EArticulos" Multiplicity="0..1" />
-          <End Type="VentasModel.ERemitosDetalles" Role="ERemitosDetalles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EArticulos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ERemitosDetalles">
-              <PropertyRef Name="IdArticulo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EVentasDetalles_Articulos">
-          <End Type="VentasModel.EArticulos" Role="EArticulos" Multiplicity="0..1" />
-          <End Type="VentasModel.EVentasDetalles" Role="EVentasDetalles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EArticulos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="EVentasDetalles">
-              <PropertyRef Name="IdArticulo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2543,9 +2404,9 @@
           <Property Name="Importe" Type="Decimal" Precision="17" Scale="2" />
           <Property Name="Cantidad" Type="Int32" />
           <Property Name="Precio" Type="Decimal" Precision="17" Scale="2" />
-          <NavigationProperty Name="EArticulos" Relationship="VentasModel.FK_EComprasDetalles_Articulos" FromRole="EComprasDetalles" ToRole="EArticulos" />
           <NavigationProperty Name="Empresas" Relationship="VentasModel.FK_EComprasDetalles_Empresas" FromRole="EComprasDetalles" ToRole="Empresas" />
           <NavigationProperty Name="ECompras" Relationship="VentasModel.FK_EComprasDetalles_Compras" FromRole="EComprasDetalles" ToRole="ECompras" />
+          <NavigationProperty Name="EArticulos" Relationship="VentasModel.FK_EComprasDetalles_Articulos" FromRole="EComprasDetalles" ToRole="EArticulos" />
         </EntityType>
         <EntityType Name="ECuentas">
           <Key>
@@ -2610,18 +2471,6 @@
           <Property Name="Stock" Type="Decimal" Precision="17" Scale="2" />
           <Property Name="Usuario" Type="Int32" />
         </EntityType>
-        <Association Name="FK_EComprasDetalles_Articulos">
-          <End Type="VentasModel.EArticulos" Role="EArticulos" Multiplicity="0..1" />
-          <End Type="VentasModel.EComprasDetalles" Role="EComprasDetalles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EArticulos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="EComprasDetalles">
-              <PropertyRef Name="IdArticulo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_EComprasDetalles_Empresas">
           <End Type="VentasModel.Empresas" Role="Empresas" Multiplicity="1" />
           <End Type="VentasModel.EComprasDetalles" Role="EComprasDetalles" Multiplicity="*" />
@@ -2696,6 +2545,155 @@
             </Principal>
             <Dependent Role="EComprasDetalles">
               <PropertyRef Name="IdCompra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EArticulos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="IdEmpresa" Type="Int32" Nullable="false" />
+          <Property Name="CodBarra" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdMarca" Type="Int32" />
+          <Property Name="IdRubro" Type="Int32" />
+          <Property Name="IdProveedor" Type="Int32" />
+          <Property Name="IdUnidad" Type="Int32" />
+          <Property Name="CostoInicial" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="Descuento1" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="DescuentoPorc1" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="Descuento2" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="DescuentoPorc2" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="Descuento3" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="DescuentoPorc3" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="Costo" Type="Decimal" Nullable="false" Precision="17" Scale="2" />
+          <Property Name="Stock" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="StockMinimo" Type="Decimal" Nullable="false" Precision="17" Scale="2" />
+          <Property Name="PrecioL1" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="PrecioPorcL1" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="PrecioL2" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="PrecioPorcL2" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="PrecioL3" Type="Decimal" Precision="17" Scale="2" />
+          <Property Name="PrecioPorcL3" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="IVA" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="Observaciones" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Int32" />
+          <NavigationProperty Name="Empresas" Relationship="VentasModel.FK_EArticulos_Empresas" FromRole="EArticulos" ToRole="Empresas" />
+          <NavigationProperty Name="EMarcas" Relationship="VentasModel.FK_EArticulos_Marcas" FromRole="EArticulos" ToRole="EMarcas" />
+          <NavigationProperty Name="Proveedores" Relationship="VentasModel.FK_EArticulos_Proveedores" FromRole="EArticulos" ToRole="Proveedores" />
+          <NavigationProperty Name="ERubros" Relationship="VentasModel.FK_EArticulos_Rubros" FromRole="EArticulos" ToRole="ERubros" />
+          <NavigationProperty Name="Unidades" Relationship="VentasModel.FK_EArticulos_Unidades" FromRole="EArticulos" ToRole="Unidades" />
+          <NavigationProperty Name="EComprasDetalles" Relationship="VentasModel.FK_EComprasDetalles_Articulos" FromRole="EArticulos" ToRole="EComprasDetalles" />
+          <NavigationProperty Name="EPresupuestosDetalles" Relationship="VentasModel.FK_EPresupuestosDetalles_Articulos" FromRole="EArticulos" ToRole="EPresupuestosDetalles" />
+          <NavigationProperty Name="ERemitosDetalles" Relationship="VentasModel.FK_ERemitosDetalles_Articulos" FromRole="EArticulos" ToRole="ERemitosDetalles" />
+          <NavigationProperty Name="EVentasDetalles" Relationship="VentasModel.FK_EVentasDetalles_Articulos" FromRole="EArticulos" ToRole="EVentasDetalles" />
+        </EntityType>
+        <Association Name="FK_EArticulos_Empresas">
+          <End Type="VentasModel.Empresas" Role="Empresas" Multiplicity="1" />
+          <End Type="VentasModel.EArticulos" Role="EArticulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EArticulos">
+              <PropertyRef Name="IdEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EArticulos_Marcas">
+          <End Type="VentasModel.EMarcas" Role="EMarcas" Multiplicity="0..1" />
+          <End Type="VentasModel.EArticulos" Role="EArticulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMarcas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EArticulos">
+              <PropertyRef Name="IdMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EArticulos_Proveedores">
+          <End Type="VentasModel.Proveedores" Role="Proveedores" Multiplicity="0..1" />
+          <End Type="VentasModel.EArticulos" Role="EArticulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EArticulos">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EArticulos_Rubros">
+          <End Type="VentasModel.ERubros" Role="ERubros" Multiplicity="0..1" />
+          <End Type="VentasModel.EArticulos" Role="EArticulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ERubros">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EArticulos">
+              <PropertyRef Name="IdRubro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EArticulos_Unidades">
+          <End Type="VentasModel.Unidades" Role="Unidades" Multiplicity="0..1" />
+          <End Type="VentasModel.EArticulos" Role="EArticulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unidades">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EArticulos">
+              <PropertyRef Name="IdUnidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EComprasDetalles_Articulos">
+          <End Type="VentasModel.EArticulos" Role="EArticulos" Multiplicity="0..1" />
+          <End Type="VentasModel.EComprasDetalles" Role="EComprasDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EArticulos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EComprasDetalles">
+              <PropertyRef Name="IdArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EPresupuestosDetalles_Articulos">
+          <End Type="VentasModel.EArticulos" Role="EArticulos" Multiplicity="0..1" />
+          <End Type="VentasModel.EPresupuestosDetalles" Role="EPresupuestosDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EArticulos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EPresupuestosDetalles">
+              <PropertyRef Name="IdArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ERemitosDetalles_Articulos">
+          <End Type="VentasModel.EArticulos" Role="EArticulos" Multiplicity="0..1" />
+          <End Type="VentasModel.ERemitosDetalles" Role="ERemitosDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EArticulos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ERemitosDetalles">
+              <PropertyRef Name="IdArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EVentasDetalles_Articulos">
+          <End Type="VentasModel.EArticulos" Role="EArticulos" Multiplicity="0..1" />
+          <End Type="VentasModel.EVentasDetalles" Role="EVentasDetalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EArticulos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EVentasDetalles">
+              <PropertyRef Name="IdArticulo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2901,40 +2899,6 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
                 <ScalarProperty Name="IdItemMenu" ColumnName="IdItemMenu" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="EArticulos">
-            <EntityTypeMapping TypeName="VentasModel.EArticulos">
-              <MappingFragment StoreEntitySet="EArticulos">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
-                <ScalarProperty Name="IVA" ColumnName="IVA" />
-                <ScalarProperty Name="PrecioPorcL3" ColumnName="PrecioPorcL3" />
-                <ScalarProperty Name="PrecioL3" ColumnName="PrecioL3" />
-                <ScalarProperty Name="PrecioPorcL2" ColumnName="PrecioPorcL2" />
-                <ScalarProperty Name="PrecioL2" ColumnName="PrecioL2" />
-                <ScalarProperty Name="PrecioPorcL1" ColumnName="PrecioPorcL1" />
-                <ScalarProperty Name="PrecioL1" ColumnName="PrecioL1" />
-                <ScalarProperty Name="StockMinimo" ColumnName="StockMinimo" />
-                <ScalarProperty Name="Stock" ColumnName="Stock" />
-                <ScalarProperty Name="Costo" ColumnName="Costo" />
-                <ScalarProperty Name="DescuentoPorc3" ColumnName="DescuentoPorc3" />
-                <ScalarProperty Name="Descuento3" ColumnName="Descuento3" />
-                <ScalarProperty Name="DescuentoPorc2" ColumnName="DescuentoPorc2" />
-                <ScalarProperty Name="Descuento2" ColumnName="Descuento2" />
-                <ScalarProperty Name="DescuentoPorc1" ColumnName="DescuentoPorc1" />
-                <ScalarProperty Name="Descuento1" ColumnName="Descuento1" />
-                <ScalarProperty Name="CostoInicial" ColumnName="CostoInicial" />
-                <ScalarProperty Name="IdUnidad" ColumnName="IdUnidad" />
-                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
-                <ScalarProperty Name="IdRubro" ColumnName="IdRubro" />
-                <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="CodBarra" ColumnName="CodBarra" />
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3159,6 +3123,39 @@
                 <ScalarProperty Name="Importe" ColumnName="Importe" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EArticulos">
+            <EntityTypeMapping TypeName="VentasModel.EArticulos">
+              <MappingFragment StoreEntitySet="EArticulos">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="IVA" ColumnName="IVA" />
+                <ScalarProperty Name="PrecioPorcL3" ColumnName="PrecioPorcL3" />
+                <ScalarProperty Name="PrecioL3" ColumnName="PrecioL3" />
+                <ScalarProperty Name="PrecioPorcL2" ColumnName="PrecioPorcL2" />
+                <ScalarProperty Name="PrecioL2" ColumnName="PrecioL2" />
+                <ScalarProperty Name="PrecioPorcL1" ColumnName="PrecioPorcL1" />
+                <ScalarProperty Name="PrecioL1" ColumnName="PrecioL1" />
+                <ScalarProperty Name="StockMinimo" ColumnName="StockMinimo" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="DescuentoPorc3" ColumnName="DescuentoPorc3" />
+                <ScalarProperty Name="Descuento3" ColumnName="Descuento3" />
+                <ScalarProperty Name="DescuentoPorc2" ColumnName="DescuentoPorc2" />
+                <ScalarProperty Name="Descuento2" ColumnName="Descuento2" />
+                <ScalarProperty Name="DescuentoPorc1" ColumnName="DescuentoPorc1" />
+                <ScalarProperty Name="Descuento1" ColumnName="Descuento1" />
+                <ScalarProperty Name="CostoInicial" ColumnName="CostoInicial" />
+                <ScalarProperty Name="IdUnidad" ColumnName="IdUnidad" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="IdRubro" ColumnName="IdRubro" />
+                <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="CodBarra" ColumnName="CodBarra" />
                 <ScalarProperty Name="IdEmpresa" ColumnName="IdEmpresa" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

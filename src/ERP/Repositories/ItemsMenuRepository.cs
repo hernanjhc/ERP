@@ -43,6 +43,7 @@ namespace ERP.Repositories
                     if (!menuItemsNames.Contains(item.Nombre))
                     {
                         db.ItemsMenu.Remove(item);
+                        UsuariosItemsMenuRepository.Eliminar(item.Id);
                     }
                 }
                 db.SaveChanges();

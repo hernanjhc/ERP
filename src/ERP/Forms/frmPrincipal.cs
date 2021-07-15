@@ -200,5 +200,15 @@ namespace ERP.Forms
         {
             using (var f = new Compras.frmListado()) f.ShowDialog();
         }
+
+        private void chequesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            using (var f = new Cheques.frmListado()) f.ShowDialog();
+        }
+
+        private void importarArtículosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var f = new Articulos.frmImportarTxt()) f.ShowDialog();
+        }
     }
 }

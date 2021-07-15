@@ -28,12 +28,12 @@ namespace ERP.Forms.Ventas
         private void ConsultarDatos()
         {
             dgvDatos.SetDataSource(
-                from p in VentasRepository.ObtenerVentas()                
+                from p in VentasRepository.ObtenerVentas()
                 orderby p.Id
                 select new
                 {
                     p.Id,
-                    p.Fecha,                    
+                    p.Fecha,
                     Cliente = ClientesRepository.ObtenerClientePorId(Convert.ToDecimal(p.IdCliente)).RazonSocial,
                     Usuario = UsuariosRepository.ObtenerUsuarioPorId(Convert.ToDecimal(p.IdUsuario)).NombreCompleto
                 }
@@ -47,43 +47,76 @@ namespace ERP.Forms.Ventas
 
         private void NuevaVenta()
         {
+            EVentas _venta = new EVentas();
+            List<EVentasDetalles> _detalleVenta = new List<EVentasDetalles>();
             using (var f = new frmEdicion())
             {
                 if (f.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {
-                        var venta = VentasRepository.Insertar(f.IdCliente, f.Fecha, f.Subtotal, f.Descuento,
-                                                            f.DescPorc, f.ImporteTotal, f.PrecioLista, f.IdUsuario, f.Estado);
+                        _venta.IdCliente = f.IdCliente;
+                        _venta.Fecha = f.Fecha;
+                        _venta.Importe = f.Subtotal;
+                        _venta.Descuento = f.Descuento;
+                        _venta.DescuentoPorc = f.DescPorc;
+                        _venta.ImporteTotal = f.ImporteTotal;
+                        _venta.PrecioLista = f.PrecioLista;
+                        _venta.IdUsuario = f.IdUsuario;
+                        _venta.Estado = f.Estado;
+                        //var ventas = VentasRepository.Insertar(f.IdCliente, f.Fecha, f.Subtotal, f.Descuento,
+                        //                                    f.DescPorc, f.ImporteTotal, f.PrecioLista, f.IdUsuario, f.Estado);
 
 
                         for (int i = 0; i <= Convert.ToInt32(f.dgvDetalles.Rows.Count - 1); i++)
                         {
-                            VentasDetallesRepository.Insertar(venta.Id, Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[0].Value),
-                                    Convert.ToInt16(f.dgvDetalles.Rows[i].Cells[3].Value), Convert.ToDecimal(f.dgvDetalles.Rows[i].Cells[4].Value),
-                                    Convert.ToDecimal(f.dgvDetalles.Rows[i].Cells[5].Value));
-
+                            //VentasDetallesRepository.Insertar(venta.Id, Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[0].Value),
+                            //        Convert.ToInt16(f.dgvDetalles.Rows[i].Cells[3].Value), Convert.ToDecimal(f.dgvDetalles.Rows[i].Cells[4].Value),
+                            //        Convert.ToDecimal(f.dgvDetalles.Rows[i].Cells[5].Value));
+                            EVentasDetalles detalle = new EVentasDetalles();
+                            detalle.IdArticulo = Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[0].Value);
+                            detalle.Cantidad = Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[3].Value);
+                            detalle.Precio = Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[4].Value);
+                            detalle.Importe = Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[5].Value);
+                            _detalleVenta.Add(detalle);
                         }
-                        if (Configuration.ImprimeVentas)    ImprimirVenta(f, venta.Id);
+                        if (Configuration.ImprimeVentas) ImprimirVenta(f, _venta.Id);
                         if (Configuration.VentaDescuentaStock)
                         {
-                            for (int i = 0; i <= Convert.ToInt32(f.dgvDetalles.Rows.Count - 1); i++)
+                            foreach (var item in _detalleVenta)
                             {
-                                EArticulosRepository.DescontarStockArticulo(Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[0].Value),
-                                        Convert.ToInt16(f.dgvDetalles.Rows[i].Cells[3].Value));
+                                EArticulosRepository.DescontarStockArticulo(
+                                    Convert.ToDecimal(item.IdArticulo), Convert.ToDecimal(item.Cantidad));
                             }
+                            //for (int i = 0; i <= Convert.ToInt32(f.dgvDetalles.Rows.Count - 1); i++)
+                            //{
+                            //    EArticulosRepository.DescontarStockArticulo(Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[0].Value),
+                            //            Convert.ToInt16(f.dgvDetalles.Rows[i].Cells[3].Value));
+                            //}
                         }
-                        
 
-                        MovimientosRepository.InsertarVenta(venta);
+                        // Ver como se desagrega ésta función
+                        //MovimientosRepository.InsertarVenta(_venta);
 
                         ConsultarDatos();
-                        dgvDatos.SetRow(r => Convert.ToDecimal(r.Cells[0].Value) == venta.Id);
+                        dgvDatos.SetRow(r => Convert.ToDecimal(r.Cells[0].Value) == _venta.Id);
                     }
                     catch (Exception ex)
                     {
-                        ShowError("Error al intentar grabar los datos: \n" + ex.Message);
+                        ShowError("Error al intentar leer los datos: \n" + ex.Message);
                     }
+                }
+            }
+            //Continuar con el cobro
+            using (var f = new frmCobrar())
+            {
+                try
+                {
+                   
+                }
+                catch (Exception ex)
+                {
+                    ShowError("Error al intentar grabar los datos: \n" + ex.Message);
                 }
             }
         }
@@ -135,7 +168,7 @@ namespace ERP.Forms.Ventas
                     //                        subtotal, descuento, total, validez)) f.ShowDialog();
                     var f = new frmReporte(reporte, dirección, razónSocial, documento,
                                             tipoDocumento, comprobante, número, fecha,
-                                            subtotal, descuento, total,"")) f.ShowDialog();
+                                            subtotal, descuento, total, "")) f.ShowDialog();
             }
         }
 
@@ -153,7 +186,7 @@ namespace ERP.Forms.Ventas
             dgvDatos.Columns[1].HeaderText = "Fecha";
             dgvDatos.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvDatos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            
+
             dgvDatos.Columns[2].HeaderText = "Cliente";
             dgvDatos.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvDatos.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -189,7 +222,7 @@ namespace ERP.Forms.Ventas
             limpiarTxt();
             var cliente = ClientesRepository.ObtenerClientePorId(Convert.ToDecimal(p.IdCliente));
 
-            txtVentaNro.Text = p.Id.ToString().Trim();            
+            txtVentaNro.Text = p.Id.ToString().Trim();
             txtCliente.Text = cliente.RazonSocial;
             txtNroDoc.Text = cliente.NroDocumento.ToString();
             txtDescuentoPesos.Text = p.Descuento.ToString().Trim() + " (" + p.DescuentoPorc.ToString().Trim() + "%)";
@@ -227,7 +260,7 @@ namespace ERP.Forms.Ventas
         private void limpiarTxt()
         {
             dgvDetalles.Rows.Clear();
-            txtVentaNro.Text = "";            
+            txtVentaNro.Text = "";
             txtCliente.Text = "";
             txtDescuentoPesos.Text = "";
             txtDireccion.Text = "";
@@ -282,7 +315,7 @@ namespace ERP.Forms.Ventas
                     select new
                     {
                         p.Id,
-                        p.Fecha,                        
+                        p.Fecha,
                         Cliente = ClientesRepository.ObtenerClientePorId(Convert.ToDecimal(p.IdCliente)).RazonSocial,
                         Usuario = UsuariosRepository.ObtenerUsuarioPorId(Convert.ToDecimal(p.IdUsuario)).NombreCompleto
                     }

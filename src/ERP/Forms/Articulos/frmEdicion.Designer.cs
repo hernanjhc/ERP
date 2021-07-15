@@ -94,8 +94,6 @@
             this.materialLabel18 = new MaterialSkin.Controls.MaterialLabel();
             this.txtDescripcion = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.txtCodigo = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -234,8 +232,6 @@
             this.panel1.Controls.Add(this.materialLabel18);
             this.panel1.Controls.Add(this.txtDescripcion);
             this.panel1.Controls.Add(this.materialLabel2);
-            this.panel1.Controls.Add(this.txtCodigo);
-            this.panel1.Controls.Add(this.materialLabel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(4, 4);
             this.panel1.Name = "panel1";
@@ -907,14 +903,14 @@
             // 
             this.txtCodBarra.Depth = 0;
             this.txtCodBarra.Hint = "";
-            this.txtCodBarra.Location = new System.Drawing.Point(302, 8);
+            this.txtCodBarra.Location = new System.Drawing.Point(113, 15);
             this.txtCodBarra.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtCodBarra.Name = "txtCodBarra";
             this.txtCodBarra.PasswordChar = '\0';
             this.txtCodBarra.SelectedText = "";
             this.txtCodBarra.SelectionLength = 0;
             this.txtCodBarra.SelectionStart = 0;
-            this.txtCodBarra.Size = new System.Drawing.Size(205, 23);
+            this.txtCodBarra.Size = new System.Drawing.Size(392, 23);
             this.txtCodBarra.TabIndex = 4;
             this.txtCodBarra.UseSystemPasswordChar = false;
             // 
@@ -924,7 +920,7 @@
             this.materialLabel18.Depth = 0;
             this.materialLabel18.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel18.Location = new System.Drawing.Point(202, 8);
+            this.materialLabel18.Location = new System.Drawing.Point(13, 15);
             this.materialLabel18.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel18.Name = "materialLabel18";
             this.materialLabel18.Size = new System.Drawing.Size(96, 19);
@@ -958,34 +954,6 @@
             this.materialLabel2.Size = new System.Drawing.Size(89, 19);
             this.materialLabel2.TabIndex = 6;
             this.materialLabel2.Text = "Descripción";
-            // 
-            // txtCodigo
-            // 
-            this.txtCodigo.Depth = 0;
-            this.txtCodigo.Hint = "";
-            this.txtCodigo.Location = new System.Drawing.Point(73, 8);
-            this.txtCodigo.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.PasswordChar = '\0';
-            this.txtCodigo.SelectedText = "";
-            this.txtCodigo.SelectionLength = 0;
-            this.txtCodigo.SelectionStart = 0;
-            this.txtCodigo.Size = new System.Drawing.Size(112, 23);
-            this.txtCodigo.TabIndex = 3;
-            this.txtCodigo.UseSystemPasswordChar = false;
-            // 
-            // materialLabel1
-            // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(13, 8);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(57, 19);
-            this.materialLabel1.TabIndex = 2;
-            this.materialLabel1.Text = "Código";
             // 
             // errorProvider1
             // 
@@ -1029,8 +997,6 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
-        private MaterialSkin.Controls.MaterialSingleLineTextField txtCodigo;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtDescripcion;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtCodBarra;

@@ -54,6 +54,9 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FileHelpers, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3e0c08d59cc3d657, processorArchitecture=MSIL">
+      <HintPath>..\packages\FileHelpers.3.5.0\lib\net45\FileHelpers.dll</HintPath>
+    </Reference>
     <Reference Include="LinqToExcel, Version=1.11.0.0, Culture=neutral, PublicKeyToken=9c8ea65a58f03f1f, processorArchitecture=MSIL">
       <HintPath>..\packages\LinqToExcel.1.11.0\lib\LinqToExcel.dll</HintPath>
       <Private>True</Private>
@@ -110,6 +113,12 @@
     </Compile>
     <Compile Include="Forms\Articulos\frmImportarArticulos.Designer.cs">
       <DependentUpon>frmImportarArticulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Articulos\frmImportarTxt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Articulos\frmImportarTxt.Designer.cs">
+      <DependentUpon>frmImportarTxt.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Articulos\frmListado.cs">
       <SubType>Form</SubType>
@@ -380,6 +389,7 @@
     <Compile Include="Models\EArticulos.cs">
       <DependentUpon>ERP.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\EArticulosImport.cs" />
     <Compile Include="Models\ECompras.cs">
       <DependentUpon>ERP.tt</DependentUpon>
     </Compile>
@@ -535,6 +545,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Articulos\frmImportarArticulos.resx">
       <DependentUpon>frmImportarArticulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Articulos\frmImportarTxt.resx">
+      <DependentUpon>frmImportarTxt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Articulos\frmListado.resx">
       <DependentUpon>frmListado.cs</DependentUpon>

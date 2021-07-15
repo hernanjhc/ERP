@@ -30,7 +30,7 @@ namespace ERP.Forms.Articulos
                                    select new
                                    {
                                        a.Id,
-                                       a.Codigo,
+                                       a.CodBarra,
                                        a.Descripcion,
                                        a.Stock,
                                        a.StockMinimo,
@@ -109,7 +109,7 @@ namespace ERP.Forms.Articulos
                 {
                     try
                     {
-                        var a = EArticulosRepository.Insertar(f.Codigo, f.CodigoBarra, f.Descripcion, f.IdMarca, f.IdRubro,
+                        var a = EArticulosRepository.Insertar(f.CodigoBarra, f.Descripcion, f.IdMarca, f.IdRubro,
                                                             f.IdProveedor, f.IdUnidad, f.CostoInicial, f.Descuento1, f.DescuentoPorc1,
                                                             f.Descuento2, f.DescuentoPorc2, f.Descuento3, f.DescuentoPorc3, f.Costo,
                                                             f.Stock, f.StockMinimo, f.Lista1, f.ListaPorc1, f.Lista2,
@@ -164,7 +164,6 @@ namespace ERP.Forms.Articulos
             var a = ObtenerArticuloSeleccionado();
             if (a == null)
             {
-                txtCodigo.Text = "";
                 txtDescripcion.Text = "";
                 txtCodBarra.Text = "";
                 txtMarca.Text = "";
@@ -183,7 +182,6 @@ namespace ERP.Forms.Articulos
                 txtIVA.Text = "";
                 return;
             }
-            txtCodigo.Text = a.Codigo;
             txtDescripcion.Text = a.Descripcion;
             txtCodBarra.Text = a.CodBarra;
             txtMarca.Text = MarcasRepository.ObtenerMarcaPorId(Convert.ToInt16(a.IdMarca)).Marca;
@@ -239,7 +237,7 @@ namespace ERP.Forms.Articulos
                     try
                     {
                         int IdEmpresa = Lib.Configuration.IdEmpresa;
-                        EArticulosRepository.Actualizar(a.Id, IdEmpresa, f.Codigo, f.CodigoBarra, f.Descripcion,
+                        EArticulosRepository.Actualizar(a.Id, IdEmpresa, f.CodigoBarra, f.Descripcion,
                             f.IdMarca, f.IdRubro, f.IdProveedor, f.IdUnidad, f.CostoInicial,
                             f.Descuento1, f.DescuentoPorc1, f.Descuento2, f.DescuentoPorc2, f.Descuento3,
                             f.DescuentoPorc3, f.Costo, f.Stock, f.StockMinimo, f.Lista1,

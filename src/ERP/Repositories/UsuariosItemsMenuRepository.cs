@@ -30,5 +30,16 @@ namespace ERP.Repositories
                 db.SaveChanges();
             }
         }
+
+        internal static void Eliminar(int idItemMenu)
+        {
+            using (var db = new VentasConexión())
+            {
+                var uu = db.UsuariosItemsMenu.FirstOrDefault(t => t.IdItemMenu == idItemMenu);
+                if (uu == null) return;
+                db.UsuariosItemsMenu.Remove(uu);
+                db.SaveChanges();
+            }
+        }
     }
 }

@@ -22,7 +22,6 @@ namespace ERP.Repositories
                                       {
                                           Id = a.Id,
                                           IdEmpresa = a.IdEmpresa,
-                                          Codigo = a.Codigo,
                                           CodBarra = a.CodBarra,
                                           Descripcion = a.Descripcion,
                                           IdMarca = a.IdMarca,
@@ -52,6 +51,43 @@ namespace ERP.Repositories
             }
         }
 
+        public static EArticulosImport[] ObtenerArticulosParaExportar()
+        {
+            using (var db = new VentasConexión())
+            {
+                var prds = db.EArticulos.ToList();
+                //foreach (var item in prds)
+                //{
+                //    if (item.PrecioL1 == null) item.PrecioL1 = 0;
+                //    if (item.PrecioL2 == null) item.PrecioL2 = 0;
+                //    if (item.PrecioL3 == null) item.PrecioL3 = 0;
+                //    if (item.Stock == null) item.Stock = 0;
+                //    if (item.IVA == null) item.IVA = 0;
+                //}
+                var prd = from p in prds
+                          select new EArticulosImport
+                          {
+                              Id = p.Id,
+                              IdEmpresa = p.IdEmpresa,
+                              CodBarra = p.CodBarra,
+                              Descripcion = p.Descripcion,
+                              Marca = p.EMarcas.Marca,
+                              Rubro = p.ERubros.Rubro,
+                              Proveedor = p.Proveedores.RazonSocial,
+                              Unidad = p.Unidades.Unidad,
+                              Costo = p.Costo,
+                              PrecioL1 = p.PrecioL1 == null ? 0 : Convert.ToDecimal(p.PrecioL1),
+                              PrecioL2 = p.PrecioL2 == null ? 0 : Convert.ToDecimal(p.PrecioL2),
+                              PrecioL3 = p.PrecioL3 == null ? 0 : Convert.ToDecimal(p.PrecioL3),
+                              Stock = p.Stock == null ? 0 : Convert.ToDecimal(p.Stock),
+                              StockMinimo = p.StockMinimo,
+                              IvaVentas = p.IVA == null ? 0 : Convert.ToDecimal(p.IVA),
+                              Observaciones = p.Observaciones == null ? "" : p.Observaciones
+                          };
+                return prd.ToArray();
+            }
+        }
+
         public static void Eliminar(decimal id)
         {
             using (var db = new VentasConexión())
@@ -66,7 +102,7 @@ namespace ERP.Repositories
             }
         }
 
-        public static EArticulos Insertar(string codigo, string codbarra, string descripcion, int idmarca, int idrubro,
+        public static EArticulos Insertar(string codbarra, string descripcion, int idmarca, int idrubro,
                                             int idproveedor, int idunidad, decimal costoinicial, decimal desc1, decimal descporc1,
                                             decimal desc2, decimal descporc2, decimal desc3, decimal descporc3, decimal costo,
                                             decimal stock, decimal stockminimo, decimal lista1, decimal listaporc1, decimal lista2,
@@ -83,7 +119,6 @@ namespace ERP.Repositories
                     {
                         Id = id,
                         IdEmpresa = Lib.Configuration.IdEmpresa,
-                        Codigo = codigo,
                         CodBarra = codbarra,
                         Descripcion = descripcion,
                         IdMarca = idmarca,
@@ -139,7 +174,7 @@ namespace ERP.Repositories
             }
         }
 
-        public static void Actualizar(decimal id, int IdEmpresa, string codigo, string codbarra, string descripcion, int? idmarca, int? idrubro,
+        public static void Actualizar(decimal id, int IdEmpresa, string codbarra, string descripcion, int? idmarca, int? idrubro,
                                            int? idproveedor, int? idunidad, decimal costoinicial, decimal desc1, decimal? descporc1,
                                            decimal desc2, decimal? descporc2, decimal desc3, decimal? descporc3, decimal costo,
                                            decimal? stock, decimal stockminimo, decimal? lista1, decimal? listaporc1, decimal? lista2,
@@ -157,7 +192,6 @@ namespace ERP.Repositories
                     }
                     var a = db.EArticulos.Find(id);
                     a.IdEmpresa = IdEmpresa;
-                    a.Codigo = codigo;
                     a.CodBarra = codbarra;
                     a.Descripcion = descripcion;
                     a.IdMarca = idmarca;

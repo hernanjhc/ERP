@@ -44,19 +44,12 @@
         <AssociationConnector Association="VentasModel.FK_UsuariosItemsMenu_ItemsMenu" ManuallyRouted="false" />
         <AssociationConnector Association="VentasModel.FK_Proveedores_TiposDocumento" ManuallyRouted="false" />
         <AssociationConnector ManuallyRouted="false" Association="VentasModel.FK_UsuariosItemsMenu_Usuarios" />
-        <EntityTypeShape EntityType="VentasModel.EArticulos" Width="1.5" PointX="19.5" PointY="14.5" />
-        <AssociationConnector Association="VentasModel.FK_EArticulos_Empresas" />
-        <AssociationConnector Association="VentasModel.FK_EArticulos_Marcas" />
-        <AssociationConnector Association="VentasModel.FK_EArticulos_Proveedores" />
-        <AssociationConnector Association="VentasModel.FK_EArticulos_Rubros" />
-        <AssociationConnector Association="VentasModel.FK_EArticulos_Unidades" />
         <EntityTypeShape EntityType="VentasModel.Bancos" Width="1.5" PointX="5.375" PointY="1.875" />
         <EntityTypeShape EntityType="VentasModel.Sucursales" Width="1.5" PointX="7.625" PointY="1" />
         <AssociationConnector Association="VentasModel.FK_Sucursales_Bancos" />
         <EntityTypeShape EntityType="VentasModel.EPresupuestos" Width="1.5" PointX="17.25" PointY="9.5" />
         <EntityTypeShape EntityType="VentasModel.EPresupuestosDetalles" Width="1.5" PointX="21.75" PointY="14.25" />
         <AssociationConnector Association="VentasModel.FK_EPresupuestos_Clientes" />
-        <AssociationConnector Association="VentasModel.FK_EPresupuestosDetalles_Articulos" />
         <AssociationConnector Association="VentasModel.FK_EPresupuestos_Empresas" />
         <AssociationConnector Association="VentasModel.FK_EPresupuestosDetalles_Empresas" />
         <AssociationConnector Association="VentasModel.FK_EPresupuestos_Usuarios" />
@@ -67,8 +60,6 @@
         <EntityTypeShape EntityType="VentasModel.EVentasDetalles" Width="1.5" PointX="27.5" PointY="14.125" />
         <AssociationConnector Association="VentasModel.FK_ERemitos_Clientes" />
         <AssociationConnector Association="VentasModel.FK_EVentas_Clientes" />
-        <AssociationConnector Association="VentasModel.FK_ERemitosDetalles_Articulos" />
-        <AssociationConnector Association="VentasModel.FK_EVentasDetalles_Articulos" />
         <AssociationConnector Association="VentasModel.FK_ERemitos_Empresas" />
         <AssociationConnector Association="VentasModel.FK_ERemitosDetalles_Empresas" />
         <AssociationConnector Association="VentasModel.FK_EVentas_Empresas" />
@@ -84,13 +75,22 @@
         <EntityTypeShape EntityType="VentasModel.EDepositos" Width="1.5" PointX="9.375" PointY="5.75" />
         <EntityTypeShape EntityType="VentasModel.EMovimientos" Width="1.5" PointX="10.375" PointY="0.75" />
         <EntityTypeShape EntityType="VentasModel.EMovimStock" Width="1.5" PointX="5.375" PointY="10.75" />
-        <AssociationConnector Association="VentasModel.FK_EComprasDetalles_Articulos" />
         <AssociationConnector Association="VentasModel.FK_EComprasDetalles_Empresas" />
         <EntityTypeShape EntityType="VentasModel.ECompras" Width="1.5" PointX="24.25" PointY="18.625" />
         <AssociationConnector Association="VentasModel.FK_ECompras_Empresas" />
         <AssociationConnector Association="VentasModel.FK_ECompras_Proveedores" />
         <AssociationConnector Association="VentasModel.FK_ECompras_Usuarios" />
         <AssociationConnector Association="VentasModel.FK_EComprasDetalles_Compras" />
+        <EntityTypeShape EntityType="VentasModel.EArticulos" Width="1.5" PointX="19.5" PointY="14.125" />
+        <AssociationConnector Association="VentasModel.FK_EArticulos_Empresas" />
+        <AssociationConnector Association="VentasModel.FK_EArticulos_Marcas" />
+        <AssociationConnector Association="VentasModel.FK_EArticulos_Proveedores" />
+        <AssociationConnector Association="VentasModel.FK_EArticulos_Rubros" />
+        <AssociationConnector Association="VentasModel.FK_EArticulos_Unidades" />
+        <AssociationConnector Association="VentasModel.FK_EComprasDetalles_Articulos" />
+        <AssociationConnector Association="VentasModel.FK_EPresupuestosDetalles_Articulos" />
+        <AssociationConnector Association="VentasModel.FK_ERemitosDetalles_Articulos" />
+        <AssociationConnector Association="VentasModel.FK_EVentasDetalles_Articulos" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

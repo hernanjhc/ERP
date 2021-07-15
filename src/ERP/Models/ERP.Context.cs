@@ -43,7 +43,6 @@ namespace ERP.Models
         public virtual DbSet<Unidades> Unidades { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<UsuariosItemsMenu> UsuariosItemsMenu { get; set; }
-        public virtual DbSet<EArticulos> EArticulos { get; set; }
         public virtual DbSet<Bancos> Bancos { get; set; }
         public virtual DbSet<Sucursales> Sucursales { get; set; }
         public virtual DbSet<EPresupuestos> EPresupuestos { get; set; }
@@ -59,5 +58,6 @@ namespace ERP.Models
         public virtual DbSet<EMovimientos> EMovimientos { get; set; }
         public virtual DbSet<EMovimStock> EMovimStock { get; set; }
         public virtual DbSet<ECompras> ECompras { get; set; }
+        public virtual DbSet<EArticulos> EArticulos { get; set; }
     }
 }

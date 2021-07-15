@@ -52,6 +52,7 @@
             this.txtMontoTarjeta = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.Cheque = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.dtpFechaVencCheque = new System.Windows.Forms.DateTimePicker();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.cbBanco = new System.Windows.Forms.ComboBox();
@@ -82,7 +83,7 @@
             this.txtTarjeta = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel17 = new MaterialSkin.Controls.MaterialLabel();
             this.txtEfectivo = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.txtACobrar = new MaterialSkin.Controls.MaterialLabel();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -364,6 +365,7 @@
             // txtNroTarjeta
             // 
             this.txtNroTarjeta.Depth = 0;
+            this.txtNroTarjeta.Enabled = false;
             this.txtNroTarjeta.Hint = "";
             this.txtNroTarjeta.Location = new System.Drawing.Point(87, 71);
             this.txtNroTarjeta.MouseState = MaterialSkin.MouseState.HOVER;
@@ -392,6 +394,7 @@
             // txtMontoTarjeta
             // 
             this.txtMontoTarjeta.Depth = 0;
+            this.txtMontoTarjeta.Enabled = false;
             this.txtMontoTarjeta.Hint = "";
             this.txtMontoTarjeta.Location = new System.Drawing.Point(87, 41);
             this.txtMontoTarjeta.MouseState = MaterialSkin.MouseState.HOVER;
@@ -436,6 +439,18 @@
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "CHEQUE";
+            // 
+            // materialRaisedButton1
+            // 
+            this.materialRaisedButton1.Depth = 0;
+            this.materialRaisedButton1.Location = new System.Drawing.Point(62, 216);
+            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRaisedButton1.Name = "materialRaisedButton1";
+            this.materialRaisedButton1.Primary = true;
+            this.materialRaisedButton1.Size = new System.Drawing.Size(128, 36);
+            this.materialRaisedButton1.TabIndex = 26;
+            this.materialRaisedButton1.Text = "Cargar Cheque";
+            this.materialRaisedButton1.UseVisualStyleBackColor = true;
             // 
             // dtpFechaVencCheque
             // 
@@ -662,6 +677,7 @@
             // 
             // panel7
             // 
+            this.panel7.Controls.Add(this.txtACobrar);
             this.panel7.Controls.Add(this.btnCancelar);
             this.panel7.Controls.Add(this.btnConfirmar);
             this.panel7.Controls.Add(this.materialLabel19);
@@ -691,6 +707,7 @@
             this.btnCancelar.TabIndex = 21;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnConfirmar
             // 
@@ -708,12 +725,12 @@
             // 
             this.materialLabel19.AutoSize = true;
             this.materialLabel19.Depth = 0;
-            this.materialLabel19.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold);
+            this.materialLabel19.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel19.Location = new System.Drawing.Point(61, 218);
+            this.materialLabel19.Location = new System.Drawing.Point(61, 236);
             this.materialLabel19.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel19.Name = "materialLabel19";
-            this.materialLabel19.Size = new System.Drawing.Size(74, 18);
+            this.materialLabel19.Size = new System.Drawing.Size(67, 19);
             this.materialLabel19.TabIndex = 19;
             this.materialLabel19.Text = "TOTAL $";
             // 
@@ -723,7 +740,7 @@
             this.txtTotal.Enabled = false;
             this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotal.Hint = "";
-            this.txtTotal.Location = new System.Drawing.Point(141, 218);
+            this.txtTotal.Location = new System.Drawing.Point(141, 236);
             this.txtTotal.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.PasswordChar = '\0';
@@ -740,7 +757,7 @@
             this.materialLabel18.Depth = 0;
             this.materialLabel18.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel18.Location = new System.Drawing.Point(13, 142);
+            this.materialLabel18.Location = new System.Drawing.Point(13, 196);
             this.materialLabel18.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel18.Name = "materialLabel18";
             this.materialLabel18.Size = new System.Drawing.Size(122, 19);
@@ -752,7 +769,7 @@
             this.txtCtaCorriente.Depth = 0;
             this.txtCtaCorriente.Enabled = false;
             this.txtCtaCorriente.Hint = "";
-            this.txtCtaCorriente.Location = new System.Drawing.Point(141, 142);
+            this.txtCtaCorriente.Location = new System.Drawing.Point(141, 196);
             this.txtCtaCorriente.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtCtaCorriente.Name = "txtCtaCorriente";
             this.txtCtaCorriente.PasswordChar = '\0';
@@ -769,7 +786,7 @@
             this.materialLabel15.Depth = 0;
             this.materialLabel15.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel15.Location = new System.Drawing.Point(63, 105);
+            this.materialLabel15.Location = new System.Drawing.Point(63, 159);
             this.materialLabel15.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel15.Name = "materialLabel15";
             this.materialLabel15.Size = new System.Drawing.Size(72, 19);
@@ -781,7 +798,7 @@
             this.txtCheque.Depth = 0;
             this.txtCheque.Enabled = false;
             this.txtCheque.Hint = "";
-            this.txtCheque.Location = new System.Drawing.Point(141, 101);
+            this.txtCheque.Location = new System.Drawing.Point(141, 155);
             this.txtCheque.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtCheque.Name = "txtCheque";
             this.txtCheque.PasswordChar = '\0';
@@ -798,7 +815,7 @@
             this.materialLabel16.Depth = 0;
             this.materialLabel16.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel16.Location = new System.Drawing.Point(67, 64);
+            this.materialLabel16.Location = new System.Drawing.Point(67, 118);
             this.materialLabel16.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel16.Name = "materialLabel16";
             this.materialLabel16.Size = new System.Drawing.Size(68, 19);
@@ -810,7 +827,7 @@
             this.txtTarjeta.Depth = 0;
             this.txtTarjeta.Enabled = false;
             this.txtTarjeta.Hint = "";
-            this.txtTarjeta.Location = new System.Drawing.Point(141, 60);
+            this.txtTarjeta.Location = new System.Drawing.Point(141, 114);
             this.txtTarjeta.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtTarjeta.Name = "txtTarjeta";
             this.txtTarjeta.PasswordChar = '\0';
@@ -827,7 +844,7 @@
             this.materialLabel17.Depth = 0;
             this.materialLabel17.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel17.Location = new System.Drawing.Point(59, 29);
+            this.materialLabel17.Location = new System.Drawing.Point(59, 83);
             this.materialLabel17.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel17.Name = "materialLabel17";
             this.materialLabel17.Size = new System.Drawing.Size(76, 19);
@@ -839,7 +856,7 @@
             this.txtEfectivo.Depth = 0;
             this.txtEfectivo.Enabled = false;
             this.txtEfectivo.Hint = "";
-            this.txtEfectivo.Location = new System.Drawing.Point(141, 25);
+            this.txtEfectivo.Location = new System.Drawing.Point(141, 79);
             this.txtEfectivo.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtEfectivo.Name = "txtEfectivo";
             this.txtEfectivo.PasswordChar = '\0';
@@ -850,17 +867,18 @@
             this.txtEfectivo.TabIndex = 10;
             this.txtEfectivo.UseSystemPasswordChar = false;
             // 
-            // materialRaisedButton1
+            // txtACobrar
             // 
-            this.materialRaisedButton1.Depth = 0;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(62, 216);
-            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRaisedButton1.Name = "materialRaisedButton1";
-            this.materialRaisedButton1.Primary = true;
-            this.materialRaisedButton1.Size = new System.Drawing.Size(128, 36);
-            this.materialRaisedButton1.TabIndex = 26;
-            this.materialRaisedButton1.Text = "Cargar Cheque";
-            this.materialRaisedButton1.UseVisualStyleBackColor = true;
+            this.txtACobrar.AutoSize = true;
+            this.txtACobrar.Depth = 0;
+            this.txtACobrar.Font = new System.Drawing.Font("Roboto", 11F);
+            this.txtACobrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtACobrar.Location = new System.Drawing.Point(160, 23);
+            this.txtACobrar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtACobrar.Name = "txtACobrar";
+            this.txtACobrar.Size = new System.Drawing.Size(78, 19);
+            this.txtACobrar.TabIndex = 23;
+            this.txtACobrar.Text = "A cobrar $";
             // 
             // frmCobrar
             // 
@@ -948,5 +966,6 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel14;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtMontoCta;
         private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
+        private MaterialSkin.Controls.MaterialLabel txtACobrar;
     }
 }

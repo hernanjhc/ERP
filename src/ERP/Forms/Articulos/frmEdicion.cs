@@ -29,7 +29,7 @@ namespace ERP.Forms.Articulos
             InitializeComponent();
 
             this.Text = "Nuevo Artículo";
-            txtCodigo.Select();
+            txtCodBarra.Select();
             _validator = new FormValidations(this, errorProvider1);
             CargaInicial();
             ckEstado.Checked = true;
@@ -68,7 +68,6 @@ namespace ERP.Forms.Articulos
         public frmEdicion(EArticulos articulo) : this()
         {
             this.Text = "Edición del Artículo";
-            txtCodigo.Text = articulo.Codigo;
             txtCodBarra.Text = articulo.CodBarra;
             txtDescripcion.Text = articulo.Descripcion;
             cbMarca.SelectedIndex = cbMarca.FindString(MarcasRepository.ObtenerMarcaStringPorId(articulo.IdMarca));
@@ -354,14 +353,6 @@ namespace ERP.Forms.Articulos
             get
             {
                 return txtCodBarra.Text.Trim();
-            }
-        }
-
-        public string Codigo
-        {
-            get
-            {
-                return txtCodigo.Text.Trim();
             }
         }
 

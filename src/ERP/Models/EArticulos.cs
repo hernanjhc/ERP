@@ -17,15 +17,14 @@ namespace ERP.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public EArticulos()
         {
+            this.EComprasDetalles = new HashSet<EComprasDetalles>();
             this.EPresupuestosDetalles = new HashSet<EPresupuestosDetalles>();
             this.ERemitosDetalles = new HashSet<ERemitosDetalles>();
             this.EVentasDetalles = new HashSet<EVentasDetalles>();
-            this.EComprasDetalles = new HashSet<EComprasDetalles>();
         }
     
         public int Id { get; set; }
         public int IdEmpresa { get; set; }
-        public string Codigo { get; set; }
         public string CodBarra { get; set; }
         public string Descripcion { get; set; }
         public Nullable<int> IdMarca { get; set; }
@@ -58,12 +57,12 @@ namespace ERP.Models
         public virtual ERubros ERubros { get; set; }
         public virtual Unidades Unidades { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EComprasDetalles> EComprasDetalles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EPresupuestosDetalles> EPresupuestosDetalles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ERemitosDetalles> ERemitosDetalles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EVentasDetalles> EVentasDetalles { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EComprasDetalles> EComprasDetalles { get; set; }
     }
 }
