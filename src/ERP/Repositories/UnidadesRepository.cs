@@ -85,5 +85,19 @@ namespace ERP.Repositories
             }
         }
 
+        internal static int ObtenerIdUnidad(string unidad)
+        {
+            using (var db = new VentasConexión())
+            {
+                int idUnidad = 0;
+                if (!db.Unidades.Any(u => u.Unidad.ToLower().Trim() == unidad.ToLower().Trim()))
+                {
+                    Insertar(unidad,"",1);
+                }
+                idUnidad = db.Unidades.FirstOrDefault(u => u.Unidad.ToLower().Trim() == unidad.ToLower().Trim()).Id;
+
+                return idUnidad;
+            }
+        }
     }
 }

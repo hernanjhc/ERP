@@ -1,8 +1,10 @@
 ﻿using FileHelpers;
+using System;
 
 namespace ERP.Models
 {
     [DelimitedRecord("\t")]
+    
     public class EArticulosImport
     {
         public int Id;
@@ -40,5 +42,13 @@ namespace ERP.Models
         public decimal IvaVentas;
 
         public string Observaciones;
+
+        [FieldOptional]
+        [FieldNullValue(typeof(short), "3")]
+        public short LecturaArchivo;    //0 alta 1 modificacion 2 error.
+
+        [FieldOptional]
+        [FieldNullValue(typeof (string), "")]
+        public string MensajeLecturaArchivo;
     }
 }

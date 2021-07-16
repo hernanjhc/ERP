@@ -1,6 +1,7 @@
 ﻿using ERP.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ERP.Repositories
 {
-    class EArticulosRepository
+    public class EArticulosRepository
     {
         public static IList<EArticulos> ObtenerArticulos()
         {
@@ -48,6 +49,157 @@ namespace ERP.Repositories
                                           Estado = a.Estado
                                       });
                 return query.OrderBy(a => a.Descripcion).ToList();
+            }
+        }
+
+        internal static EArticulosImport ProcesarModificacionProducto(EArticulosImport item)
+        {
+            /// Modificación, Color amarillo. ID a modificar.
+            /// Modificación, existe código de barras
+            /// Error, información incompleta
+
+            VerificarCamposNulos(item);
+
+            if (!ExisteCodigoBarras(item.CodBarra))
+            {
+                item.LecturaArchivo = 2;
+                item.MensajeLecturaArchivo = "No existe Cód. Barra";
+            }
+            return item;
+        }
+
+        internal static EArticulosImport ProcesarAltaProducto(EArticulosImport item)
+        {
+            /// Altas, Color blanco. ID 0.
+            /// Error, Color rojo. 
+            /// Error, Código de Barras ya existe
+            /// Error, Información incompleta            
+            VerificarCamposNulos(item);
+
+            if (ExisteCodigoBarras(item.CodBarra))
+            {
+                item.LecturaArchivo = 2;
+                item.MensajeLecturaArchivo = "Ya existe Cód. Barra";
+            }
+            return item;
+        }
+
+        private static void VerificarCamposNulos(EArticulosImport item)
+        {
+            if (String.IsNullOrEmpty(item.CodBarra))
+            {
+                item.LecturaArchivo = 2;
+                item.MensajeLecturaArchivo = "Completar Cód. Barra";
+            }
+            if (String.IsNullOrEmpty(item.Descripcion))
+            {
+                item.LecturaArchivo = 2;
+                item.MensajeLecturaArchivo = "Completar Descripcion";
+            }
+            if (String.IsNullOrEmpty(item.Marca))
+            {
+                item.LecturaArchivo = 2;
+                item.MensajeLecturaArchivo = "Completar Marca";
+            }
+            if (String.IsNullOrEmpty(item.Rubro))
+            {
+                item.LecturaArchivo = 2;
+                item.MensajeLecturaArchivo = "Completar Rubro";
+            }
+            if (String.IsNullOrEmpty(item.Proveedor))
+            {
+                item.LecturaArchivo = 2;
+                item.MensajeLecturaArchivo = "Completar Proveedor";
+            }
+            if (String.IsNullOrEmpty(item.Unidad))
+            {
+                item.LecturaArchivo = 2;
+                item.MensajeLecturaArchivo = "Completar Unidad";
+            }
+        }
+
+        private static bool ExisteCodigoBarras(string codBarra)
+        {
+            using(var db = new VentasConexión())
+            {
+                var articulo = db.EArticulos.Where(a => a.CodBarra.Trim() == codBarra.Trim()).FirstOrDefault();
+                return articulo != null ? true : false;
+            }
+        }
+
+        internal static bool GuardarProductoLeidoPorTxt(EArticulosImport item)
+        {
+            bool proceso = true;
+
+            EArticulos producto = new EArticulos();
+            if (!item.CodBarra.Any()) proceso = false;
+            producto.CodBarra = item.CodBarra.Any() ? item.CodBarra : "";
+
+            if (!item.Descripcion.Any()) proceso = false;
+            producto.Descripcion = item.Descripcion.Any() ? item.Descripcion : "";
+
+            if (!item.Marca.Any()) proceso = false;
+            producto.IdMarca = item.Marca.Any() ? MarcasRepository.ObtenerIdMarca(item.Marca) : 0;
+
+            if (!item.Rubro.Any()) proceso = false;
+            producto.IdRubro = item.Rubro.Any() ? RubrosRepository.ObtenerIdRubro(item.Rubro) : 0;
+
+            if (!item.Unidad.Any()) proceso = false;
+            producto.IdUnidad = item.Unidad.Any() ? UnidadesRepository.ObtenerIdUnidad(item.Unidad) : 0;
+
+            if (!item.Proveedor.Any()) proceso = false;
+            producto.IdProveedor = item.Proveedor.Any() ? ProveedoresRepository.ObtenerIdProveedor(item.Proveedor) : 0;
+
+            producto.Costo = item.Costo >= 0 ? item.Costo : 0;
+            producto.PrecioL1 = item.PrecioL1 >= 0 ? item.PrecioL1 : 0;
+            producto.PrecioL2 = item.PrecioL2 >= 0 ? item.PrecioL2 : 0;
+            producto.PrecioL3 = item.PrecioL3 >= 0 ? item.PrecioL3 : 0;
+            producto.Stock = item.Stock >= 0 ? item.Stock : 0;
+            producto.StockMinimo = item.StockMinimo >= 0 ? item.StockMinimo : 0;
+            producto.IVA = item.IvaVentas >= 0 ? item.IvaVentas : 0;
+            producto.Observaciones = item.Observaciones.Any() ? item.Observaciones : "";
+            if (!proceso) return proceso;
+            if (item.Id == 0)
+            {
+                GuardarProducto(producto);
+            }
+            if (ExisteIdProducto(item.Id))
+            {
+                producto.Id = item.Id;
+                EditarProducto(producto);
+            }
+            else
+            {
+                proceso = false;
+            }
+            return proceso;
+        }
+
+        private static bool ExisteIdProducto(int id)
+        {
+            using (var db = new VentasConexión())
+            {
+                var producto = db.EArticulos.Where(p => p.Id == id);
+                return producto.Any();
+            }
+        }
+
+        public static void EditarProducto(EArticulos producto)
+        {
+            using (var db = new VentasConexión())
+            {
+                db.Entry(producto).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
+        public static void GuardarProducto(EArticulos producto)
+        {
+            using (var db = new VentasConexión())
+            {
+                producto.Id = db.EArticulos.Any() ? db.EArticulos.Max(p => p.Id) + 1 : 1;
+                db.EArticulos.Add(producto);
+                db.SaveChanges();
             }
         }
 

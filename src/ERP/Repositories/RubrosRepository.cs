@@ -85,5 +85,20 @@ namespace ERP.Repositories
                 db.SaveChanges();
             }
         }
+
+        internal static int ObtenerIdRubro(string rubro)
+        {
+            using (var db = new VentasConexión())
+            {
+                int idRubro = 0;
+                if (!db.ERubros.Any(r => r.Rubro.ToLower().Trim() == rubro.ToLower().Trim()))
+                {
+                    Insertar(rubro, "",1);
+                }
+                idRubro = db.ERubros.FirstOrDefault(r => r.Rubro.ToLower().Trim() == rubro.ToLower().Trim()).Id;
+
+                return idRubro;
+            }
+        }
     }
 }

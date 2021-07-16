@@ -102,6 +102,22 @@ namespace ERP.Repositories
             }
         }
 
+        internal static int ObtenerIdProveedor(string proveedor)
+        {
+            using (var db = new VentasConexión())
+            {
+                int idProveedor = 0;
+                if (!db.Proveedores.Any(p => p.RazonSocial.ToLower().Trim() == proveedor.ToLower().Trim()))
+                {
+                    Insertar(proveedor, 1, 100, DateTime.Now,
+                        "email", "direccion", null, null, 1);
+                }
+                idProveedor = db.Proveedores.FirstOrDefault(p => p.RazonSocial.ToLower().Trim() == proveedor.ToLower().Trim()).Id;
+
+                return idProveedor;
+            }
+        }
+
         internal static Domicilios ObtenerDomicilio(Int32? id)
         {
             using (var db = new VentasConexión())
@@ -181,7 +197,7 @@ namespace ERP.Repositories
                         FechaNacimiento = fechaNacimiento,
                         EMail = email,
                         Direccion = dirección,
-                        IdDomicilio = DomiciliosRepository.ObtenerIdDomicilio(db, domicilio),
+                        IdDomicilio = domicilio!= null? DomiciliosRepository.ObtenerIdDomicilio(db, domicilio) : null,
                         Telefono = teléfono,
                         Estado = estado
                     };

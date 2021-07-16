@@ -84,5 +84,20 @@ namespace ERP.Repositories
             }
         }
 
+        public static int ObtenerIdMarca(string marca)
+        {
+            using (var db = new VentasConexión())
+            {
+                int idMarca = 0;
+                if (!db.EMarcas.Any(m => m.Marca.ToLower().Trim() == marca.ToLower().Trim()))
+                {
+                    Insertar(marca, "");
+                }
+                idMarca = db.EMarcas.FirstOrDefault(m => m.Marca.ToLower().Trim() == marca.ToLower().Trim()).Id;
+
+                return idMarca;
+            }
+        }
+
     }
 }
