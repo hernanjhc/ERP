@@ -127,27 +127,18 @@ namespace ERP.Repositories
             }
         }
 
-        internal static bool GuardarProductoLeidoPorTxt(EArticulosImport item)
+        internal static void GuardarProductoLeidoPorTxt(EArticulosImport item)
         {
-            bool proceso = true;
+            //bool proceso = true;
 
             EArticulos producto = new EArticulos();
-            if (!item.CodBarra.Any()) proceso = false;
-            producto.CodBarra = item.CodBarra.Any() ? item.CodBarra : "";
-
-            if (!item.Descripcion.Any()) proceso = false;
-            producto.Descripcion = item.Descripcion.Any() ? item.Descripcion : "";
-
-            if (!item.Marca.Any()) proceso = false;
+            
             producto.IdMarca = item.Marca.Any() ? MarcasRepository.ObtenerIdMarca(item.Marca) : 0;
 
-            if (!item.Rubro.Any()) proceso = false;
             producto.IdRubro = item.Rubro.Any() ? RubrosRepository.ObtenerIdRubro(item.Rubro) : 0;
 
-            if (!item.Unidad.Any()) proceso = false;
             producto.IdUnidad = item.Unidad.Any() ? UnidadesRepository.ObtenerIdUnidad(item.Unidad) : 0;
 
-            if (!item.Proveedor.Any()) proceso = false;
             producto.IdProveedor = item.Proveedor.Any() ? ProveedoresRepository.ObtenerIdProveedor(item.Proveedor) : 0;
 
             producto.Costo = item.Costo >= 0 ? item.Costo : 0;
@@ -158,7 +149,7 @@ namespace ERP.Repositories
             producto.StockMinimo = item.StockMinimo >= 0 ? item.StockMinimo : 0;
             producto.IVA = item.IvaVentas >= 0 ? item.IvaVentas : 0;
             producto.Observaciones = item.Observaciones.Any() ? item.Observaciones : "";
-            if (!proceso) return proceso;
+            //if (!proceso) return proceso;
             if (item.Id == 0)
             {
                 GuardarProducto(producto);
@@ -170,9 +161,9 @@ namespace ERP.Repositories
             }
             else
             {
-                proceso = false;
+                //proceso = false;
             }
-            return proceso;
+            //return proceso;
         }
 
         private static bool ExisteIdProducto(int id)

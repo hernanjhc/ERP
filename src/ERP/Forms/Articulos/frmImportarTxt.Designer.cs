@@ -31,6 +31,9 @@ namespace ERP.Forms.Articulos
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblModificacionesIncorrectas = new MaterialSkin.Controls.MaterialLabel();
+            this.lblModificacionesCorrectas = new MaterialSkin.Controls.MaterialLabel();
+            this.lblAltasIncorrectas = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.lblAltasCorrectas = new MaterialSkin.Controls.MaterialLabel();
@@ -42,9 +45,6 @@ namespace ERP.Forms.Articulos
             this.btnBuscar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.txtArchivo = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
-            this.lblAltasIncorrectas = new MaterialSkin.Controls.MaterialLabel();
-            this.lblModificacionesCorrectas = new MaterialSkin.Controls.MaterialLabel();
-            this.lblModificacionesIncorrectas = new MaterialSkin.Controls.MaterialLabel();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -62,8 +62,8 @@ namespace ERP.Forms.Articulos
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 75);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.773851F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.22615F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.396947F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.60305F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 566);
             this.tableLayoutPanel1.TabIndex = 0;
@@ -82,6 +82,45 @@ namespace ERP.Forms.Articulos
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(794, 36);
             this.panel2.TabIndex = 3;
+            // 
+            // lblModificacionesIncorrectas
+            // 
+            this.lblModificacionesIncorrectas.AutoSize = true;
+            this.lblModificacionesIncorrectas.Depth = 0;
+            this.lblModificacionesIncorrectas.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblModificacionesIncorrectas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblModificacionesIncorrectas.Location = new System.Drawing.Point(399, 6);
+            this.lblModificacionesIncorrectas.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblModificacionesIncorrectas.Name = "lblModificacionesIncorrectas";
+            this.lblModificacionesIncorrectas.Size = new System.Drawing.Size(193, 19);
+            this.lblModificacionesIncorrectas.TabIndex = 13;
+            this.lblModificacionesIncorrectas.Text = "Modificaciones Incorrectas";
+            // 
+            // lblModificacionesCorrectas
+            // 
+            this.lblModificacionesCorrectas.AutoSize = true;
+            this.lblModificacionesCorrectas.Depth = 0;
+            this.lblModificacionesCorrectas.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblModificacionesCorrectas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblModificacionesCorrectas.Location = new System.Drawing.Point(280, 6);
+            this.lblModificacionesCorrectas.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblModificacionesCorrectas.Name = "lblModificacionesCorrectas";
+            this.lblModificacionesCorrectas.Size = new System.Drawing.Size(113, 19);
+            this.lblModificacionesCorrectas.TabIndex = 12;
+            this.lblModificacionesCorrectas.Text = "Modificaciones";
+            // 
+            // lblAltasIncorrectas
+            // 
+            this.lblAltasIncorrectas.AutoSize = true;
+            this.lblAltasIncorrectas.Depth = 0;
+            this.lblAltasIncorrectas.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblAltasIncorrectas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblAltasIncorrectas.Location = new System.Drawing.Point(150, 6);
+            this.lblAltasIncorrectas.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblAltasIncorrectas.Name = "lblAltasIncorrectas";
+            this.lblAltasIncorrectas.Size = new System.Drawing.Size(124, 19);
+            this.lblAltasIncorrectas.TabIndex = 11;
+            this.lblAltasIncorrectas.Text = "Altas Incorrectas";
             // 
             // materialLabel4
             // 
@@ -147,7 +186,7 @@ namespace ERP.Forms.Articulos
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(794, 34);
+            this.panel1.Size = new System.Drawing.Size(794, 38);
             this.panel1.TabIndex = 1;
             // 
             // btnExportar
@@ -174,6 +213,7 @@ namespace ERP.Forms.Articulos
             this.btnGuardar.TabIndex = 3;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnProcesar
             // 
@@ -199,6 +239,7 @@ namespace ERP.Forms.Articulos
             this.btnBuscar.TabIndex = 1;
             this.btnBuscar.Text = "...";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txtArchivo
             // 
@@ -220,51 +261,12 @@ namespace ERP.Forms.Articulos
             // 
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvArticulos.Location = new System.Drawing.Point(3, 43);
+            this.dgvArticulos.Location = new System.Drawing.Point(3, 47);
             this.dgvArticulos.Name = "dgvArticulos";
-            this.dgvArticulos.Size = new System.Drawing.Size(794, 478);
+            this.dgvArticulos.Size = new System.Drawing.Size(794, 474);
             this.dgvArticulos.TabIndex = 2;
             this.dgvArticulos.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvArticulos_DataBindingComplete);
             this.dgvArticulos.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dgvArticulos_RowPrePaint);
-            // 
-            // lblAltasIncorrectas
-            // 
-            this.lblAltasIncorrectas.AutoSize = true;
-            this.lblAltasIncorrectas.Depth = 0;
-            this.lblAltasIncorrectas.Font = new System.Drawing.Font("Roboto", 11F);
-            this.lblAltasIncorrectas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblAltasIncorrectas.Location = new System.Drawing.Point(150, 6);
-            this.lblAltasIncorrectas.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblAltasIncorrectas.Name = "lblAltasIncorrectas";
-            this.lblAltasIncorrectas.Size = new System.Drawing.Size(124, 19);
-            this.lblAltasIncorrectas.TabIndex = 11;
-            this.lblAltasIncorrectas.Text = "Altas Incorrectas";
-            // 
-            // lblModificacionesCorrectas
-            // 
-            this.lblModificacionesCorrectas.AutoSize = true;
-            this.lblModificacionesCorrectas.Depth = 0;
-            this.lblModificacionesCorrectas.Font = new System.Drawing.Font("Roboto", 11F);
-            this.lblModificacionesCorrectas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblModificacionesCorrectas.Location = new System.Drawing.Point(280, 6);
-            this.lblModificacionesCorrectas.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblModificacionesCorrectas.Name = "lblModificacionesCorrectas";
-            this.lblModificacionesCorrectas.Size = new System.Drawing.Size(113, 19);
-            this.lblModificacionesCorrectas.TabIndex = 12;
-            this.lblModificacionesCorrectas.Text = "Modificaciones";
-            // 
-            // lblModificacionesIncorrectas
-            // 
-            this.lblModificacionesIncorrectas.AutoSize = true;
-            this.lblModificacionesIncorrectas.Depth = 0;
-            this.lblModificacionesIncorrectas.Font = new System.Drawing.Font("Roboto", 11F);
-            this.lblModificacionesIncorrectas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblModificacionesIncorrectas.Location = new System.Drawing.Point(399, 6);
-            this.lblModificacionesIncorrectas.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblModificacionesIncorrectas.Name = "lblModificacionesIncorrectas";
-            this.lblModificacionesIncorrectas.Size = new System.Drawing.Size(193, 19);
-            this.lblModificacionesIncorrectas.TabIndex = 13;
-            this.lblModificacionesIncorrectas.Text = "Modificaciones Incorrectas";
             // 
             // frmImportarTxt
             // 

@@ -13,6 +13,8 @@ namespace ERP.Forms.Articulos
 {
     public partial class frmImportarTxt : FormBase
     {
+        string pathLectura = "";
+        bool _lecturaArchivo = false;
         public frmImportarTxt()
         {
             InitializeComponent();
@@ -36,6 +38,8 @@ namespace ERP.Forms.Articulos
                     engine.WriteNext(cust);
                 }
             }
+            string ver = string.Format(@"Buscar en C:/Temp/Productos {0:dd-MM-yyyy}.txt", DateTime.Now);
+            MessageBox.Show(ver, "Error");
         }
 
         private static string VerificarDestino()
@@ -55,14 +59,31 @@ namespace ERP.Forms.Articulos
 
         private void ProcesarTxt()
         {
+            _lecturaArchivo = true;
+            if (string.IsNullOrEmpty(pathLectura))
+            {
+                MessageBox.Show("Debe seleccionar el archivo a importar...", "Atención");
+                return;
+            }
+            var productosLeídos = LeerArchivo(pathLectura);
+            CargarDataGridView(productosLeídos);
+        }
+
+        private EArticulosImport[] LeerArchivo(string path)
+        {
             var engine = new FileHelperEngine<EArticulosImport>();
             // Switch error mode on
             engine.ErrorManager.ErrorMode = ErrorMode.SaveAndContinue;
 
-            var productosLeídos = engine.ReadFile(@"C:/Temp/AltaProductos.txt");
+            
+            var productosLeídos = engine.ReadFile(pathLectura);
 
             if (engine.ErrorManager.HasErrors)
+            {
                 engine.ErrorManager.SaveErrors(@"C:/Temp/erroresLectura.txt");
+                MessageBox.Show("Ver C:/Temp/erroresLectura.txt", "Error");
+                _lecturaArchivo = false;
+            }
 
             foreach (var item in productosLeídos)
             {
@@ -74,7 +95,15 @@ namespace ERP.Forms.Articulos
                 {
                     EArticulosRepository.ProcesarModificacionProducto(item);
                 }
+                if (item.LecturaArchivo == 2)
+                {
+                    _lecturaArchivo = false;
+                }
             }
+            return productosLeídos;
+        }
+        private void CargarDataGridView(EArticulosImport[] productosLeídos)
+        {
             dgvArticulos.Rows.Clear();
             var q = from fila in productosLeídos
                     select new
@@ -93,26 +122,13 @@ namespace ERP.Forms.Articulos
             {
                 dgvArticulos.SetDataSource(q);
                 lblFilasLeidas.Text = string.Format("{0} Filas leídas.", q.Count());
-                lblAltasCorrectas.Text = string.Format("{0} Altas Correctas.", q.Where(a => a.Id==0 && a.LecturaArchivo == 3).Count());
-                lblAltasIncorrectas.Text = string.Format("{0} Altas Incorrectas.", q.Where(a => a.Id==0 && a.LecturaArchivo == 2).Count());
+                lblAltasCorrectas.Text = string.Format("{0} Altas Correctas.", q.Where(a => a.Id == 0 && a.LecturaArchivo == 3).Count());
+                lblAltasIncorrectas.Text = string.Format("{0} Altas Incorrectas.", q.Where(a => a.Id == 0 && a.LecturaArchivo == 2).Count());
                 lblModificacionesCorrectas.Text = string.Format("{0} Modificaciones Correctas.", q.Where(a => a.Id > 0 && a.LecturaArchivo == 3).Count());
                 lblModificacionesIncorrectas.Text = string.Format("{0} Modificaciones Incorrectas.", q.Where(a => a.Id > 0 && a.LecturaArchivo == 2).Count());
             }
-
         }
-
-        private static void ImportarTxt()
-        {
-            int registradosEnBD = 0;
-
-            var engine = new FileHelperEngine<EArticulosImport>();
-            var productosLeídos = engine.ReadFile(@"C:/Temp/AltaProductos.txt");
-            foreach (var item in productosLeídos)
-            {
-                if (EArticulosRepository.GuardarProductoLeidoPorTxt(item)) registradosEnBD++;
-            }
-        }
-
+        
         private void dgvArticulos_RowPrePaint(object sender, System.Windows.Forms.DataGridViewRowPrePaintEventArgs e)
         {
             var estado = (short)dgvArticulos.Rows[e.RowIndex].Cells[7].Value;
@@ -170,6 +186,44 @@ namespace ERP.Forms.Articulos
             dgvArticulos.Columns[8].HeaderText = "Observación";
             dgvArticulos.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgvArticulos.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            txtArchivo.Text = "";
+            using (OpenFileDialog open = new OpenFileDialog())
+            {
+                open.InitialDirectory = @"C:\";
+                open.FilterIndex = 2;
+                open.RestoreDirectory = true;
+                if (open.ShowDialog() == DialogResult.OK)
+                {
+                    pathLectura = open.FileName;
+                    txtArchivo.Text = string.Format("Archivo a procesar {0}", pathLectura);
+                }
+            }
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            _lecturaArchivo = true;
+            if (string.IsNullOrEmpty(pathLectura))
+            {
+                MessageBox.Show("Debe seleccionar el archivo a importar...", "Atención");
+                return;
+            }
+            var productosLeídos = LeerArchivo(pathLectura);
+            if (!_lecturaArchivo)
+            {
+                MessageBox.Show("Cargar el archivo.", "Error");
+                return;
+            }
+
+            foreach (var item in productosLeídos)
+            {
+                EArticulosRepository.GuardarProductoLeidoPorTxt(item);
+            }
+
         }
     }
 }
