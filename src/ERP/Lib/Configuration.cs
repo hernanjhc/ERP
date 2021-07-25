@@ -60,6 +60,14 @@ namespace ERP.Lib
             }
         }
 
+        public static bool SoloCobroEfectivo
+        {
+            get
+            {
+                return Convert.ToBoolean(ConfigurationManager.AppSettings["SoloCobroEfectivo"]);
+            }
+        }
+
         public static bool VentaDescuentaStock
         {
             get

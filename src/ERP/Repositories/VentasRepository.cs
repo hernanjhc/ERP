@@ -109,5 +109,39 @@ namespace ERP.Repositories
                 }
             }
         }
+
+        internal static int Insertar(EVentas venta)
+        {
+            int idVentaRegistrada = 0;
+            using (var db = new VentasConexión())
+            {
+                var trx = db.Database.BeginTransaction();
+                try
+                {
+                    idVentaRegistrada = db.EVentas.Any() ? db.EVentas.Max(a1 => a1.Id) + 1 : 1;
+                    venta.IdEmpresa = Lib.Configuration.IdEmpresa;
+                    venta.Id = idVentaRegistrada;
+                    db.EVentas.Add(venta);
+                    db.SaveChanges();
+                    trx.Commit();
+                }
+                catch (Exception)
+                {
+                    trx.Rollback();
+                    idVentaRegistrada = 0;
+                }
+            }
+            return idVentaRegistrada;
+        }
+
+        internal static void EliminarVentaRegistradaIncorrectamente(int idVentaRegistrada)
+        {
+            using (var db = new VentasConexión())
+            {
+                var venta = db.EVentas.Find(idVentaRegistrada);
+                db.EVentas.Remove(venta);
+                db.SaveChanges();
+            }
+        }
     }
 }

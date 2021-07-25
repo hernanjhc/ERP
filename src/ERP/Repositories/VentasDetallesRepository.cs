@@ -66,6 +66,30 @@ namespace ERP.Repositories
             }
         }
 
+        public static bool Insertar(EVentasDetalles detalles)
+        {
+            bool proceso = true;
+            using (var db = new VentasConexión())
+            {
+                var trx = db.Database.BeginTransaction();
+                try
+                {
+                    var id = db.EVentasDetalles.Any() ? db.EVentasDetalles.Max(a1 => a1.Id) + 1 : 1;
+                    detalles.IdEmpresa = Lib.Configuration.IdEmpresa;
+                    detalles.Id = id;
+                    db.EVentasDetalles.Add(detalles);
+                    db.SaveChanges();
+                    trx.Commit();
+                }
+                catch (Exception)
+                {
+                    trx.Rollback();
+                    proceso = false;
+                }
+            }
+            return proceso;
+        }
+
         public static DataTable CargarDetalles(int idVenta)
         {
             var tabla = new dsImpresiones.DetallesDataTable();
@@ -101,6 +125,20 @@ namespace ERP.Repositories
                              select a).Where(x => x.IdVenta == idVenta)
                                .ToList();
                 return query.ToList();
+            }
+        }
+
+        internal static void EliminarDetallesVentaRegistradosIncorrectamente(int idVentaRegistrada)
+        {
+            using (var db = new VentasConexión())
+            {
+                var detalles = db.EVentasDetalles.Where(d => d.IdVenta == idVentaRegistrada);
+                foreach (var item in detalles)
+                {
+                    var eliminar = db.EVentasDetalles.Find(item);
+                    db.EVentasDetalles.Remove(eliminar);
+                    db.SaveChanges();
+                }
             }
         }
     }

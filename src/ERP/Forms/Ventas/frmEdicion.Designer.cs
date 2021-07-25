@@ -58,19 +58,18 @@
             this.txtsubtotal = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.dgvDetalles = new CustomLibrary.ComponentModel.CustomDataGridView();
-            this.rbDescripcion = new MaterialSkin.Controls.MaterialRadioButton();
-            this.rbCodigo = new MaterialSkin.Controls.MaterialRadioButton();
-            this.cbArticulos = new System.Windows.Forms.ComboBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnBuscarPresupuesto = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.btnCancelar = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.btnAceptar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rbDescripcion = new MaterialSkin.Controls.MaterialRadioButton();
+            this.rbCodigo = new MaterialSkin.Controls.MaterialRadioButton();
+            this.cbArticulos = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCancelar = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnAceptar = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.gbCliente.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -495,6 +494,50 @@
             this.dgvDetalles.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvDetalles_UserDeletedRow);
             this.dgvDetalles.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDetalles_KeyDown);
             // 
+            // Id
+            // 
+            this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.Visible = false;
+            // 
+            // Codigo
+            // 
+            this.Codigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            this.Codigo.Width = 71;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Descripcion.HeaderText = "Descripción";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.Width = 82;
+            // 
+            // Precio
+            // 
+            this.Precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.Width = 68;
+            // 
+            // Importe
+            // 
+            this.Importe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Importe.HeaderText = "Importe";
+            this.Importe.Name = "Importe";
+            this.Importe.ReadOnly = true;
+            this.Importe.Width = 74;
+            // 
             // rbDescripcion
             // 
             this.rbDescripcion.AutoSize = true;
@@ -543,7 +586,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnBuscarPresupuesto);
             this.panel1.Controls.Add(this.btnCancelar);
             this.panel1.Controls.Add(this.btnAceptar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -551,18 +593,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(788, 58);
             this.panel1.TabIndex = 2;
-            // 
-            // btnBuscarPresupuesto
-            // 
-            this.btnBuscarPresupuesto.Depth = 0;
-            this.btnBuscarPresupuesto.Location = new System.Drawing.Point(9, 7);
-            this.btnBuscarPresupuesto.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnBuscarPresupuesto.Name = "btnBuscarPresupuesto";
-            this.btnBuscarPresupuesto.Primary = true;
-            this.btnBuscarPresupuesto.Size = new System.Drawing.Size(127, 47);
-            this.btnBuscarPresupuesto.TabIndex = 8;
-            this.btnBuscarPresupuesto.Text = "Buscar Presupuesto";
-            this.btnBuscarPresupuesto.UseVisualStyleBackColor = true;
             // 
             // btnCancelar
             // 
@@ -589,51 +619,6 @@
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnGuardar_Click);
-            // 
-            // Id
-            // 
-            this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.Visible = false;
-            this.Id.Width = 43;
-            // 
-            // Codigo
-            // 
-            this.Codigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Codigo.HeaderText = "Codigo";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
-            this.Codigo.Width = 71;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Descripcion.HeaderText = "Descripción";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.ReadOnly = true;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.Width = 82;
-            // 
-            // Precio
-            // 
-            this.Precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            this.Precio.Width = 68;
-            // 
-            // Importe
-            // 
-            this.Importe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Importe.HeaderText = "Importe";
-            this.Importe.Name = "Importe";
-            this.Importe.ReadOnly = true;
-            this.Importe.Width = 74;
             // 
             // frmEdicion
             // 
@@ -686,7 +671,6 @@
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtDescuentoPesos;
         private MaterialSkin.Controls.MaterialLabel materialLabel15;
-        private MaterialSkin.Controls.MaterialRaisedButton btnBuscarPresupuesto;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtVentaNro;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private System.Windows.Forms.Button btnAgregar;

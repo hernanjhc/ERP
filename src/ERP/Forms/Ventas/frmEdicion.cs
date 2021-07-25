@@ -12,6 +12,7 @@ using ERP.Repositories;
 using ERP.Models;
 using ERP.Reports.DataSet;
 using ERP.Reports.Designs;
+using ERP.Lib;
 
 namespace ERP.Forms.Ventas
 {
@@ -76,13 +77,131 @@ namespace ERP.Forms.Ventas
                 return Convert.ToInt32(cbClientes.SelectedValue);
             }
         }
-        
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.None;
-            if (this.ValidarDatos())
+            //this.DialogResult = DialogResult.None;
+            //if (this.ValidarDatos())
+            //{
+            //    DialogResult = DialogResult.OK;
+            //}
+            GuardarVenta();
+            LimpiarVentana();
+        }
+
+        private void LimpiarVentana()
+        {
+            txtDireccion.Text = "";
+            txtDocumento.Text = "";
+            dgvDetalles.Rows.Clear();
+            txtsubtotal.Text = "";
+            txtDescuentoPesos.Text = "";
+            txtTotal.Text = "";
+            nudDescuento.Value = 0;
+            rbCodigo.Select();
+            dtpFecha.Value = DateTime.Now;
+            cbLista.SelectedIndex = 0;
+            cbArticulos.Focus();
+        }
+
+        private void GuardarVenta()
+        {
+            EVentas _venta = new EVentas();
+            List<EVentasDetalles> _detalleVenta = new List<EVentasDetalles>();
+
+            try
             {
-                DialogResult = DialogResult.OK;
+                _venta.IdCliente = IdCliente;
+                _venta.Fecha = Fecha;
+                _venta.Importe = Subtotal;
+                _venta.Descuento = Descuento;
+                _venta.DescuentoPorc = DescPorc;
+                _venta.ImporteTotal = ImporteTotal;
+                _venta.PrecioLista = PrecioLista;
+                _venta.IdUsuario = IdUsuario;
+                _venta.Estado = Estado;
+                var idVentaRegistrada = VentasRepository.Insertar(_venta);
+                if (idVentaRegistrada == 0)
+                {
+                    MessageBox.Show("Error al registrar Venta", "Registrar venta");
+                    return;
+                }
+
+                for (int i = 0; i <= Convert.ToInt32(dgvDetalles.Rows.Count - 1); i++)
+                {
+                    EVentasDetalles detalle = new EVentasDetalles();
+                    detalle.IdArticulo = Convert.ToInt32(dgvDetalles.Rows[i].Cells[0].Value);
+                    detalle.Cantidad = Convert.ToInt32(dgvDetalles.Rows[i].Cells[3].Value);
+                    detalle.Precio = Convert.ToInt32(dgvDetalles.Rows[i].Cells[4].Value);
+                    detalle.Importe = Convert.ToInt32(dgvDetalles.Rows[i].Cells[5].Value);
+                    detalle.IdVenta = idVentaRegistrada;
+                    _detalleVenta.Add(detalle);
+                    if (!VentasDetallesRepository.Insertar(detalle))
+                    {
+                        VentasRepository.EliminarVentaRegistradaIncorrectamente(idVentaRegistrada);
+                        VentasDetallesRepository.EliminarDetallesVentaRegistradosIncorrectamente(idVentaRegistrada);
+                        MessageBox.Show("Error al registrar Venta", "Registrar venta");
+                        return;
+                    }
+                }
+                if (Configuration.ImprimeVentas) ImprimirVenta(_venta.Id);
+                if (Configuration.VentaDescuentaStock)
+                {
+                    foreach (var item in _detalleVenta)
+                    {
+                        EArticulosRepository.DescontarStockArticulo(
+                            Convert.ToDecimal(item.IdArticulo), Convert.ToDecimal(item.Cantidad));
+                    }
+                }
+                if (Configuration.SoloCobroEfectivo)
+                {
+                }
+                MessageBox.Show("Venta registrada correctamente", "Registrar venta");
+                LimpiarVentana();
+            }
+            catch (Exception ex)
+            {
+                ShowError("Error al intentar leer los datos: \n" + ex.Message);
+            }
+
+        }
+
+        private void ImprimirVenta(object idVenta)
+        {
+            using (var dt = ObtenerDetalles())
+            {
+                if (dt.Rows.Count > 0)
+                {
+                    string documento = Documento.ToString();
+                    string tipoDocumento = TipoDocumento.ToString();
+                    string comprobante = "Venta";
+                    string número = idVenta.ToString();
+                    string fecha = Fecha.Date.ToString("dd/MM/yyyy");
+                    string subTotal = Subtotal.ToString();
+                    string descuento = Descuento.ToString();
+                    string total = ImporteTotal.ToString();
+                    MostrarReporte(dt, DireccionCliente, RazónSocialCliente, documento,
+                        tipoDocumento, comprobante, número, fecha,
+                        subTotal, descuento, total);
+                }
+                else
+                {
+                    ShowError("No pudo imprimir el documento.");
+                }
+            }
+        }
+
+        private void MostrarReporte(DataTable detalles, string dirección, string razónSocial, string documento,
+                string tipoDocumento, string comprobante, string número, string fecha,
+                string subtotal, string descuento, string total)
+        {
+            using (var reporte = new Presupuesto())
+            {
+                reporte.Database.Tables["Detalles"].SetDataSource(detalles);
+                using (
+                    var f = new frmReporte(reporte, dirección, razónSocial, documento,
+                                            tipoDocumento, comprobante, número, fecha,
+                                            subtotal, descuento, total, "")) f.ShowDialog();
             }
         }
 
@@ -121,9 +240,9 @@ namespace ERP.Forms.Ventas
 
         private void AgregarArticulo(int idarticulo)
         {
-
+            if (idarticulo <= 0) return;
             var art = EArticulosRepository.ObtenerArticulosPorId(idarticulo);
-
+            if (art == null) return;
             if (buscarArticuloEnDetalle(idarticulo))
             {
                 modificarCantidadDetalles(_filaArticulo);
@@ -212,6 +331,7 @@ namespace ERP.Forms.Ventas
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            DialogResult = DialogResult.Cancel;
             Close();
         }
 
@@ -272,7 +392,7 @@ namespace ERP.Forms.Ventas
             {
                 return Convert.ToDateTime(dtpFecha.Value);
             }
-        }               
+        }
 
         public Decimal Subtotal
         {

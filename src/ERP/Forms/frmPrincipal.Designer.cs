@@ -38,6 +38,7 @@
             this.ediciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.importarArtículosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.marcasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rubrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,7 +73,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsLogin = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsVersion = new System.Windows.Forms.ToolStripStatusLabel();
-            this.importarArtículosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cajeroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -172,15 +173,23 @@
             this.importarArtículosToolStripMenuItem});
             this.productosToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("productosToolStripMenuItem1.Image")));
             this.productosToolStripMenuItem1.Name = "productosToolStripMenuItem1";
-            this.productosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.productosToolStripMenuItem1.Size = new System.Drawing.Size(123, 22);
             this.productosToolStripMenuItem1.Text = "Artículos";
             this.productosToolStripMenuItem1.Click += new System.EventHandler(this.productosToolStripMenuItem1_Click);
+            // 
+            // importarArtículosToolStripMenuItem
+            // 
+            this.importarArtículosToolStripMenuItem.Image = global::ERP.Properties.Resources.box_down;
+            this.importarArtículosToolStripMenuItem.Name = "importarArtículosToolStripMenuItem";
+            this.importarArtículosToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.importarArtículosToolStripMenuItem.Text = "Importar Artículos";
+            this.importarArtículosToolStripMenuItem.Click += new System.EventHandler(this.importarArtículosToolStripMenuItem_Click);
             // 
             // unidadesToolStripMenuItem
             // 
             this.unidadesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("unidadesToolStripMenuItem.Image")));
             this.unidadesToolStripMenuItem.Name = "unidadesToolStripMenuItem";
-            this.unidadesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.unidadesToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.unidadesToolStripMenuItem.Text = "Unidades";
             this.unidadesToolStripMenuItem.Click += new System.EventHandler(this.unidadesToolStripMenuItem_Click);
             // 
@@ -188,7 +197,7 @@
             // 
             this.marcasToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("marcasToolStripMenuItem.Image")));
             this.marcasToolStripMenuItem.Name = "marcasToolStripMenuItem";
-            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.marcasToolStripMenuItem.Text = "Marcas";
             this.marcasToolStripMenuItem.Click += new System.EventHandler(this.marcasToolStripMenuItem_Click);
             // 
@@ -196,7 +205,7 @@
             // 
             this.rubrosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("rubrosToolStripMenuItem.Image")));
             this.rubrosToolStripMenuItem.Name = "rubrosToolStripMenuItem";
-            this.rubrosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.rubrosToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.rubrosToolStripMenuItem.Text = "Rubros";
             this.rubrosToolStripMenuItem.Click += new System.EventHandler(this.rubrosToolStripMenuItem_Click);
             // 
@@ -383,7 +392,7 @@
             // 
             this.presupuestosToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("presupuestosToolStripMenuItem1.Image")));
             this.presupuestosToolStripMenuItem1.Name = "presupuestosToolStripMenuItem1";
-            this.presupuestosToolStripMenuItem1.Size = new System.Drawing.Size(166, 22);
+            this.presupuestosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.presupuestosToolStripMenuItem1.Text = "Presupuestos";
             this.presupuestosToolStripMenuItem1.Click += new System.EventHandler(this.presupuestosToolStripMenuItem1_Click);
             // 
@@ -391,22 +400,24 @@
             // 
             this.remitosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("remitosToolStripMenuItem.Image")));
             this.remitosToolStripMenuItem.Name = "remitosToolStripMenuItem";
-            this.remitosToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.remitosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.remitosToolStripMenuItem.Text = "Remitos";
             this.remitosToolStripMenuItem.Click += new System.EventHandler(this.remitosToolStripMenuItem_Click);
             // 
             // ventasToolStripMenuItem1
             // 
+            this.ventasToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cajeroToolStripMenuItem});
             this.ventasToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("ventasToolStripMenuItem1.Image")));
             this.ventasToolStripMenuItem1.Name = "ventasToolStripMenuItem1";
-            this.ventasToolStripMenuItem1.Size = new System.Drawing.Size(166, 22);
+            this.ventasToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.ventasToolStripMenuItem1.Text = "Ventas";
             this.ventasToolStripMenuItem1.Click += new System.EventHandler(this.ventasToolStripMenuItem1_Click);
             // 
             // facturasDeVentaToolStripMenuItem
             // 
             this.facturasDeVentaToolStripMenuItem.Name = "facturasDeVentaToolStripMenuItem";
-            this.facturasDeVentaToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.facturasDeVentaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.facturasDeVentaToolStripMenuItem.Text = "Facturas de Venta";
             // 
             // cajaToolStripMenuItem
@@ -453,13 +464,11 @@
             this.tsVersion.Text = "toolStripStatusLabel1";
             this.tsVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // importarArtículosToolStripMenuItem
+            // cajeroToolStripMenuItem
             // 
-            this.importarArtículosToolStripMenuItem.Image = global::ERP.Properties.Resources.box_down;
-            this.importarArtículosToolStripMenuItem.Name = "importarArtículosToolStripMenuItem";
-            this.importarArtículosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.importarArtículosToolStripMenuItem.Text = "Importar Artículos";
-            this.importarArtículosToolStripMenuItem.Click += new System.EventHandler(this.importarArtículosToolStripMenuItem_Click);
+            this.cajeroToolStripMenuItem.Name = "cajeroToolStripMenuItem";
+            this.cajeroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cajeroToolStripMenuItem.Text = "Cajero";
             // 
             // frmPrincipal
             // 
@@ -530,5 +539,6 @@
         private System.Windows.Forms.ToolStripMenuItem facturasDeVentaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem chequesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem importarArtículosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cajeroToolStripMenuItem;
     }
 }

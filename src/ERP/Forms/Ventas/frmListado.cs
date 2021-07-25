@@ -29,7 +29,7 @@ namespace ERP.Forms.Ventas
         {
             dgvDatos.SetDataSource(
                 from p in VentasRepository.ObtenerVentas()
-                orderby p.Id
+                orderby p.Id descending
                 select new
                 {
                     p.Id,
@@ -47,110 +47,121 @@ namespace ERP.Forms.Ventas
 
         private void NuevaVenta()
         {
-            EVentas _venta = new EVentas();
-            List<EVentasDetalles> _detalleVenta = new List<EVentasDetalles>();
             using (var f = new frmEdicion())
             {
-                if (f.ShowDialog() == DialogResult.OK)
+                if (f.ShowDialog() == DialogResult.Cancel)
                 {
-                    try
-                    {
-                        _venta.IdCliente = f.IdCliente;
-                        _venta.Fecha = f.Fecha;
-                        _venta.Importe = f.Subtotal;
-                        _venta.Descuento = f.Descuento;
-                        _venta.DescuentoPorc = f.DescPorc;
-                        _venta.ImporteTotal = f.ImporteTotal;
-                        _venta.PrecioLista = f.PrecioLista;
-                        _venta.IdUsuario = f.IdUsuario;
-                        _venta.Estado = f.Estado;
-                        //var ventas = VentasRepository.Insertar(f.IdCliente, f.Fecha, f.Subtotal, f.Descuento,
-                        //                                    f.DescPorc, f.ImporteTotal, f.PrecioLista, f.IdUsuario, f.Estado);
-
-
-                        for (int i = 0; i <= Convert.ToInt32(f.dgvDetalles.Rows.Count - 1); i++)
-                        {
-                            //VentasDetallesRepository.Insertar(venta.Id, Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[0].Value),
-                            //        Convert.ToInt16(f.dgvDetalles.Rows[i].Cells[3].Value), Convert.ToDecimal(f.dgvDetalles.Rows[i].Cells[4].Value),
-                            //        Convert.ToDecimal(f.dgvDetalles.Rows[i].Cells[5].Value));
-                            EVentasDetalles detalle = new EVentasDetalles();
-                            detalle.IdArticulo = Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[0].Value);
-                            detalle.Cantidad = Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[3].Value);
-                            detalle.Precio = Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[4].Value);
-                            detalle.Importe = Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[5].Value);
-                            _detalleVenta.Add(detalle);
-                        }
-                        if (Configuration.ImprimeVentas) ImprimirVenta(f, _venta.Id);
-                        if (Configuration.VentaDescuentaStock)
-                        {
-                            foreach (var item in _detalleVenta)
-                            {
-                                EArticulosRepository.DescontarStockArticulo(
-                                    Convert.ToDecimal(item.IdArticulo), Convert.ToDecimal(item.Cantidad));
-                            }
-                            //for (int i = 0; i <= Convert.ToInt32(f.dgvDetalles.Rows.Count - 1); i++)
-                            //{
-                            //    EArticulosRepository.DescontarStockArticulo(Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[0].Value),
-                            //            Convert.ToInt16(f.dgvDetalles.Rows[i].Cells[3].Value));
-                            //}
-                        }
-
-                        // Ver como se desagrega ésta función
-                        //MovimientosRepository.InsertarVenta(_venta);
-
-                        ConsultarDatos();
-                        dgvDatos.SetRow(r => Convert.ToDecimal(r.Cells[0].Value) == _venta.Id);
-                    }
-                    catch (Exception ex)
-                    {
-                        ShowError("Error al intentar leer los datos: \n" + ex.Message);
-                    }
+                    ConsultarDatos();
                 }
             }
-            //Continuar con el cobro
-            using (var f = new frmCobrar())
-            {
-                try
-                {
-                   
-                }
-                catch (Exception ex)
-                {
-                    ShowError("Error al intentar grabar los datos: \n" + ex.Message);
-                }
-            }
+
+
+            //EVentas _venta = new EVentas();
+            //List<EVentasDetalles> _detalleVenta = new List<EVentasDetalles>();
+            //using (var f = new frmEdicion())
+            //{
+            //    if (f.ShowDialog() == DialogResult.OK)
+            //    {
+            //        try
+            //        {
+            //            _venta.IdCliente = f.IdCliente;
+            //            _venta.Fecha = f.Fecha;
+            //            _venta.Importe = f.Subtotal;
+            //            _venta.Descuento = f.Descuento;
+            //            _venta.DescuentoPorc = f.DescPorc;
+            //            _venta.ImporteTotal = f.ImporteTotal;
+            //            _venta.PrecioLista = f.PrecioLista;
+            //            _venta.IdUsuario = f.IdUsuario;
+            //            _venta.Estado = f.Estado;
+            //            //var ventas = VentasRepository.Insertar(f.IdCliente, f.Fecha, f.Subtotal, f.Descuento,
+            //            //                                    f.DescPorc, f.ImporteTotal, f.PrecioLista, f.IdUsuario, f.Estado);
+
+
+            //            for (int i = 0; i <= Convert.ToInt32(f.dgvDetalles.Rows.Count - 1); i++)
+            //            {
+            //                //VentasDetallesRepository.Insertar(venta.Id, Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[0].Value),
+            //                //        Convert.ToInt16(f.dgvDetalles.Rows[i].Cells[3].Value), Convert.ToDecimal(f.dgvDetalles.Rows[i].Cells[4].Value),
+            //                //        Convert.ToDecimal(f.dgvDetalles.Rows[i].Cells[5].Value));
+            //                EVentasDetalles detalle = new EVentasDetalles();
+            //                detalle.IdArticulo = Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[0].Value);
+            //                detalle.Cantidad = Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[3].Value);
+            //                detalle.Precio = Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[4].Value);
+            //                detalle.Importe = Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[5].Value);
+            //                _detalleVenta.Add(detalle);
+            //            }
+            //            if (Configuration.ImprimeVentas) ImprimirVenta(f, _venta.Id);
+            //            if (Configuration.VentaDescuentaStock)
+            //            {
+            //                foreach (var item in _detalleVenta)
+            //                {
+            //                    EArticulosRepository.DescontarStockArticulo(
+            //                        Convert.ToDecimal(item.IdArticulo), Convert.ToDecimal(item.Cantidad));
+            //                }
+            //                //for (int i = 0; i <= Convert.ToInt32(f.dgvDetalles.Rows.Count - 1); i++)
+            //                //{
+            //                //    EArticulosRepository.DescontarStockArticulo(Convert.ToInt32(f.dgvDetalles.Rows[i].Cells[0].Value),
+            //                //            Convert.ToInt16(f.dgvDetalles.Rows[i].Cells[3].Value));
+            //                //}
+            //            }
+            //            if (Configuration.SoloCobroEfectivo)
+            //            {
+            //            }
+            //                // Ver como se desagrega ésta función
+            //                //MovimientosRepository.InsertarVenta(_venta);
+
+            //            ConsultarDatos();
+            //            dgvDatos.SetRow(r => Convert.ToDecimal(r.Cells[0].Value) == _venta.Id);
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            ShowError("Error al intentar leer los datos: \n" + ex.Message);
+            //        }
+            //    }
+            //}
+            ////Continuar con el cobro
+            //using (var f = new frmCobrar())
+            //{
+            //    try
+            //    {
+            //       
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        ShowError("Error al intentar grabar los datos: \n" + ex.Message);
+            //    }
+            //}
         }
 
-        private void ImprimirVenta(frmEdicion f, object idVenta)
-        {
-            using (var dt = f.ObtenerDetalles())
-            {
-                if (dt.Rows.Count > 0)
-                {
-                    string dirección = f.DireccionCliente;
-                    string razónSocial = f.RazónSocialCliente;
-                    string documento = f.Documento.ToString();
-                    string tipoDocumento = f.TipoDocumento.ToString();
-                    string comprobante = "Venta";
-                    string número = idVenta.ToString();
-                    string fecha = f.Fecha.Date.ToString("dd/MM/yyyy");
-                    string subTotal = f.Subtotal.ToString();
-                    string descuento = f.Descuento.ToString();
-                    string total = f.ImporteTotal.ToString();
-                    //string validez = f.DiasValidez.ToString();
-                    //MostrarReporte(dt, dirección, razónSocial, documento,
-                    //    tipoDocumento, comprobante, número, fecha,
-                    //    subTotal, descuento, total, validez);
-                    MostrarReporte(dt, dirección, razónSocial, documento,
-                        tipoDocumento, comprobante, número, fecha,
-                        subTotal, descuento, total);
-                }
-                else
-                {
-                    ShowError("No pudo imprimir el documento.");
-                }
-            }
-        }
+        //private void ImprimirVenta(frmEdicion f, object idVenta)
+        //{
+        //    using (var dt = f.ObtenerDetalles())
+        //    {
+        //        if (dt.Rows.Count > 0)
+        //        {
+        //            string dirección = f.DireccionCliente;
+        //            string razónSocial = f.RazónSocialCliente;
+        //            string documento = f.Documento.ToString();
+        //            string tipoDocumento = f.TipoDocumento.ToString();
+        //            string comprobante = "Venta";
+        //            string número = idVenta.ToString();
+        //            string fecha = f.Fecha.Date.ToString("dd/MM/yyyy");
+        //            string subTotal = f.Subtotal.ToString();
+        //            string descuento = f.Descuento.ToString();
+        //            string total = f.ImporteTotal.ToString();
+        //            //string validez = f.DiasValidez.ToString();
+        //            //MostrarReporte(dt, dirección, razónSocial, documento,
+        //            //    tipoDocumento, comprobante, número, fecha,
+        //            //    subTotal, descuento, total, validez);
+        //            MostrarReporte(dt, dirección, razónSocial, documento,
+        //                tipoDocumento, comprobante, número, fecha,
+        //                subTotal, descuento, total);
+        //        }
+        //        else
+        //        {
+        //            ShowError("No pudo imprimir el documento.");
+        //        }
+        //    }
+        //}
 
         //private void MostrarReporte(DataTable detalles, string dirección, string razónSocial, string documento,
         //        string tipoDocumento, string comprobante, string número, string fecha,
@@ -185,7 +196,7 @@ namespace ERP.Forms.Ventas
 
             dgvDatos.Columns[1].HeaderText = "Fecha";
             dgvDatos.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvDatos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dgvDatos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
 
             dgvDatos.Columns[2].HeaderText = "Cliente";
             dgvDatos.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -198,12 +209,16 @@ namespace ERP.Forms.Ventas
 
         private EVentas ObtenerVentaSeleccionada()
         {
+            EVentas venta = null;
             try
-            {
-                int rowindex = dgvDatos.CurrentCell.RowIndex;
-                var id = (Int32)dgvDatos.Rows[rowindex].Cells[0].Value;
-                var p = VentasRepository.ObtenerVentaPorId(id);
-                return p;
+            {                
+                if (dgvDatos.CurrentCell != null)
+                {
+                    int rowindex = dgvDatos.CurrentCell.RowIndex;
+                    var id = (Int32)dgvDatos.Rows[rowindex].Cells[0].Value;
+                    venta = VentasRepository.ObtenerVentaPorId(id);
+                }
+                return venta;
             }
             catch (Exception)
             {
